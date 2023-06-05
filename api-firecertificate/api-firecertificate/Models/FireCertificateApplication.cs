@@ -20,6 +20,8 @@ namespace api_rate.Models
         public string OwnerName { get; set; }
         public string CurrentFirePlan { get; set; }
         public string Status { get; set; }
+        public string Email { get; set; }
+        public string User { get; set; }
         public string DateApplied { get; set; }
         public string DateReviewed { get; set; }
         public string ClientID { get; set; }

@@ -14,10 +14,16 @@ namespace api_rate.Controllers
     public class AppSubmitController : ApiController
     {
         private IAppSubmit _appsubmit = null;
+        private IGetDate _getDate = null;
+        private ISMS _sms = null;
+        private IEmail _email = null;
 
-        public AppSubmitController(IAppSubmit IAppSubmit)
+        public AppSubmitController(IAppSubmit IAppSubmit, IGetDate IGetDate, ISMS ISMS, IEmail IEmail)
         {
             _appsubmit = IAppSubmit;
+            _getDate = IGetDate;
+            _sms = ISMS;
+            _email = IEmail;
         }
 
         public ReturnMsgInfo Post([FromBody]FireCertificateApplication objApplicationDetails)
@@ -34,6 +40,15 @@ namespace api_rate.Controllers
                         objReturnMsg.ReturnMessage = "Application Successfully submitted.";
 
 
+                        // Sending Email 
+                        if (string.IsNullOrEmpty(objApplicationDetails.Email) == false)
+                        {
+                            string strMsg = _email.GetEmailMsgBody(Globals.PENDING.ToString().Trim());
+                            string strErMsg = string.Empty;
+
+                            _email.SendEmail(strMsg, objApplicationDetails.Email.ToString().Trim(), ref strErMsg);
+                        }
+          
                     }
                     else
                     {

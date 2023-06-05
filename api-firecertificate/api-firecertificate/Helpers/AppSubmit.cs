@@ -132,6 +132,16 @@ namespace api_rate.Helpers
                 returnMsg.ReturnMessage = "Status missing.";
                 IsSuccess = false;
             }
+            // Email Validation
+            if (objFireAppDetails.Email != null && objFireAppDetails.Email != "" && objFireAppDetails.Email.Length > 0)
+            {
+                if (objCmnFunctions.IsValidEmail(objFireAppDetails.Email) == false)
+                {
+                    returnMsg.ReturnValue = "Error";
+                    returnMsg.ReturnMessage = "Invalid Applicant's Email Address.";
+                    IsSuccess = false;
+                }
+            }
 
             if (objFireAppDetails.DateApplied == null)
             {

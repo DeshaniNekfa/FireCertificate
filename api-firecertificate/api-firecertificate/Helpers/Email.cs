@@ -72,5 +72,32 @@ namespace api_rate.Helpers
             return IsSuccess;
         }
         
+
+        //Get Email body
+        public string GetEmailMsgBody(string strStatus, FireCertificateApplication objApp = null)
+        {
+            string strMsgBody = string.Empty;
+            string strCouncil = ConnectionInfo.DBInfo.CouncilName;
+            string strContactNo = ConnectionInfo.DBInfo.EmailContactNo;
+
+            if(strStatus.Trim() == Globals.PENDING.ToString().Trim())
+            {
+                strMsgBody = "Your Application is submitted and pending approval.";
+            }
+            else if(strStatus.Trim() == Globals.APPROVED.ToString().Trim())
+            {
+                strMsgBody = "Your Application was approved!";
+            }
+            else if(strStatus.Trim() == Globals.REJECTED.ToString().Trim())
+            {
+                strMsgBody = "Your Application was rejected!";
+            }
+            else if(strStatus.Trim() == Globals.PAID.ToString().Trim())
+            {
+                strMsgBody = "Your Payment is received";
+            }
+
+            return strMsgBody;
+        }
     }
 }
