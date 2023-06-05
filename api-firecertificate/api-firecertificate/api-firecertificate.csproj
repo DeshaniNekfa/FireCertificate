@@ -185,6 +185,7 @@
     <Compile Include="Controllers\FireAppApproveController.cs" />
     <Compile Include="Controllers\FireAppByIdController.cs" />
     <Compile Include="Controllers\FireAppByStatusController.cs" />
+    <Compile Include="Controllers\FireAppByUserIdController.cs" />
     <Compile Include="Filters\JwtCustomAuth.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

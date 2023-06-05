@@ -11,5 +11,9 @@ namespace api_rate.Helpers
         FireCertificateApplication GetApplicationById(FireCertificateApplication objApplication, ref ReturnMsgInfo returnMsg);
 
         List<FireCertificateApplication> GetApplicationByStatus(FireCertificateApplication objApplication, ref ReturnMsgInfo returnMsg);
+
+        string GetUserDetailsById(FireCertificateApplication objFireApp, ref ReturnMsgInfo objReturnMsg);
+
+        List<FireCertificateApplication> GetAppDetailsByUsr(FireCertificateApplication objFireApp, ref ReturnMsgInfo objReturnMsg);
     }
 }
