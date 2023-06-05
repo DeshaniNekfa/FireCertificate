@@ -60,7 +60,7 @@
                 <div style="height:30px!important;"></div>
                 <div><asp:Label ID="lblDBTransaction" runat="server" Text="To Update Database" Font-Bold="true" Font-Size="Larger"></asp:Label></div>
 
-                <div><a href="#apiApplication">01. App. Submit</a></div>
+                <div><a href="#apiApplication">01. Application Submit</a></div>
                 <div><a href="#apiAppReject">02. App. Reject</a></div>
                 <div><a href="#apiAppApprove" style="color:red!important;">03. App. Approve</a></div>
                 <div><a href="#apiAppManulPay" style="color:red!important;">04. App. Manual Payment</a></div>
@@ -2593,7 +2593,7 @@
                             <div>Introduction</div>
                         </div>
                         <div class="pre row">
-                            <div class="col-sm-12 ">This API helps to save application details when pass ReasonID, PlaceID, Name, NIC, Address, Mobile, Telephone, Email, Council, NICCopy, ReserveDate, StartTime, EndTime, UserId, ClientID parameters.</div>
+                            <div class="col-sm-12 ">This API helps to save application details when pass CertificateId, CompanyName, Address, Telephone, DistanceFromNegambo, NatureOfBusiness, BuildingPlan, TotalLand, RoadFromNegambo, OwnerName, CurrentFirePlan, Status, ClientID, Email, User, DateApplied, DateReviewed, ClientID parameters.</div>
                         </div>
                     </div>
                     <div>
@@ -2601,7 +2601,7 @@
                             <div>Base URL</div>
                         </div>
                         <div class="pre row">
-                            <div class="col-sm-12 ">https://photoshoot-api.nekfa.com/api/App</div>
+                            <div class="col-sm-12 ">https://photoshoot-api.nekfa.com/api/AppSubmit</div>
                         </div>
                     </div>
                     <div>
