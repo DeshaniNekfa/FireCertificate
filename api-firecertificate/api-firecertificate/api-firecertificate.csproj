@@ -182,6 +182,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AppSubmitController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\FireAppApproveController.cs" />
     <Compile Include="Controllers\FireAppByIdController.cs" />
     <Compile Include="Controllers\FireAppByStatusController.cs" />
     <Compile Include="Filters\JwtCustomAuth.cs" />
