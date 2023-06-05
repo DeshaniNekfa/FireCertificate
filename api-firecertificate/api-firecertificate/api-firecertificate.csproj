@@ -216,7 +216,9 @@
     <Compile Include="Models\ConnectionInfo.cs" />
     <Compile Include="Models\DatabaseDetailsInfo.cs" />
     <Compile Include="Models\FireAppByIdOutput.cs" />
+    <Compile Include="Models\FireAppDetailsOutput.cs" />
     <Compile Include="Models\FireCertificateApplication.cs" />
+    <Compile Include="Models\Globals.cs" />
     <Compile Include="Models\Index.cs" />
     <Compile Include="Models\ReturnMsgInfo.cs" />
     <Compile Include="Models\SignupInfo.cs" />

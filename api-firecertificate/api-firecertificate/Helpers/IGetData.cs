@@ -9,5 +9,7 @@ namespace api_rate.Helpers
     public interface IGetData
     {
         FireCertificateApplication GetApplicationById(FireCertificateApplication objApplication, ref ReturnMsgInfo returnMsg);
+
+        List<FireCertificateApplication> GetApplicationByStatus(FireCertificateApplication objApplication, ref ReturnMsgInfo returnMsg);
     }
 }

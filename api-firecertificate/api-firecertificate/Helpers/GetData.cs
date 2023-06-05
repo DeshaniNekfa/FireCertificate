@@ -101,5 +101,87 @@ namespace api_rate.Helpers
 
             return objFireApplication;  
         }
+
+        public List<FireCertificateApplication> GetApplicationByStatus(FireCertificateApplication objFireApplication, ref ReturnMsgInfo returnMsg)
+        {
+            List<FireCertificateApplication> lstFireApplication = new List<FireCertificateApplication>();
+            this.objConMain = new Connection_Main();
+
+            string conString = this.objConMain.Get_Main_Connection(objFireApplication.ClientID);
+
+            if (conString == null || conString == "")
+            {
+                returnMsg.ReturnValue = "Error";
+                returnMsg.ReturnMessage = "Connection not found.";
+            }
+            else
+            {
+                try
+                {
+                    this.mySqlCon = new MySqlConnection(conString);
+                    if (this.mySqlCon.State.ToString() != "Open")
+                    {
+                        this.mySqlCon.Open();
+                    }
+                    else
+                    {
+                        returnMsg.ReturnValue = "Error";
+                        returnMsg.ReturnMessage = "Connection was already opened.";
+                    }
+                    if (this.mySqlCon != null)
+                    {
+                        strSql = "SELECT Id, CertificateId, CompanyName, Address, Telephone, DistanceFromNegambo, NatureOfBusiness, BuildingPlan, TotalLand, RoadFromNegambo, OwnerName, CurrentFirePlan, Status, DateApplied, DateReviewed FROM tbl_firecertificate_application WHERE Status ='" + objFireApplication.Status.ToString().Trim()+"';";
+                        da = new MySqlDataAdapter(strSql, this.mySqlCon);
+                        ds = new DataSet();
+                        da.Fill(ds, "Application");
+                        dt = ds.Tables["Application"];
+                        if (dt.Rows.Count > 0)
+                        {
+                            foreach (DataRow dtRow in dt.Rows)
+                            {
+                                FireCertificateApplication objFireAppDetails = new Models.FireCertificateApplication();
+                                objFireAppDetails.Id = (int)dtRow["Id"];
+                                objFireAppDetails.CertificateId = dtRow["CertificateId"].ToString().Trim();
+                                objFireAppDetails.CompanyName = dtRow["CompanyName"].ToString().Trim();
+                                objFireAppDetails.Address = dtRow["Address"].ToString().Trim();
+                                objFireAppDetails.Telephone = dtRow["Telephone"].ToString().Trim();
+                                objFireAppDetails.DistanceFromNegambo = (int)dtRow["DistanceFromNegambo"];
+                                objFireAppDetails.NatureOfBusiness = dtRow["NatureOfBusiness"].ToString().Trim();
+                                objFireAppDetails.BuildingPlan = dtRow["BuildingPlan"].ToString().Trim();
+                                objFireAppDetails.TotalLand = (int)dtRow["TotalLand"];
+                                objFireAppDetails.RoadFromNegambo = dtRow["RoadFromNegambo"].ToString().Trim();
+                                objFireAppDetails.OwnerName = dtRow["OwnerName"].ToString().Trim();
+                                objFireAppDetails.CurrentFirePlan = dtRow["CurrentFirePlan"].ToString().Trim();
+                                objFireAppDetails.Status = dtRow["Status"].ToString().Trim();
+                                objFireAppDetails.DateApplied = dtRow["DateApplied"].ToString().Trim();
+                                objFireAppDetails.DateReviewed = dtRow["DateReviewed"].ToString().Trim();
+
+                                lstFireApplication.Add(objFireAppDetails);
+                            }
+                            returnMsg.ReturnValue = "OK";
+                            returnMsg.ReturnMessage = "Data found";
+                        }
+                        else
+                        {
+                            returnMsg.ReturnValue = "Error";
+                            returnMsg.ReturnMessage = "No data found";
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    returnMsg.ReturnValue = "Error";
+                    returnMsg.ReturnMessage = ex.Message;
+                }
+                finally
+                {
+                    if (this.mySqlCon != null)
+                    {
+                        this.mySqlCon.Close();
+                    }
+                }
+            }
+            return lstFireApplication;
+        }
     }
 }
