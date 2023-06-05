@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="api_rate.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="api_rate_com_nekfa_service_sms_NekfaSMS_API" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://sms.service.nekfa.com/NekfaSMS_API.asmx</Value>
+    </Setting>
+    <Setting Name="api_boutique_com_nekfa_service_sms_NekfaSMS_API" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://sms.service.nekfa.com/NekfaSMS_API.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
