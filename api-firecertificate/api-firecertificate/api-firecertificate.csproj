@@ -183,6 +183,7 @@
     <Compile Include="Controllers\AppSubmitController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\FireAppByIdController.cs" />
+    <Compile Include="Controllers\FireAppByStatusController.cs" />
     <Compile Include="Filters\JwtCustomAuth.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
