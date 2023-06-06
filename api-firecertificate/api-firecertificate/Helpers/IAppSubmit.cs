@@ -9,13 +9,16 @@ namespace api_rate.Helpers
 {
     public interface IAppSubmit
     {
-        // Validate values before submitting application
+        // Validate Municipal Council Application
         bool ValidateApplication(FireCertificateApplication objAppDetails, ref ReturnMsgInfo returnMsg);
-        // Save application to database tbl_firecertificate_application table 
+
+        // Submit Municipal Council Application 
         bool SaveApplication(FireCertificateApplication objAppDetails, ref ReturnMsgInfo returnMsg);
-        // Validate supervisor application values before submitting
+
+        // Validate Fire Department Application
         bool ValidateSupervisorApplication(FireSupervisorApplication objSuperAppDetails, ref ReturnMsgInfo returnMsg);
-        // Submit and save supervisor application in database
+
+        // Submit Fire Department Application
         bool SaveSupervisorApplication(FireSupervisorApplication objSuperAppDetails, ref ReturnMsgInfo returnMsg);
     }
 }

@@ -20,6 +20,7 @@ namespace api_rate.Helpers
         private CommonFunctions objCmnFunctions = null;
         private MySqlCommand cmd = null;
 
+        // Validate Municipal Council Application
         public bool ValidateApplication(FireCertificateApplication objFireAppDetails, ref ReturnMsgInfo returnMsg)
         {
             bool IsSuccess = true;
@@ -182,6 +183,8 @@ namespace api_rate.Helpers
 
             return IsSuccess;
         }
+
+        // Submit Municipal Council Application
         public bool SaveApplication(FireCertificateApplication objFireAppDetails, ref ReturnMsgInfo returnMsg)
         {
             bool isSaved = false;
@@ -254,6 +257,8 @@ namespace api_rate.Helpers
             }
             return isSaved;
         }
+
+        // Validate Fire Department Application
         public bool ValidateSupervisorApplication(FireSupervisorApplication objFireSuperApp, ReturnMsgInfo returnMsg)
         {
             bool IsSuccess = true;
@@ -477,6 +482,8 @@ namespace api_rate.Helpers
 
             return IsSuccess;
         }
+
+        // Submit Fire Department Application
         public bool SaveSupervisorApplication(FireSupervisorApplication objFireSuperApp, ReturnMsgInfo returnMsg)
         {
             bool isSaved = false;

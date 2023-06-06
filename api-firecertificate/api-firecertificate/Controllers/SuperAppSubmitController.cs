@@ -26,14 +26,17 @@ namespace api_rate.Controllers
             _email = IEmail;
         }
 
+        // POST api/SuperAppSubmit
         public ReturnMsgInfo Post([FromBody]FireSupervisorApplication objSuperApp)
         {
             ReturnMsgInfo objReturnMsg = new ReturnMsgInfo();
 
             try
             {
+                //validation
                 if (_appsubmit.ValidateSupervisorApplication(objSuperApp, ref objReturnMsg))
                 {
+                    //application submit
                     _appsubmit.SaveSupervisorApplication(objSuperApp, ref objReturnMsg);
                     if (objReturnMsg.ReturnValue == "OK")
                     {

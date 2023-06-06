@@ -18,6 +18,7 @@ namespace api_rate.Controllers
         {
             _getData = IGetData;
         }
+
         // POST api/SuperAppAll
         public SuperAppDetailsOutput Post([FromBody]FireSupervisorApplication objSuperApp)
         {

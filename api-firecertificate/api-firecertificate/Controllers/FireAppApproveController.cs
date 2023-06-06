@@ -21,7 +21,7 @@ namespace api_rate.Controllers
             _appSubmit = IAppSubmit;
             _getData = IGetData;
         }
-
+        // POST api/FireAppApprove
         public ReturnMsgInfo Post() 
         {
             return null;

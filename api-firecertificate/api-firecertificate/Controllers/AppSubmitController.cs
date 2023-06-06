@@ -26,13 +26,16 @@ namespace api_rate.Controllers
             _email = IEmail;
         }
 
+        // POST api/AppSubmit
         public ReturnMsgInfo Post([FromBody]FireCertificateApplication objApplicationDetails)
         {
             ReturnMsgInfo objReturnMsg = new ReturnMsgInfo();
             try
             {
+                //validation
                 if (_appsubmit.ValidateApplication(objApplicationDetails, ref objReturnMsg))
                 {
+                    //application submit
                     _appsubmit.SaveApplication(objApplicationDetails, ref objReturnMsg);
                     if (objReturnMsg.ReturnValue == "OK")
                     {

@@ -21,7 +21,6 @@ namespace api_rate.Controllers
         }
 
         // POST api/SuperAppByFireId
-
         public SuperAppByIdOutput Post([FromBody]FireSupervisorApplication objSuperApp)
         {
             SuperAppByIdOutput objSuperAppByIdOutput = new SuperAppByIdOutput();
