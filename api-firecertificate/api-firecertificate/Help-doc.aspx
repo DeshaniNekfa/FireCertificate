@@ -2593,7 +2593,7 @@
                             <div>Introduction</div>
                         </div>
                         <div class="pre row">
-                            <div class="col-sm-12 ">This API helps to save application details when pass CertificateId, CompanyName, Address, Telephone, DistanceFromNegambo, NatureOfBusiness, BuildingPlan, TotalLand, RoadFromNegambo, OwnerName, CurrentFirePlan, Status, ClientID, Email, User, DateApplied, DateReviewed, ClientID parameters.</div>
+                            <div class="col-sm-12 ">This API helps to save application details when pass CertificateId, CompanyName, Address, Telephone, DistanceFromCouncil, NatureOfBusiness, BuildingPlan, TotalLand, RoadFromCouncil, OwnerName, CurrentFirePlan, Status, ClientID, Email, User, DateApplied, DateReviewed, ClientID parameters.</div>
                         </div>
                     </div>
                     <div>

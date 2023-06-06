@@ -51,7 +51,7 @@ namespace api_rate.Helpers
                     }
                     if (this.mySqlCon != null)
                     {
-                        strSql = "SELECT Id, CertificateId, CompanyName, Address, Telephone, DistanceFromNegambo, NatureOfBusiness, BuildingPlan, TotalLand, RoadFromNegambo, OwnerName, CurrentFirePlan, Status, DateApplied, DateReviewed  FROM tbl_firecertificate_application WHERE Id = " + objApplication.Id;
+                        strSql = "SELECT Id, CertificateId, CompanyName, Address, Telephone, DistanceFromCouncil, NatureOfBusiness, BuildingPlan, TotalLand, RoadFromCouncil, OwnerName, CurrentFirePlan, Status, DateApplied, DateReviewed  FROM tbl_firecertificate_application WHERE Id = " + objApplication.Id;
                         da = new MySqlDataAdapter(strSql, this.mySqlCon);
                         ds = new DataSet();
                         da.Fill(ds, "FireApplication");
@@ -66,11 +66,11 @@ namespace api_rate.Helpers
                                 objFireAppDetails.CompanyName = dtRow["CompanyName"].ToString().Trim();
                                 objFireAppDetails.Address = dtRow["Address"].ToString().Trim();
                                 objFireAppDetails.Telephone = dtRow["Telephone"].ToString().Trim();
-                                objFireAppDetails.DistanceFromNegambo = (int)dtRow["DistanceFromNegambo"];
+                                objFireAppDetails.DistanceFromCouncil = (int)dtRow["DistanceFromCouncil"];
                                 objFireAppDetails.NatureOfBusiness = dtRow["NatureOfBusiness"].ToString().Trim();
                                 objFireAppDetails.BuildingPlan = dtRow["BuildingPlan"].ToString().Trim();
                                 objFireAppDetails.TotalLand = (int)dtRow["TotalLand"];
-                                objFireAppDetails.RoadFromNegambo = dtRow["RoadFromNegambo"].ToString().Trim();
+                                objFireAppDetails.RoadFromCouncil = dtRow["RoadFromCouncil"].ToString().Trim();
                                 objFireAppDetails.OwnerName = dtRow["OwnerName"].ToString().Trim();
                                 objFireAppDetails.CurrentFirePlan = dtRow["CurrentFirePlan"].ToString().Trim();
                                 objFireAppDetails.Status = dtRow["Status"].ToString().Trim();
@@ -132,7 +132,7 @@ namespace api_rate.Helpers
                     }
                     if (this.mySqlCon != null)
                     {
-                        strSql = "SELECT Id, CertificateId, CompanyName, Address, Telephone, DistanceFromNegambo, NatureOfBusiness, BuildingPlan, TotalLand, RoadFromNegambo, OwnerName, CurrentFirePlan, Status, DateApplied, DateReviewed FROM tbl_firecertificate_application WHERE Status ='" + objFireApplication.Status.ToString().Trim()+"';";
+                        strSql = "SELECT Id, CertificateId, CompanyName, Address, Telephone, DistanceFromCouncil, NatureOfBusiness, BuildingPlan, TotalLand, RoadFromCouncil, OwnerName, CurrentFirePlan, Status, DateApplied, DateReviewed FROM tbl_firecertificate_application WHERE Status ='" + objFireApplication.Status.ToString().Trim()+"';";
                         da = new MySqlDataAdapter(strSql, this.mySqlCon);
                         ds = new DataSet();
                         da.Fill(ds, "Application");
@@ -147,11 +147,11 @@ namespace api_rate.Helpers
                                 objFireAppDetails.CompanyName = dtRow["CompanyName"].ToString().Trim();
                                 objFireAppDetails.Address = dtRow["Address"].ToString().Trim();
                                 objFireAppDetails.Telephone = dtRow["Telephone"].ToString().Trim();
-                                objFireAppDetails.DistanceFromNegambo = (int)dtRow["DistanceFromNegambo"];
+                                objFireAppDetails.DistanceFromCouncil = (int)dtRow["DistanceFromCouncil"];
                                 objFireAppDetails.NatureOfBusiness = dtRow["NatureOfBusiness"].ToString().Trim();
                                 objFireAppDetails.BuildingPlan = dtRow["BuildingPlan"].ToString().Trim();
                                 objFireAppDetails.TotalLand = (int)dtRow["TotalLand"];
-                                objFireAppDetails.RoadFromNegambo = dtRow["RoadFromNegambo"].ToString().Trim();
+                                objFireAppDetails.RoadFromCouncil = dtRow["RoadFromCouncil"].ToString().Trim();
                                 objFireAppDetails.OwnerName = dtRow["OwnerName"].ToString().Trim();
                                 objFireAppDetails.CurrentFirePlan = dtRow["CurrentFirePlan"].ToString().Trim();
                                 objFireAppDetails.Status = dtRow["Status"].ToString().Trim();
@@ -281,7 +281,7 @@ namespace api_rate.Helpers
                     }
                     if (this.mySqlCon != null)
                     {
-                        strSql = "SELECT Id, CertificateId, CompanyName, Address, Telephone, DistanceFromNegambo, NatureOfBusiness, BuildingPlan, TotalLand, RoadFromNegambo, OwnerName, CurrentFirePlan, Status, Email, User, DateApplied, DateReviewed FROM tbl_firecertificate_application WHERE User = '" + objFireApplication.User+"';";
+                        strSql = "SELECT Id, CertificateId, CompanyName, Address, Telephone, DistanceFromCouncil, NatureOfBusiness, BuildingPlan, TotalLand, RoadFromCouncil, OwnerName, CurrentFirePlan, Status, Email, User, DateApplied, DateReviewed FROM tbl_firecertificate_application WHERE User = '" + objFireApplication.User+"';";
                         da = new MySqlDataAdapter(strSql, this.mySqlCon);
                         ds = new DataSet();
                         da.Fill(ds, "Application");
@@ -296,11 +296,11 @@ namespace api_rate.Helpers
                                 objFireAppDetails.CompanyName = dtRow["CompanyName"].ToString().Trim();
                                 objFireAppDetails.Address = dtRow["Address"].ToString().Trim();
                                 objFireAppDetails.Telephone = dtRow["Telephone"].ToString().Trim();
-                                objFireAppDetails.DistanceFromNegambo = (int)dtRow["DistanceFromNegambo"];
+                                objFireAppDetails.DistanceFromCouncil = (int)dtRow["DistanceFromCouncil"];
                                 objFireAppDetails.NatureOfBusiness = dtRow["NatureOfBusiness"].ToString().Trim();
                                 objFireAppDetails.BuildingPlan = dtRow["BuildingPlan"].ToString().Trim();
                                 objFireAppDetails.TotalLand = (int)dtRow["TotalLand"];
-                                objFireAppDetails.RoadFromNegambo = dtRow["RoadFromNegambo"].ToString().Trim();
+                                objFireAppDetails.RoadFromCouncil = dtRow["RoadFromCouncil"].ToString().Trim();
                                 objFireAppDetails.OwnerName = dtRow["OwnerName"].ToString().Trim();
                                 objFireAppDetails.CurrentFirePlan = dtRow["CurrentFirePlan"].ToString().Trim();
                                 objFireAppDetails.Status = dtRow["Status"].ToString().Trim();
@@ -363,7 +363,7 @@ namespace api_rate.Helpers
                     }
                     if (this.mySqlCon != null)
                     {
-                        strSql = "SELECT Id, CertificateId, CompanyName, Address, Telephone, DistanceFromNegambo, NatureOfBusiness, BuildingPlan, TotalLand, RoadFromNegambo, OwnerName, CurrentFirePlan, Status, Email, User, DateApplied, DateReviewed FROM tbl_firecertificate_application;";
+                        strSql = "SELECT Id, CertificateId, CompanyName, Address, Telephone, DistanceFromCouncil, NatureOfBusiness, BuildingPlan, TotalLand, RoadFromCouncil, OwnerName, CurrentFirePlan, Status, Email, User, DateApplied, DateReviewed FROM tbl_firecertificate_application;";
                         da = new MySqlDataAdapter(strSql, this.mySqlCon);
                         ds = new DataSet();
                         da.Fill(ds, "Application");
@@ -378,11 +378,11 @@ namespace api_rate.Helpers
                                 objFireAppDetails.CompanyName = dtRow["CompanyName"].ToString().Trim();
                                 objFireAppDetails.Address = dtRow["Address"].ToString().Trim();
                                 objFireAppDetails.Telephone = dtRow["Telephone"].ToString().Trim();
-                                objFireAppDetails.DistanceFromNegambo = (int)dtRow["DistanceFromNegambo"];
+                                objFireAppDetails.DistanceFromCouncil = (int)dtRow["DistanceFromCouncil"];
                                 objFireAppDetails.NatureOfBusiness = dtRow["NatureOfBusiness"].ToString().Trim();
                                 objFireAppDetails.BuildingPlan = dtRow["BuildingPlan"].ToString().Trim();
                                 objFireAppDetails.TotalLand = (int)dtRow["TotalLand"];
-                                objFireAppDetails.RoadFromNegambo = dtRow["RoadFromNegambo"].ToString().Trim();
+                                objFireAppDetails.RoadFromCouncil = dtRow["RoadFromCouncil"].ToString().Trim();
                                 objFireAppDetails.OwnerName = dtRow["OwnerName"].ToString().Trim();
                                 objFireAppDetails.CurrentFirePlan = dtRow["CurrentFirePlan"].ToString().Trim();
                                 objFireAppDetails.Status = dtRow["Status"].ToString().Trim();

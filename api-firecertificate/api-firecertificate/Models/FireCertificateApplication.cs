@@ -12,11 +12,11 @@ namespace api_rate.Models
         public string CompanyName { get; set; }
         public string Address { get; set; }
         public string Telephone { get; set; }
-        public int DistanceFromNegambo { get; set; }
+        public int DistanceFromCouncil { get; set; }
         public string NatureOfBusiness { get; set; }
         public string BuildingPlan { get; set; }
         public int TotalLand { get; set; }
-        public string RoadFromNegambo { get; set; }
+        public string RoadFromCouncil { get; set; }
         public string OwnerName { get; set; }
         public string CurrentFirePlan { get; set; }
         public string Status { get; set; }
