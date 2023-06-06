@@ -514,5 +514,93 @@ namespace api_rate.Helpers
         }
 
         // Get All supervisor applications
+        public List<FireSupervisorApplication> GetAllSuperAppDetails(FireSupervisorApplication objSuperApp, ref ReturnMsgInfo returnMsg)
+        {
+            List<FireSupervisorApplication> lstFireSuperApp = new List<FireSupervisorApplication>();
+
+            this.objConMain = new Connection_Main();
+            string conString = this.objConMain.Get_Main_Connection(objSuperApp.ClientID);
+            if (conString == null || conString == "")
+            {
+                returnMsg.ReturnValue = "Error";
+                returnMsg.ReturnMessage = "Connection not found.";
+            }
+            else
+            {
+                try
+                {
+                    this.mySqlCon = new MySqlConnection(conString);
+                    if (this.mySqlCon.State.ToString() != "Open")
+                    {
+                        this.mySqlCon.Open();
+                    }
+                    else
+                    {
+                        returnMsg.ReturnValue = "Error";
+                        returnMsg.ReturnMessage = "Connection was already opened.";
+                    }
+                    if (this.mySqlCon != null)
+                    {
+                        strSql = "SELECT * FROM tbl_firecertificate_supervisor_application;";
+                        da = new MySqlDataAdapter(strSql, this.mySqlCon);
+                        ds = new DataSet();
+                        da.Fill(ds, "Application");
+                        dt = ds.Tables["Application"];
+                        if (dt.Rows.Count > 0)
+                        {
+                            foreach (DataRow dtRow in dt.Rows)
+                            {
+                                FireSupervisorApplication objSuperAppDetails = new Models.FireSupervisorApplication();
+                                objSuperAppDetails.Id = (int)dtRow["Id"];
+                                objSuperAppDetails.CertificateId = dtRow["CertificateId"].ToString().Trim();
+                                objSuperAppDetails.ApplicantName = dtRow["ApplicantName"].ToString().Trim();
+                                objSuperAppDetails.OwnerName = dtRow["OwnerName"].ToString().Trim();
+                                objSuperAppDetails.LesseeName = dtRow["LesseeName"].ToString().Trim();
+                                objSuperAppDetails.EmergencyContact = dtRow["EmergencyContact"].ToString().Trim();
+                                objSuperAppDetails.Address = dtRow["Address"].ToString().Trim();
+                                objSuperAppDetails.OtherAddresses = dtRow["OtherAddresses"].ToString().Trim();
+                                objSuperAppDetails.DistRoadSigns = dtRow["DistRoadSigns"].ToString().Trim();
+                                objSuperAppDetails.ShortestRoad = dtRow["ShortestRoad"].ToString().Trim();
+                                objSuperAppDetails.Telephone = dtRow["Telephone"].ToString().Trim();
+                                objSuperAppDetails.Mobile = dtRow["Mobile"].ToString().Trim();
+                                objSuperAppDetails.LandArea = (int)dtRow["LandArea"];
+                                objSuperAppDetails.Capacity = (int)dtRow["Capacity"];
+                                objSuperAppDetails.Stories = (int)dtRow["Stories"];
+                                objSuperAppDetails.Construction = dtRow["Construction"].ToString().Trim();
+                                objSuperAppDetails.BuildType = dtRow["BuildType"].ToString().Trim();
+                                objSuperAppDetails.UnapprovedBuildings = dtRow["UnapprovedBuildings"].ToString().Trim();
+                                objSuperAppDetails.PlanAvailability = dtRow["PlanAvailability"].ToString().Trim();
+                                objSuperAppDetails.Exitways = dtRow["Exitways"].ToString().Trim();
+                                objSuperAppDetails.EmergencyExits = dtRow["EmergencyExits"].ToString().Trim();
+                                objSuperAppDetails.DayManpower = (int)dtRow["DayManpower"];
+                                objSuperAppDetails.NightManpower = (int)dtRow["NightManpower"];
+                                objSuperAppDetails.TankCapacity = (int)dtRow["TankCapacity"];
+                                objSuperAppDetails.CommonTank = dtRow["CommonTank"].ToString().Trim();
+                                objSuperAppDetails.FirehoseLocation = dtRow["FirehoseLocation"].ToString().Trim();
+                                objSuperAppDetails.ElecPhase = dtRow["ElecPhase"].ToString().Trim();
+                                objSuperAppDetails.Generator = dtRow["Generator"].ToString().Trim();
+                                objSuperAppDetails.CurrentCircuit = dtRow["CurrentCircuit"].ToString().Trim();
+
+                                lstFireSuperApp.Add(objSuperAppDetails);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    returnMsg.ReturnValue = "Error";
+                    returnMsg.ReturnMessage = ex.Message;
+                }
+                finally
+                {
+                    if (this.mySqlCon != null)
+                    {
+                        this.mySqlCon.Close();
+                    }
+                }
+            }
+            
+            return lstFireSuperApp;
+        }
     }
 }

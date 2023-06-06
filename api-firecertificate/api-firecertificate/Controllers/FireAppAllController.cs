@@ -35,7 +35,7 @@ namespace api_rate.Controllers
                 else
                 {
                     lstFireApplication = _getData.GetAllFireAppDetails(objFireApp, ref objReturnMsg);
-                                                                                                                                                          if (objReturnMsg.ReturnValue != "OK")
+                    if (objReturnMsg.ReturnValue != "OK")                                                                                                                              if (objReturnMsg.ReturnValue != "OK")
                     {
                         throw new Exception("Error occurred when retrieve application details. " + objReturnMsg.ReturnMessage.ToString().Trim());
                     }
