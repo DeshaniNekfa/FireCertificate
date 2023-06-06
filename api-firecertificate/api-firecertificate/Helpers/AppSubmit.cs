@@ -259,7 +259,7 @@ namespace api_rate.Helpers
         }
 
         // Validate Fire Department Application
-        public bool ValidateSupervisorApplication(FireSupervisorApplication objFireSuperApp, ReturnMsgInfo returnMsg)
+        public bool ValidateSupervisorApplication(FireSupervisorApplication objFireSuperApp, ref ReturnMsgInfo returnMsg)
         {
             bool IsSuccess = true;
             objCmnFunctions = new CommonFunctions();
@@ -408,7 +408,7 @@ namespace api_rate.Helpers
             }
 
             // Stories
-            if (objFireSuperApp.Stories == null || objFireSuperApp.Stories <= 1)
+            if (objFireSuperApp.Stories == null || objFireSuperApp.Stories < 1)
             {
                 returnMsg.ReturnValue = "Error";
                 returnMsg.ReturnMessage = "Invalid Number of stories.";
@@ -484,7 +484,7 @@ namespace api_rate.Helpers
         }
 
         // Submit Fire Department Application
-        public bool SaveSupervisorApplication(FireSupervisorApplication objFireSuperApp, ReturnMsgInfo returnMsg)
+        public bool SaveSupervisorApplication(FireSupervisorApplication objFireSuperApp, ref ReturnMsgInfo returnMsg)
         {
             bool isSaved = false;
             this.objConMain = new Connection_Main();
@@ -540,6 +540,7 @@ namespace api_rate.Helpers
                         cmd.Parameters.Add("@NightManpower", objFireSuperApp.NightManpower);
                         cmd.Parameters.Add("@TankCapacity", objFireSuperApp.TankCapacity);
                         cmd.Parameters.Add("@CommonTank", objFireSuperApp.CommonTank);
+                        cmd.Parameters.Add("@FirehoseLocation", objFireSuperApp.FirehoseLocation);
                         cmd.Parameters.Add("@ElecPhase", objFireSuperApp.ElecPhase);
                         cmd.Parameters.Add("@Generator", objFireSuperApp.Generator);
                         cmd.Parameters.Add("@CurrentCircuit", objFireSuperApp.CurrentCircuit);
