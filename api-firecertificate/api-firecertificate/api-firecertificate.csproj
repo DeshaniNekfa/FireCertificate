@@ -187,6 +187,7 @@
     <Compile Include="Controllers\FireAppByIdController.cs" />
     <Compile Include="Controllers\FireAppByStatusController.cs" />
     <Compile Include="Controllers\FireAppByUserIdController.cs" />
+    <Compile Include="Controllers\SuperAppByFireIdController.cs" />
     <Compile Include="Filters\JwtCustomAuth.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -227,6 +228,7 @@
     <Compile Include="Models\ReturnMsgInfo.cs" />
     <Compile Include="Models\SignupInfo.cs" />
     <Compile Include="Models\SMSInfo.cs" />
+    <Compile Include="Models\SuperAppByIdOutput.cs" />
     <Compile Include="Models\UserInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
