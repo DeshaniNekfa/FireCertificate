@@ -48,7 +48,7 @@ namespace api_rate.Controllers
 
                     objFireApp.ClientID = objSuperApplication.ClientID;
 
-                    if (objFireApp.Status == Globals.PENDING.ToString().Trim())
+                    if (objFireApp.Status == Globals.PAID.ToString().Trim())
                     {
                         // Approving Application
                         _appSubmit.SetStatusApprove(objFireApp, objReturnMsg);
@@ -78,7 +78,7 @@ namespace api_rate.Controllers
                         }
                         else
                         {
-                            throw new Exception("Error occured saving application");
+                            throw new Exception("Error occured approve application");
                         }
                     }
                 }

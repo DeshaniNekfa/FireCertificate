@@ -23,5 +23,8 @@ namespace api_rate.Helpers
 
         // Set Application status Approved
         bool SetStatusApprove(FireCertificateApplication objFireApp, ReturnMsgInfo objReturnMsg);
+
+        // Set Application status Rejected
+        bool SetStatusReject(FireCertificateApplication objFireApp, ReturnMsgInfo objReturnMsg);
     }
 }

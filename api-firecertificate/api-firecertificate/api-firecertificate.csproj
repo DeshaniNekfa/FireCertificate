@@ -187,6 +187,7 @@
     <Compile Include="Controllers\FireAppByIdController.cs" />
     <Compile Include="Controllers\FireAppByStatusController.cs" />
     <Compile Include="Controllers\FireAppByUserIdController.cs" />
+    <Compile Include="Controllers\FireAppRejectController.cs" />
     <Compile Include="Controllers\SuperAppAllController.cs" />
     <Compile Include="Controllers\SuperAppByFireIdController.cs" />
     <Compile Include="Controllers\SuperAppSubmitController.cs" />

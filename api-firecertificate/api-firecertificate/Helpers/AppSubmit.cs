@@ -627,5 +627,65 @@ namespace api_rate.Helpers
 
             return isApporoved;
         }
+    
+        // Set Application status Rejected
+        public bool SetStatusReject(FireCertificateApplication objFireApp, ReturnMsgInfo objReturnMsg)
+        {
+            bool isRejected = false;
+            this.objConMain = new Connection_Main();
+
+            try
+            {
+                string conString = this.objConMain.Get_Main_Connection(objFireApp.ClientID);
+                if (conString == null || conString == "")
+                {
+                    objReturnMsg.ReturnValue = "Error";
+                    objReturnMsg.ReturnMessage = "Connection not found.";
+                }
+                else
+                {
+                    this.mySqlCon = new MySqlConnection(conString);
+
+                    if (this.mySqlCon.State.ToString() != "Open")
+                    {
+                        this.mySqlCon.Open();
+                    }
+                    else
+                    {
+                        objReturnMsg.ReturnValue = "Error";
+                        objReturnMsg.ReturnMessage = "Connection was already opened.";
+                    }
+
+                    if (this.mySqlCon != null)
+                    {
+                        strSql = "UPDATE tbl_firecertificate_application SET Status = 'Rejected' WHERE CertificateId = '" + objFireApp.CertificateId + "';";
+                        cmd = new MySqlCommand(strSql, this.mySqlCon, this.mySqlTrans);
+                        cmd.ExecuteNonQuery();
+                        isRejected = true;
+
+                        objReturnMsg.ReturnValue = "OK";
+                        objReturnMsg.ReturnMessage = "Submitted successfully";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                objReturnMsg.ReturnValue = "Error";
+                objReturnMsg.ReturnMessage = ex.Message;
+            }
+            finally
+            {
+                if (this.mySqlCon != null)
+                {
+                    if (this.mySqlCon.State.ToString() == "Open")
+                    {
+                        this.mySqlCon.Close();
+                    }
+                }
+            }
+
+            return isRejected;
+        }
+
     }
 }
