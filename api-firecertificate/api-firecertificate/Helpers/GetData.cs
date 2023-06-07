@@ -500,7 +500,7 @@ namespace api_rate.Helpers
             return lstFireApplication;
         }
 
-        // Get Supervisor Application by Fire application Id
+        // Get Supervisor Application by Certificate Id
         public FireSupervisorApplication GetSupervisorApplicationByFireAppID(FireSupervisorApplication objSuperApp, ref ReturnMsgInfo returnMsg)
         {
             FireSupervisorApplication objSuperApplication = new FireSupervisorApplication();
