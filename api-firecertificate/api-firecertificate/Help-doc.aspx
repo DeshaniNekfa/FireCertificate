@@ -503,7 +503,7 @@
                                 <div class="col-sm-2 ">Status</div>
                                 <div class="col-sm-2 ">Description</div>
                                 <div class="col-sm-8 ">
-                                    Application id.
+                                    Application status
                                 </div>
                             </div>
                             <div class="row">
@@ -712,10 +712,10 @@
                         </div>
                         <div class="pre">
                                 <div class="row">
-                                <div class="col-sm-2 ">Status</div>
+                                <div class="col-sm-2 ">User</div>
                                 <div class="col-sm-2 ">Description</div>
                                 <div class="col-sm-8 ">
-                                    Application id.
+                                    User id of the applicant
                                 </div>
                             </div>
                             <div class="row">
