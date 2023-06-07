@@ -26,7 +26,7 @@ namespace api_rate.Helpers
         // Get List of all fire applications
         List<FireCertificateApplication> GetAllFireAppDetails(FireCertificateApplication objFireApp, ref ReturnMsgInfo objReturnMsg);
 
-        // Get Supervisor Application by Fire application Id
+        // Get Supervisor Application by Certificate Id
         FireSupervisorApplication GetSupervisorApplicationByFireAppID(FireSupervisorApplication objSuperApp, ref ReturnMsgInfo returnMsg);
 
         // Get All supervisor applications

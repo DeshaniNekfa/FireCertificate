@@ -2023,11 +2023,11 @@
                             <br />
 
                             <div class="row">
-                            <div class="col-sm-2 ">OwnerName</div>
-                            <div class="col-sm-2 ">Description</div>
-                            <div class="col-sm-8 ">
-                                Owner Name
-                            </div>
+                                <div class="col-sm-2 ">OwnerName</div>
+                                <div class="col-sm-2 ">Description</div>
+                                <div class="col-sm-8 ">
+                                    Owner Name
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-2 "></div>
@@ -2052,11 +2052,11 @@
                             <br />
 
                             <div class="row">
-                            <div class="col-sm-2 ">LesseeName</div>
-                            <div class="col-sm-2 ">Description</div>
-                            <div class="col-sm-8 ">
-                                Lessee Name
-                            </div>
+                                <div class="col-sm-2 ">LesseeName</div>
+                                <div class="col-sm-2 ">Description</div>
+                                <div class="col-sm-8 ">
+                                    Lessee Name
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-2 "></div>
@@ -2081,11 +2081,11 @@
                             <br />
 
                             <div class="row">
-                            <div class="col-sm-2 ">EmergencyContact</div>
-                            <div class="col-sm-2 ">Description</div>
-                            <div class="col-sm-8 ">
-                                Emergency Contact number
-                            </div>
+                                <div class="col-sm-2 ">EmergencyContact</div>
+                                <div class="col-sm-2 ">Description</div>
+                                <div class="col-sm-8 ">
+                                    Emergency Contact number
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-2 "></div>
@@ -2110,11 +2110,11 @@
                             <br />
 
                             <div class="row">
-                            <div class="col-sm-2 ">Address</div>
-                            <div class="col-sm-2 ">Description</div>
-                            <div class="col-sm-8 ">
-                                Address
-                            </div>
+                                <div class="col-sm-2 ">Address</div>
+                                <div class="col-sm-2 ">Description</div>
+                                <div class="col-sm-8 ">
+                                    Address
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-2 "></div>
@@ -2139,11 +2139,11 @@
                             <br />
 
                             <div class="row">
-                            <div class="col-sm-2 ">OtherAddresses</div>
-                            <div class="col-sm-2 ">Description</div>
-                            <div class="col-sm-8 ">
-                                Other Addresses
-                            </div>
+                                <div class="col-sm-2 ">OtherAddresses</div>
+                                <div class="col-sm-2 ">Description</div>
+                                <div class="col-sm-8 ">
+                                    Other Addresses
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-2 "></div>
@@ -2168,11 +2168,11 @@
                             <br />
 
                             <div class="row">
-                            <div class="col-sm-2 ">DistRoadSigns</div>
-                            <div class="col-sm-2 ">Description</div>
-                            <div class="col-sm-8 ">
-                                Distinguishing Road Signs
-                            </div>
+                                <div class="col-sm-2 ">DistRoadSigns</div>
+                                <div class="col-sm-2 ">Description</div>
+                                <div class="col-sm-8 ">
+                                    Distinguishing Road Signs
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-2 "></div>
@@ -2197,11 +2197,11 @@
                             <br />
 
                             <div class="row">
-                            <div class="col-sm-2 ">ShortestRoad</div>
-                            <div class="col-sm-2 ">Description</div>
-                            <div class="col-sm-8 ">
-                                Shortest road to the company
-                            </div>
+                                <div class="col-sm-2 ">ShortestRoad</div>
+                                <div class="col-sm-2 ">Description</div>
+                                <div class="col-sm-8 ">
+                                    Shortest road to the company
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-2 "></div>
@@ -2226,11 +2226,11 @@
                             <br />
 
                             <div class="row">
-                            <div class="col-sm-2 ">Telephone</div>
-                            <div class="col-sm-2 ">Description</div>
-                            <div class="col-sm-8 ">
-                                Telephone
-                            </div>
+                                <div class="col-sm-2 ">Telephone</div>
+                                <div class="col-sm-2 ">Description</div>
+                                <div class="col-sm-8 ">
+                                    Telephone
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-2 "></div>
@@ -2255,11 +2255,11 @@
                             <br />
 
                             <div class="row">
-                            <div class="col-sm-2 ">Mobile</div>
-                            <div class="col-sm-2 ">Description</div>
-                            <div class="col-sm-8 ">
-                                Mobile
-                            </div>
+                                <div class="col-sm-2 ">Mobile</div>
+                                <div class="col-sm-2 ">Description</div>
+                                <div class="col-sm-8 ">
+                                    Mobile
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-2 "></div>
@@ -2284,11 +2284,11 @@
                             <br />
 
                             <div class="row">
-                            <div class="col-sm-2 ">LandArea</div>
-                            <div class="col-sm-2 ">Description</div>
-                            <div class="col-sm-8 ">
-                                Land Area
-                            </div>
+                                <div class="col-sm-2 ">LandArea</div>
+                                <div class="col-sm-2 ">Description</div>
+                                <div class="col-sm-8 ">
+                                    Land Area
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-2 "></div>
@@ -2313,11 +2313,11 @@
                             <br />
 
                             <div class="row">
-                            <div class="col-sm-2 ">Capacity</div>
-                            <div class="col-sm-2 ">Description</div>
-                            <div class="col-sm-8 ">
-                                Building Capacity
-                            </div>
+                                <div class="col-sm-2 ">Capacity</div>
+                                <div class="col-sm-2 ">Description</div>
+                                <div class="col-sm-8 ">
+                                    Building Capacity
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-2 "></div>
@@ -2342,11 +2342,11 @@
                             <br />
 
                             <div class="row">
-                            <div class="col-sm-2 ">Stories</div>
-                            <div class="col-sm-2 ">Description</div>
-                            <div class="col-sm-8 ">
-                                Number of Stories
-                            </div>
+                                <div class="col-sm-2 ">Stories</div>
+                                <div class="col-sm-2 ">Description</div>
+                                <div class="col-sm-8 ">
+                                    Number of Stories
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-2 "></div>
@@ -2371,11 +2371,11 @@
                             <br />
 
                             <div class="row">
-                            <div class="col-sm-2 ">Construction</div>
-                            <div class="col-sm-2 ">Description</div>
-                            <div class="col-sm-8 ">
-                                Construction
-                            </div>
+                                <div class="col-sm-2 ">Construction</div>
+                                <div class="col-sm-2 ">Description</div>
+                                <div class="col-sm-8 ">
+                                    Construction
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-2 "></div>
@@ -2400,11 +2400,11 @@
                             <br />
 
                             <div class="row">
-                            <div class="col-sm-2 ">BuildType</div>
-                            <div class="col-sm-2 ">Description</div>
-                            <div class="col-sm-8 ">
-                                BuildType
-                            </div>
+                                <div class="col-sm-2 ">BuildType</div>
+                                <div class="col-sm-2 ">Description</div>
+                                <div class="col-sm-8 ">
+                                    BuildType
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-2 "></div>
@@ -2429,11 +2429,11 @@
                             <br />
 
                             <div class="row">
-                            <div class="col-sm-2 ">UnapprovedBuildings</div>
-                            <div class="col-sm-2 ">Description</div>
-                            <div class="col-sm-8 ">
-                                If there are Unapproved Buildings
-                            </div>
+                                <div class="col-sm-2 ">UnapprovedBuildings</div>
+                                <div class="col-sm-2 ">Description</div>
+                                <div class="col-sm-8 ">
+                                    If there are Unapproved Buildings
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-2 "></div>
@@ -2458,11 +2458,11 @@
                             <br />
 
                             <div class="row">
-                            <div class="col-sm-2 ">PlanAvailability</div>
-                            <div class="col-sm-2 ">Description</div>
-                            <div class="col-sm-8 ">
-                                Plan Availability
-                            </div>
+                                <div class="col-sm-2 ">PlanAvailability</div>
+                                <div class="col-sm-2 ">Description</div>
+                                <div class="col-sm-8 ">
+                                    Plan Availability
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-2 "></div>
@@ -2487,11 +2487,11 @@
                             <br />
 
                             <div class="row">
-                            <div class="col-sm-2 ">Exitways</div>
-                            <div class="col-sm-2 ">Description</div>
-                            <div class="col-sm-8 ">
-                                Exit ways
-                            </div>
+                                <div class="col-sm-2 ">Exitways</div>
+                                <div class="col-sm-2 ">Description</div>
+                                <div class="col-sm-8 ">
+                                    Exit ways
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-2 "></div>
@@ -2516,11 +2516,11 @@
                             <br />
 
                             <div class="row">
-                            <div class="col-sm-2 ">EmergencyExits</div>
-                            <div class="col-sm-2 ">Description</div>
-                            <div class="col-sm-8 ">
-                                Emergency Exits
-                            </div>
+                                <div class="col-sm-2 ">EmergencyExits</div>
+                                <div class="col-sm-2 ">Description</div>
+                                <div class="col-sm-8 ">
+                                    Emergency Exits
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-2 "></div>
@@ -2545,11 +2545,11 @@
                             <br />
 
                             <div class="row">
-                            <div class="col-sm-2 ">DayManpower</div>
-                            <div class="col-sm-2 ">Description</div>
-                            <div class="col-sm-8 ">
-                                Manpower in day time
-                            </div>
+                                <div class="col-sm-2 ">DayManpower</div>
+                                <div class="col-sm-2 ">Description</div>
+                                <div class="col-sm-8 ">
+                                    Manpower in day time
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-2 "></div>
@@ -2574,11 +2574,11 @@
                             <br />
 
                             <div class="row">
-                            <div class="col-sm-2 ">DayManpower</div>
-                            <div class="col-sm-2 ">Description</div>
-                            <div class="col-sm-8 ">
-                                Manpower in day time
-                            </div>
+                                <div class="col-sm-2 ">DayManpower</div>
+                                <div class="col-sm-2 ">Description</div>
+                                <div class="col-sm-8 ">
+                                    Manpower in day time
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-2 "></div>
@@ -2603,11 +2603,11 @@
                             <br />
 
                             <div class="row">
-                            <div class="col-sm-2 ">NightManpower</div>
-                            <div class="col-sm-2 ">Description</div>
-                            <div class="col-sm-8 ">
-                                Manpower in night time
-                            </div>
+                                <div class="col-sm-2 ">NightManpower</div>
+                                <div class="col-sm-2 ">Description</div>
+                                <div class="col-sm-8 ">
+                                    Manpower in night time
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-2 "></div>
@@ -2632,11 +2632,11 @@
                             <br />
 
                             <div class="row">
-                            <div class="col-sm-2 ">TankCapacity</div>
-                            <div class="col-sm-2 ">Description</div>
-                            <div class="col-sm-8 ">
-                                Water tank capacity
-                            </div>
+                                <div class="col-sm-2 ">TankCapacity</div>
+                                <div class="col-sm-2 ">Description</div>
+                                <div class="col-sm-8 ">
+                                    Water tank capacity
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-2 "></div>
@@ -2661,11 +2661,11 @@
                             <br />
 
                             <div class="row">
-                            <div class="col-sm-2 ">CommonTank</div>
-                            <div class="col-sm-2 ">Description</div>
-                            <div class="col-sm-8 ">
-                                Common tank
-                            </div>
+                                <div class="col-sm-2 ">CommonTank</div>
+                                <div class="col-sm-2 ">Description</div>
+                                <div class="col-sm-8 ">
+                                    Common tank
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-2 "></div>
@@ -2690,11 +2690,11 @@
                             <br />
 
                             <div class="row">
-                            <div class="col-sm-2 ">FirehoseLocation</div>
-                            <div class="col-sm-2 ">Description</div>
-                            <div class="col-sm-8 ">
-                                Fire hose location
-                            </div>
+                                <div class="col-sm-2 ">FirehoseLocation</div>
+                                <div class="col-sm-2 ">Description</div>
+                                <div class="col-sm-8 ">
+                                    Fire hose location
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-2 "></div>
@@ -2719,11 +2719,11 @@
                             <br />
 
                             <div class="row">
-                            <div class="col-sm-2 ">ElecPhase</div>
-                            <div class="col-sm-2 ">Description</div>
-                            <div class="col-sm-8 ">
-                                Electricity Phase
-                            </div>
+                                <div class="col-sm-2 ">ElecPhase</div>
+                                <div class="col-sm-2 ">Description</div>
+                                <div class="col-sm-8 ">
+                                    Electricity Phase
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-2 "></div>
@@ -2748,11 +2748,11 @@
                             <br />
 
                             <div class="row">
-                            <div class="col-sm-2 ">Generator</div>
-                            <div class="col-sm-2 ">Description</div>
-                            <div class="col-sm-8 ">
-                                Generator info
-                            </div>
+                                <div class="col-sm-2 ">Generator</div>
+                                <div class="col-sm-2 ">Description</div>
+                                <div class="col-sm-8 ">
+                                    Generator info
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-2 "></div>
@@ -2777,11 +2777,11 @@
                             <br />
 
                             <div class="row">
-                            <div class="col-sm-2 ">CurrentCircuit</div>
-                            <div class="col-sm-2 ">Description</div>
-                            <div class="col-sm-8 ">
-                                Current circuit info
-                            </div>
+                                <div class="col-sm-2 ">CurrentCircuit</div>
+                                <div class="col-sm-2 ">Description</div>
+                                <div class="col-sm-8 ">
+                                    Current circuit info
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-2 "></div>

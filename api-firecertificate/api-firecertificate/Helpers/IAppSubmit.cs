@@ -20,5 +20,8 @@ namespace api_rate.Helpers
 
         // Submit Fire Department Application
         bool SaveSupervisorApplication(FireSupervisorApplication objSuperAppDetails, ref ReturnMsgInfo returnMsg);
+
+        // Set Application status Approved
+        bool SetStatusApprove(FireCertificateApplication objFireApp, ReturnMsgInfo objReturnMsg);
     }
 }

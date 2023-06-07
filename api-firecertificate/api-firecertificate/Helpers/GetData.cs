@@ -132,7 +132,7 @@ namespace api_rate.Helpers
                     }
                     if (this.mySqlCon != null)
                     {
-                        strSql = "SELECT Id, CertificateId, CompanyName, Address, Telephone, DistanceFromCouncil, NatureOfBusiness, BuildingPlan, TotalLand, RoadFromCouncil, OwnerName, CurrentFirePlan, Status, DateApplied, DateReviewed  FROM tbl_firecertificate_application WHERE CertificateId = " + objApplication.CertificateId;
+                        strSql = "SELECT Id, CertificateId, CompanyName, Address, Telephone, DistanceFromCouncil, NatureOfBusiness, BuildingPlan, TotalLand, RoadFromCouncil, OwnerName, CurrentFirePlan, Status, DateApplied, DateReviewed  FROM tbl_firecertificate_application WHERE CertificateId = '" + objApplication.CertificateId+"';";
                         da = new MySqlDataAdapter(strSql, this.mySqlCon);
                         ds = new DataSet();
                         da.Fill(ds, "FireApplication");
