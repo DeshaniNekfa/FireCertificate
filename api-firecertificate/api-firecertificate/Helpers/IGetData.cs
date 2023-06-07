@@ -11,6 +11,9 @@ namespace api_rate.Helpers
         // Get one Fire application by its unique Id  
         FireCertificateApplication GetApplicationById(FireCertificateApplication objApplication, ref ReturnMsgInfo returnMsg);
 
+        // Get Application by Certificate Id
+        public FireCertificateApplication GetApplicationByCertId(FireSupervisorApplication objApplication, ref ReturnMsgInfo returnMsg)
+
         // Get List of fire applications by its status(pending/approved/paid/rejected)
         List<FireCertificateApplication> GetApplicationByStatus(FireCertificateApplication objApplication, ref ReturnMsgInfo returnMsg);
 

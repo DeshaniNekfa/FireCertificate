@@ -7,6 +7,7 @@ using System.Web.Http;
 using api_rate.Models;
 using api_rate.Filters;
 using api_rate.Helpers;
+using System.Configuration;
 
 namespace api_rate.Controllers
 {
@@ -42,15 +43,22 @@ namespace api_rate.Controllers
                         objReturnMsg.ReturnValue = "OK";
                         objReturnMsg.ReturnMessage = "Application Successfully submitted.";
 
-
                         // Sending Email 
                         if (string.IsNullOrEmpty(objApplicationDetails.Email) == false)
                         {
                             string strMsg = _email.GetEmailMsgBody(Globals.PENDING.ToString().Trim());
                             string strErMsg = string.Empty;
-
                             _email.SendEmail(strMsg, objApplicationDetails.Email.ToString().Trim(), ref strErMsg);
                         }
+
+                        // Sending SMS 
+                        string strSMSSending = ConfigurationManager.AppSettings["SMSSending"].ToString().Trim();
+                        if (string.IsNullOrEmpty(objApplicationDetails.CertificateId) == false && string.IsNullOrEmpty(objApplicationDetails.Telephone) == false && strSMSSending.ToString().Trim() == "1")
+                        {
+                            string strMsg = "Dear Customer, \n Your fire cerificate application request successfully submitted. \n Reference No : " + objApplicationDetails.CertificateId.Trim() + " \n Thank You.";
+                            string strErMsg = string.Empty;
+                            _sms.SendSMS(strMsg, objApplicationDetails.Telephone.ToString().Trim(), ref strErMsg);
+                        } 
           
                     }
                     else
