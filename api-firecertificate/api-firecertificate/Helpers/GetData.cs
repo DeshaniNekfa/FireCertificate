@@ -683,5 +683,77 @@ namespace api_rate.Helpers
             
             return lstFireSuperApp;
         }
+    
+        // Get All charges 
+        public List<Charges> GetAllCharges(FireCertificateApplication objFireApp, ref ReturnMsgInfo returnMsg)
+        {
+            List<Charges> lstCharges = new List<Charges>();
+            this.objConMain = new Connection_Main();
+
+            string conString = this.objConMain.Get_Main_Connection(objFireApp.ClientID);
+            if (conString == null || conString == "")
+            {
+                returnMsg.ReturnValue = "Error";
+                returnMsg.ReturnMessage = "Connection not found.";
+            }
+            else
+            {
+                try
+                {
+                    this.mySqlCon = new MySqlConnection(conString);
+                    if (this.mySqlCon.State.ToString() != "Open")
+                    {
+                        this.mySqlCon.Open();
+                    }
+                    else
+                    {
+                        returnMsg.ReturnValue = "Error";
+                        returnMsg.ReturnMessage = "Connection was already opened.";
+                    }
+                    if (this.mySqlCon != null)
+                    {
+                        strSql = "SELECT Id, ChargeName, Amount FROM tbl_firecertificate_charges;";
+                        da = new MySqlDataAdapter(strSql, this.mySqlCon);
+                        ds = new DataSet();
+                        da.Fill(ds, "Application");
+                        dt = ds.Tables["Application"];
+                        if (dt.Rows.Count > 0)
+                        {
+                            foreach (DataRow dtRow in dt.Rows)
+                            {
+                                Charges objcharges = new Charges();
+                                objcharges.Id = (int)dtRow["Id"];
+                                objcharges.Amount = (double)dtRow["Amount"];
+                                objcharges.ChargeName = dtRow["ChargeName"].ToString().Trim();
+
+                                lstCharges.Add(objcharges);
+                            }
+                            returnMsg.ReturnValue = "OK";
+                            returnMsg.ReturnMessage = "Data found";
+                        }
+                        else
+                        {
+                            returnMsg.ReturnValue = "Error";
+                            returnMsg.ReturnMessage = "No data found";
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    returnMsg.ReturnValue = "Error";
+                    returnMsg.ReturnMessage = ex.Message;
+                }
+                finally
+                {
+                    if (this.mySqlCon != null)
+                    {
+                        this.mySqlCon.Close();
+                    }
+                }
+            }
+
+
+            return lstCharges;
+        }
     }
 }

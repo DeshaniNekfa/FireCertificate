@@ -31,5 +31,8 @@ namespace api_rate.Helpers
 
         // Get All supervisor applications
         List<FireSupervisorApplication> GetAllSuperAppDetails(FireSupervisorApplication objSuperApp, ref ReturnMsgInfo returnMsg);
+        
+        // Get All charges 
+        List<Charges> GetAllCharges(FireCertificateApplication objFireApp, ref ReturnMsgInfo returnMsg);
     }
 }

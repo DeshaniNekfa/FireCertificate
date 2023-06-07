@@ -63,7 +63,6 @@
             <div class="col-md-8 right-div">
                 <h3>API Help Document</h3>
                 <hr />
-
                 <%--=================================== 01. Get Municipal Applications List =====================================================--%>
                 <div id="apiFireApp">
                     <h3 class="heading">Get Municipal Applications List</h3>
