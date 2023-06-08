@@ -26,5 +26,8 @@ namespace api_rate.Helpers
 
         // Set Application status Rejected
         bool SetStatusReject(FireCertificateApplication objFireApp, ReturnMsgInfo objReturnMsg);
+
+        // Assign Supervisor
+        bool AssignSupervisor(FireCertificateApplication objFireApp, ReturnMsgInfo objRetuenMsg);
     }
 }

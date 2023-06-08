@@ -96,6 +96,10 @@ namespace api_rate.Helpers
             {
                 strMsgBody = "Your Payment is received";
             }
+            else if(strStatus == "Supervisor")
+            {
+                strMsgBody = "A supervisor is assigned";
+            }
 
             return strMsgBody;
         }

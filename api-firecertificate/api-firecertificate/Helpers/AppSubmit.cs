@@ -683,5 +683,91 @@ namespace api_rate.Helpers
             return isRejected;
         }
 
+        // Assign Supervisor
+        public bool AssignSupervisor(FireCertificateApplication objFireApp, ReturnMsgInfo objReturnMsg)
+        {
+            bool isAssigned = false;
+            objCmnFunctions = new CommonFunctions();
+            this.objConMain = new Connection_Main();
+
+            if (objFireApp.Supervisor == null || objFireApp.Supervisor == "")
+            {
+                objReturnMsg.ReturnValue = "Error";
+                objReturnMsg.ReturnMessage = "Invalid Supervisor.";
+                isAssigned = false;
+            }
+            else if(objFireApp.DateReviewed == null || objFireApp.DateReviewed == "")
+            {
+                objReturnMsg.ReturnValue = "Error";
+                objReturnMsg.ReturnMessage = "Invalid Review";
+                isAssigned = false;
+            }
+            else if (objFireApp.DateReviewed.ToString().Trim() == "")
+            {
+                objReturnMsg.ReturnValue = "Error";
+                objReturnMsg.ReturnMessage = "Date Applied Date is required.";
+                isAssigned = false;
+            }
+            else if (objCmnFunctions.IsValidDate(objFireApp.DateReviewed.ToString().Trim()) == false)
+            {
+                objReturnMsg.ReturnValue = "Error";
+                objReturnMsg.ReturnMessage = "Invalid Reviewed Date.";
+                isAssigned = false;
+            }
+            else
+            {
+                try
+                {
+                    string conString = this.objConMain.Get_Main_Connection(objFireApp.ClientID);
+                    if (conString == null || conString == "")
+                    {
+                        objReturnMsg.ReturnValue = "Error";
+                        objReturnMsg.ReturnMessage = "Connection not found.";
+                    }
+                    else
+                    {
+                        this.mySqlCon = new MySqlConnection(conString);
+
+                        if (this.mySqlCon.State.ToString() != "Open")
+                        {
+                            this.mySqlCon.Open();
+                        }
+                        else
+                        {
+                            objReturnMsg.ReturnValue = "Error";
+                            objReturnMsg.ReturnMessage = "Connection was already opened.";
+                        }
+
+                        if (this.mySqlCon != null)
+                        {
+                            string strSql = "UPDATE tbl_firecertificate_application SET Supervisor = '" + objFireApp.Supervisor + "', DateReviewed ='" + objFireApp.DateReviewed + "' WHERE CertificateId = '" + objFireApp.CertificateId + "';";
+                            cmd = new MySqlCommand(strSql, this.mySqlCon, this.mySqlTrans);
+                            cmd.ExecuteNonQuery();
+                            isAssigned = true;
+
+                            objReturnMsg.ReturnValue = "OK";
+                            objReturnMsg.ReturnMessage = "Submitted successfully";
+                        }
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    objReturnMsg.ReturnValue = "Error";
+                    objReturnMsg.ReturnMessage = ex.Message;
+                }
+                finally
+                {
+                    if (this.mySqlCon != null)
+                    {
+                        if (this.mySqlCon.State.ToString() == "Open")
+                        {
+                            this.mySqlCon.Close();
+                        }
+                    }
+                }
+            }
+            return isAssigned;
+        }
     }
 }

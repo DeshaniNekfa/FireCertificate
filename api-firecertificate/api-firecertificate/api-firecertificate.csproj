@@ -181,6 +181,7 @@
     <Compile Include="App_Start\UnityResolver.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AppSubmitController.cs" />
+    <Compile Include="Controllers\AssignSupervisorController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ChargesController.cs" />
     <Compile Include="Controllers\FireAppAllController.cs" />
