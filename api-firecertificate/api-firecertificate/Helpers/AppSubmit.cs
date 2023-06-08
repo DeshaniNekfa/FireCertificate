@@ -13,9 +13,6 @@ namespace api_rate.Helpers
         private MySqlConnection mySqlCon = null;
         private MySqlTransaction mySqlTrans;
         private string strSql;
-        private DataTable dt;
-        private DataSet ds;
-        private MySqlDataAdapter da;
         private Connection_Main objConMain;
         private CommonFunctions objCmnFunctions = null;
         private MySqlCommand cmd = null;
@@ -162,23 +159,20 @@ namespace api_rate.Helpers
                 IsSuccess = false;
             }
 
-            if (objFireAppDetails.DateReviewed == null)
+            if (objFireAppDetails.DateReviewed != null)
             {
-                returnMsg.ReturnValue = "Error";
-                returnMsg.ReturnMessage = "Date Applied Date is required.";
-                IsSuccess = false;
-            }
-            else if (objFireAppDetails.DateReviewed.ToString().Trim() == "")
-            {
-                returnMsg.ReturnValue = "Error";
-                returnMsg.ReturnMessage = "Date Applied Date is required.";
-                IsSuccess = false;
-            }
-            else if (objCmnFunctions.IsValidDate(objFireAppDetails.DateReviewed.ToString().Trim()) == false)
-            {
-                returnMsg.ReturnValue = "Error";
-                returnMsg.ReturnMessage = "Invalid Reviewed Date.";
-                IsSuccess = false;
+                if (objFireAppDetails.DateReviewed.ToString().Trim() == "")
+                {
+                    returnMsg.ReturnValue = "Error";
+                    returnMsg.ReturnMessage = "Date Applied Date is required.";
+                    IsSuccess = false;
+                }
+                else if (objCmnFunctions.IsValidDate(objFireAppDetails.DateReviewed.ToString().Trim()) == false)
+                {
+                    returnMsg.ReturnValue = "Error";
+                    returnMsg.ReturnMessage = "Invalid Reviewed Date.";
+                    IsSuccess = false;
+                }
             }
 
             return IsSuccess;
@@ -213,23 +207,25 @@ namespace api_rate.Helpers
 
                     if (this.mySqlCon != null)
                     {
-                        strSql = "INSERT INTO tbl_firecertificate_application(CertificateId, CompanyName, Address, Telephone, DistanceFromCouncil, NatureOfBusiness, BuildingPlan, TotalLand, RoadFromCouncil, OwnerName, CurrentFirePlan, Status, DateApplied, DateReviewed) VALUES (@CertificateId, @CompanyName, @Address, @Telephone, @DistanceFromCouncil, @NatureOfBusiness, @BuildingPlan, TotalLand, RoadFromCouncil, @OwnerName, @CurrentFirePlan, @Status, @DateApplied, @DateReviewed); UPDATE tbl_firecertificate_index SET NextApplicationId=(NextApplicationId + 1);";
+                        strSql = "INSERT INTO tbl_firecertificate_application(CertificateId, CompanyName, Address, Telephone, DistanceFromCouncil, NatureOfBusiness, BuildingPlan, TotalLand, RoadFromCouncil, OwnerName, CurrentFirePlan, Status, Email, Supervisor, DateApplied, DateReviewed, user) VALUES (@CertificateId, @CompanyName, @Address, @Telephone, @DistanceFromCouncil, @NatureOfBusiness, @BuildingPlan, @TotalLand, @RoadFromCouncil, @OwnerName, @CurrentFirePlan, @Status, @Email, @Supervisor, @DateApplied, @DateReviewed, @user); UPDATE tbl_firecertificate_index SET NextApplicationId=(NextApplicationId + 1);";
                         cmd = new MySqlCommand(strSql, this.mySqlCon, this.mySqlTrans);
-
-                        cmd.Parameters.Add("@CertificateId", objFireAppDetails.CertificateId);
-                        cmd.Parameters.Add("@CompanyName", objFireAppDetails.CompanyName);
-                        cmd.Parameters.Add("@Address", objFireAppDetails.Address);
-                        cmd.Parameters.Add("@Telephone", objFireAppDetails.Telephone);
-                        cmd.Parameters.Add("@DistanceFromCouncil", objFireAppDetails.DistanceFromCouncil);
-                        cmd.Parameters.Add("@NatureOfBusiness", objFireAppDetails.NatureOfBusiness);
-                        cmd.Parameters.Add("@BuildingPlan", objFireAppDetails.BuildingPlan);
-                        cmd.Parameters.Add("@TotalLand", objFireAppDetails.TotalLand);
-                        cmd.Parameters.Add("@RoadFromCouncil", objFireAppDetails.RoadFromCouncil);
-                        cmd.Parameters.Add("@OwnerName", objFireAppDetails.OwnerName);
-                        cmd.Parameters.Add("@CurrentFirePlan", objFireAppDetails.CurrentFirePlan);
-                        cmd.Parameters.Add("@Status", objFireAppDetails.Status);
-                        cmd.Parameters.Add("@DateApplied", objFireAppDetails.DateApplied);
-                        cmd.Parameters.Add("@DateReviewed", objFireAppDetails.DateReviewed);
+                        cmd.Parameters.AddWithValue("@CertificateId", objFireAppDetails.CertificateId);
+                        cmd.Parameters.AddWithValue("@CompanyName", objFireAppDetails.CompanyName);
+                        cmd.Parameters.AddWithValue("@Address", objFireAppDetails.Address);
+                        cmd.Parameters.AddWithValue("@Telephone", objFireAppDetails.Telephone);
+                        cmd.Parameters.AddWithValue("@DistanceFromCouncil", objFireAppDetails.DistanceFromCouncil);
+                        cmd.Parameters.AddWithValue("@NatureOfBusiness", objFireAppDetails.NatureOfBusiness);
+                        cmd.Parameters.AddWithValue("@BuildingPlan", objFireAppDetails.BuildingPlan);
+                        cmd.Parameters.AddWithValue("@TotalLand", objFireAppDetails.TotalLand);
+                        cmd.Parameters.AddWithValue("@RoadFromCouncil", objFireAppDetails.RoadFromCouncil);
+                        cmd.Parameters.AddWithValue("@OwnerName", objFireAppDetails.OwnerName);
+                        cmd.Parameters.AddWithValue("@CurrentFirePlan", objFireAppDetails.CurrentFirePlan);
+                        cmd.Parameters.AddWithValue("@Status", objFireAppDetails.Status);
+                        cmd.Parameters.AddWithValue("@Email", objFireAppDetails.Email);
+                        cmd.Parameters.AddWithValue("@Supervisor", objFireAppDetails.Supervisor);
+                        cmd.Parameters.AddWithValue("@DateApplied", objFireAppDetails.DateApplied);
+                        cmd.Parameters.AddWithValue("@DateReviewed", objFireAppDetails.DateReviewed);
+                        cmd.Parameters.AddWithValue("@user", objFireAppDetails.ClientID);
                         cmd.ExecuteNonQuery();
                         isSaved = true;
 

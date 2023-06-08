@@ -48,39 +48,37 @@ namespace api_rate.Controllers
 
                     objFireApp.ClientID = objSuperApplication.ClientID;
 
-                    if (objFireApp.Status == Globals.PAID.ToString().Trim())
-                    {
-                        // Approving Application
-                        _appSubmit.SetStatusApprove(objFireApp, objReturnMsg);
+                    // Approving Application
+                    _appSubmit.SetStatusApprove(objFireApp, objReturnMsg);
                                             
-                        if (objReturnMsg.ReturnValue == "OK")
+                    if (objReturnMsg.ReturnValue == "OK")
+                    {
+                        objReturnMsg.ReturnValue = "OK";
+                        objReturnMsg.ReturnMessage = "Application Successfully approved.";
+
+                        // Sending Email 
+                        if (string.IsNullOrEmpty(objFireApp.Email) == false)
                         {
-                            objReturnMsg.ReturnValue = "OK";
-                            objReturnMsg.ReturnMessage = "Application Successfully approved.";
+                            string strMsg = _email.GetEmailMsgBody(Globals.APPROVED.ToString().Trim());
+                            string strErMsg = string.Empty;
+                            _email.SendEmail(strMsg, objFireApp.Email.ToString().Trim(), ref strErMsg);
+                        }
 
-                            // Sending Email 
-                            if (string.IsNullOrEmpty(objFireApp.Email) == false)
-                            {
-                                string strMsg = _email.GetEmailMsgBody(Globals.APPROVED.ToString().Trim());
-                                string strErMsg = string.Empty;
-                                _email.SendEmail(strMsg, objFireApp.Email.ToString().Trim(), ref strErMsg);
-                            }
-
-                            // Sending SMS 
-                            string strSMSSending = ConfigurationManager.AppSettings["SMSSending"].ToString().Trim();
-                            if (string.IsNullOrEmpty(objFireApp.CertificateId) == false && string.IsNullOrEmpty(objFireApp.Telephone) == false && strSMSSending.ToString().Trim() == "1")
-                            {
-                                string strMsg = "Dear Customer, \n Your fire cerificate application request successfully approved. \n Reference No : " + objFireApp.CertificateId.Trim() + " \n Thank You.";
-                                string strErMsg = string.Empty;
-                                _sms.SendSMS(strMsg, objFireApp.Telephone.ToString().Trim(), ref strErMsg);
-                            } 
+                        // Sending SMS 
+                        string strSMSSending = ConfigurationManager.AppSettings["SMSSending"].ToString().Trim();
+                        if (string.IsNullOrEmpty(objFireApp.CertificateId) == false && string.IsNullOrEmpty(objFireApp.Telephone) == false && strSMSSending.ToString().Trim() == "1")
+                        {
+                            string strMsg = "Dear Customer, \n Your fire cerificate application request successfully approved. \n Reference No : " + objFireApp.CertificateId.Trim() + " \n Thank You.";
+                            string strErMsg = string.Empty;
+                            _sms.SendSMS(strMsg, objFireApp.Telephone.ToString().Trim(), ref strErMsg);
+                        } 
           
-                        }
-                        else
-                        {
-                            throw new Exception("Error occured approve application");
-                        }
                     }
+                    else
+                    {
+                        throw new Exception("Error occured approve application");
+                    }
+                    
                 }
             }
             catch (Exception ex)

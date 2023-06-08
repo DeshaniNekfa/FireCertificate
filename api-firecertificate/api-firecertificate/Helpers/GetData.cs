@@ -51,7 +51,7 @@ namespace api_rate.Helpers
                     }
                     if (this.mySqlCon != null)
                     {
-                        strSql = "SELECT Id, CertificateId, CompanyName, Address, Telephone, DistanceFromCouncil, NatureOfBusiness, BuildingPlan, TotalLand, RoadFromCouncil, OwnerName, CurrentFirePlan, Status, DateApplied, DateReviewed  FROM tbl_firecertificate_application WHERE Id = " + objApplication.Id;
+                        strSql = "SELECT * FROM tbl_firecertificate_application WHERE Id = " + objApplication.Id;
                         da = new MySqlDataAdapter(strSql, this.mySqlCon);
                         ds = new DataSet();
                         da.Fill(ds, "FireApplication");
@@ -76,7 +76,7 @@ namespace api_rate.Helpers
                                 objFireAppDetails.Status = dtRow["Status"].ToString().Trim();
                                 objFireAppDetails.DateApplied = dtRow["DateApplied"].ToString().Trim();
                                 objFireAppDetails.DateReviewed = dtRow["DateReviewed"].ToString().Trim();
-
+                                objFireAppDetails.Supervisor = dtRow["Supervisor"].ToString().Trim();
                                 objFireApplication = objFireAppDetails;
                             }
                             returnMsg.ReturnValue = "OK";
@@ -132,7 +132,7 @@ namespace api_rate.Helpers
                     }
                     if (this.mySqlCon != null)
                     {
-                        strSql = "SELECT Id, CertificateId, CompanyName, Address, Telephone, DistanceFromCouncil, NatureOfBusiness, BuildingPlan, TotalLand, RoadFromCouncil, OwnerName, CurrentFirePlan, Status, DateApplied, DateReviewed  FROM tbl_firecertificate_application WHERE CertificateId = '" + objApplication.CertificateId+"';";
+                        strSql = "SELECT * FROM tbl_firecertificate_application WHERE CertificateId = '" + objApplication.CertificateId+"';";
                         da = new MySqlDataAdapter(strSql, this.mySqlCon);
                         ds = new DataSet();
                         da.Fill(ds, "FireApplication");
@@ -157,6 +157,7 @@ namespace api_rate.Helpers
                                 objFireAppDetails.Status = dtRow["Status"].ToString().Trim();
                                 objFireAppDetails.DateApplied = dtRow["DateApplied"].ToString().Trim();
                                 objFireAppDetails.DateReviewed = dtRow["DateReviewed"].ToString().Trim();
+                                objFireAppDetails.Supervisor = dtRow["Supervisor"].ToString().Trim();
 
                                 objFireApplication = objFireAppDetails;
                             }
@@ -213,7 +214,7 @@ namespace api_rate.Helpers
                     }
                     if (this.mySqlCon != null)
                     {
-                        strSql = "SELECT Id, CertificateId, CompanyName, Address, Telephone, DistanceFromCouncil, NatureOfBusiness, BuildingPlan, TotalLand, RoadFromCouncil, OwnerName, CurrentFirePlan, Status, DateApplied, DateReviewed FROM tbl_firecertificate_application WHERE Status ='" + objFireApplication.Status.ToString().Trim()+"';";
+                        strSql = "SELECT * FROM tbl_firecertificate_application WHERE Status ='" + objFireApplication.Status.ToString().Trim() + "';";
                         da = new MySqlDataAdapter(strSql, this.mySqlCon);
                         ds = new DataSet();
                         da.Fill(ds, "Application");
@@ -238,6 +239,7 @@ namespace api_rate.Helpers
                                 objFireAppDetails.Status = dtRow["Status"].ToString().Trim();
                                 objFireAppDetails.DateApplied = dtRow["DateApplied"].ToString().Trim();
                                 objFireAppDetails.DateReviewed = dtRow["DateReviewed"].ToString().Trim();
+                                objFireAppDetails.Supervisor = dtRow["Supervisor"].ToString().Trim();
 
                                 lstFireApplication.Add(objFireAppDetails);
                             }
@@ -296,7 +298,7 @@ namespace api_rate.Helpers
                     }
                     if (this.mySqlCon != null)
                     {
-                        strSql = "SELECT Name FROM tbl_user_info WHERE id='" + objFireApplication.UserId + "';";
+                        strSql = "SELECT Name FROM tbl_user_info WHERE id='" + objFireApplication.ClientID + "';";
                         da = new MySqlDataAdapter(strSql, this.mySqlCon);
                         ds = new DataSet();
                         da.Fill(ds, "User");
@@ -362,7 +364,7 @@ namespace api_rate.Helpers
                     }
                     if (this.mySqlCon != null)
                     {
-                        strSql = "SELECT Id, CertificateId, CompanyName, Address, Telephone, DistanceFromCouncil, NatureOfBusiness, BuildingPlan, TotalLand, RoadFromCouncil, OwnerName, CurrentFirePlan, Status, Email, User, DateApplied, DateReviewed FROM tbl_firecertificate_application WHERE User = '" + objFireApplication.User+"';";
+                        strSql = "SELECT * FROM tbl_firecertificate_application WHERE User = '" + objFireApplication.ClientID+"';";
                         da = new MySqlDataAdapter(strSql, this.mySqlCon);
                         ds = new DataSet();
                         da.Fill(ds, "Application");
@@ -384,9 +386,12 @@ namespace api_rate.Helpers
                                 objFireAppDetails.RoadFromCouncil = dtRow["RoadFromCouncil"].ToString().Trim();
                                 objFireAppDetails.OwnerName = dtRow["OwnerName"].ToString().Trim();
                                 objFireAppDetails.CurrentFirePlan = dtRow["CurrentFirePlan"].ToString().Trim();
+                                objFireAppDetails.Email = dtRow["Email"].ToString().Trim();
+                                objFireAppDetails.Supervisor = dtRow["Supervisor"].ToString().Trim();
                                 objFireAppDetails.Status = dtRow["Status"].ToString().Trim();
                                 objFireAppDetails.DateApplied = dtRow["DateApplied"].ToString().Trim();
                                 objFireAppDetails.DateReviewed = dtRow["DateReviewed"].ToString().Trim();
+                                objFireAppDetails.Supervisor = dtRow["Supervisor"].ToString().Trim();
 
                                 lstFireApplication.Add(objFireAppDetails);
                             }
@@ -444,7 +449,7 @@ namespace api_rate.Helpers
                     }
                     if (this.mySqlCon != null)
                     {
-                        strSql = "SELECT Id, CertificateId, CompanyName, Address, Telephone, DistanceFromCouncil, NatureOfBusiness, BuildingPlan, TotalLand, RoadFromCouncil, OwnerName, CurrentFirePlan, Status, Email, User, DateApplied, DateReviewed FROM tbl_firecertificate_application;";
+                        strSql = "SELECT * FROM tbl_firecertificate_application;";
                         da = new MySqlDataAdapter(strSql, this.mySqlCon);
                         ds = new DataSet();
                         da.Fill(ds, "Application");
@@ -468,9 +473,10 @@ namespace api_rate.Helpers
                                 objFireAppDetails.CurrentFirePlan = dtRow["CurrentFirePlan"].ToString().Trim();
                                 objFireAppDetails.Status = dtRow["Status"].ToString().Trim();
                                 objFireAppDetails.Email = dtRow["Email"].ToString().Trim();
-                                objFireAppDetails.User = dtRow["User"].ToString().Trim();
+                                objFireAppDetails.Supervisor = dtRow["User"].ToString().Trim();
                                 objFireAppDetails.DateApplied = dtRow["DateApplied"].ToString().Trim();
                                 objFireAppDetails.DateReviewed = dtRow["DateReviewed"].ToString().Trim();
+                                objFireAppDetails.Supervisor = dtRow["Supervisor"].ToString().Trim();
 
                                 lstFireApplication.Add(objFireAppDetails);
                             }
@@ -664,6 +670,8 @@ namespace api_rate.Helpers
 
                                 lstFireSuperApp.Add(objSuperAppDetails);
                             }
+                            returnMsg.ReturnValue = "OK";
+                            returnMsg.ReturnMessage = "Data found";
                         }
                     }
                 }

@@ -35,20 +35,12 @@ namespace api_rate.Controllers
                 }
                 else
                 {
-                    string strUsername = _getData.GetUserDetailsById(objFireApp, ref objReturnMsg);
-                    if (objReturnMsg.ReturnValue == "OK")
+                    // string strUsername = _getData.GetUserDetailsById(objFireApp, ref objReturnMsg);
+                    lstFireApplication = _getData.GetAppDetailsByUsr(objFireApp, ref objReturnMsg);
+                    if (objReturnMsg.ReturnValue != "OK")
                     {
-                        objFireApp.User = strUsername.Trim();
-                        lstFireApplication = _getData.GetAppDetailsByUsr(objFireApp, ref objReturnMsg);
-                        if (objReturnMsg.ReturnValue != "OK")
-                        {
-                            throw new Exception(objReturnMsg.ReturnMessage.ToString().Trim());
-                        }
-                    }
-                    else
-                    {
-                        throw new Exception("Error occurred when retrieve user info. " + objReturnMsg.ReturnMessage.ToString().Trim());
-                    }
+                        throw new Exception(objReturnMsg.ReturnMessage.ToString().Trim());
+                    }                
                 }
             }
             catch (Exception ex)
