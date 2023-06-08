@@ -831,5 +831,57 @@ namespace api_rate.Helpers
             }
             return objCharges;
         }
+
+        // Get payment details
+        public PaymentDetails GetPaymentDetails(FireCertificateApplication objFireApp, ref ReturnMsgInfo returnMsg)
+        {
+            PaymentDetails objPaymentDetails = new PaymentDetails();
+            this.objConMain = new Connection_Main();
+
+            string connString = this.objConMain.Get_Main_Connection(objFireApp.ClientID);
+
+            if (connString == null || connString == "")
+            {
+                returnMsg.ReturnValue = "Error";
+                returnMsg.ReturnMessage = "Connection not found";
+            }
+            else
+            {
+                try
+                {
+                    this.mySqlCon = new MySqlConnection(connString);
+                    if (this.mySqlCon.State.ToString() != "Open")
+                    {
+                        this.mySqlCon.Open();
+                    }
+                    else
+                    {
+                        returnMsg.ReturnValue = "Error";
+                        returnMsg.ReturnValue = "Connectoin was already opened.";
+                    }
+                    if (this.mySqlCon != null)
+                    {
+                        string strSql = "SELECT * FROM tbl_firecertificate_payment_details WHERE CertificateId = '"+objFireApp.CertificateId+"';";
+                        da = new MySqlDataAdapter(strSql, this.mySqlCon);
+                        ds = new DataSet();
+                        da.Fill(ds, "FireApplication");
+                        dt = ds.Tables["FireApplication"];
+                        if (dt.Rows.Count > 0)
+                        {
+                            foreach (DataRow dtRow in dt.Rows)
+                            {
+                                // Get payment Details 
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    returnMsg.ReturnValue = "Error";
+                    returnMsg.ReturnMessage = ex.Message;
+                }
+            }
+            return objPaymentDetails; 
+        }
     }
 }
