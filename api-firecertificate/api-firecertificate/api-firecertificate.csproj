@@ -182,6 +182,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AppSubmitController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ChargesController.cs" />
     <Compile Include="Controllers\FireAppAllController.cs" />
     <Compile Include="Controllers\FireAppApproveController.cs" />
     <Compile Include="Controllers\FireAppByIdController.cs" />
@@ -219,6 +220,8 @@
     <Compile Include="Helpers\SMS.cs" />
     <Compile Include="Helpers\Utility.cs" />
     <Compile Include="Models\BankAPIInfo.cs" />
+    <Compile Include="Models\Charges.cs" />
+    <Compile Include="Models\ChargesOutput.cs" />
     <Compile Include="Models\EmailInfo.cs" />
     <Compile Include="Models\ConnectionInfo.cs" />
     <Compile Include="Models\DatabaseDetailsInfo.cs" />

@@ -1,4 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Help-doc.aspx.cs" Inherits="api_rate.Help_doc" %>
+﻿
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Help-doc.aspx.cs" Inherits="api_rate.Help_doc" %>
 
 <!DOCTYPE html>
 
@@ -57,6 +58,8 @@
                 <br />
                 <div><a href="#apiAppApprove">09. Approve Municipal Application</a></div>
                 <div><a href="#apiAppReject">10. Reject Municipal Application</a></div>
+                <br />
+                <div><a href="#apiChargebyId">11. Charges</a></div>
                 <%--<div><a href="#copyright">Copyrights</a></div>--%>
 
             </div>
@@ -2905,7 +2908,7 @@
                         </div>
                     </div>
 
-                    <div style="height: 400px; overflow-y: scroll; overflow-x: hidden;">
+                    <div>
                         <div>
                             <div>List of parameters</div>
                         </div>
@@ -3066,7 +3069,7 @@
                         </div>
                     </div>
 
-                    <div style="height: 400px; overflow-y: scroll; overflow-x: hidden;">
+                    <div>
                         <div>
                             <div>List of parameters</div>
                         </div>
@@ -3192,6 +3195,188 @@
                         </div>
                     </div>
                 </div>
+                <%--=================================== 11. Charges =============================================================================--%>
+                <div id="apiChargebyId">
+                    <h3 class="heading">Charges</h3>
+                    <div>
+                        <div>
+                            <div>Introduction</div>
+                        </div>
+                        <div class="pre row">
+                            <div class="col-sm-12 ">This API helps to get all municipal council applications</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <div>Base URL</div>
+                        </div>
+                        <div class="pre row">
+                            <div class="col-sm-12 ">https://firecertificate-api.nekfa.com/api/Charges</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <div>Request type</div>
+                        </div>
+                        <div class="pre">
+                            <div class="row">
+                                <div class="col-sm-3 ">Method</div>
+                                <div class="col-sm-9">POST</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3 ">Content type</div>
+                                <div class="col-sm-9">application/json</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div>
+                            <div>List of parameters</div>
+                        </div>
+                        <div class="pre">
+                            <div class="row">
+                                <div class="col-sm-2 ">ClientID</div>
+                                <div class="col-sm-2 ">Description</div>
+                                <div class="col-sm-8 ">
+                                    To identify user.
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Required</div>
+                                <div class="col-sm-8 ">Yes</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Data type</div>
+                                <div class="col-sm-8 ">String</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Example</div>
+                                <div class="col-sm-8 ">
+                                    {
+                                      "ClientID":"TestId"
+                                    }
+                                </div>
+
+                            </div>
+
+                            <br />
+
+                            <div class="row">
+                                <div class="col-sm-2 ">Id</div>
+                                <div class="col-sm-2 ">Description</div>
+                                <div class="col-sm-8 ">
+                                    Charge Id.
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Required</div>
+                                <div class="col-sm-8 ">Yes</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Data type</div>
+                                <div class="col-sm-8 ">int</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Example</div>
+                                <div class="col-sm-8 ">
+                                    {
+                                      "Id":1
+                                    }
+                                </div>
+
+                            </div>
+
+                            <br />
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <div>Response</div>
+                        </div>
+                        <div class="pre">
+                            <div class="row">
+                                <div class="col-sm-3 ">Response type</div>
+                                <div class="col-sm-9">JSON</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3 ">Response Status</div>
+                                <div class="col-sm-9">200 - OK</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3 ">Response values</div>
+                                <div class="col-sm-9">
+                                    { 
+                                    &nbsp;&nbsp;"ListFireApplication": [
+                                    <br />
+                                    &nbsp;&nbsp;&nbsp;&nbsp; {
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Id": "1",
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"ChargeName": "Inspection",
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Amount": 1500.00,
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"ClientID": null
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; }
+                                    <br />
+                                     ],
+                                    <br />
+                                    "ReturnMessageInfo": {
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; "ReturnValue": "OK",
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; "ReturnMessage": "Data found"
+                                    <br />
+                                     }
+                                    <br />
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <div>ReturnMessageInfo List</div>
+                            <br />
+                        </div>
+                        <div class="pre">
+                            <div class="row">
+                                <div class="col-sm-12 ">
+                                    "ReturnMessageInfo" is 2nd arry of the response and it has two objects "ReturnValue" and "ReturnMessage".
+                                </div>
+                            </div>
+                            <br />
+                            <br />
+                            <div class="row">
+                                <div class="col-sm-5 ">Description</div>
+                                <div class="col-sm-2 ">ReturnValue</div>
+                                <div class="col-sm-5">ReturnMessage</div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-sm-5 ">If process successfully complete</div>
+                                <div class="col-sm-2 ">"OK"</div>
+                                <div class="col-sm-5">"Data found etc..."</div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-sm-5 ">If any error occured</div>
+                                <div class="col-sm-2 ">"Error"</div>
+                                <div class="col-sm-5">"Invalid Client ID, Connection not found etc..."</div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
             </div>
         </div>
     </form>

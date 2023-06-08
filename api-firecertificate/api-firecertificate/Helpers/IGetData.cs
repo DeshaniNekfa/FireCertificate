@@ -34,5 +34,8 @@ namespace api_rate.Helpers
         
         // Get All charges 
         List<Charges> GetAllCharges(FireCertificateApplication objFireApp, ref ReturnMsgInfo returnMsg);
+
+        //Get charge by Id
+        Charges GetChargeById(Charges objCharge, ref ReturnMsgInfo returnMsg);
     }
 }

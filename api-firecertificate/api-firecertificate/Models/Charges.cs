@@ -9,6 +9,7 @@ namespace api_rate.Models
     {
         public int Id { get; set; }
         public string ChargeName { get; set; }
-        public double Amount { get; set; }
+        public decimal Amount { get; set; }
+        public string ClientID { get; set; }
     }
 }

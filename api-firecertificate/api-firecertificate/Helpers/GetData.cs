@@ -723,7 +723,7 @@ namespace api_rate.Helpers
                             {
                                 Charges objcharges = new Charges();
                                 objcharges.Id = (int)dtRow["Id"];
-                                objcharges.Amount = (double)dtRow["Amount"];
+                                objcharges.Amount = Convert.ToDecimal(dtRow["Amount"]);
                                 objcharges.ChargeName = dtRow["ChargeName"].ToString().Trim();
 
                                 lstCharges.Add(objcharges);
@@ -754,6 +754,74 @@ namespace api_rate.Helpers
 
 
             return lstCharges;
+        }
+    
+        //Get Charges by Id
+        public Charges GetChargeById(Charges objCharge, ref ReturnMsgInfo returnMsg)
+        {
+            Charges objCharges = new Charges();
+            this.objConMain = new Connection_Main();
+
+            string connString = this.objConMain.Get_Main_Connection(objCharge.ClientID);
+
+            if (connString == null || connString == "")
+            {
+                returnMsg.ReturnValue = "Error";
+                returnMsg.ReturnMessage = "Connection not found";
+            }
+            else
+            {
+                try
+                {
+                    this.mySqlCon = new MySqlConnection(connString);
+                    if (this.mySqlCon.State.ToString() != "Open")
+                    {
+                        this.mySqlCon.Open();
+                    }
+                    else
+                    {
+                        returnMsg.ReturnValue = "Error";
+                        returnMsg.ReturnValue = "Connectoin was already opened.";
+                    }
+                    if (this.mySqlCon != null)
+                    {
+                        strSql = "SELECT * FROM tbl_firecertificate_charges Where Id = '"+objCharge.Id+"'; ";
+                        da = new MySqlDataAdapter(strSql, this.mySqlCon);
+                        ds = new DataSet();
+                        da.Fill(ds, "FireApplication");
+                        dt = ds.Tables["FireApplication"];
+                        if (dt.Rows.Count > 0)
+                        {
+                            foreach (DataRow dtRow in dt.Rows)
+                            {
+                                Charges objChargeDetails = new Charges();
+                                objChargeDetails.Id = (int)dtRow["Id"];
+                                objChargeDetails.Amount = Convert.ToDecimal(dtRow["Amount"]);
+                                objChargeDetails.ChargeName = dtRow["ChargeName"].ToString().Trim();
+
+                                objCharges = objChargeDetails;
+                            }
+                            returnMsg.ReturnValue = "OK";
+                            returnMsg.ReturnMessage = "Data Found";
+                        }
+                        else
+                        {
+                            returnMsg.ReturnValue = "Error";
+                            returnMsg.ReturnMessage = "No data found";
+                        }
+                    }
+                }
+                catch(Exception ex)
+                {
+                    returnMsg.ReturnValue = "Error";
+                    returnMsg.ReturnMessage = ex.Message;
+                }
+                finally
+                {
+                    this.mySqlCon.Close();
+                }
+            }
+            return objCharges;
         }
     }
 }
