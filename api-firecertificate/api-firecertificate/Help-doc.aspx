@@ -58,8 +58,9 @@
                 <br />
                 <div><a href="#apiAppApprove">09. Approve Municipal Application</a></div>
                 <div><a href="#apiAppReject">10. Reject Municipal Application</a></div>
+                <div><a href="#apiAssignSupervisor">11. Assign Supervisor</a></div>
                 <br />
-                <div><a href="#apiChargebyId">11. Charges</a></div>
+                <div><a href="#apiChargebyId">12. Charges</a></div>
                 <%--<div><a href="#copyright">Copyrights</a></div>--%>
 
             </div>
@@ -160,7 +161,7 @@
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Id": 1,
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "CertificateId": "FC004",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"CertificateId": "FC004",
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"CompanyName": "Company1",
                                     <br />
@@ -368,7 +369,7 @@
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Id": "1",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "CertificateId": "FC004",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"CertificateId": "FC004",
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"CompanyName": "Company1",
                                     <br />
@@ -576,7 +577,7 @@
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Id": "1",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "CertificateId": "FC004",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"CertificateId": "FC004",
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"CompanyName": "Company1",
                                     <br />
@@ -661,7 +662,7 @@
                         </div>
                     </div>
                 </div>
-                <%--=================================== 04. Get Municipal Applications By User ===============================================--%>
+                <%--=================================== 04. Get Municipal Applications By User ==================================================--%>
                 <div id="apiFireAppUId">
                     <h3 class="heading">Get Municipal Applications By User Id</h3>
                     <div>
@@ -755,7 +756,7 @@
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Id": "1",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "CertificateId": "FC004",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"CertificateId": "FC004",
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"CompanyName": "Company1",
                                     <br />
@@ -1766,10 +1767,10 @@
                             <br />
 
                             <div class="row">
-                                <div class="col-sm-2 ">ClientID</div>
+                                <div class="col-sm-2 ">Supervisor</div>
                                 <div class="col-sm-2 ">Description</div>
                                 <div class="col-sm-8 ">
-                                    To identify user.
+                                    Supervisor Name
                                 </div>
                             </div>
                             <div class="row">
@@ -2949,7 +2950,7 @@
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"ReturnValue": "OK",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "ReturnMessage": "Application details successfully submitted.",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "ReturnMessage": "Application Successfully approved.",
                                     <br />
                                     }
                                 </div>
@@ -3110,7 +3111,7 @@
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"ReturnValue": "OK",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "ReturnMessage": "Application details successfully submitted.",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "ReturnMessage": "Application Successfully rejected.",
                                     <br />
                                     }
                                 </div>
@@ -3151,7 +3152,222 @@
                         </div>
                     </div>
                 </div>
-                <%--=================================== 11. Charges =============================================================================--%>
+                <%--=================================== 11. Assign Supervisor ===================================================================--%>
+                <div id="apiAssignSupervisor">
+                    <h3 class="heading">Assign Supervisor</h3>
+                    <div>
+                        <div>
+                            <div>Introduction</div>
+                        </div>
+                        <div class="pre row">
+                            <div class="col-sm-12 ">This API helps to assign a supervisor to an application </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <div>Base URL</div>
+                        </div>
+                        <div class="pre row">
+                            <div class="col-sm-12 ">https://firecertificate-api.nekfa.com/api/AssignSupervisor</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <div>Request type</div>
+                        </div>
+                        <div class="pre">
+                            <div class="row">
+                                <div class="col-sm-3 ">Method</div>
+                                <div class="col-sm-9">POST</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3 ">Content type</div>
+                                <div class="col-sm-9">application/json</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div>
+                            <div>List of parameters</div>
+                        </div>
+                        <div class="pre">
+                            <div class="row">
+                                <div class="col-sm-2 ">CertificateId</div>
+                                <div class="col-sm-2 ">Description</div>
+                                <div class="col-sm-8 ">
+                                    Application id.
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Required</div>
+                                <div class="col-sm-8 ">Yes</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Data type</div>
+                                <div class="col-sm-8 ">String</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Example</div>
+                                <div class="col-sm-8 ">
+                                    {
+                                      "CertificateId": "FC001"
+                                    }
+                                </div>
+
+                            </div>
+                            <br />
+
+                            <div class="row">
+                                <div class="col-sm-2 ">ClientID</div>
+                                <div class="col-sm-2 ">Description</div>
+                                <div class="col-sm-8 ">
+                                    To identify user.
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Required</div>
+                                <div class="col-sm-8 ">Yes</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Data type</div>
+                                <div class="col-sm-8 ">String</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Example</div>
+                                <div class="col-sm-8 ">
+                                    {
+                                      "ClientID":"TestId"
+                                    }
+                                </div>
+                            </div>
+                            <br />
+
+                            <div class="row">
+                                <div class="col-sm-2 ">Supervisor</div>
+                                <div class="col-sm-2 ">Description</div>
+                                <div class="col-sm-8 ">
+                                    Supervisor Name
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Required</div>
+                                <div class="col-sm-8 ">Yes</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Data type</div>
+                                <div class="col-sm-8 ">String</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Example</div>
+                                <div class="col-sm-8 ">
+                                    {
+                                      "Supervisor":"Supervisor 1"
+                                    }
+                                </div>
+                            </div>
+                            <br />
+
+                             <div class="row">
+                                <div class="col-sm-2 ">DateReviewed</div>
+                                <div class="col-sm-2 ">Description</div>
+                                <div class="col-sm-8 ">
+                                    Date Reviewed
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Required</div>
+                                <div class="col-sm-8 ">Yes</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Data type</div>
+                                <div class="col-sm-8 ">DateTime</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Example</div>
+                                <div class="col-sm-8 ">
+                                    {
+                                      "DateReviewed":"2023/06/12 13:00"
+                                    }
+                                </div>
+                            </div>
+                            <br />
+                        </div>
+                    </div>
+                    <div style="overflow-y: hidden; overflow-x: hidden;">
+                        <div>
+                            <div>Response</div>
+                        </div>
+                        <div class="pre">
+                            <div class="row">
+                                <div class="col-sm-3 ">Response type</div>
+                                <div class="col-sm-9">JSON</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3 ">Response Status</div>
+                                <div class="col-sm-9">200 - OK</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3 ">Response values</div>
+                                <div class="col-sm-9">
+                                    { 
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"ReturnValue": "OK",
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "ReturnMessage": "Supervisor Successfully Assigned",
+                                    <br />
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <div>ReturnMessageInfo List</div>
+                            <br />
+                        </div>
+                        <div class="pre">
+                            <div class="row">
+                                <div class="col-sm-12 ">
+                                    "ReturnMessageInfo" is 2nd arry of the response and it has two objects "ReturnValue" and "ReturnMessage".
+                                </div>
+                            </div>
+                            <br />
+                            <br />
+                            <div class="row">
+                                <div class="col-sm-5 ">Description</div>
+                                <div class="col-sm-2 ">ReturnValue</div>
+                                <div class="col-sm-5">ReturnMessage</div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-sm-5 ">If process successfully complete</div>
+                                <div class="col-sm-2 ">"OK"</div>
+                                <div class="col-sm-5">"Data found etc..."</div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-sm-5 ">If any error occured</div>
+                                <div class="col-sm-2 ">"Error"</div>
+                                <div class="col-sm-5">"Invalid Client ID, Connection not found etc..."</div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>                
+                <%--=================================== 12. Charges =============================================================================--%>
                 <div id="apiChargebyId">
                     <h3 class="heading">Charges</h3>
                     <div>
@@ -3159,7 +3375,7 @@
                             <div>Introduction</div>
                         </div>
                         <div class="pre row">
-                            <div class="col-sm-12 ">This API helps to get all municipal council applications</div>
+                            <div class="col-sm-12 ">This API helps to get all Charges</div>
                         </div>
                     </div>
                     <div>
