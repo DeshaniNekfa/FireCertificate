@@ -49,7 +49,7 @@
                 <div><a href="#apiFireApp">01. Get Municipal Applications List</a></div>
                 <div><a href="#apiFireAppById">02. Get Municipal Applications By Id</a></div>
                 <div><a href="#apiFireAppByStatus">03. Get Municipal Applications By Status</a></div>
-                <div><a href="#apiFireAppUId">04. Get Municipal Applications By User Id</a></div>
+                <div><a href="#apiFireAppUId">04. Get Municipal Applications By User</a></div>
                 <div><a href="#apiSuperApp">05. Get All Fire Department Applications</a></div>
                 <div><a href="#apiSuperAppByCertId">06. Get Fire Department Applications by Certifitate Id</a></div>
                 <br />
@@ -186,7 +186,7 @@
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Email": "useremail@mail.com",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"User": "User",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Supervisor": "Supervisor",
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"UserId": 0,
                                     <br />
@@ -398,7 +398,7 @@
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Email": "useremail@mail.com",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"User": "User",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Supervisor": "Supervisor",
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"UserId": 0,
                                     <br />
@@ -610,7 +610,7 @@
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Email": "useremail@mail.com",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"User": "User",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Supervisor": "Supervisor",
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"UserId": 0,
                                     <br />
@@ -673,7 +673,7 @@
                         </div>
                     </div>
                 </div>
-                <%--=================================== 04. Get Municipal Applications By User Id ===============================================--%>
+                <%--=================================== 04. Get Municipal Applications By User ===============================================--%>
                 <div id="apiFireAppUId">
                     <h3 class="heading">Get Municipal Applications By User Id</h3>
                     <div>
@@ -713,35 +713,6 @@
                             <div>List of parameters</div>
                         </div>
                         <div class="pre">
-                                <div class="row">
-                                <div class="col-sm-2 ">User</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    User id of the applicant
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">int</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "User":5
-                                    }
-                                </div>
-
-                            </div>
-                            <br />
-
                             <div class="row">
                                 <div class="col-sm-2 ">ClientID</div>
                                 <div class="col-sm-2 ">Description</div>
@@ -822,7 +793,7 @@
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Email": "useremail@mail.com",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"User": "User",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Supervisor": "Supervisor",
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"UserId": 5,
                                     <br />
@@ -1726,10 +1697,10 @@
                             <br />
 
                             <div class="row">
-                            <div class="col-sm-2 ">User</div>
+                            <div class="col-sm-2 ">Supervisor</div>
                             <div class="col-sm-2 ">Description</div>
                             <div class="col-sm-8 ">
-                                Applicant's username 
+                                 Supervisor name 
                             </div>
                             </div>
                             <div class="row">
