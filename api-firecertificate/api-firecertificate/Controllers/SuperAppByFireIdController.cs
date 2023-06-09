@@ -53,6 +53,7 @@ namespace api_rate.Controllers
             }
 
             objSuperAppByIdOutput.FireSuperApplication = objSuperApp;
+            objSuperAppByIdOutput.ReturnMessageInfo = objReturnMsg;
             return objSuperAppByIdOutput;
         }
     }

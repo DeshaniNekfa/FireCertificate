@@ -43,9 +43,6 @@ namespace api_rate.Controllers
                     _appsubmit.SaveSupervisorApplication(objSuperApp, ref objReturnMsg);
                     if (objReturnMsg.ReturnValue == "OK")
                     {
-                        objReturnMsg.ReturnValue = "OK";
-                        objReturnMsg.ReturnMessage = "Application Successfully submitted.";
-
                         // get details by Certificate
                         var objFireAppDetails = _getData.GetApplicationByCertId(objSuperApp, ref objReturnMsg);
 
@@ -64,8 +61,10 @@ namespace api_rate.Controllers
                             string strMsg = "Dear Customer, \n Your fire cerificate application request successfully submitted. \n Reference No : " + objSuperApp.CertificateId.Trim() + " \n Thank You.";
                             string strErMsg = string.Empty;
                             _sms.SendSMS(strMsg, objFireAppDetails.Telephone.ToString().Trim(), ref strErMsg);
-                        } 
+                        }
 
+                        objReturnMsg.ReturnValue = "OK";
+                        objReturnMsg.ReturnMessage = "Application Successfully submitted.";
                     }
                     else
                     {
