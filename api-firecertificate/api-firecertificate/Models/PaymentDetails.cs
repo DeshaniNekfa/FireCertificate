@@ -11,11 +11,11 @@ namespace api_rate.Models
         public string CertificateId { get; set; }
         public string Note { get; set; }
         public decimal TotAmt { get; set; }
-        public string User { get; set; }
         public string Date { get; set; }
         public string PaymentType { get; set; }
         public string PaidDescription { get; set; }
         public string PaymentID { get; set; }
         public string BillNo { get; set; }
+        public string ClientID { get; set; }
     }
 }

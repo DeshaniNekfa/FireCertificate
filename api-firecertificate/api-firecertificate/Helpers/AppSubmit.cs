@@ -769,5 +769,142 @@ namespace api_rate.Helpers
             }
             return isAssigned;
         }
+    
+        // Validate Payment
+        public bool ValidatePayment(PaymentDetails objPayment, ReturnMsgInfo objReturnMsg)
+        {
+            bool isValid = true;
+            objCmnFunctions = new CommonFunctions();
+
+            // Client Id
+            if (objPayment.ClientID == null || objPayment.ClientID == "")
+            {
+                objReturnMsg.ReturnValue = "Error";
+                objReturnMsg.ReturnMessage = "Invalid Client ID.";
+                isValid = false;
+            }
+
+            // CertificateId
+            if (objPayment.CertificateId == null || objPayment.CertificateId == "")
+            {
+                objReturnMsg.ReturnValue = "Error";
+                objReturnMsg.ReturnMessage = "Invalid Certificate ID.";
+                isValid = false;
+            }
+
+            // Total Amount 
+            if (objPayment.TotAmt == null || objPayment.TotAmt <= 0)
+            {
+                objReturnMsg.ReturnValue = "Error";
+                objReturnMsg.ReturnMessage = "Invalid Amount.";
+                isValid = false;
+            }
+
+            // Date
+            if (objPayment.Date == null || objPayment.Date == "")
+            {
+                objReturnMsg.ReturnValue = "Error";
+                objReturnMsg.ReturnMessage = "Invalid Date";
+                isValid = false;
+            }
+            else if (objPayment.Date.ToString().Trim() == "")
+            {
+                objReturnMsg.ReturnValue = "Error";
+                objReturnMsg.ReturnMessage = "Date is required.";
+                isValid = false;
+            }
+            else if (objCmnFunctions.IsValidDate(objPayment.Date.ToString().Trim()) == false)
+            {
+                objReturnMsg.ReturnValue = "Error";
+                objReturnMsg.ReturnMessage = "Invalid Date.";
+                isValid = false;
+            }
+
+            // payment type
+            if (objPayment.PaymentType == null || objPayment.PaymentType == "")
+            {
+                objReturnMsg.ReturnValue = "Error";
+                objReturnMsg.ReturnMessage = "Invalid payment type.";
+                isValid = false;
+            }
+
+            // Payment Description
+            if (objPayment.BillNo == null || objPayment.BillNo == "")
+            {
+                objReturnMsg.ReturnValue = "Error";
+                objReturnMsg.ReturnMessage = "Invalid Bill No.";
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+        // Add payment
+        public bool AddPayment(PaymentDetails objPayment, ReturnMsgInfo objReturnMsg)
+        {
+            bool isSaved = false;
+            this.objConMain = new Connection_Main();
+            try
+            {
+                string conString = this.objConMain.Get_Main_Connection(objPayment.ClientID);
+                if (conString == null || conString == "")
+                {
+                    objReturnMsg.ReturnValue = "Error";
+                    objReturnMsg.ReturnMessage = "Connection not found.";
+                }
+                else
+                {
+                    this.mySqlCon = new MySqlConnection(conString);
+
+                    if (this.mySqlCon.State.ToString() != "Open")
+                    {
+                        this.mySqlCon.Open();
+                    }
+                    else
+                    {
+                        objReturnMsg.ReturnValue = "Error";
+                        objReturnMsg.ReturnMessage = "Connection was already opened.";
+                    }
+
+                    if (this.mySqlCon != null)
+                    {
+                        string strSql = "INSERT INTO tbl_firecertificate_payment_details( CertificateId ,Note ,TotAmt ,User ,Date ,PaymentType ,PaidDescription ,PaymentID ,BillNo)VALUES( @Id ,@CertificateId ,@Note ,@TotAmt ,@User ,@Date ,@PaymentType ,@PaidDescription ,@PaymentID ,@BillNo);";
+                        cmd = new MySqlCommand(strSql, this.mySqlCon, this.mySqlTrans);
+                        cmd.Parameters.AddWithValue("@CertificateId", objPayment.CertificateId);
+                        cmd.Parameters.AddWithValue("@Note", objPayment.Note);
+                        cmd.Parameters.AddWithValue("@TotAmt", objPayment.TotAmt);
+                        cmd.Parameters.AddWithValue("@User", objPayment.ClientID);
+                        cmd.Parameters.AddWithValue("@Date", objPayment.Date);
+                        cmd.Parameters.AddWithValue("@PaymentType", objPayment.PaymentType);
+                        cmd.Parameters.AddWithValue("@PaidDescription", objPayment.PaidDescription);
+                        cmd.Parameters.AddWithValue("@PaymentID", objPayment.PaymentID);
+                        cmd.Parameters.AddWithValue("@BillNo", objPayment.BillNo);
+                        cmd.ExecuteNonQuery();
+                        isSaved = true;
+
+                        objReturnMsg.ReturnValue = "OK";
+                        objReturnMsg.ReturnMessage = "Submitted successfully";
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                objReturnMsg.ReturnValue = "Error";
+                objReturnMsg.ReturnMessage = ex.Message;
+            }
+            finally
+            {
+                if (this.mySqlCon != null)
+                {
+                    if (this.mySqlCon.State.ToString() == "Open")
+                    {
+                        this.mySqlCon.Close();
+                    }
+                }
+            }
+
+            return isSaved;
+        }
     }
 }

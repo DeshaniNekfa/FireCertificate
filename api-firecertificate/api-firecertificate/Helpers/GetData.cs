@@ -875,7 +875,7 @@ namespace api_rate.Helpers
                                 objPayment.CertificateId = dtRow["CertificateId"].ToString().Trim();
                                 objPayment.Note = dtRow["Note"].ToString().Trim();
                                 objPayment.TotAmt = Convert.ToDecimal(dtRow["TotAmt"]);
-                                objPayment.User = dtRow["User"].ToString().Trim();
+                                objPayment.ClientID = dtRow["User"].ToString().Trim();
                                 objPayment.Date = dtRow["Date"].ToString().Trim();
                                 objPayment.PaymentType = dtRow["PaymentType"].ToString().Trim();
                                 objPayment.PaidDescription = dtRow["PaidDescription"].ToString().Trim();

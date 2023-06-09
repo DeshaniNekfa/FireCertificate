@@ -29,5 +29,11 @@ namespace api_rate.Helpers
 
         // Assign Supervisor
         bool AssignSupervisor(FireCertificateApplication objFireApp, ReturnMsgInfo objRetuenMsg);
+
+        // Validate Payment
+        bool ValidatePayment(PaymentDetails objPayment, ReturnMsgInfo objReturnMsg);
+
+        // Add payment
+        bool AddPayment(PaymentDetails objPayment, ReturnMsgInfo objReturnMsg);
     }
 }
