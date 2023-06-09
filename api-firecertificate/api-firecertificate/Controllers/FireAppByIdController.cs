@@ -15,7 +15,7 @@ namespace api_rate.Controllers
     public class FireAppByIdController : ApiController
     {
         private IGetData _getData = null;
- 
+
         public FireAppByIdController(IGetData IGetData)
         {
             _getData = IGetData;
@@ -36,14 +36,14 @@ namespace api_rate.Controllers
                 {
                     throw new Exception("Invalid Client ID.");
                 }
-                else if (objFireApplication.Id == null || objFireApplication.Id == 0)
+                else if (objFireApplication.CertificateId == null || objFireApplication.CertificateId == "")
                 {
                     throw new Exception("Application id is required");
                 }
                 else
                 {
                     objFireApp = _getData.GetApplicationById(objFireApplication, ref objReturnMsg);
-                    objPayment = _getData.GetPaymentDetails(objFireApp, ref objReturnMsg);
+                    objPayment = _getData.GetPaymentDetails(objFireApplication, ref objReturnMsg);
                     if (objReturnMsg.ReturnValue != "OK")
                     {
                         throw new Exception("Error occurred when retrieve application details. " + objReturnMsg.ReturnMessage.ToString().Trim());
@@ -61,5 +61,5 @@ namespace api_rate.Controllers
 
             return objFireAppByIdOutput;
         }
-	}
+    }
 }

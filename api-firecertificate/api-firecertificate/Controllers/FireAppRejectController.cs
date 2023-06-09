@@ -50,7 +50,7 @@ namespace api_rate.Controllers
                     objFireApp.ClientID = objSuperApplication.ClientID;
 
                     // Rejecting Application
-                    _appSubmit.SetStatusReject(objFireApp, objReturnMsg);
+                    _appSubmit.SetStatusReject(objFireApp, ref objReturnMsg);
 
                     if (objReturnMsg.ReturnValue == "OK")
                     {

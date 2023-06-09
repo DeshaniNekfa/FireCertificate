@@ -22,18 +22,18 @@ namespace api_rate.Helpers
         bool SaveSupervisorApplication(FireSupervisorApplication objSuperAppDetails, ref ReturnMsgInfo returnMsg);
 
         // Set Application status Approved
-        bool SetStatusApprove(FireCertificateApplication objFireApp, ReturnMsgInfo objReturnMsg);
+        bool SetStatusApprove(FireCertificateApplication objFireApp, ref ReturnMsgInfo objReturnMsg);
 
         // Set Application status Rejected
-        bool SetStatusReject(FireCertificateApplication objFireApp, ReturnMsgInfo objReturnMsg);
+        bool SetStatusReject(FireCertificateApplication objFireApp, ref ReturnMsgInfo objReturnMsg);
 
         // Assign Supervisor
-        bool AssignSupervisor(FireCertificateApplication objFireApp, ReturnMsgInfo objRetuenMsg);
+        bool AssignSupervisor(FireCertificateApplication objFireApp, ref ReturnMsgInfo objRetuenMsg);
 
         // Validate Payment
-        bool ValidatePayment(PaymentDetails objPayment, ReturnMsgInfo objReturnMsg);
+        bool ValidatePayment(PaymentDetails objPayment, ref ReturnMsgInfo objReturnMsg);
 
         // Add payment
-        bool AddPayment(PaymentDetails objPayment, ReturnMsgInfo objReturnMsg);
+        bool AddPayment(PaymentDetails objPayment, ref ReturnMsgInfo objReturnMsg);
     }
 }

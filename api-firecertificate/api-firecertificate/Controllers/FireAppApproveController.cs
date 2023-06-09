@@ -49,7 +49,7 @@ namespace api_rate.Controllers
                     objFireApp.ClientID = objSuperApplication.ClientID;
 
                     // Approving Application
-                    _appSubmit.SetStatusApprove(objFireApp, objReturnMsg);
+                    _appSubmit.SetStatusApprove(objFireApp, ref objReturnMsg);
                                             
                     if (objReturnMsg.ReturnValue == "OK")
                     {

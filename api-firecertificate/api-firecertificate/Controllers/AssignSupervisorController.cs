@@ -43,7 +43,7 @@ namespace api_rate.Controllers
                 }
                 else
                 {
-                    _appSubmit.AssignSupervisor(objFireApp, objReturnMsg);
+                    _appSubmit.AssignSupervisor(objFireApp, ref objReturnMsg);
 
                     if (objReturnMsg.ReturnValue == "OK")
                     {

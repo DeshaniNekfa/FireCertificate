@@ -52,6 +52,7 @@ namespace api_rate.Controllers
                     // get payment list
                     foreach (FireCertificateApplication FireApp in lstFireApplication)
                     {
+                        FireApp.ClientID = objFireApplication.ClientID;
                         objPayment = _getData.GetPaymentDetails(FireApp, ref objReturnMsg);
                         lstPayment.Add(objPayment);
                     }

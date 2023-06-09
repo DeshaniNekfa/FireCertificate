@@ -22,7 +22,7 @@ namespace api_rate.Helpers
         private MySqlDataAdapter da;
         private Connection_Main objConMain;
 
-        // Get one Fire application by its unique Id  
+        // Get one Fire application by its Certificate Id  
         public FireCertificateApplication GetApplicationById(FireCertificateApplication objApplication, ref ReturnMsgInfo returnMsg)
         {
             FireCertificateApplication objFireApplication = new FireCertificateApplication();
@@ -51,7 +51,7 @@ namespace api_rate.Helpers
                     }
                     if (this.mySqlCon != null)
                     {
-                        strSql = "SELECT * FROM tbl_firecertificate_application WHERE Id = " + objApplication.Id;
+                        strSql = "SELECT * FROM tbl_firecertificate_application WHERE CertificateId = '" + objApplication.CertificateId +"';";
                         da = new MySqlDataAdapter(strSql, this.mySqlCon);
                         ds = new DataSet();
                         da.Fill(ds, "FireApplication");

@@ -566,7 +566,7 @@ namespace api_rate.Helpers
         }
     
         // Set Application status Approved
-        public bool SetStatusApprove(FireCertificateApplication objFireApp, ReturnMsgInfo objReturnMsg)
+        public bool SetStatusApprove(FireCertificateApplication objFireApp, ref ReturnMsgInfo objReturnMsg)
         {
             bool isApporoved = false;
             this.objConMain = new Connection_Main();
@@ -625,7 +625,7 @@ namespace api_rate.Helpers
         }
     
         // Set Application status Rejected
-        public bool SetStatusReject(FireCertificateApplication objFireApp, ReturnMsgInfo objReturnMsg)
+        public bool SetStatusReject(FireCertificateApplication objFireApp, ref ReturnMsgInfo objReturnMsg)
         {
             bool isRejected = false;
             this.objConMain = new Connection_Main();
@@ -684,7 +684,7 @@ namespace api_rate.Helpers
         }
 
         // Assign Supervisor
-        public bool AssignSupervisor(FireCertificateApplication objFireApp, ReturnMsgInfo objReturnMsg)
+        public bool AssignSupervisor(FireCertificateApplication objFireApp, ref ReturnMsgInfo objReturnMsg)
         {
             bool isAssigned = false;
             objCmnFunctions = new CommonFunctions();
@@ -771,7 +771,7 @@ namespace api_rate.Helpers
         }
     
         // Validate Payment
-        public bool ValidatePayment(PaymentDetails objPayment, ReturnMsgInfo objReturnMsg)
+        public bool ValidatePayment(PaymentDetails objPayment, ref ReturnMsgInfo objReturnMsg)
         {
             bool isValid = true;
             objCmnFunctions = new CommonFunctions();
@@ -840,7 +840,7 @@ namespace api_rate.Helpers
         }
 
         // Add payment
-        public bool AddPayment(PaymentDetails objPayment, ReturnMsgInfo objReturnMsg)
+        public bool AddPayment(PaymentDetails objPayment, ref ReturnMsgInfo objReturnMsg)
         {
             bool isSaved = false;
             this.objConMain = new Connection_Main();
@@ -868,7 +868,7 @@ namespace api_rate.Helpers
 
                     if (this.mySqlCon != null)
                     {
-                        string strSql = "INSERT INTO tbl_firecertificate_payment_details( CertificateId ,Note ,TotAmt ,User ,Date ,PaymentType ,PaidDescription ,PaymentID ,BillNo)VALUES( @Id ,@CertificateId ,@Note ,@TotAmt ,@User ,@Date ,@PaymentType ,@PaidDescription ,@PaymentID ,@BillNo);";
+                        string strSql = "INSERT INTO tbl_firecertificate_payment_details( CertificateId ,Note ,TotAmt ,User ,Date ,PaymentType ,PaidDescription ,PaymentID ,BillNo)VALUES( @CertificateId ,@Note ,@TotAmt ,@User ,@Date ,@PaymentType ,@PaidDescription ,@PaymentID ,@BillNo);";
                         cmd = new MySqlCommand(strSql, this.mySqlCon, this.mySqlTrans);
                         cmd.Parameters.AddWithValue("@CertificateId", objPayment.CertificateId);
                         cmd.Parameters.AddWithValue("@Note", objPayment.Note);
