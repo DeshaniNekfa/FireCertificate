@@ -12,7 +12,7 @@ namespace api_rate.Models
         public string Note { get; set; }
         public decimal TotAmt { get; set; }
         public string User { get; set; }
-        public DateTime Date { get; set; }
+        public string Date { get; set; }
         public string PaymentType { get; set; }
         public string PaidDescription { get; set; }
         public string PaymentID { get; set; }

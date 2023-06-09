@@ -37,5 +37,8 @@ namespace api_rate.Helpers
 
         //Get charge by Id
         Charges GetChargeById(Charges objCharge, ref ReturnMsgInfo returnMsg);
+
+        // Get payment details
+        PaymentDetails GetPaymentDetails(FireCertificateApplication objFireApp, ref ReturnMsgInfo returnMsg);
     }
 }

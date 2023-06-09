@@ -25,6 +25,8 @@ namespace api_rate.Controllers
         public FireAppDetailsOutput Post([FromBody]FireCertificateApplication objFireApplication)
         {
             FireAppDetailsOutput objAppListOutput = new FireAppDetailsOutput();
+            List<PaymentDetails> lstPayment = new List<PaymentDetails>();
+            PaymentDetails objPayment = new PaymentDetails();
             ReturnMsgInfo objReturnMsg = new ReturnMsgInfo();
             List<FireCertificateApplication> lstFireApplication = new List<FireCertificateApplication>();
 
@@ -44,7 +46,16 @@ namespace api_rate.Controllers
                 }
                 else
                 {
+                    // get application list
                     lstFireApplication = _getData.GetApplicationByStatus(objFireApplication, ref objReturnMsg);
+
+                    // get payment list
+                    foreach (FireCertificateApplication FireApp in lstFireApplication)
+                    {
+                        objPayment = _getData.GetPaymentDetails(FireApp, ref objReturnMsg);
+                        lstPayment.Add(objPayment);
+                    }
+
                     if (objReturnMsg.ReturnValue != "OK")
                     {
                         throw new Exception(objReturnMsg.ReturnMessage.ToString().Trim());
@@ -59,6 +70,7 @@ namespace api_rate.Controllers
 
 
             objAppListOutput.ListFireApplication = lstFireApplication;
+            objAppListOutput.ListPayment = lstPayment;
             objAppListOutput.ReturnMessageInfo = objReturnMsg;
 
             return objAppListOutput;

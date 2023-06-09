@@ -8,5 +8,6 @@ namespace api_rate.Models
     public class FireAppByIdOutput
     {
         public FireCertificateApplication FireApplication { get; set; }
+        public PaymentDetails PaymentDetails { get; set; }
     }
 }

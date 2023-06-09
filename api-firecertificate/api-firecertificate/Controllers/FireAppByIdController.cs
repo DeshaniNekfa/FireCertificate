@@ -26,6 +26,7 @@ namespace api_rate.Controllers
         {
             FireAppByIdOutput objFireAppByIdOutput = new FireAppByIdOutput();
             ReturnMsgInfo objReturnMsg = new ReturnMsgInfo();
+            PaymentDetails objPayment = new PaymentDetails();
             FireCertificateApplication objFireApp = new FireCertificateApplication();
 
             try
@@ -42,6 +43,7 @@ namespace api_rate.Controllers
                 else
                 {
                     objFireApp = _getData.GetApplicationById(objFireApplication, ref objReturnMsg);
+                    objPayment = _getData.GetPaymentDetails(objFireApp, ref objReturnMsg);
                     if (objReturnMsg.ReturnValue != "OK")
                     {
                         throw new Exception("Error occurred when retrieve application details. " + objReturnMsg.ReturnMessage.ToString().Trim());
@@ -55,6 +57,7 @@ namespace api_rate.Controllers
             }
 
             objFireAppByIdOutput.FireApplication = objFireApp;
+            objFireAppByIdOutput.PaymentDetails = objPayment;
 
             return objFireAppByIdOutput;
         }

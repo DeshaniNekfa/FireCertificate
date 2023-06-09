@@ -870,8 +870,27 @@ namespace api_rate.Helpers
                         {
                             foreach (DataRow dtRow in dt.Rows)
                             {
-                                // Get payment Details 
+                                PaymentDetails objPayment = new Models.PaymentDetails();
+                                objPayment.Id = (int)dtRow["Id"];
+                                objPayment.CertificateId = dtRow["CertificateId"].ToString().Trim();
+                                objPayment.Note = dtRow["Note"].ToString().Trim();
+                                objPayment.TotAmt = Convert.ToDecimal(dtRow["TotAmt"]);
+                                objPayment.User = dtRow["User"].ToString().Trim();
+                                objPayment.Date = dtRow["Date"].ToString().Trim();
+                                objPayment.PaymentType = dtRow["PaymentType"].ToString().Trim();
+                                objPayment.PaidDescription = dtRow["PaidDescription"].ToString().Trim();
+                                objPayment.PaymentID = dtRow["PaymentID"].ToString().Trim();
+                                objPayment.BillNo = dtRow["BillNo"].ToString().Trim();
+
+                                objPaymentDetails = objPayment;
                             }
+                            returnMsg.ReturnValue = "OK";
+                            returnMsg.ReturnMessage = "Data Found";
+                        }
+                        else
+                        {
+                            returnMsg.ReturnValue = "Error";
+                            returnMsg.ReturnMessage = "No data found";
                         }
                     }
                 }
