@@ -36,13 +36,14 @@ namespace api_rate.Controllers
                 {
                     throw new Exception("Invalid Client ID.");
                 }
-                else if (objFireApplication.CertificateId == null || objFireApplication.CertificateId == "")
+                else if (objFireApplication.Id == null || objFireApplication.Id == 0)
                 {
                     throw new Exception("Application id is required");
                 }
                 else
                 {
                     objFireApp = _getData.GetApplicationById(objFireApplication, ref objReturnMsg);
+                    objFireApplication.CertificateId = objFireApp.CertificateId;
                     objPayment = _getData.GetPaymentDetails(objFireApplication, ref objReturnMsg);
                     if (objReturnMsg.ReturnValue != "OK")
                     {

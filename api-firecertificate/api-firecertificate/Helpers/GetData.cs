@@ -51,7 +51,7 @@ namespace api_rate.Helpers
                     }
                     if (this.mySqlCon != null)
                     {
-                        strSql = "SELECT * FROM tbl_firecertificate_application WHERE CertificateId = '" + objApplication.CertificateId +"';";
+                        strSql = "SELECT * FROM tbl_firecertificate_application WHERE Id = '" + objApplication.Id +"';";
                         da = new MySqlDataAdapter(strSql, this.mySqlCon);
                         ds = new DataSet();
                         da.Fill(ds, "FireApplication");
