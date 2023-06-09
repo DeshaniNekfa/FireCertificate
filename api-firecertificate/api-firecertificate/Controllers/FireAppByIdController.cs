@@ -59,6 +59,7 @@ namespace api_rate.Controllers
 
             objFireAppByIdOutput.FireApplication = objFireApp;
             objFireAppByIdOutput.PaymentDetails = objPayment;
+            objFireAppByIdOutput.ReturnMessageInfo = objReturnMsg;
 
             return objFireAppByIdOutput;
         }
