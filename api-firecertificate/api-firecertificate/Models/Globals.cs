@@ -11,7 +11,7 @@ namespace api_rate.Models
         public static string APPROVED = "Approved";
         public static string REJECTED = "Rejected";
         public static string PAID = "Paid";
-
-
+        public static string INSPECTED = "Inspected";
+        public static string ISSUED = "Issued";
     }
 }
