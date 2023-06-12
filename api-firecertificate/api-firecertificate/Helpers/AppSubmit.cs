@@ -12,6 +12,9 @@ namespace api_rate.Helpers
     {
         private MySqlConnection mySqlCon = null;
         private MySqlTransaction mySqlTrans;
+        private DataTable dt;
+        private DataSet ds;
+        private MySqlDataAdapter da;
         private string strSql;
         private Connection_Main objConMain;
         private CommonFunctions objCmnFunctions = null;
@@ -31,12 +34,12 @@ namespace api_rate.Helpers
                 IsSuccess = false;
             }
 
-            if (objFireAppDetails.CertificateId == null || objFireAppDetails.CertificateId == "")
-            {
-                returnMsg.ReturnValue = "Error";
-                returnMsg.ReturnMessage = "Invalid Certificate ID.";
-                IsSuccess = false;
-            }
+            //if (objFireAppDetails.CertificateId == null || objFireAppDetails.CertificateId == "")
+            //{
+            //    returnMsg.ReturnValue = "Error";
+            //    returnMsg.ReturnMessage = "Invalid Certificate ID.";
+            //    IsSuccess = false;
+            //}
 
             if (objFireAppDetails.CompanyName == null || objFireAppDetails.CompanyName == "")
             {
@@ -123,12 +126,12 @@ namespace api_rate.Helpers
                 IsSuccess = false;
             }
 
-            if (objFireAppDetails.Status == null || objFireAppDetails.Status == "")
-            {
-                returnMsg.ReturnValue = "Error";
-                returnMsg.ReturnMessage = "Status missing.";
-                IsSuccess = false;
-            }
+            //if (objFireAppDetails.Status == null || objFireAppDetails.Status == "")
+            //{
+            //    returnMsg.ReturnValue = "Error";
+            //    returnMsg.ReturnMessage = "Status missing.";
+            //    IsSuccess = false;
+            //}
             // Email Validation
             if (objFireAppDetails.Email != null && objFireAppDetails.Email != "" && objFireAppDetails.Email.Length > 0)
             {
@@ -140,40 +143,40 @@ namespace api_rate.Helpers
                 }
             }
 
-            if (objFireAppDetails.DateApplied == null)
-            {
-                returnMsg.ReturnValue = "Error";
-                returnMsg.ReturnMessage = "Date Applied Date is required.";
-                IsSuccess = false;
-            }
-            else if (objFireAppDetails.DateApplied.ToString().Trim() == "")
-            {
-                returnMsg.ReturnValue = "Error";
-                returnMsg.ReturnMessage = "Date Applied Date is required.";
-                IsSuccess = false;
-            }
-            else if (objCmnFunctions.IsValidDate(objFireAppDetails.DateApplied.ToString().Trim()) == false)
-            {
-                returnMsg.ReturnValue = "Error";
-                returnMsg.ReturnMessage = "Invalid Applied Date.";
-                IsSuccess = false;
-            }
+            //if (objFireAppDetails.DateApplied == null)
+            //{
+            //    returnMsg.ReturnValue = "Error";
+            //    returnMsg.ReturnMessage = "Date Applied Date is required.";
+            //    IsSuccess = false;
+            //}
+            //else if (objFireAppDetails.DateApplied.ToString().Trim() == "")
+            //{
+            //    returnMsg.ReturnValue = "Error";
+            //    returnMsg.ReturnMessage = "Date Applied Date is required.";
+            //    IsSuccess = false;
+            //}
+            //else if (objCmnFunctions.IsValidDate(objFireAppDetails.DateApplied.ToString().Trim()) == false)
+            //{
+            //    returnMsg.ReturnValue = "Error";
+            //    returnMsg.ReturnMessage = "Invalid Applied Date.";
+            //    IsSuccess = false;
+            //}
 
-            if (objFireAppDetails.DateReviewed != null)
-            {
-                if (objFireAppDetails.DateReviewed.ToString().Trim() == "")
-                {
-                    returnMsg.ReturnValue = "Error";
-                    returnMsg.ReturnMessage = "Date Applied Date is required.";
-                    IsSuccess = false;
-                }
-                else if (objCmnFunctions.IsValidDate(objFireAppDetails.DateReviewed.ToString().Trim()) == false)
-                {
-                    returnMsg.ReturnValue = "Error";
-                    returnMsg.ReturnMessage = "Invalid Reviewed Date.";
-                    IsSuccess = false;
-                }
-            }
+            //if (objFireAppDetails.DateReviewed != null)
+            //{
+            //    if (objFireAppDetails.DateReviewed.ToString().Trim() == "")
+            //    {
+            //        returnMsg.ReturnValue = "Error";
+            //        returnMsg.ReturnMessage = "Date Applied Date is required.";
+            //        IsSuccess = false;
+            //    }
+            //    else if (objCmnFunctions.IsValidDate(objFireAppDetails.DateReviewed.ToString().Trim()) == false)
+            //    {
+            //        returnMsg.ReturnValue = "Error";
+            //        returnMsg.ReturnMessage = "Invalid Reviewed Date.";
+            //        IsSuccess = false;
+            //    }
+            //}
 
             return IsSuccess;
         }
@@ -182,7 +185,12 @@ namespace api_rate.Helpers
         public bool SaveApplication(FireCertificateApplication objFireAppDetails, ref ReturnMsgInfo returnMsg)
         {
             bool isSaved = false;
+            Index objIndex = new Index();
             this.objConMain = new Connection_Main();
+
+            objIndex = GetIndexes(objFireAppDetails, ref returnMsg);
+            var certId = objIndex.Code.ToString().Trim() + objIndex.NextId.ToString().Trim();
+
             try
             {
                 string conString = this.objConMain.Get_Main_Connection(objFireAppDetails.ClientID);
@@ -207,9 +215,9 @@ namespace api_rate.Helpers
 
                     if (this.mySqlCon != null)
                     {
-                        strSql = "INSERT INTO tbl_firecertificate_application(CertificateId, CompanyName, Address, Telephone, DistanceFromCouncil, NatureOfBusiness, BuildingPlan, TotalLand, RoadFromCouncil, OwnerName, CurrentFirePlan, Status, Email, Supervisor, DateApplied, DateReviewed, user) VALUES (@CertificateId, @CompanyName, @Address, @Telephone, @DistanceFromCouncil, @NatureOfBusiness, @BuildingPlan, @TotalLand, @RoadFromCouncil, @OwnerName, @CurrentFirePlan, @Status, @Email, @Supervisor, @DateApplied, @DateReviewed, @user); UPDATE tbl_firecertificate_index SET NextApplicationId=(NextApplicationId + 1);";
+                        strSql = "INSERT INTO tbl_firecertificate_application(CertificateId, CompanyName, Address, Telephone, DistanceFromCouncil, NatureOfBusiness, BuildingPlan, TotalLand, RoadFromCouncil, OwnerName, CurrentFirePlan, Status, Email, Supervisor, DateApplied, user) VALUES (@CertificateId, @CompanyName, @Address, @Telephone, @DistanceFromCouncil, @NatureOfBusiness, @BuildingPlan, @TotalLand, @RoadFromCouncil, @OwnerName, @CurrentFirePlan, @Status, @Email, @Supervisor, @DateApplied, @user); UPDATE tbl_firecertificate_index SET NextApplicationId=(NextApplicationId + 1);";
                         cmd = new MySqlCommand(strSql, this.mySqlCon, this.mySqlTrans);
-                        cmd.Parameters.AddWithValue("@CertificateId", objFireAppDetails.CertificateId);
+                        cmd.Parameters.AddWithValue("@CertificateId", certId.ToString().Trim());
                         cmd.Parameters.AddWithValue("@CompanyName", objFireAppDetails.CompanyName);
                         cmd.Parameters.AddWithValue("@Address", objFireAppDetails.Address);
                         cmd.Parameters.AddWithValue("@Telephone", objFireAppDetails.Telephone);
@@ -220,11 +228,10 @@ namespace api_rate.Helpers
                         cmd.Parameters.AddWithValue("@RoadFromCouncil", objFireAppDetails.RoadFromCouncil);
                         cmd.Parameters.AddWithValue("@OwnerName", objFireAppDetails.OwnerName);
                         cmd.Parameters.AddWithValue("@CurrentFirePlan", objFireAppDetails.CurrentFirePlan);
-                        cmd.Parameters.AddWithValue("@Status", objFireAppDetails.Status);
+                        cmd.Parameters.AddWithValue("@Status", Globals.PENDING.ToString().Trim());
                         cmd.Parameters.AddWithValue("@Email", objFireAppDetails.Email);
-                        cmd.Parameters.AddWithValue("@Supervisor", objFireAppDetails.Supervisor);
-                        cmd.Parameters.AddWithValue("@DateApplied", objFireAppDetails.DateApplied);
-                        cmd.Parameters.AddWithValue("@DateReviewed", objFireAppDetails.DateReviewed);
+                        cmd.Parameters.AddWithValue("@Supervisor", "");
+                        cmd.Parameters.AddWithValue("@DateApplied", DateTime.Now.ToString("yyyy-MM-dd").Trim());
                         cmd.Parameters.AddWithValue("@user", objFireAppDetails.ClientID);
                         cmd.ExecuteNonQuery();
                         isSaved = true;
@@ -905,6 +912,77 @@ namespace api_rate.Helpers
             }
 
             return isSaved;
+        }
+
+        // Get data from Indexes table
+        public Index GetIndexes(FireCertificateApplication objFireApp, ref ReturnMsgInfo objReturnMsg)
+        {
+            Index objIndexes = new Index();
+            this.objConMain = new Connection_Main();
+
+            string conString = this.objConMain.Get_Main_Connection(objFireApp.ClientID);
+            if (conString == null || conString == "")
+            {
+                objReturnMsg.ReturnValue = "Error";
+                objReturnMsg.ReturnMessage = "Connection not found.";
+            }
+            else
+            {
+                try
+                {
+                    this.mySqlCon = new MySqlConnection(conString);
+                    if (this.mySqlCon.State.ToString() != "Open")
+                    {
+                        this.mySqlCon.Open();
+                    }
+                    else
+                    {
+                        objReturnMsg.ReturnValue = "Error";
+                        objReturnMsg.ReturnMessage = "Connection was already opened.";
+                    }
+                    if (this.mySqlCon != null)
+                    {
+                        strSql = "SELECT * FROM tbl_firecertificate_index;";
+                        da = new MySqlDataAdapter(strSql, this.mySqlCon);
+                        ds = new DataSet();
+                        da.Fill(ds, "Application");
+                        dt = ds.Tables["Application"];
+                        if (dt.Rows.Count > 0)
+                        {
+                            foreach (DataRow dtRow in dt.Rows)
+                            {
+                                Index objIndex = new Index();
+                                objIndex.Code = dtRow["Code"].ToString().Trim();
+                                objIndex.NextId = (int)dtRow["NextApplicationId"];
+
+                                objIndexes = objIndex;
+                            }
+                            objReturnMsg.ReturnValue = "OK";
+                            objReturnMsg.ReturnMessage = "Data found";
+                        }
+                        else
+                        {
+                            objReturnMsg.ReturnValue = "Error";
+                            objReturnMsg.ReturnMessage = "No data found";
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    objReturnMsg.ReturnValue = "Error";
+                    objReturnMsg.ReturnMessage = ex.Message;
+                }
+                finally
+                {
+                    if (this.mySqlCon != null)
+                    {
+                        this.mySqlCon.Close();
+                    }
+                }
+            }
+
+
+            return objIndexes;
         }
     }
 }
