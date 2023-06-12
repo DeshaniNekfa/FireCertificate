@@ -40,7 +40,7 @@ namespace api_rate.Helpers
                 string fromPassword = ConfigurationManager.AppSettings["fromPassword"].ToString().Trim();
 
                 string fromAddress = mailInfo.FromEmail;
-                string subject = "" + mailInfo.CouncilName + "| Regarding the Photoshoot Service Request";
+                string subject = "" + mailInfo.CouncilName + "| Regarding the Fire Certificate Request";
                 string body = strMsg;
 
                 MailMessage msg = new MailMessage(fromAddress, toAdd, subject, body);
@@ -82,15 +82,99 @@ namespace api_rate.Helpers
 
             if(strStatus.Trim() == Globals.PENDING.ToString().Trim())
             {
-                strMsgBody = "Your Application is submitted and pending approval.";
+                strMsgBody = "<html>" +
+                              "<head>" +
+                              "<meta http-equiv=Content-Type content=text/html; charset=utf-8 />" +
+                              "<title> </title>" +
+
+                              "<style> .divStyle1 { font-family: Arial; font-size: 12px; color: black; } </style>" +
+
+                              "</head>" +
+
+                              "<body>" +
+
+                              "<div class='row divStyle1'>" +
+                              "<pre>" +
+                              "Hello, <br/>" +
+
+                              "Your fire certificate application is successfully submitted. We will contact you regarding the inspections soon. <br/>" +
+
+
+                              "Thank You. <br/>" +
+                              "" + strCouncil + "" +
+                              "</pre>" +
+                              "<br/>" +
+                              "</div>" +
+
+                              "<span style='color:red;font-size:10px;'>Note: Please DO NOT REPLY to this mail</span>" +
+                              "<span style='color:black;font-size:10px;'> as this automatically generated mail. For any clarification contact " + strContactNo + ".</span>" +
+                              "</div>" +
+                              "</body>" +
+                              "</html>";
             }
             else if(strStatus.Trim() == Globals.APPROVED.ToString().Trim())
             {
-                strMsgBody = "Your Application was approved!";
+                strMsgBody = "<html>" +
+                              "<head>" +
+                              "<meta http-equiv=Content-Type content=text/html; charset=utf-8 />" +
+                              "<title> </title>" +
+
+                              "<style> .divStyle1 { font-family: Arial; font-size: 12px; color: black; } </style>" +
+
+                              "</head>" +
+
+                              "<body>" +
+
+                              "<div class='row divStyle1'>" +
+                              "<pre>" +
+                              "Hello, <br/>" +
+
+                              "Your fire certificate application is approved. Please pay the Certificate fee to collect it <br/>" +
+
+
+                              "Thank You. <br/>" +
+                              "" + strCouncil + "" +
+                              "</pre>" +
+                              "<br/>" +
+                              "</div>" +
+
+                              "<span style='color:red;font-size:10px;'>Note: Please DO NOT REPLY to this mail</span>" +
+                              "<span style='color:black;font-size:10px;'> as this automatically generated mail. For any clarification contact " + strContactNo + ".</span>" +
+                              "</div>" +
+                              "</body>" +
+                              "</html>";
             }
             else if(strStatus.Trim() == Globals.REJECTED.ToString().Trim())
             {
-                strMsgBody = "Your Application was rejected!";
+                strMsgBody = "<html>" +
+                              "<head>" +
+                              "<meta http-equiv=Content-Type content=text/html; charset=utf-8 />" +
+                              "<title> </title>" +
+
+                              "<style> .divStyle1 { font-family: Arial; font-size: 12px; color: black; } </style>" +
+
+                              "</head>" +
+
+                              "<body>" +
+
+                              "<div class='row divStyle1'>" +
+                              "<pre>" +
+                              "Hello, <br/>" +
+
+                              "We are sorry to inform that your fire certificate application is rejected. Please contact the Administrator for more details. <br/>" +
+
+
+                              "Thank You. <br/>" +
+                              "" + strCouncil + "" +
+                              "</pre>" +
+                              "<br/>" +
+                              "</div>" +
+
+                              "<span style='color:red;font-size:10px;'>Note: Please DO NOT REPLY to this mail</span>" +
+                              "<span style='color:black;font-size:10px;'> as this automatically generated mail. For any clarification contact " + strContactNo + ".</span>" +
+                              "</div>" +
+                              "</body>" +
+                              "</html>";
             }
             else if(strStatus.Trim() == Globals.PAID.ToString().Trim())
             {
@@ -98,7 +182,35 @@ namespace api_rate.Helpers
             }
             else if(strStatus == "Supervisor")
             {
-                strMsgBody = "A supervisor is assigned";
+                strMsgBody = "<html>" +
+                              "<head>" +
+                              "<meta http-equiv=Content-Type content=text/html; charset=utf-8 />" +
+                              "<title> </title>" +
+
+                              "<style> .divStyle1 { font-family: Arial; font-size: 12px; color: black; } </style>" +
+
+                              "</head>" +
+
+                              "<body>" +
+
+                              "<div class='row divStyle1'>" +
+                              "<pre>" +
+                              "Hello, <br/>" +
+
+                              "A supervisor is assigned to your fire certificate application and will be visiting the premises. <br/>" +
+
+
+                              "Thank You. <br/>" +
+                              "" + strCouncil + "" +
+                              "</pre>" +
+                              "<br/>" +
+                              "</div>" +
+
+                              "<span style='color:red;font-size:10px;'>Note: Please DO NOT REPLY to this mail</span>" +
+                              "<span style='color:black;font-size:10px;'> as this automatically generated mail. For any clarification contact " + strContactNo + ".</span>" +
+                              "</div>" +
+                              "</body>" +
+                              "</html>";
             }
 
             return strMsgBody;
