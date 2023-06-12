@@ -186,10 +186,13 @@
     <Compile Include="Controllers\ChargesController.cs" />
     <Compile Include="Controllers\FireAppAllController.cs" />
     <Compile Include="Controllers\FireAppApproveController.cs" />
+    <Compile Include="Controllers\FireAppApprovedByDateController.cs" />
     <Compile Include="Controllers\FireAppByIdController.cs" />
     <Compile Include="Controllers\FireAppByStatusController.cs" />
     <Compile Include="Controllers\FireAppByUserIdController.cs" />
+    <Compile Include="Controllers\FireAppPendingByDateController.cs" />
     <Compile Include="Controllers\FireAppRejectController.cs" />
+    <Compile Include="Controllers\FireAppRejectedByDateController.cs" />
     <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="Controllers\SuperAppAllController.cs" />
     <Compile Include="Controllers\SuperAppByFireIdController.cs" />

@@ -25,5 +25,7 @@ namespace api_rate.Models
         public string DateReviewed { get; set; }
         public string ClientID { get; set; }
         public string Supervisor { get; set; }
+        public string StartDate { get; set; }
+        public string EndDate { get; set; }
     }
 }

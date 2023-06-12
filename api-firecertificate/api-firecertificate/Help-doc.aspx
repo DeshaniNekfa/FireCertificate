@@ -2621,35 +2621,6 @@
                             <br />
 
                             <div class="row">
-                                <div class="col-sm-2 ">DayManpower</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    Manpower in day time
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">int</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "DayManpower": 10
-                                    }
-                                </div>
-
-                            </div>
-                            <br />
-
-                            <div class="row">
                                 <div class="col-sm-2 ">NightManpower</div>
                                 <div class="col-sm-2 ">Description</div>
                                 <div class="col-sm-8 ">
