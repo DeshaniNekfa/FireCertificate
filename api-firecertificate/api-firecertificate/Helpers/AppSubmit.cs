@@ -215,7 +215,7 @@ namespace api_rate.Helpers
 
                     if (this.mySqlCon != null)
                     {
-                        strSql = "INSERT INTO tbl_firecertificate_application(CertificateId, CompanyName, Address, Telephone, DistanceFromCouncil, NatureOfBusiness, BuildingPlan, TotalLand, RoadFromCouncil, OwnerName, CurrentFirePlan, Status, Email, Supervisor, DateApplied, user) VALUES (@CertificateId, @CompanyName, @Address, @Telephone, @DistanceFromCouncil, @NatureOfBusiness, @BuildingPlan, @TotalLand, @RoadFromCouncil, @OwnerName, @CurrentFirePlan, @Status, @Email, @Supervisor, @DateApplied, @user); UPDATE tbl_firecertificate_index SET NextApplicationId=(NextApplicationId + 1);";
+                        strSql = "INSERT INTO tbl_firecertificate_application(CertificateId, CompanyName, Address, Telephone, DistanceFromCouncil, NatureOfBusiness, BuildingPlan, TotalLand, RoadFromCouncil, OwnerName, CurrentFirePlan, Status, Email, Supervisor, DateApplied, DateReviewed, user) VALUES (@CertificateId, @CompanyName, @Address, @Telephone, @DistanceFromCouncil, @NatureOfBusiness, @BuildingPlan, @TotalLand, @RoadFromCouncil, @OwnerName, @CurrentFirePlan, @Status, @Email, @Supervisor, @DateApplied, @DateReviewed, @user); UPDATE tbl_firecertificate_index SET NextApplicationId=(NextApplicationId + 1);";
                         cmd = new MySqlCommand(strSql, this.mySqlCon, this.mySqlTrans);
                         cmd.Parameters.AddWithValue("@CertificateId", certId.ToString().Trim());
                         cmd.Parameters.AddWithValue("@CompanyName", objFireAppDetails.CompanyName);
@@ -232,6 +232,7 @@ namespace api_rate.Helpers
                         cmd.Parameters.AddWithValue("@Email", objFireAppDetails.Email);
                         cmd.Parameters.AddWithValue("@Supervisor", "");
                         cmd.Parameters.AddWithValue("@DateApplied", DateTime.Now.ToString("yyyy-MM-dd").Trim());
+                        cmd.Parameters.AddWithValue("@DateReviewed", "");
                         cmd.Parameters.AddWithValue("@user", objFireAppDetails.ClientID);
                         cmd.ExecuteNonQuery();
                         isSaved = true;

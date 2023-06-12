@@ -22,7 +22,7 @@
             border-radius: 4px;
         }
         .left-div {
-            height: 90%;
+            height: 80%;
             top: 0;
             bottom: 0;
             z-index: 3;
@@ -37,7 +37,7 @@
 <body>
     <form id="form1" runat="server">
         <div class="row">
-            <div class="col-md-2 left-div">
+            <div class="col-md-2 left-div" > <!--style="height: 7000px; overflow-y: scroll; overflow-x: hidden;"-->
 
 
                 <%--<div><a href="#intro">Introduction</a></div>--%>
@@ -46,26 +46,26 @@
 
                 <div><asp:Label ID="lblGetData" runat="server" Text="To Get Data" Font-Bold="true" Font-Size="Larger"></asp:Label></div>
 
-                <div><a href="#apiFireApp">01. Get Municipal Applications List</a></div>
-                <div><a href="#apiFireAppById">02. Get Municipal Applications By Id</a></div>
-                <div><a href="#apiFireAppByStatus">03. Get Municipal Applications By Status</a></div>
-                <div><a href="#apiFireAppUId">04. Get Municipal Applications By User</a></div>
-                <div><a href="#apiSuperApp">05. Get All Fire Department Applications</a></div>
-                <div><a href="#apiSuperAppByCertId">06. Get Fire Department Applications by Certifitate Id</a></div>
+                <div><a href="#apiFireApp" style="color:orange!important; font-size:small">01. Get Municipal Applications List</a></div>
+                <div><a href="#apiFireAppById" style="color:orange!important; font-size:small">02. Get Municipal Applications By Id</a></div>
+                <div><a href="#apiFireAppByStatus" style="color:orange!important; font-size:small" >03. Get Municipal Applications By Status</a></div>
+                <div><a href="#apiFireAppUId" style="color:orange!important; font-size:small" >04. Get Municipal Applications By User</a></div>
+                <div><a href="#apiSuperApp" style="color:orange!important; font-size:small" >05. Get All Fire Department Applications</a></div>
+                <div><a href="#apiSuperAppByCertId" style="color:orange!important; font-size:small" >06. Get Fire Department Applications by Certifitate Id</a></div>
                 <br />
-                <div><a href="#apiFireAppSubmit">07. Submit Municipal Application</a></div>                
-                <div><a href="#apiSuperAppSubmit">08. Submit Fire Department Application</a></div>
+                <div><a href="#apiFireAppSubmit" style=" font-size:small">07. Submit Municipal Application</a></div>                
+                <div><a href="#apiSuperAppSubmit" style=" font-size:small">08. Submit Fire Department Application</a></div>
                 <br />
-                <div><a href="#apiAppApprove">09. Approve Municipal Application</a></div>
-                <div><a href="#apiAppReject">10. Reject Municipal Application</a></div>
-                <div><a href="#apiAssignSupervisor">11. Assign Supervisor</a></div>
+                <div><a href="#apiAppApprove" style="color:red!important; font-size:small" >09. Approve Municipal Application</a></div>
+                <div><a href="#apiAppReject" style="color:red!important; font-size:small" >10. Reject Municipal Application</a></div>
+                <div><a href="#apiAssignSupervisor" style="color:red!important; font-size:small" >11. Assign Supervisor</a></div>
                 <br />
-                <div><a href="#apiChargebyId">12. Charges</a></div>
-                <div><a href="#apiPaymentSubmit">13. Submit Payment</a></div>
+                <div><a href="#apiChargebyId" style=" font-size:small">12. Charges</a></div>
+                <div><a href="#apiPaymentSubmit" style=" font-size:small">13. Submit Payment</a></div>
                 <br />
-                <div><a href="#apiPendingbyDate">14. Pending Municipal applications by date</a></div>
-                <div><a href="#apiApprovedbyDate">15. Approved Municipal applications by date</a></div>
-                <div><a href="#apiRejectedbyDate">16. Rejected Municipal applications by date</a></div>
+                <div><a href="#apiPendingbyDate" style="color:orange!important; font-size:small" >14. Pending Municipal applications by date</a></div>
+                <div><a href="#apiApprovedbyDate" style="color:orange!important; font-size:small" >15. Approved Municipal applications by date</a></div>
+                <div><a href="#apiRejectedbyDate" style="color:orange!important; font-size:small" >16. Rejected Municipal applications by date</a></div>
                 <%--<div><a href="#copyright">Copyrights</a></div>--%>
 
             </div>
@@ -372,7 +372,7 @@
                                 <div class="col-sm-3 ">Response values</div>
                                 <div class="col-sm-9">
                                     { 
-                                    &nbsp;&nbsp;"ListFireApplication": [
+                                    &nbsp;&nbsp;"FireApplication": [
                                     <br />
                                     &nbsp;&nbsp;&nbsp;&nbsp; {
                                     <br />

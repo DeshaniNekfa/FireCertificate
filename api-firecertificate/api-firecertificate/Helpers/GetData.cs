@@ -74,8 +74,12 @@ namespace api_rate.Helpers
                                 objFireAppDetails.OwnerName = dtRow["OwnerName"].ToString().Trim();
                                 objFireAppDetails.CurrentFirePlan = dtRow["CurrentFirePlan"].ToString().Trim();
                                 objFireAppDetails.Status = dtRow["Status"].ToString().Trim();
-                                objFireAppDetails.DateApplied = dtRow["DateApplied"].ToString().Trim();
-                                objFireAppDetails.DateReviewed = dtRow["DateReviewed"].ToString().Trim();
+                                var appDate = (DateTime)dtRow["DateApplied"];
+                                objFireAppDetails.DateApplied = appDate.ToString("yyyy-MM-dd");
+
+                                var revDate = (DateTime)dtRow["DateReviewed"];
+                                objFireAppDetails.DateReviewed = revDate.ToString("yyyy-MM-dd");
+
                                 objFireAppDetails.Supervisor = dtRow["Supervisor"].ToString().Trim();
                                 objFireApplication = objFireAppDetails;
                             }
@@ -155,8 +159,10 @@ namespace api_rate.Helpers
                                 objFireAppDetails.OwnerName = dtRow["OwnerName"].ToString().Trim();
                                 objFireAppDetails.CurrentFirePlan = dtRow["CurrentFirePlan"].ToString().Trim();
                                 objFireAppDetails.Status = dtRow["Status"].ToString().Trim();
-                                objFireAppDetails.DateApplied = dtRow["DateApplied"].ToString().Trim();
-                                objFireAppDetails.DateReviewed = dtRow["DateReviewed"].ToString().Trim();
+                                var appDate = (DateTime)dtRow["DateApplied"];
+                                objFireAppDetails.DateApplied = appDate.ToString("yyyy-MM-dd");
+                                var revDate = (DateTime)dtRow["DateReviewed"];
+                                objFireAppDetails.DateReviewed = revDate.ToString("yyyy-MM-dd");
                                 objFireAppDetails.Supervisor = dtRow["Supervisor"].ToString().Trim();
 
                                 objFireApplication = objFireAppDetails;
@@ -237,8 +243,10 @@ namespace api_rate.Helpers
                                 objFireAppDetails.OwnerName = dtRow["OwnerName"].ToString().Trim();
                                 objFireAppDetails.CurrentFirePlan = dtRow["CurrentFirePlan"].ToString().Trim();
                                 objFireAppDetails.Status = dtRow["Status"].ToString().Trim();
-                                objFireAppDetails.DateApplied = dtRow["DateApplied"].ToString().Trim();
-                                objFireAppDetails.DateReviewed = dtRow["DateReviewed"].ToString().Trim();
+                                var appDate = (DateTime)dtRow["DateApplied"];
+                                objFireAppDetails.DateApplied = appDate.ToString("yyyy-MM-dd");
+                                var revDate = (DateTime)dtRow["DateReviewed"];
+                                objFireAppDetails.DateReviewed = revDate.ToString("yyyy-MM-dd");
                                 objFireAppDetails.Supervisor = dtRow["Supervisor"].ToString().Trim();
 
                                 lstFireApplication.Add(objFireAppDetails);
@@ -389,8 +397,10 @@ namespace api_rate.Helpers
                                 objFireAppDetails.Email = dtRow["Email"].ToString().Trim();
                                 objFireAppDetails.Supervisor = dtRow["Supervisor"].ToString().Trim();
                                 objFireAppDetails.Status = dtRow["Status"].ToString().Trim();
-                                objFireAppDetails.DateApplied = dtRow["DateApplied"].ToString().Trim();
-                                objFireAppDetails.DateReviewed = dtRow["DateReviewed"].ToString().Trim();
+                                var appDate = (DateTime)dtRow["DateApplied"];
+                                objFireAppDetails.DateApplied = appDate.ToString("yyyy-MM-dd");
+                                var revDate = (DateTime)dtRow["DateReviewed"];
+                                objFireAppDetails.DateReviewed = revDate.ToString("yyyy-MM-dd");
                                 objFireAppDetails.Supervisor = dtRow["Supervisor"].ToString().Trim();
 
                                 lstFireApplication.Add(objFireAppDetails);
@@ -474,8 +484,10 @@ namespace api_rate.Helpers
                                 objFireAppDetails.Status = dtRow["Status"].ToString().Trim();
                                 objFireAppDetails.Email = dtRow["Email"].ToString().Trim();
                                 objFireAppDetails.Supervisor = dtRow["User"].ToString().Trim();
-                                objFireAppDetails.DateApplied = dtRow["DateApplied"].ToString().Trim();
-                                objFireAppDetails.DateReviewed = dtRow["DateReviewed"].ToString().Trim();
+                                var appDate = (DateTime)dtRow["DateApplied"];
+                                objFireAppDetails.DateApplied = appDate.ToString("yyyy-MM-dd");
+                                var revDate = (DateTime)dtRow["DateReviewed"];
+                                objFireAppDetails.DateReviewed = revDate.ToString("yyyy-MM-dd");
                                 objFireAppDetails.Supervisor = dtRow["Supervisor"].ToString().Trim();
 
                                 lstFireApplication.Add(objFireAppDetails);
@@ -955,8 +967,10 @@ namespace api_rate.Helpers
                                 objFireAppDetails.OwnerName = dtRow["OwnerName"].ToString().Trim();
                                 objFireAppDetails.CurrentFirePlan = dtRow["CurrentFirePlan"].ToString().Trim();
                                 objFireAppDetails.Status = dtRow["Status"].ToString().Trim();
-                                objFireAppDetails.DateApplied = dtRow["DateApplied"].ToString().Trim();
-                                objFireAppDetails.DateReviewed = dtRow["DateReviewed"].ToString().Trim();
+                                var appDate = (DateTime)dtRow["DateApplied"];
+                                objFireAppDetails.DateApplied = appDate.ToString("yyyy-MM-dd");
+                                var revDate = (DateTime)dtRow["DateReviewed"];
+                                objFireAppDetails.DateReviewed = revDate.ToString("yyyy-MM-dd");
                                 objFireAppDetails.Supervisor = dtRow["Supervisor"].ToString().Trim();
 
                                 lstFireApplication.Add(objFireAppDetails);
