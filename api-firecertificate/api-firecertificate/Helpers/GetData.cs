@@ -78,7 +78,15 @@ namespace api_rate.Helpers
                                 objFireAppDetails.DateApplied = appDate.ToString("yyyy-MM-dd");
 
                                 var revDate = (DateTime)dtRow["DateReviewed"];
-                                objFireAppDetails.DateReviewed = revDate.ToString("yyyy-MM-dd");
+                                if (revDate == DateTime.MinValue)
+                                {
+                                    objFireAppDetails.DateReviewed = "";
+                                }
+                                else
+                                {
+                                    objFireAppDetails.DateReviewed = revDate.ToString("yyyy-MM-dd");
+
+                                }
 
                                 objFireAppDetails.Supervisor = dtRow["Supervisor"].ToString().Trim();
                                 objFireApplication = objFireAppDetails;
@@ -162,7 +170,15 @@ namespace api_rate.Helpers
                                 var appDate = (DateTime)dtRow["DateApplied"];
                                 objFireAppDetails.DateApplied = appDate.ToString("yyyy-MM-dd");
                                 var revDate = (DateTime)dtRow["DateReviewed"];
-                                objFireAppDetails.DateReviewed = revDate.ToString("yyyy-MM-dd");
+                                if (revDate == DateTime.MinValue)
+                                {
+                                    objFireAppDetails.DateReviewed = "";
+                                }
+                                else
+                                {
+                                    objFireAppDetails.DateReviewed = revDate.ToString("yyyy-MM-dd");
+
+                                }
                                 objFireAppDetails.Supervisor = dtRow["Supervisor"].ToString().Trim();
 
                                 objFireApplication = objFireAppDetails;
@@ -246,7 +262,15 @@ namespace api_rate.Helpers
                                 var appDate = (DateTime)dtRow["DateApplied"];
                                 objFireAppDetails.DateApplied = appDate.ToString("yyyy-MM-dd");
                                 var revDate = (DateTime)dtRow["DateReviewed"];
-                                objFireAppDetails.DateReviewed = revDate.ToString("yyyy-MM-dd");
+                                if (revDate == DateTime.MinValue)
+                                {
+                                    objFireAppDetails.DateReviewed = "";
+                                }
+                                else
+                                {
+                                    objFireAppDetails.DateReviewed = revDate.ToString("yyyy-MM-dd");
+
+                                }
                                 objFireAppDetails.Supervisor = dtRow["Supervisor"].ToString().Trim();
 
                                 lstFireApplication.Add(objFireAppDetails);
@@ -400,7 +424,15 @@ namespace api_rate.Helpers
                                 var appDate = (DateTime)dtRow["DateApplied"];
                                 objFireAppDetails.DateApplied = appDate.ToString("yyyy-MM-dd");
                                 var revDate = (DateTime)dtRow["DateReviewed"];
-                                objFireAppDetails.DateReviewed = revDate.ToString("yyyy-MM-dd");
+                                if (revDate == DateTime.MinValue)
+                                {
+                                    objFireAppDetails.DateReviewed = "";
+                                }
+                                else
+                                {
+                                    objFireAppDetails.DateReviewed = revDate.ToString("yyyy-MM-dd");
+
+                                }
                                 objFireAppDetails.Supervisor = dtRow["Supervisor"].ToString().Trim();
 
                                 lstFireApplication.Add(objFireAppDetails);
@@ -487,7 +519,15 @@ namespace api_rate.Helpers
                                 var appDate = (DateTime)dtRow["DateApplied"];
                                 objFireAppDetails.DateApplied = appDate.ToString("yyyy-MM-dd");
                                 var revDate = (DateTime)dtRow["DateReviewed"];
-                                objFireAppDetails.DateReviewed = revDate.ToString("yyyy-MM-dd");
+                                if (revDate == DateTime.MinValue)
+                                {
+                                    objFireAppDetails.DateReviewed = "";
+                                }
+                                else
+                                {
+                                    objFireAppDetails.DateReviewed = revDate.ToString("yyyy-MM-dd");
+
+                                }
                                 objFireAppDetails.Supervisor = dtRow["Supervisor"].ToString().Trim();
 
                                 lstFireApplication.Add(objFireAppDetails);
@@ -970,7 +1010,14 @@ namespace api_rate.Helpers
                                 var appDate = (DateTime)dtRow["DateApplied"];
                                 objFireAppDetails.DateApplied = appDate.ToString("yyyy-MM-dd");
                                 var revDate = (DateTime)dtRow["DateReviewed"];
-                                objFireAppDetails.DateReviewed = revDate.ToString("yyyy-MM-dd");
+                                if (revDate == DateTime.MinValue)
+                                {
+                                    objFireAppDetails.DateReviewed = "";
+                                }
+                                else
+                                {
+                                    objFireAppDetails.DateReviewed = revDate.ToString("yyyy-MM-dd");
+                                }
                                 objFireAppDetails.Supervisor = dtRow["Supervisor"].ToString().Trim();
 
                                 lstFireApplication.Add(objFireAppDetails);
