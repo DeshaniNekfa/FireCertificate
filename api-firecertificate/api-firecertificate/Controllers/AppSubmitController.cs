@@ -28,19 +28,22 @@ namespace api_rate.Controllers
         }
 
         // POST api/AppSubmit
-        public ReturnMsgInfo Post([FromBody]FireCertificateApplication objApplicationDetails)
+        public ReturnMsgInfo Post([FromBody]CompleteApp objCompleteDetails)
         {
             ReturnMsgInfo objReturnMsg = new ReturnMsgInfo();
             try
             {
                 //validation
-                if (_appsubmit.ValidateApplication(objApplicationDetails, ref objReturnMsg))
+                var valFireApp = _appsubmit.ValidateApplication(objCompleteDetails.fireCertificateApp, ref objReturnMsg);
+                var valSuperApp = _appsubmit.ValidateSupervisorApplication(objCompleteDetails.fireSuperApp, ref objReturnMsg);
+
+                if (valFireApp && valSuperApp)
                 {
-                    //App Update if CertID not available
-                    if (objApplicationDetails.CertificateId == null || objApplicationDetails.CertificateId == "")
+                    //App Save if CertID not available
+                    if (objCompleteDetails.fireCertificateApp.CertificateId == null || objCompleteDetails.fireCertificateApp.CertificateId == "")
                     {
                         //application submit
-                        _appsubmit.SaveApplication(objApplicationDetails, ref objReturnMsg);
+                        _appsubmit.SubmitApplication(objCompleteDetails, ref objReturnMsg);
                         if (objReturnMsg.ReturnValue == "OK")
                         {
                             objReturnMsg.ReturnValue = "OK";
@@ -70,17 +73,17 @@ namespace api_rate.Controllers
                     }
                     else
                     {
-                        _appsubmit.UpdateFireCertificate(objApplicationDetails, ref objReturnMsg);
+                        //_appsubmit.UpdateFireCertificate(objApplicationDetails, ref objReturnMsg);
 
-                        if (objReturnMsg.ReturnValue == "OK")
-                        {
-                            objReturnMsg.ReturnValue = "OK";
-                            objReturnMsg.ReturnMessage = "Application Successfully updated.";
-                        }
-                        else
-                        {
-                            throw new Exception("Error occured updating application");
-                        }
+                        //if (objReturnMsg.ReturnValue == "OK")
+                        //{
+                        //    objReturnMsg.ReturnValue = "OK";
+                        //    objReturnMsg.ReturnMessage = "Application Successfully updated.";
+                        //}
+                        //else
+                        //{
+                        //    throw new Exception("Error occured updating application");
+                        //}
                     }                                      
 
                 }

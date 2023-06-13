@@ -38,5 +38,8 @@ namespace api_rate.Helpers
 
         // Update Municipal Application
         bool UpdateFireCertificate(FireCertificateApplication objFireApp, ref ReturnMsgInfo objReturnMsg);
+    
+        // Submit complete Application
+        bool SubmitApplication(CompleteApp objCompleteApp, ref ReturnMsgInfo objReturnMsg);
     }
 }

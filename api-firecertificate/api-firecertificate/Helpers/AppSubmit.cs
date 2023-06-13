@@ -185,11 +185,11 @@ namespace api_rate.Helpers
         public bool SaveApplication(FireCertificateApplication objFireAppDetails, ref ReturnMsgInfo returnMsg)
         {
             bool isSaved = false;
-            Index objIndex = new Index();
+            //Index objIndex = new Index();
             this.objConMain = new Connection_Main();
 
-            objIndex = GetIndexes(objFireAppDetails, ref returnMsg);
-            var certId = objIndex.Code.ToString().Trim() + objIndex.NextId.ToString().Trim();
+            //objIndex = GetIndexes(objFireAppDetails, ref returnMsg);
+            //var certId = objIndex.Code.ToString().Trim() + objIndex.NextId.ToString().Trim();
 
             try
             {
@@ -217,7 +217,7 @@ namespace api_rate.Helpers
                     {
                         strSql = "INSERT INTO tbl_firecertificate_application(CertificateId, CompanyName, Address, Telephone, DistanceFromCouncil, NatureOfBusiness, BuildingDescription ,BuildingPlan, TotalLand, RoadFromCouncil, OwnerName, CurrentFirePlan, Status, Email, Supervisor, DateApplied, DateReviewed, user) VALUES (@CertificateId, @CompanyName, @Address, @Telephone, @DistanceFromCouncil, @NatureOfBusiness, @BuildingDescription,@BuildingPlan, @TotalLand, @RoadFromCouncil, @OwnerName, @CurrentFirePlan, @Status, @Email, @Supervisor, @DateApplied, @DateReviewed, @user); UPDATE tbl_firecertificate_index SET NextApplicationId=(NextApplicationId + 1);";
                         cmd = new MySqlCommand(strSql, this.mySqlCon, this.mySqlTrans);
-                        cmd.Parameters.AddWithValue("@CertificateId", certId.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@CertificateId", objFireAppDetails.CertificateId.ToString().Trim());
                         cmd.Parameters.AddWithValue("@CompanyName", objFireAppDetails.CompanyName);
                         cmd.Parameters.AddWithValue("@Address", objFireAppDetails.Address);
                         cmd.Parameters.AddWithValue("@Telephone", objFireAppDetails.Telephone);
@@ -1051,6 +1051,28 @@ namespace api_rate.Helpers
             }
 
             return isUpdated; 
+        }
+
+        // Submit complete Application
+        public bool SubmitApplication(CompleteApp objCompleteApp, ref ReturnMsgInfo objReturnMsg)
+        {
+            bool isSaved = true; 
+            Index objIndex = new Index();
+            objIndex = GetIndexes(objCompleteApp.fireCertificateApp, ref objReturnMsg);
+            var certId = objIndex.Code.ToString().Trim() + objIndex.NextId.ToString().Trim();
+
+            objCompleteApp.fireCertificateApp.CertificateId = certId;
+            objCompleteApp.fireSuperApp.CertificateId = certId;
+
+            bool fireAppSave = SaveApplication(objCompleteApp.fireCertificateApp, ref objReturnMsg);
+            bool superAppSave = SaveSupervisorApplication(objCompleteApp.fireSuperApp, ref objReturnMsg);
+
+            if (fireAppSave && superAppSave)
+            {
+                isSaved = true;
+            }
+
+            return isSaved;
         }
     }
 }
