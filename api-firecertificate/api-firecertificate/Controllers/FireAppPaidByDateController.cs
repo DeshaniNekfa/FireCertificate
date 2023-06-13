@@ -11,16 +11,16 @@ using System.Web.Http;
 namespace api_rate.Controllers
 {
     [JwtCustomAuth]
-    public class FireAppAssignedByDateController : ApiController
+    public class FireAppPaidByDateController : ApiController
     {
         private IGetData _getData = null;
 
-        public FireAppAssignedByDateController(IGetData IGetData)
+        public FireAppPaidByDateController(IGetData IGetData)
         {
             _getData = IGetData;
         }
 
-        // POST api/FireAppAssignedByDate
+        // POST api/FireAppPaidByDate
         public FireAppDetailsOutput Post([FromBody]FireCertificateApplication objFireApplication)
         {
             FireAppDetailsOutput objFireAppOutput = new FireAppDetailsOutput();
@@ -45,7 +45,7 @@ namespace api_rate.Controllers
                 }
                 else
                 {
-                    objFireApplication.Status = Globals.ASSIGNED.ToString().Trim();
+                    objFireApplication.Status = Globals.PAID.ToString().Trim();
 
                     lstFireApplication = _getData.GetAppDetailsByDate(objFireApplication, ref objReturnMsg);
 
