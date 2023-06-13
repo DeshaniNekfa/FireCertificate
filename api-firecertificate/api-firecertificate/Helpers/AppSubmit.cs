@@ -851,6 +851,7 @@ namespace api_rate.Helpers
         public bool AddPayment(PaymentDetails objPayment, ref ReturnMsgInfo objReturnMsg)
         {
             bool isSaved = false;
+
             this.objConMain = new Connection_Main();
             try
             {
@@ -876,7 +877,15 @@ namespace api_rate.Helpers
 
                     if (this.mySqlCon != null)
                     {
-                        strSql = "INSERT INTO tbl_firecertificate_payment_details( CertificateId ,Note ,TotAmt ,User ,Date ,PaymentType ,PaidDescription ,PaymentID ,BillNo)VALUES( @CertificateId ,@Note ,@TotAmt ,@User ,@Date ,@PaymentType ,@PaidDescription ,@PaymentID ,@BillNo); UPDATE tbl_firecertificate_application SET Status = 'Paid' WHERE CertificateId = @CertificateId;";
+                        if (objPayment.PaidDescription == Globals.INSPECTION.ToString().Trim())
+                        {
+                            strSql = "INSERT INTO tbl_firecertificate_payment_details( CertificateId ,Note ,TotAmt ,User ,Date ,PaymentType ,PaidDescription ,PaymentID ,BillNo)VALUES( @CertificateId ,@Note ,@TotAmt ,@User ,@Date ,@PaymentType ,@PaidDescription ,@PaymentID ,@BillNo); UPDATE tbl_firecertificate_application SET Status = '" + Globals.PAID.ToString().Trim() + "' WHERE CertificateId = @CertificateId;";
+                        }
+                        else if (objPayment.PaidDescription == Globals.ANNUAL.ToString().Trim())
+                        {
+                            strSql = "INSERT INTO tbl_firecertificate_payment_details( CertificateId ,Note ,TotAmt ,User ,Date ,PaymentType ,PaidDescription ,PaymentID ,BillNo)VALUES( @CertificateId ,@Note ,@TotAmt ,@User ,@Date ,@PaymentType ,@PaidDescription ,@PaymentID ,@BillNo); UPDATE tbl_firecertificate_application SET Status = '" + Globals.ISSUED.ToString().Trim() + "' WHERE CertificateId = @CertificateId;";
+                        }
+
                         cmd = new MySqlCommand(strSql, this.mySqlCon, this.mySqlTrans);
                         cmd.Parameters.AddWithValue("@CertificateId", objPayment.CertificateId);
                         cmd.Parameters.AddWithValue("@Note", objPayment.Note);
@@ -1043,6 +1052,6 @@ namespace api_rate.Helpers
             }
 
             return isUpdated; 
-        } 
+        }
     }
 }
