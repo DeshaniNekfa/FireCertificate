@@ -15,6 +15,7 @@ namespace api_rate.Models
         public int DistanceFromCouncil { get; set; }
         public string NatureOfBusiness { get; set; }
         public string BuildingPlan { get; set; }
+        public string BuildingDescription { get; set; }
         public int TotalLand { get; set; }
         public string RoadFromCouncil { get; set; }
         public string OwnerName { get; set; }
