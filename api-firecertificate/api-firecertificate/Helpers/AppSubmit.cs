@@ -215,7 +215,7 @@ namespace api_rate.Helpers
 
                     if (this.mySqlCon != null)
                     {
-                        strSql = "INSERT INTO tbl_firecertificate_application(CertificateId, CompanyName, Address, Telephone, DistanceFromCouncil, NatureOfBusiness, BuildingPlan, TotalLand, RoadFromCouncil, OwnerName, CurrentFirePlan, Status, Email, Supervisor, DateApplied, DateReviewed, user) VALUES (@CertificateId, @CompanyName, @Address, @Telephone, @DistanceFromCouncil, @NatureOfBusiness, @BuildingPlan, @TotalLand, @RoadFromCouncil, @OwnerName, @CurrentFirePlan, @Status, @Email, @Supervisor, @DateApplied, @DateReviewed, @user); UPDATE tbl_firecertificate_index SET NextApplicationId=(NextApplicationId + 1);";
+                        strSql = "INSERT INTO tbl_firecertificate_application(CertificateId, CompanyName, Address, Telephone, DistanceFromCouncil, NatureOfBusiness, BuildingDescription ,BuildingPlan, TotalLand, RoadFromCouncil, OwnerName, CurrentFirePlan, Status, Email, Supervisor, DateApplied, DateReviewed, user) VALUES (@CertificateId, @CompanyName, @Address, @Telephone, @DistanceFromCouncil, @NatureOfBusiness, @BuildingDescription,@BuildingPlan, @TotalLand, @RoadFromCouncil, @OwnerName, @CurrentFirePlan, @Status, @Email, @Supervisor, @DateApplied, @DateReviewed, @user); UPDATE tbl_firecertificate_index SET NextApplicationId=(NextApplicationId + 1);";
                         cmd = new MySqlCommand(strSql, this.mySqlCon, this.mySqlTrans);
                         cmd.Parameters.AddWithValue("@CertificateId", certId.ToString().Trim());
                         cmd.Parameters.AddWithValue("@CompanyName", objFireAppDetails.CompanyName);
@@ -223,6 +223,7 @@ namespace api_rate.Helpers
                         cmd.Parameters.AddWithValue("@Telephone", objFireAppDetails.Telephone);
                         cmd.Parameters.AddWithValue("@DistanceFromCouncil", objFireAppDetails.DistanceFromCouncil);
                         cmd.Parameters.AddWithValue("@NatureOfBusiness", objFireAppDetails.NatureOfBusiness);
+                        cmd.Parameters.AddWithValue("@BuildingDescription", objFireAppDetails.BuildingDescription);
                         cmd.Parameters.AddWithValue("@BuildingPlan", objFireAppDetails.BuildingPlan);
                         cmd.Parameters.AddWithValue("@TotalLand", objFireAppDetails.TotalLand);
                         cmd.Parameters.AddWithValue("@RoadFromCouncil", objFireAppDetails.RoadFromCouncil);
@@ -1025,7 +1026,7 @@ namespace api_rate.Helpers
 
                     if (this.mySqlCon != null)
                     {
-                        strSql = "UPDATE tbl_firecertificate_application SET CompanyName='"+objFireApp.CompanyName+"',Address='"+objFireApp.Address+"',Telephone='"+objFireApp.Telephone+"',DistanceFromCouncil='"+objFireApp.DistanceFromCouncil+"',NatureOfBusiness='"+objFireApp.NatureOfBusiness+"' ,BuildingPlan = '"+objFireApp.BuildingPlan+"',TotalLand='"+objFireApp.TotalLand+"' ,RoadFromCouncil='"+objFireApp.RoadFromCouncil+"',OwnerName='"+objFireApp.OwnerName+"' ,CurrentFirePlan='"+objFireApp.CurrentFirePlan+"',Email='"+objFireApp.Email+"' ,Supervisor='' ,DateApplied='"+DateTime.Now.ToString("yyyy-MM-dd").Trim()+"',DateReviewed='' ,user = '"+objFireApp.ClientID+"' WHERE CertificateId = '"+objFireApp.CertificateId+"';";
+                        strSql = "UPDATE tbl_firecertificate_application SET CompanyName='" + objFireApp.CompanyName + "',Address='" + objFireApp.Address + "',Telephone='" + objFireApp.Telephone + "',DistanceFromCouncil='" + objFireApp.DistanceFromCouncil + "',NatureOfBusiness='" + objFireApp.NatureOfBusiness + "', BuildingDescription = '"+objFireApp.BuildingDescription+"' ,BuildingPlan = '" + objFireApp.BuildingPlan + "',TotalLand='" + objFireApp.TotalLand + "' ,RoadFromCouncil='" + objFireApp.RoadFromCouncil + "',OwnerName='" + objFireApp.OwnerName + "' ,CurrentFirePlan='" + objFireApp.CurrentFirePlan + "',Email='" + objFireApp.Email + "' ,Supervisor='' ,DateApplied='" + DateTime.Now.ToString("yyyy-MM-dd").Trim() + "',DateReviewed='' ,user = '" + objFireApp.ClientID + "' WHERE CertificateId = '" + objFireApp.CertificateId + "';";
                         cmd = new MySqlCommand(strSql, this.mySqlCon, this.mySqlTrans);
                         cmd.ExecuteNonQuery();
                         isUpdated = true;

@@ -36,22 +36,8 @@ namespace api_rate.Controllers
                 //validation
                 if (_appsubmit.ValidateApplication(objApplicationDetails, ref objReturnMsg))
                 {
-                    //App Update if CertID available
-                    if (objApplicationDetails.CertificateId != null || objApplicationDetails.CertificateId != "")
-                    {
-                        _appsubmit.UpdateFireCertificate(objApplicationDetails, ref objReturnMsg);
-
-                        if (objReturnMsg.ReturnValue == "OK")
-                        {
-                            objReturnMsg.ReturnValue = "OK";
-                            objReturnMsg.ReturnMessage = "Application Successfully updated.";
-                        }
-                        else
-                        {
-                            throw new Exception("Error occured updating application");
-                        }
-                    }
-                    else
+                    //App Update if CertID not available
+                    if (objApplicationDetails.CertificateId == null || objApplicationDetails.CertificateId == "")
                     {
                         //application submit
                         _appsubmit.SaveApplication(objApplicationDetails, ref objReturnMsg);
@@ -80,6 +66,20 @@ namespace api_rate.Controllers
                         else
                         {
                             throw new Exception("Error occured saving application");
+                        }                       
+                    }
+                    else
+                    {
+                        _appsubmit.UpdateFireCertificate(objApplicationDetails, ref objReturnMsg);
+
+                        if (objReturnMsg.ReturnValue == "OK")
+                        {
+                            objReturnMsg.ReturnValue = "OK";
+                            objReturnMsg.ReturnMessage = "Application Successfully updated.";
+                        }
+                        else
+                        {
+                            throw new Exception("Error occured updating application");
                         }
                     }                                      
 

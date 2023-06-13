@@ -27,6 +27,7 @@ namespace api_rate.Controllers
             List<PaymentDetails> lstPayment = new List<PaymentDetails>();
             PaymentDetails objPayment = new PaymentDetails();
             ReturnMsgInfo objReturnMsg = new ReturnMsgInfo();
+            ReturnMsgInfo objPayReturnMsg = new ReturnMsgInfo();
             List<FireCertificateApplication> lstFireApplication = new List<FireCertificateApplication>();
 
             try
@@ -53,7 +54,7 @@ namespace api_rate.Controllers
                     foreach (FireCertificateApplication FireApp in lstFireApplication)
                     {
                         FireApp.ClientID = objFireApplication.ClientID;
-                        objPayment = _getData.GetPaymentDetails(FireApp, ref objReturnMsg);
+                        objPayment = _getData.GetPaymentDetails(FireApp, ref objPayReturnMsg);
                         lstPayment.Add(objPayment);
                     }
 
