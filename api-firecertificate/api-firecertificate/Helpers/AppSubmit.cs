@@ -276,12 +276,12 @@ namespace api_rate.Helpers
             }
 
             // CertificateId
-            if (objFireSuperApp.CertificateId == null || objFireSuperApp.CertificateId == "")
-            {
-                returnMsg.ReturnValue = "Error";
-                returnMsg.ReturnMessage = "Invalid Certificate ID.";
-                IsSuccess = false;
-            }
+            //if (objFireSuperApp.CertificateId == null || objFireSuperApp.CertificateId == "")
+            //{
+            //    returnMsg.ReturnValue = "Error";
+            //    returnMsg.ReturnMessage = "Invalid Certificate ID.";
+            //    IsSuccess = false;
+            //}
 
             // Applicant Name
             if (objFireSuperApp.ApplicantName == null || objFireSuperApp.ApplicantName == "")
@@ -395,7 +395,7 @@ namespace api_rate.Helpers
             }
 
             // Land Area
-            if (objFireSuperApp.LandArea == null || objFireSuperApp.LandArea <= 0)
+            if (objFireSuperApp.LandArea <= 0)
             {
                 returnMsg.ReturnValue = "Error";
                 returnMsg.ReturnMessage = "Invalid Land Area.";
@@ -403,7 +403,7 @@ namespace api_rate.Helpers
             }
 
             // Capacity
-            if (objFireSuperApp.Capacity == null || objFireSuperApp.Capacity <= 0)
+            if (objFireSuperApp.Capacity <= 0)
             {
                 returnMsg.ReturnValue = "Error";
                 returnMsg.ReturnMessage = "Invalid Capacity.";
@@ -411,7 +411,7 @@ namespace api_rate.Helpers
             }
 
             // Stories
-            if (objFireSuperApp.Stories == null || objFireSuperApp.Stories < 1)
+            if (objFireSuperApp.Stories < 1)
             {
                 returnMsg.ReturnValue = "Error";
                 returnMsg.ReturnMessage = "Invalid Number of stories.";
@@ -443,7 +443,7 @@ namespace api_rate.Helpers
             }
 
             // Day Manpower
-            if (objFireSuperApp.DayManpower == null || objFireSuperApp.DayManpower < 0)
+            if (objFireSuperApp.DayManpower < 0)
             {
                 returnMsg.ReturnValue = "Error";
                 returnMsg.ReturnMessage = "Invalid Capacity.";
@@ -451,7 +451,7 @@ namespace api_rate.Helpers
             }
 
             // Night manpower
-            if (objFireSuperApp.NightManpower == null || objFireSuperApp.NightManpower < 0)
+            if (objFireSuperApp.NightManpower < 0)
             {
                 returnMsg.ReturnValue = "Error";
                 returnMsg.ReturnMessage = "Invalid Capacity.";
@@ -459,7 +459,7 @@ namespace api_rate.Helpers
             }
 
             // Tank Capacity
-            if (objFireSuperApp.TankCapacity == null || objFireSuperApp.TankCapacity <= 0)
+            if (objFireSuperApp.TankCapacity <= 0)
             {
                 returnMsg.ReturnValue = "Error";
                 returnMsg.ReturnMessage = "Invalid Capacity.";
@@ -481,8 +481,6 @@ namespace api_rate.Helpers
                 returnMsg.ReturnMessage = "Invalid Electricity phase Information.";
                 IsSuccess = false;
             }
-            
-
             return IsSuccess;
         }
 
