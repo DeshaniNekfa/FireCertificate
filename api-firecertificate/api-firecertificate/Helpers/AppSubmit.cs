@@ -876,7 +876,7 @@ namespace api_rate.Helpers
 
                     if (this.mySqlCon != null)
                     {
-                        string strSql = "INSERT INTO tbl_firecertificate_payment_details( CertificateId ,Note ,TotAmt ,User ,Date ,PaymentType ,PaidDescription ,PaymentID ,BillNo)VALUES( @CertificateId ,@Note ,@TotAmt ,@User ,@Date ,@PaymentType ,@PaidDescription ,@PaymentID ,@BillNo); UPDATE tbl_firecertificate_application SET Status = 'Paid' WHERE CertificateId = @CertificateId;";
+                        strSql = "INSERT INTO tbl_firecertificate_payment_details( CertificateId ,Note ,TotAmt ,User ,Date ,PaymentType ,PaidDescription ,PaymentID ,BillNo)VALUES( @CertificateId ,@Note ,@TotAmt ,@User ,@Date ,@PaymentType ,@PaidDescription ,@PaymentID ,@BillNo); UPDATE tbl_firecertificate_application SET Status = 'Paid' WHERE CertificateId = @CertificateId;";
                         cmd = new MySqlCommand(strSql, this.mySqlCon, this.mySqlTrans);
                         cmd.Parameters.AddWithValue("@CertificateId", objPayment.CertificateId);
                         cmd.Parameters.AddWithValue("@Note", objPayment.Note);
@@ -985,5 +985,64 @@ namespace api_rate.Helpers
 
             return objIndexes;
         }
+    
+        // Update Municipal certificate
+        public bool UpdateFireCertificate(FireCertificateApplication objFireApp, ref ReturnMsgInfo objReturnMsg)
+        {
+            bool isUpdated = false;
+            this.objConMain = new Connection_Main();
+
+            try
+            {
+                string conString = this.objConMain.Get_Main_Connection(objFireApp.ClientID);
+                if (conString == null || conString == "")
+                {
+                    objReturnMsg.ReturnValue = "Error";
+                    objReturnMsg.ReturnMessage = "Connection not found.";
+                }
+                else
+                {
+                    this.mySqlCon = new MySqlConnection(conString);
+
+                    if (this.mySqlCon.State.ToString() != "Open")
+                    {
+                        this.mySqlCon.Open();
+                    }
+                    else
+                    {
+                        objReturnMsg.ReturnValue = "Error";
+                        objReturnMsg.ReturnMessage = "Connection was already opened.";
+                    }
+
+                    if (this.mySqlCon != null)
+                    {
+                        strSql = "UPDATE tbl_firecertificate_application SET CompanyName='"+objFireApp.CompanyName+"',Address='"+objFireApp.Address+"',Telephone='"+objFireApp.Telephone+"',DistanceFromCouncil='"+objFireApp.DistanceFromCouncil+"',NatureOfBusiness='"+objFireApp.NatureOfBusiness+"' ,BuildingPlan = '"+objFireApp.BuildingPlan+"',TotalLand='"+objFireApp.TotalLand+"' ,RoadFromCouncil='"+objFireApp.RoadFromCouncil+"',OwnerName='"+objFireApp.OwnerName+"' ,CurrentFirePlan='"+objFireApp.CurrentFirePlan+"',Email='"+objFireApp.Email+"' ,Supervisor='' ,DateApplied='"+DateTime.Now.ToString("yyyy-MM-dd").Trim()+"',DateReviewed='' ,user = '"+objFireApp.ClientID+"' WHERE CertificateId = '"+objFireApp.CertificateId+"';";
+                        cmd = new MySqlCommand(strSql, this.mySqlCon, this.mySqlTrans);
+                        cmd.ExecuteNonQuery();
+                        isUpdated = true;
+
+                        objReturnMsg.ReturnValue = "OK";
+                        objReturnMsg.ReturnMessage = "updated successfully";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                objReturnMsg.ReturnValue = "Error";
+                objReturnMsg.ReturnMessage = ex.Message;
+            }
+            finally
+            {
+                if (this.mySqlCon != null)
+                {
+                    if (this.mySqlCon.State.ToString() == "Open")
+                    {
+                        this.mySqlCon.Close();
+                    }
+                }
+            }
+
+            return isUpdated; 
+        } 
     }
 }

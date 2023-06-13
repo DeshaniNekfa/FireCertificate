@@ -35,5 +35,8 @@ namespace api_rate.Helpers
 
         // Add payment
         bool AddPayment(PaymentDetails objPayment, ref ReturnMsgInfo objReturnMsg);
+
+        // Update Municipal Application
+        bool UpdateFireCertificate(FireCertificateApplication objFireApp, ref ReturnMsgInfo objReturnMsg);
     }
 }
