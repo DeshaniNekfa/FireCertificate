@@ -3774,36 +3774,7 @@
                                 </div>
 
                             </div>
-                            <br />
-
-                            <div class="row">
-                                <div class="col-sm-2 ">Supervisor</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    Supervisor Name
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">No</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "Supervisor":""
-                                    }
-                                </div>
-
-                            </div>
-                            <br />
+                            <br />                           
                         </div>
                     </div>
                     <div style="overflow-y: hidden; overflow-x: hidden;">
