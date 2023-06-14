@@ -25,6 +25,7 @@ namespace api_rate.Controllers
         public FireAppByIdOutput Post([FromBody]FireCertificateApplication objFireApplication)
         {
             FireAppByIdOutput objFireAppByIdOutput = new FireAppByIdOutput();
+            FireSupervisorApplication objSuperApp = new FireSupervisorApplication();
             ReturnMsgInfo objReturnMsg = new ReturnMsgInfo();
             ReturnMsgInfo objPayReturnMsg = new ReturnMsgInfo();
             PaymentDetails objPayment = new PaymentDetails();
@@ -44,13 +45,18 @@ namespace api_rate.Controllers
                 else
                 {
                     objFireApp = _getData.GetApplicationById(objFireApplication, ref objReturnMsg);
+
+                    objFireApplication.CertificateId = objFireApp.CertificateId;
+                    objPayment = _getData.GetPaymentDetails(objFireApplication, ref objPayReturnMsg);
+
+                    objSuperApp.CertificateId = objFireApplication.CertificateId;
+                    objSuperApp.ClientID = objFireApplication.ClientID;
+                    objSuperApp = _getData.GetSupervisorApplicationByFireAppID(objSuperApp, ref objReturnMsg);
+
                     if (objReturnMsg.ReturnValue != "OK")
                     {
                         throw new Exception("Error occurred when retrieve application details. " + objReturnMsg.ReturnMessage.ToString().Trim());
                     }
-
-                    objFireApplication.CertificateId = objFireApp.CertificateId;
-                    objPayment = _getData.GetPaymentDetails(objFireApplication, ref objPayReturnMsg);
 
                 }
             }
@@ -62,6 +68,7 @@ namespace api_rate.Controllers
 
             objFireAppByIdOutput.FireApplication = objFireApp;
             objFireAppByIdOutput.PaymentDetails = objPayment;
+            objFireAppByIdOutput.SuperApplication = objSuperApp;
             objFireAppByIdOutput.ReturnMessageInfo = objReturnMsg;
 
             return objFireAppByIdOutput;

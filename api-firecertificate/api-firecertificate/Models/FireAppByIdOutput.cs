@@ -9,6 +9,7 @@ namespace api_rate.Models
     {
         public FireCertificateApplication FireApplication { get; set; }
         public PaymentDetails PaymentDetails { get; set; }
+        public FireSupervisorApplication SuperApplication { get; set; }
         public ReturnMsgInfo ReturnMessageInfo { get; set; }
 
     }

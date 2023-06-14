@@ -1074,5 +1074,63 @@ namespace api_rate.Helpers
 
             return isSaved;
         }
+
+        // Update Fire department certificate
+        public bool UpdateSuperApplication(FireSupervisorApplication objFireSuperApp, ref ReturnMsgInfo returnMsg)
+        {
+            bool isSaved = false;
+            this.objConMain = new Connection_Main();
+
+            try
+            {
+                string conString = this.objConMain.Get_Main_Connection(objFireSuperApp.ClientID);
+                if (conString == null || conString == "")
+                {
+                    returnMsg.ReturnValue = "Error";
+                    returnMsg.ReturnMessage = "Connection not found.";
+                }
+                else
+                {
+                    this.mySqlCon = new MySqlConnection(conString);
+
+                    if (this.mySqlCon.State.ToString() != "Open")
+                    {
+                        this.mySqlCon.Open();
+                    }
+                    else
+                    {
+                        returnMsg.ReturnValue = "Error";
+                        returnMsg.ReturnMessage = "Connection was already opened.";
+                    }
+
+                    if (this.mySqlCon != null)
+                    {
+                        strSql = "UPDATE tbl_firecertificate_supervisor_application SET ApplicantName = '" + objFireSuperApp.ApplicantName + "' ,OwnerName = '" + objFireSuperApp.OwnerName + "' ,LesseeName = '" + objFireSuperApp.LesseeName + "' ,EmergencyContact = '" + objFireSuperApp.EmergencyContact + "' ,Address = '" + objFireSuperApp.Address + "' ,OtherAddresses = '" + objFireSuperApp.OtherAddresses + "' ,DistRoadSigns = '" + objFireSuperApp.DistRoadSigns + "' ,ShortestRoad = '" + objFireSuperApp.ShortestRoad + "' ,Telephone = '" + objFireSuperApp.Telephone + "' ,Mobile = '" + objFireSuperApp.Mobile + "' ,LandArea = '" + objFireSuperApp.LandArea + "' ,Capacity = '" + objFireSuperApp.Capacity + "' ,Stories = '" + objFireSuperApp.Stories + "' ,Construction = '" + objFireSuperApp.Construction + "' ,BuildType = '" + objFireSuperApp.BuildType + "' ,UnapprovedBuildings = '" + objFireSuperApp.UnapprovedBuildings + "' ,PlanAvailability = '" + objFireSuperApp.PlanAvailability + "' ,Exitways = '" + objFireSuperApp.Exitways + "' ,EmergencyExits = '" + objFireSuperApp.EmergencyExits + "' ,DayManpower = '" + objFireSuperApp.DayManpower + "' ,NightManpower = '" + objFireSuperApp.NightManpower + "' ,TankCapacity = '" + objFireSuperApp.TankCapacity + "' ,CommonTank = '" + objFireSuperApp.CommonTank + "' ,FirehoseLocation = '" + objFireSuperApp.FirehoseLocation + "' ,ElecPhase = '" + objFireSuperApp.ElecPhase + "' ,Generator = '" + objFireSuperApp.Generator + "' ,CurrentCircuit = '" + objFireSuperApp.CurrentCircuit + "' WHERE CertificateId = '" + objFireSuperApp.CertificateId + "';";
+                        cmd = new MySqlCommand(strSql, this.mySqlCon, this.mySqlTrans);                        
+                        cmd.ExecuteNonQuery();
+                        isSaved = true;
+
+                        returnMsg.ReturnValue = "OK";
+                        returnMsg.ReturnMessage = "Submitted successfully";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                returnMsg.ReturnValue = "Error";
+                returnMsg.ReturnMessage = ex.Message;
+            }
+            finally
+            {
+                if (this.mySqlCon != null)
+                {
+                    if (this.mySqlCon.State.ToString() == "Open")
+                    {
+                        this.mySqlCon.Close();
+                    }
+                }
+            }
+            return isSaved;
+        }
     }
 }

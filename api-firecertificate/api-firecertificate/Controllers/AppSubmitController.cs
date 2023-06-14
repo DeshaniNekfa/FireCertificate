@@ -73,17 +73,21 @@ namespace api_rate.Controllers
                     }
                     else
                     {
-                        //_appsubmit.UpdateFireCertificate(objApplicationDetails, ref objReturnMsg);
+                        objCompleteDetails.fireSuperApp.CertificateId = objCompleteDetails.fireCertificateApp.CertificateId;
 
-                        //if (objReturnMsg.ReturnValue == "OK")
-                        //{
-                        //    objReturnMsg.ReturnValue = "OK";
-                        //    objReturnMsg.ReturnMessage = "Application Successfully updated.";
-                        //}
-                        //else
-                        //{
-                        //    throw new Exception("Error occured updating application");
-                        //}
+                        bool updateFireApp = _appsubmit.UpdateFireCertificate(objCompleteDetails.fireCertificateApp, ref objReturnMsg);
+                        bool updateSuperApp = _appsubmit.UpdateSuperApplication(objCompleteDetails.fireSuperApp, ref objReturnMsg);
+
+
+                        if (updateFireApp && updateSuperApp)
+                        {
+                            objReturnMsg.ReturnValue = "OK";
+                            objReturnMsg.ReturnMessage = "Application Successfully updated.";
+                        }
+                        else
+                        {
+                            throw new Exception("Error occured updating application");
+                        }
                     }                                      
 
                 }

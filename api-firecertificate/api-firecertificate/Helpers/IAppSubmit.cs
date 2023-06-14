@@ -41,5 +41,8 @@ namespace api_rate.Helpers
     
         // Submit complete Application
         bool SubmitApplication(CompleteApp objCompleteApp, ref ReturnMsgInfo objReturnMsg);
+
+        // Update Fire department App
+        bool UpdateSuperApplication(FireSupervisorApplication objFireSuperApp, ref ReturnMsgInfo returnMsg);
     }
 }
