@@ -685,19 +685,19 @@ namespace api_rate.Helpers
             else if(objFireApp.DateReviewed == null || objFireApp.DateReviewed == "")
             {
                 objReturnMsg.ReturnValue = "Error";
-                objReturnMsg.ReturnMessage = "Invalid Review";
+                objReturnMsg.ReturnMessage = "Invalid Review Date";
                 isAssigned = false;
             }
             else if (objFireApp.DateReviewed.ToString().Trim() == "")
             {
                 objReturnMsg.ReturnValue = "Error";
-                objReturnMsg.ReturnMessage = "Date Applied Date is required.";
+                objReturnMsg.ReturnMessage = "Review Date is required.";
                 isAssigned = false;
             }
             else if (objCmnFunctions.IsValidDate(objFireApp.DateReviewed.ToString().Trim()) == false)
             {
                 objReturnMsg.ReturnValue = "Error";
-                objReturnMsg.ReturnMessage = "Invalid Reviewed Date.";
+                objReturnMsg.ReturnMessage = "Invalid Review Date.";
                 isAssigned = false;
             }
             else
@@ -726,7 +726,9 @@ namespace api_rate.Helpers
 
                         if (this.mySqlCon != null)
                         {
-                            string strSql = "UPDATE tbl_firecertificate_application SET Supervisor = '" + objFireApp.Supervisor + "', DateReviewed ='" + objFireApp.DateReviewed + "' WHERE CertificateId = '" + objFireApp.CertificateId + "';";
+                            var gblStatus = Globals.ASSIGNED.ToString().Trim();
+
+                            string strSql = "UPDATE tbl_firecertificate_application SET Supervisor = '" + objFireApp.Supervisor + "', Status ='" + gblStatus + "', DateReviewed ='" + objFireApp.DateReviewed + "' WHERE CertificateId = '" + objFireApp.CertificateId + "';";
                             cmd = new MySqlCommand(strSql, this.mySqlCon, this.mySqlTrans);
                             cmd.ExecuteNonQuery();
                             isAssigned = true;
