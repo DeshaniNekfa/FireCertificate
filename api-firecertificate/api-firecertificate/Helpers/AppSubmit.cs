@@ -303,30 +303,9 @@ namespace api_rate.Helpers
             if (objFireSuperApp.EmergencyContact == null || objFireSuperApp.EmergencyContact == "")
             {
                 returnMsg.ReturnValue = "Error";
-                returnMsg.ReturnMessage = "Invalid Emergency number.";
+                returnMsg.ReturnMessage = "Invalid Emergency Contact person.";
                 IsSuccess = false;
-            }
-            else
-            {
-                if (objFireSuperApp.EmergencyContact.ToString().Trim().Length != 10)
-                {
-                    returnMsg.ReturnValue = "Error";
-                    returnMsg.ReturnMessage = "Applicant's Emergency Number length should be 10.";
-                    IsSuccess = false;
-                }
-                else if (objFireSuperApp.EmergencyContact.ToString().Trim().StartsWith("0") == false)
-                {
-                    returnMsg.ReturnValue = "Error";
-                    returnMsg.ReturnMessage = "Invalid format in Applicant's Emergency Number. (0XXXXXXXXX)";
-                    IsSuccess = false;
-                }
-                else if (objCmnFunctions.ValidatePhoneNoDigits(objFireSuperApp.EmergencyContact.ToString().Trim()) == false)
-                {
-                    returnMsg.ReturnValue = "Error";
-                    returnMsg.ReturnMessage = "Applicant's Emergency Number should contain only digits.";
-                    IsSuccess = false;
-                }
-            }
+            }         
 
             // Address
             if (objFireSuperApp.Address == null || objFireSuperApp.Address == "")
@@ -883,6 +862,11 @@ namespace api_rate.Helpers
                         else if (objPayment.PaidDescription == Globals.ANNUAL.ToString().Trim())
                         {
                             strSql = "INSERT INTO tbl_firecertificate_payment_details( CertificateId ,Note ,TotAmt ,User ,Date ,PaymentType ,PaidDescription ,PaymentID ,BillNo)VALUES( @CertificateId ,@Note ,@TotAmt ,@User ,@Date ,@PaymentType ,@PaidDescription ,@PaymentID ,@BillNo); UPDATE tbl_firecertificate_application SET Status = '" + Globals.ISSUED.ToString().Trim() + "' WHERE CertificateId = @CertificateId;";
+                        }
+                        else
+                        {
+                            objReturnMsg.ReturnValue = "Error";
+                            objReturnMsg.ReturnMessage = "Invalid payment description.";
                         }
 
                         cmd = new MySqlCommand(strSql, this.mySqlCon, this.mySqlTrans);
