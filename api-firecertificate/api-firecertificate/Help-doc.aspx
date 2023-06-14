@@ -449,7 +449,7 @@
                                     <br />
                                      ],
                                     <br />
-                                    &nbsp;&nbsp;"ListSuperApplication": [
+                                    &nbsp;&nbsp;"SuperApplication": [
                                     <br />
                                     &nbsp;&nbsp;&nbsp;&nbsp; {
                                     <br />
