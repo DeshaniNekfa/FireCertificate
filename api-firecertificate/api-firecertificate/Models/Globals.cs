@@ -18,6 +18,7 @@ namespace api_rate.Models
 
         // Payment Description
         public static string INSPECTION = "Inspection";
-        public static string ANNUAL = "Annual Certificate";
+        public static string ANNUAL = "Certificate";
+        public static string Counseling = "Counseling";
     }
 }
