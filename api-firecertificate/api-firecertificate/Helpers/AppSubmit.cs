@@ -232,7 +232,7 @@ namespace api_rate.Helpers
                         cmd.Parameters.AddWithValue("@Status", Globals.PENDING.ToString().Trim());
                         cmd.Parameters.AddWithValue("@Email", objFireAppDetails.Email);
                         cmd.Parameters.AddWithValue("@Supervisor", "");
-                        cmd.Parameters.AddWithValue("@DateApplied", DateTime.Now.ToString("yyyy-MM-dd").Trim());
+                        cmd.Parameters.AddWithValue("@DateApplied", DateTime.Now.ToString("yyyy/MM/dd HH:mm").Trim());
                         cmd.Parameters.AddWithValue("@DateReviewed", "");
                         cmd.Parameters.AddWithValue("@user", objFireAppDetails.ClientID);
                         cmd.ExecuteNonQuery();
