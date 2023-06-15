@@ -602,17 +602,17 @@ namespace api_rate.Helpers
                             foreach (DataRow dtRow in dt.Rows)
                             {
                                 FireSupervisorApplication objSuperAppDetails = new FireSupervisorApplication();
-                                objSuperAppDetails.Id = (int)dtRow["Id"];
+                                objSuperAppDetails.SId = (int)dtRow["Id"];
                                 objSuperAppDetails.CertificateId = dtRow["CertificateId"].ToString().Trim();
                                 objSuperAppDetails.ApplicantName = dtRow["ApplicantName"].ToString().Trim();
                                 objSuperAppDetails.OwnerName = dtRow["OwnerName"].ToString().Trim();
                                 objSuperAppDetails.LesseeName = dtRow["LesseeName"].ToString().Trim();
                                 objSuperAppDetails.EmergencyContact = dtRow["EmergencyContact"].ToString().Trim();
-                                objSuperAppDetails.Address = dtRow["Address"].ToString().Trim();
+                                objSuperAppDetails.BAddress = dtRow["Address"].ToString().Trim();
                                 objSuperAppDetails.OtherAddresses = dtRow["OtherAddresses"].ToString().Trim();
                                 objSuperAppDetails.DistRoadSigns = dtRow["DistRoadSigns"].ToString().Trim();
                                 objSuperAppDetails.ShortestRoad = dtRow["ShortestRoad"].ToString().Trim();
-                                objSuperAppDetails.Telephone = dtRow["Telephone"].ToString().Trim();
+                                objSuperAppDetails.BTelephone = dtRow["Telephone"].ToString().Trim();
                                 objSuperAppDetails.Mobile = dtRow["Mobile"].ToString().Trim();
                                 objSuperAppDetails.LandArea = (int)dtRow["LandArea"];
                                 objSuperAppDetails.Capacity = (int)dtRow["Capacity"];
@@ -695,17 +695,17 @@ namespace api_rate.Helpers
                             foreach (DataRow dtRow in dt.Rows)
                             {
                                 FireSupervisorApplication objSuperAppDetails = new Models.FireSupervisorApplication();
-                                objSuperAppDetails.Id = (int)dtRow["Id"];
+                                objSuperAppDetails.SId = (int)dtRow["Id"];
                                 objSuperAppDetails.CertificateId = dtRow["CertificateId"].ToString().Trim();
                                 objSuperAppDetails.ApplicantName = dtRow["ApplicantName"].ToString().Trim();
                                 objSuperAppDetails.OwnerName = dtRow["OwnerName"].ToString().Trim();
                                 objSuperAppDetails.LesseeName = dtRow["LesseeName"].ToString().Trim();
                                 objSuperAppDetails.EmergencyContact = dtRow["EmergencyContact"].ToString().Trim();
-                                objSuperAppDetails.Address = dtRow["Address"].ToString().Trim();
+                                objSuperAppDetails.BAddress = dtRow["Address"].ToString().Trim();
                                 objSuperAppDetails.OtherAddresses = dtRow["OtherAddresses"].ToString().Trim();
                                 objSuperAppDetails.DistRoadSigns = dtRow["DistRoadSigns"].ToString().Trim();
                                 objSuperAppDetails.ShortestRoad = dtRow["ShortestRoad"].ToString().Trim();
-                                objSuperAppDetails.Telephone = dtRow["Telephone"].ToString().Trim();
+                                objSuperAppDetails.BTelephone = dtRow["Telephone"].ToString().Trim();
                                 objSuperAppDetails.Mobile = dtRow["Mobile"].ToString().Trim();
                                 objSuperAppDetails.LandArea = (int)dtRow["LandArea"];
                                 objSuperAppDetails.Capacity = (int)dtRow["Capacity"];

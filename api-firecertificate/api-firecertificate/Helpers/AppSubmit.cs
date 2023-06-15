@@ -308,7 +308,7 @@ namespace api_rate.Helpers
             }         
 
             // Address
-            if (objFireSuperApp.Address == null || objFireSuperApp.Address == "")
+            if (objFireSuperApp.BAddress == null || objFireSuperApp.BAddress == "")
             {
                 returnMsg.ReturnValue = "Error";
                 returnMsg.ReturnMessage = "Invalid telephone number.";
@@ -316,7 +316,7 @@ namespace api_rate.Helpers
             }
 
             // Telephone
-            if (objFireSuperApp.Telephone == null || objFireSuperApp.Telephone == "")
+            if (objFireSuperApp.BTelephone == null || objFireSuperApp.BTelephone == "")
             {
                 returnMsg.ReturnValue = "Error";
                 returnMsg.ReturnMessage = "Invalid telephone number.";
@@ -324,19 +324,19 @@ namespace api_rate.Helpers
             }
             else
             {
-                if (objFireSuperApp.Telephone.ToString().Trim().Length != 10)
+                if (objFireSuperApp.BTelephone.ToString().Trim().Length != 10)
                 {
                     returnMsg.ReturnValue = "Error";
                     returnMsg.ReturnMessage = "Applicant's Telephoone Number length should be 10.";
                     IsSuccess = false;
                 }
-                else if (objFireSuperApp.Telephone.ToString().Trim().StartsWith("0") == false)
+                else if (objFireSuperApp.BTelephone.ToString().Trim().StartsWith("0") == false)
                 {
                     returnMsg.ReturnValue = "Error";
                     returnMsg.ReturnMessage = "Invalid format in Applicant's Telephone Number. (0XXXXXXXXX)";
                     IsSuccess = false;
                 }
-                else if (objCmnFunctions.ValidatePhoneNoDigits(objFireSuperApp.Telephone.ToString().Trim()) == false)
+                else if (objCmnFunctions.ValidatePhoneNoDigits(objFireSuperApp.BTelephone.ToString().Trim()) == false)
                 {
                     returnMsg.ReturnValue = "Error";
                     returnMsg.ReturnMessage = "Applicant's Telephone Number should contain only digits.";
@@ -501,11 +501,11 @@ namespace api_rate.Helpers
                         cmd.Parameters.Add("@OwnerName", objFireSuperApp.OwnerName);
                         cmd.Parameters.Add("@LesseeName", objFireSuperApp.LesseeName);
                         cmd.Parameters.Add("@EmergencyContact", objFireSuperApp.EmergencyContact);
-                        cmd.Parameters.Add("@Address", objFireSuperApp.Address);
+                        cmd.Parameters.Add("@Address", objFireSuperApp.BAddress);
                         cmd.Parameters.Add("@OtherAddresses", objFireSuperApp.OtherAddresses);
                         cmd.Parameters.Add("@DistRoadSigns", objFireSuperApp.DistRoadSigns);
                         cmd.Parameters.Add("@ShortestRoad", objFireSuperApp.ShortestRoad);
-                        cmd.Parameters.Add("@Telephone", objFireSuperApp.Telephone);
+                        cmd.Parameters.Add("@Telephone", objFireSuperApp.BTelephone);
                         cmd.Parameters.Add("@Mobile", objFireSuperApp.Mobile);
                         cmd.Parameters.Add("@LandArea", objFireSuperApp.LandArea);
                         cmd.Parameters.Add("@Capacity", objFireSuperApp.Capacity);
@@ -1091,7 +1091,7 @@ namespace api_rate.Helpers
 
                     if (this.mySqlCon != null)
                     {
-                        strSql = "UPDATE tbl_firecertificate_supervisor_application SET ApplicantName = '" + objFireSuperApp.ApplicantName + "' ,OwnerName = '" + objFireSuperApp.OwnerName + "' ,LesseeName = '" + objFireSuperApp.LesseeName + "' ,EmergencyContact = '" + objFireSuperApp.EmergencyContact + "' ,Address = '" + objFireSuperApp.Address + "' ,OtherAddresses = '" + objFireSuperApp.OtherAddresses + "' ,DistRoadSigns = '" + objFireSuperApp.DistRoadSigns + "' ,ShortestRoad = '" + objFireSuperApp.ShortestRoad + "' ,Telephone = '" + objFireSuperApp.Telephone + "' ,Mobile = '" + objFireSuperApp.Mobile + "' ,LandArea = '" + objFireSuperApp.LandArea + "' ,Capacity = '" + objFireSuperApp.Capacity + "' ,Stories = '" + objFireSuperApp.Stories + "' ,Construction = '" + objFireSuperApp.Construction + "' ,BuildType = '" + objFireSuperApp.BuildType + "' ,UnapprovedBuildings = '" + objFireSuperApp.UnapprovedBuildings + "' ,PlanAvailability = '" + objFireSuperApp.PlanAvailability + "' ,Exitways = '" + objFireSuperApp.Exitways + "' ,EmergencyExits = '" + objFireSuperApp.EmergencyExits + "' ,DayManpower = '" + objFireSuperApp.DayManpower + "' ,NightManpower = '" + objFireSuperApp.NightManpower + "' ,TankCapacity = '" + objFireSuperApp.TankCapacity + "' ,CommonTank = '" + objFireSuperApp.CommonTank + "' ,FirehoseLocation = '" + objFireSuperApp.FirehoseLocation + "' ,ElecPhase = '" + objFireSuperApp.ElecPhase + "' ,Generator = '" + objFireSuperApp.Generator + "' ,CurrentCircuit = '" + objFireSuperApp.CurrentCircuit + "' WHERE CertificateId = '" + objFireSuperApp.CertificateId + "';";
+                        strSql = "UPDATE tbl_firecertificate_supervisor_application SET ApplicantName = '" + objFireSuperApp.ApplicantName + "' ,OwnerName = '" + objFireSuperApp.OwnerName + "' ,LesseeName = '" + objFireSuperApp.LesseeName + "' ,EmergencyContact = '" + objFireSuperApp.EmergencyContact + "' ,Address = '" + objFireSuperApp.BAddress + "' ,OtherAddresses = '" + objFireSuperApp.OtherAddresses + "' ,DistRoadSigns = '" + objFireSuperApp.DistRoadSigns + "' ,ShortestRoad = '" + objFireSuperApp.ShortestRoad + "' ,Telephone = '" + objFireSuperApp.BTelephone + "' ,Mobile = '" + objFireSuperApp.Mobile + "' ,LandArea = '" + objFireSuperApp.LandArea + "' ,Capacity = '" + objFireSuperApp.Capacity + "' ,Stories = '" + objFireSuperApp.Stories + "' ,Construction = '" + objFireSuperApp.Construction + "' ,BuildType = '" + objFireSuperApp.BuildType + "' ,UnapprovedBuildings = '" + objFireSuperApp.UnapprovedBuildings + "' ,PlanAvailability = '" + objFireSuperApp.PlanAvailability + "' ,Exitways = '" + objFireSuperApp.Exitways + "' ,EmergencyExits = '" + objFireSuperApp.EmergencyExits + "' ,DayManpower = '" + objFireSuperApp.DayManpower + "' ,NightManpower = '" + objFireSuperApp.NightManpower + "' ,TankCapacity = '" + objFireSuperApp.TankCapacity + "' ,CommonTank = '" + objFireSuperApp.CommonTank + "' ,FirehoseLocation = '" + objFireSuperApp.FirehoseLocation + "' ,ElecPhase = '" + objFireSuperApp.ElecPhase + "' ,Generator = '" + objFireSuperApp.Generator + "' ,CurrentCircuit = '" + objFireSuperApp.CurrentCircuit + "' WHERE CertificateId = '" + objFireSuperApp.CertificateId + "';";
                         cmd = new MySqlCommand(strSql, this.mySqlCon, this.mySqlTrans);                        
                         cmd.ExecuteNonQuery();
                         isSaved = true;

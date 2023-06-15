@@ -8,18 +8,18 @@ namespace api_rate.Models
     public class FireSupervisorApplication
     {
         // Building Ownership
-        public int Id { get; set; }
+        public int SId { get; set; }
         public string ApplicantName { get; set; }
         public string OwnerName { get; set; }
         public string LesseeName { get; set; }
         public string EmergencyContact { get; set; }
 
         // Building Contact Deatalis
-        public string Address { get; set; } // from first form
+        public string BAddress { get; set; } // from first form
         public string OtherAddresses { get; set; }
         public string DistRoadSigns { get; set; }
         public string ShortestRoad { get; set; }
-        public string Telephone { get; set; } // from first form
+        public string BTelephone { get; set; } // from first form
         public string Mobile { get; set; }
 
         // Building Details
