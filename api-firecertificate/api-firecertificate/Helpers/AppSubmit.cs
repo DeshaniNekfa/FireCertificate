@@ -268,12 +268,12 @@ namespace api_rate.Helpers
             objCmnFunctions = new CommonFunctions();
 
             // ClientID
-            if (objFireSuperApp.ClientID == null || objFireSuperApp.ClientID == "")
-            {
-                returnMsg.ReturnValue = "Error";
-                returnMsg.ReturnMessage = "Invalid Client ID.";
-                IsSuccess = false;
-            }
+            //if (objFireSuperApp.ClientID == null || objFireSuperApp.ClientID == "")
+            //{
+            //    returnMsg.ReturnValue = "Error";
+            //    returnMsg.ReturnMessage = "Invalid Client ID.";
+            //    IsSuccess = false;
+            //}
 
             // CertificateId
             //if (objFireSuperApp.CertificateId == null || objFireSuperApp.CertificateId == "")
@@ -1042,13 +1042,14 @@ namespace api_rate.Helpers
         // Submit complete Application
         public bool SubmitApplication(CompleteApp objCompleteApp, ref ReturnMsgInfo objReturnMsg)
         {
-            bool isSaved = true; 
+            bool isSaved = false; 
             Index objIndex = new Index();
             objIndex = GetIndexes(objCompleteApp.fireCertificateApp, ref objReturnMsg);
             var certId = objIndex.Code.ToString().Trim() + objIndex.NextId.ToString().Trim();
 
             objCompleteApp.fireCertificateApp.CertificateId = certId;
             objCompleteApp.fireSuperApp.CertificateId = certId;
+            objCompleteApp.fireSuperApp.ClientID = objCompleteApp.fireCertificateApp.ClientID;
 
             bool fireAppSave = SaveApplication(objCompleteApp.fireCertificateApp, ref objReturnMsg);
             bool superAppSave = SaveSupervisorApplication(objCompleteApp.fireSuperApp, ref objReturnMsg);
