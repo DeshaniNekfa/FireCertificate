@@ -8,9 +8,9 @@ namespace api_rate.Models
     public class FireSupervisorApplication
     {
         // Building Ownership
-        public int SId { get; set; }
+        public int Id { get; set; }
         public string ApplicantName { get; set; }
-        public string OwnerName { get; set; }
+        public string BOwnerName { get; set; }
         public string LesseeName { get; set; }
         public string EmergencyContact { get; set; }
 

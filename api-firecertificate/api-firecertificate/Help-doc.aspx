@@ -463,13 +463,13 @@
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "ApplicantName": "App Name",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "OwnerName": "Owner",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "BOwnerName": "Owner",
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "LesseeName": "",
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "EmergencyContact": "Emergency Contact Person",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Address": "Highlevel rd., Colombo.",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "BAddress": "Highlevel rd., Colombo.",
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "OtherAddresses": "",
                                     <br />
@@ -477,7 +477,7 @@
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "ShortestRoad": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Telephone": "0710899898",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "BTelephone": "0710899898",
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Mobile": "0710899898",
                                     <br />
@@ -873,19 +873,19 @@
                                     <br />
                                     &nbsp;&nbsp;&nbsp;&nbsp; {
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Id": "1",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Id": "1",
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "CertificateId": "FC004",
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "ApplicantName": "App Name",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "OwnerName": "Owner",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "BOwnerName": "Owner",
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "LesseeName": "",
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "EmergencyContact": "Emergency Contact Person",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Address": "Highlevel rd., Colombo.",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "BAddress": "Highlevel rd., Colombo.",
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "OtherAddresses": "",
                                     <br />
@@ -893,7 +893,7 @@
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "ShortestRoad": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Telephone": "0710899898",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "BTelephone": "0710899898",
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Mobile": "0710899898",
                                     <br />
@@ -1419,10 +1419,10 @@
                             <br />
 
                             <div class="row">
-                                <div class="col-sm-2 ">OwnerName</div>
+                                <div class="col-sm-2 ">BOwnerName</div>
                                 <div class="col-sm-2 ">Description</div>
                                 <div class="col-sm-8 ">
-                                    Owner Name
+                                    Building Owner Name
                                 </div>
                             </div>
                             <div class="row">
@@ -1440,7 +1440,7 @@
                                 <div class="col-sm-2 ">Example</div>
                                 <div class="col-sm-8 ">
                                     {
-                                      "OwnerName": "Owner Name"
+                                      "BOwnerName": "Owner Name"
                                     }
                                 </div>
 
@@ -1506,10 +1506,10 @@
                             <br />
 
                             <div class="row">
-                                <div class="col-sm-2 ">Address</div>
+                                <div class="col-sm-2 ">BAddress</div>
                                 <div class="col-sm-2 ">Description</div>
                                 <div class="col-sm-8 ">
-                                    Address
+                                    Building Address
                                 </div>
                             </div>
                             <div class="row">
@@ -1527,7 +1527,7 @@
                                 <div class="col-sm-2 ">Example</div>
                                 <div class="col-sm-8 ">
                                     {
-                                      "Address": "Company Name, Colombo rd."
+                                      "BAddress": "Company Name, Colombo rd."
                                     }
                                 </div>
 
@@ -1622,10 +1622,10 @@
                             <br />
 
                             <div class="row">
-                                <div class="col-sm-2 ">Telephone</div>
+                                <div class="col-sm-2 ">BTelephone</div>
                                 <div class="col-sm-2 ">Description</div>
                                 <div class="col-sm-8 ">
-                                    Telephone
+                                    Building Telephone
                                 </div>
                             </div>
                             <div class="row">
@@ -1643,7 +1643,7 @@
                                 <div class="col-sm-2 ">Example</div>
                                 <div class="col-sm-8 ">
                                     {
-                                      "Telephone": "0710457845"
+                                      "BTelephone": "0710457845"
                                     }
                                 </div>
 
@@ -2698,10 +2698,10 @@
                             <br />
 
                             <div class="row">
-                                <div class="col-sm-2 ">OwnerName</div>
+                                <div class="col-sm-2 ">BOwnerName</div>
                                 <div class="col-sm-2 ">Description</div>
                                 <div class="col-sm-8 ">
-                                    Owner Name
+                                    Building Owner Name
                                 </div>
                             </div>
                             <div class="row">
@@ -2719,7 +2719,7 @@
                                 <div class="col-sm-2 ">Example</div>
                                 <div class="col-sm-8 ">
                                     {
-                                      "OwnerName": "Owner Name"
+                                      "BOwnerName": "Owner Name"
                                     }
                                 </div>
 
@@ -2785,10 +2785,10 @@
                             <br />
 
                             <div class="row">
-                                <div class="col-sm-2 ">Address</div>
+                                <div class="col-sm-2 ">BAddress</div>
                                 <div class="col-sm-2 ">Description</div>
                                 <div class="col-sm-8 ">
-                                    Address
+                                    Building Address
                                 </div>
                             </div>
                             <div class="row">
@@ -2806,7 +2806,7 @@
                                 <div class="col-sm-2 ">Example</div>
                                 <div class="col-sm-8 ">
                                     {
-                                      "Address": "Company Name, Colombo rd."
+                                      "BAddress": "Company Name, Colombo rd."
                                     }
                                 </div>
 
@@ -2901,10 +2901,10 @@
                             <br />
 
                             <div class="row">
-                                <div class="col-sm-2 ">Telephone</div>
+                                <div class="col-sm-2 ">BTelephone</div>
                                 <div class="col-sm-2 ">Description</div>
                                 <div class="col-sm-8 ">
-                                    Telephone
+                                    Building Telephone
                                 </div>
                             </div>
                             <div class="row">
@@ -2922,7 +2922,7 @@
                                 <div class="col-sm-2 ">Example</div>
                                 <div class="col-sm-8 ">
                                     {
-                                      "Telephone": "0710457845"
+                                      "BTelephone": "0710457845"
                                     }
                                 </div>
 

@@ -602,10 +602,10 @@ namespace api_rate.Helpers
                             foreach (DataRow dtRow in dt.Rows)
                             {
                                 FireSupervisorApplication objSuperAppDetails = new FireSupervisorApplication();
-                                objSuperAppDetails.SId = (int)dtRow["Id"];
+                                objSuperAppDetails.Id = (int)dtRow["Id"];
                                 objSuperAppDetails.CertificateId = dtRow["CertificateId"].ToString().Trim();
                                 objSuperAppDetails.ApplicantName = dtRow["ApplicantName"].ToString().Trim();
-                                objSuperAppDetails.OwnerName = dtRow["OwnerName"].ToString().Trim();
+                                objSuperAppDetails.BOwnerName = dtRow["OwnerName"].ToString().Trim();
                                 objSuperAppDetails.LesseeName = dtRow["LesseeName"].ToString().Trim();
                                 objSuperAppDetails.EmergencyContact = dtRow["EmergencyContact"].ToString().Trim();
                                 objSuperAppDetails.BAddress = dtRow["Address"].ToString().Trim();
@@ -695,10 +695,10 @@ namespace api_rate.Helpers
                             foreach (DataRow dtRow in dt.Rows)
                             {
                                 FireSupervisorApplication objSuperAppDetails = new Models.FireSupervisorApplication();
-                                objSuperAppDetails.SId = (int)dtRow["Id"];
+                                objSuperAppDetails.Id = (int)dtRow["Id"];
                                 objSuperAppDetails.CertificateId = dtRow["CertificateId"].ToString().Trim();
                                 objSuperAppDetails.ApplicantName = dtRow["ApplicantName"].ToString().Trim();
-                                objSuperAppDetails.OwnerName = dtRow["OwnerName"].ToString().Trim();
+                                objSuperAppDetails.BOwnerName = dtRow["OwnerName"].ToString().Trim();
                                 objSuperAppDetails.LesseeName = dtRow["LesseeName"].ToString().Trim();
                                 objSuperAppDetails.EmergencyContact = dtRow["EmergencyContact"].ToString().Trim();
                                 objSuperAppDetails.BAddress = dtRow["Address"].ToString().Trim();

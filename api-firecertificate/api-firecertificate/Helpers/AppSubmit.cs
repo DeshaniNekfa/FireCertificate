@@ -292,7 +292,7 @@ namespace api_rate.Helpers
             }
 
             // Owner Name
-            if (objFireSuperApp.OwnerName == null || objFireSuperApp.OwnerName == "")
+            if (objFireSuperApp.BOwnerName == null || objFireSuperApp.BOwnerName == "")
             {
                 returnMsg.ReturnValue = "Error";
                 returnMsg.ReturnMessage = "Invalid Owner Name.";
@@ -496,34 +496,34 @@ namespace api_rate.Helpers
                         strSql = "INSERT INTO tbl_firecertificate_supervisor_application(CertificateId ,ApplicantName ,OwnerName ,LesseeName ,EmergencyContact ,Address ,OtherAddresses ,DistRoadSigns ,ShortestRoad ,Telephone ,Mobile ,LandArea ,Capacity ,Stories ,Construction ,BuildType ,UnapprovedBuildings ,PlanAvailability ,Exitways ,EmergencyExits ,DayManpower ,NightManpower ,TankCapacity ,CommonTank ,FirehoseLocation ,ElecPhase ,Generator ,CurrentCircuit) VALUES ( @CertificateId, @ApplicantName, @OwnerName, @LesseeName, @EmergencyContact, @Address, @OtherAddresses, @DistRoadSigns, @ShortestRoad, @Telephone, @Mobile, @LandArea, @Capacity, @Stories, @Construction, @BuildType, @UnapprovedBuildings, @PlanAvailability, @Exitways, @EmergencyExits, @DayManpower, @NightManpower, @TankCapacity, @CommonTank, @FirehoseLocation, @ElecPhase, @Generator, @CurrentCircuit);";
                         cmd = new MySqlCommand(strSql, this.mySqlCon, this.mySqlTrans);
 
-                        cmd.Parameters.Add("@CertificateId", objFireSuperApp.CertificateId);
-                        cmd.Parameters.Add("@ApplicantName", objFireSuperApp.ApplicantName);
-                        cmd.Parameters.Add("@OwnerName", objFireSuperApp.OwnerName);
-                        cmd.Parameters.Add("@LesseeName", objFireSuperApp.LesseeName);
-                        cmd.Parameters.Add("@EmergencyContact", objFireSuperApp.EmergencyContact);
-                        cmd.Parameters.Add("@Address", objFireSuperApp.BAddress);
-                        cmd.Parameters.Add("@OtherAddresses", objFireSuperApp.OtherAddresses);
-                        cmd.Parameters.Add("@DistRoadSigns", objFireSuperApp.DistRoadSigns);
-                        cmd.Parameters.Add("@ShortestRoad", objFireSuperApp.ShortestRoad);
-                        cmd.Parameters.Add("@Telephone", objFireSuperApp.BTelephone);
-                        cmd.Parameters.Add("@Mobile", objFireSuperApp.Mobile);
-                        cmd.Parameters.Add("@LandArea", objFireSuperApp.LandArea);
-                        cmd.Parameters.Add("@Capacity", objFireSuperApp.Capacity);
-                        cmd.Parameters.Add("@Stories", objFireSuperApp.Stories);
-                        cmd.Parameters.Add("@Construction", objFireSuperApp.Construction);
-                        cmd.Parameters.Add("@BuildType", objFireSuperApp.BuildType);
-                        cmd.Parameters.Add("@UnapprovedBuildings", objFireSuperApp.UnapprovedBuildings);
-                        cmd.Parameters.Add("@PlanAvailability", objFireSuperApp.PlanAvailability);
-                        cmd.Parameters.Add("@Exitways", objFireSuperApp.Exitways);
-                        cmd.Parameters.Add("@EmergencyExits", objFireSuperApp.EmergencyExits);
-                        cmd.Parameters.Add("@DayManpower", objFireSuperApp.DayManpower);
-                        cmd.Parameters.Add("@NightManpower", objFireSuperApp.NightManpower);
-                        cmd.Parameters.Add("@TankCapacity", objFireSuperApp.TankCapacity);
-                        cmd.Parameters.Add("@CommonTank", objFireSuperApp.CommonTank);
-                        cmd.Parameters.Add("@FirehoseLocation", objFireSuperApp.FirehoseLocation);
-                        cmd.Parameters.Add("@ElecPhase", objFireSuperApp.ElecPhase);
-                        cmd.Parameters.Add("@Generator", objFireSuperApp.Generator);
-                        cmd.Parameters.Add("@CurrentCircuit", objFireSuperApp.CurrentCircuit);
+                        cmd.Parameters.AddWithValue("@CertificateId", objFireSuperApp.CertificateId);
+                        cmd.Parameters.AddWithValue("@ApplicantName", objFireSuperApp.ApplicantName);
+                        cmd.Parameters.AddWithValue("@OwnerName", objFireSuperApp.BOwnerName);
+                        cmd.Parameters.AddWithValue("@LesseeName", objFireSuperApp.LesseeName);
+                        cmd.Parameters.AddWithValue("@EmergencyContact", objFireSuperApp.EmergencyContact);
+                        cmd.Parameters.AddWithValue("@Address", objFireSuperApp.BAddress);
+                        cmd.Parameters.AddWithValue("@OtherAddresses", objFireSuperApp.OtherAddresses);
+                        cmd.Parameters.AddWithValue("@DistRoadSigns", objFireSuperApp.DistRoadSigns);
+                        cmd.Parameters.AddWithValue("@ShortestRoad", objFireSuperApp.ShortestRoad);
+                        cmd.Parameters.AddWithValue("@Telephone", objFireSuperApp.BTelephone);
+                        cmd.Parameters.AddWithValue("@Mobile", objFireSuperApp.Mobile);
+                        cmd.Parameters.AddWithValue("@LandArea", objFireSuperApp.LandArea);
+                        cmd.Parameters.AddWithValue("@Capacity", objFireSuperApp.Capacity);
+                        cmd.Parameters.AddWithValue("@Stories", objFireSuperApp.Stories);
+                        cmd.Parameters.AddWithValue("@Construction", objFireSuperApp.Construction);
+                        cmd.Parameters.AddWithValue("@BuildType", objFireSuperApp.BuildType);
+                        cmd.Parameters.AddWithValue("@UnapprovedBuildings", objFireSuperApp.UnapprovedBuildings);
+                        cmd.Parameters.AddWithValue("@PlanAvailability", objFireSuperApp.PlanAvailability);
+                        cmd.Parameters.AddWithValue("@Exitways", objFireSuperApp.Exitways);
+                        cmd.Parameters.AddWithValue("@EmergencyExits", objFireSuperApp.EmergencyExits);
+                        cmd.Parameters.AddWithValue("@DayManpower", objFireSuperApp.DayManpower);
+                        cmd.Parameters.AddWithValue("@NightManpower", objFireSuperApp.NightManpower);
+                        cmd.Parameters.AddWithValue("@TankCapacity", objFireSuperApp.TankCapacity);
+                        cmd.Parameters.AddWithValue("@CommonTank", objFireSuperApp.CommonTank);
+                        cmd.Parameters.AddWithValue("@FirehoseLocation", objFireSuperApp.FirehoseLocation);
+                        cmd.Parameters.AddWithValue("@ElecPhase", objFireSuperApp.ElecPhase);
+                        cmd.Parameters.AddWithValue("@Generator", objFireSuperApp.Generator);
+                        cmd.Parameters.AddWithValue("@CurrentCircuit", objFireSuperApp.CurrentCircuit);
 
                         cmd.ExecuteNonQuery();
                         isSaved = true;
@@ -1092,7 +1092,7 @@ namespace api_rate.Helpers
 
                     if (this.mySqlCon != null)
                     {
-                        strSql = "UPDATE tbl_firecertificate_supervisor_application SET ApplicantName = '" + objFireSuperApp.ApplicantName + "' ,OwnerName = '" + objFireSuperApp.OwnerName + "' ,LesseeName = '" + objFireSuperApp.LesseeName + "' ,EmergencyContact = '" + objFireSuperApp.EmergencyContact + "' ,Address = '" + objFireSuperApp.BAddress + "' ,OtherAddresses = '" + objFireSuperApp.OtherAddresses + "' ,DistRoadSigns = '" + objFireSuperApp.DistRoadSigns + "' ,ShortestRoad = '" + objFireSuperApp.ShortestRoad + "' ,Telephone = '" + objFireSuperApp.BTelephone + "' ,Mobile = '" + objFireSuperApp.Mobile + "' ,LandArea = '" + objFireSuperApp.LandArea + "' ,Capacity = '" + objFireSuperApp.Capacity + "' ,Stories = '" + objFireSuperApp.Stories + "' ,Construction = '" + objFireSuperApp.Construction + "' ,BuildType = '" + objFireSuperApp.BuildType + "' ,UnapprovedBuildings = '" + objFireSuperApp.UnapprovedBuildings + "' ,PlanAvailability = '" + objFireSuperApp.PlanAvailability + "' ,Exitways = '" + objFireSuperApp.Exitways + "' ,EmergencyExits = '" + objFireSuperApp.EmergencyExits + "' ,DayManpower = '" + objFireSuperApp.DayManpower + "' ,NightManpower = '" + objFireSuperApp.NightManpower + "' ,TankCapacity = '" + objFireSuperApp.TankCapacity + "' ,CommonTank = '" + objFireSuperApp.CommonTank + "' ,FirehoseLocation = '" + objFireSuperApp.FirehoseLocation + "' ,ElecPhase = '" + objFireSuperApp.ElecPhase + "' ,Generator = '" + objFireSuperApp.Generator + "' ,CurrentCircuit = '" + objFireSuperApp.CurrentCircuit + "' WHERE CertificateId = '" + objFireSuperApp.CertificateId + "';";
+                        strSql = "UPDATE tbl_firecertificate_supervisor_application SET ApplicantName = '" + objFireSuperApp.ApplicantName + "' ,OwnerName = '" + objFireSuperApp.BOwnerName + "' ,LesseeName = '" + objFireSuperApp.LesseeName + "' ,EmergencyContact = '" + objFireSuperApp.EmergencyContact + "' ,Address = '" + objFireSuperApp.BAddress + "' ,OtherAddresses = '" + objFireSuperApp.OtherAddresses + "' ,DistRoadSigns = '" + objFireSuperApp.DistRoadSigns + "' ,ShortestRoad = '" + objFireSuperApp.ShortestRoad + "' ,Telephone = '" + objFireSuperApp.BTelephone + "' ,Mobile = '" + objFireSuperApp.Mobile + "' ,LandArea = '" + objFireSuperApp.LandArea + "' ,Capacity = '" + objFireSuperApp.Capacity + "' ,Stories = '" + objFireSuperApp.Stories + "' ,Construction = '" + objFireSuperApp.Construction + "' ,BuildType = '" + objFireSuperApp.BuildType + "' ,UnapprovedBuildings = '" + objFireSuperApp.UnapprovedBuildings + "' ,PlanAvailability = '" + objFireSuperApp.PlanAvailability + "' ,Exitways = '" + objFireSuperApp.Exitways + "' ,EmergencyExits = '" + objFireSuperApp.EmergencyExits + "' ,DayManpower = '" + objFireSuperApp.DayManpower + "' ,NightManpower = '" + objFireSuperApp.NightManpower + "' ,TankCapacity = '" + objFireSuperApp.TankCapacity + "' ,CommonTank = '" + objFireSuperApp.CommonTank + "' ,FirehoseLocation = '" + objFireSuperApp.FirehoseLocation + "' ,ElecPhase = '" + objFireSuperApp.ElecPhase + "' ,Generator = '" + objFireSuperApp.Generator + "' ,CurrentCircuit = '" + objFireSuperApp.CurrentCircuit + "' WHERE CertificateId = '" + objFireSuperApp.CertificateId + "';";
                         cmd = new MySqlCommand(strSql, this.mySqlCon, this.mySqlTrans);                        
                         cmd.ExecuteNonQuery();
                         isSaved = true;
