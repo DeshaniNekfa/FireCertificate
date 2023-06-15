@@ -129,9 +129,7 @@
                                       "ClientID":"TestId"
                                     }
                                 </div>
-
                             </div>
-
                             <br />
                         </div>
                     </div>
@@ -316,10 +314,8 @@
                                       "Id":1
                                     }
                                 </div>
-
                             </div>
                             <br />
-
                             <div class="row">
                                 <div class="col-sm-2 ">ClientID</div>
                                 <div class="col-sm-2 ">Description</div>
@@ -345,9 +341,7 @@
                                       "ClientID":"TestId"
                                     }
                                 </div>
-
                             </div>
-
                             <br />
                         </div>
                     </div>
@@ -5096,7 +5090,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div>
                         <div>
                             <div>List of parameters</div>
@@ -5127,7 +5120,6 @@
                                       "StartDate":"2023-06-01"
                                     }
                                 </div>
-
                             </div>
                             <br />
 

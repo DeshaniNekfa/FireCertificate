@@ -33,7 +33,6 @@ namespace api_rate.Controllers
 
             try
             {
-
                 if (objFireApplication.ClientID == null || objFireApplication.ClientID == "")
                 {
                     throw new Exception("Invalid Client ID.");
@@ -50,13 +49,13 @@ namespace api_rate.Controllers
                     // assign certId for payment
                     objFireApplication.CertificateId = objFireApp.CertificateId;
 
-                    //get payment details
+                    // get payment details
                     objPayment = _getData.GetPaymentDetails(objFireApplication, ref objPayReturnMsg);
 
                     // assign cert Id for second application
                     objSuperApp.CertificateId = objFireApplication.CertificateId;
 
-                    //assign client id for second application 
+                    // assign client id for second application 
                     objSuperApp.ClientID = objFireApplication.ClientID;
 
                     // get second application
@@ -66,7 +65,6 @@ namespace api_rate.Controllers
                     {
                         throw new Exception("Error occurred when retrieve application details. " + objReturnMsg.ReturnMessage.ToString().Trim());
                     }
-
                 }
             }
             catch (Exception ex)
