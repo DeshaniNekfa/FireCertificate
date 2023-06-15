@@ -22,7 +22,7 @@ namespace api_rate.Helpers
         private MySqlDataAdapter da;
         private Connection_Main objConMain;
 
-        // Get one Fire application by its Certificate Id  
+        // Get one Fire application by its Id  
         public FireCertificateApplication GetApplicationById(FireCertificateApplication objApplication, ref ReturnMsgInfo returnMsg)
         {
             FireCertificateApplication objFireApplication = new FireCertificateApplication();
@@ -86,7 +86,6 @@ namespace api_rate.Helpers
                                 else
                                 {
                                     objFireAppDetails.DateReviewed = revDate.ToString("yyyy-MM-dd");
-
                                 }
 
                                 objFireAppDetails.Supervisor = dtRow["Supervisor"].ToString().Trim();

@@ -671,6 +671,8 @@ namespace api_rate.Helpers
                         if (this.mySqlCon != null)
                         {
                             var gblStatus = Globals.ASSIGNED.ToString().Trim();
+                            //DateTime dt = DateTime.Parse(objFireApp.DateReviewed);
+                            //objFireApp.DateReviewed = dt.ToString("dd/MM/yyyy HH:mm");
 
                             string strSql = "UPDATE tbl_firecertificate_application SET Supervisor = '" + objFireApp.Supervisor + "', Status ='" + gblStatus + "', DateReviewed ='" + objFireApp.DateReviewed + "' WHERE CertificateId = '" + objFireApp.CertificateId + "';";
                             cmd = new MySqlCommand(strSql, this.mySqlCon, this.mySqlTrans);
@@ -764,7 +766,13 @@ namespace api_rate.Helpers
             if (objPayment.BillNo == null || objPayment.BillNo == "")
             {
                 objReturnMsg.ReturnValue = "Error";
-                objReturnMsg.ReturnMessage = "Invalid Bill No.";
+                objReturnMsg.ReturnMessage = "Invalid Payment description.";
+                isValid = false;
+            }
+            else if (objPayment.PaidDescription != Globals.INSPECTION.ToString().Trim() && objPayment.PaidDescription != Globals.ANNUAL.ToString().Trim())
+            {
+                objReturnMsg.ReturnValue = "Error";
+                objReturnMsg.ReturnMessage = "Invalid Payment description.";
                 isValid = false;
             }
 
