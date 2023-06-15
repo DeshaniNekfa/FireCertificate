@@ -37,7 +37,7 @@
 <body>
     <form id="form1" runat="server">
         <div class="row">
-            <div class="col-md-2 left-div" > <!--style="height: 7000px; overflow-y: scroll; overflow-x: hidden;"-->
+            <div class="col-md-2 left-div" >
                 <div><asp:Label ID="lblGetData" runat="server" Text="To Get Data" Font-Bold="true" Font-Size="Larger"></asp:Label></div>
                 <div><a href="#apiFireApp" style="color:orange!important; font-size:small">01. Get Municipal Applications List</a></div>
                 <div><a href="#apiFireAppById" style="color:orange!important; font-size:small">02. Get Applications By Id</a></div>
@@ -188,7 +188,7 @@
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DateApplied": "6/2/2023 1:00:00 PM",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DateReviewed": null,
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DateReviewed": "6/2/2023 1:00:00 PM",
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"ClientID": null,
                                     <br />
@@ -201,6 +201,8 @@
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; }
                                     <br />
                                      ],
+                                    <br />
+                                    "ListPayment": null,
                                     <br />
                                     "ReturnMessageInfo": {
                                     <br />
@@ -697,34 +699,8 @@
                                     <br />
                                      ],
                                     <br />
-                                    &nbsp;&nbsp;"ListPayment": [
-                                    <br />
-                                    &nbsp;&nbsp;&nbsp;&nbsp; {
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Id": "1",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"CertificateId": "FC004",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Note": "",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"TotAmt": 1500.00,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"User": "TstUser",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Date": "6/2/2023 1:00:00 PM",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"PaymentType": "Bank",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"PaidDescription": "Description",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"PaymentID": "123",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"BillNo": "B112",
-                                    <br />   
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; }
-                                    <br />
-                                     ],
-                                    <br />                                              
+                                    "ListPayment": null,
+                                    <br />                                                                                 
                                     "ReturnMessageInfo": {
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; "ReturnValue": "OK",
@@ -4770,7 +4746,7 @@
                                     <br />
                                      ],
                                     <br />
-                                    &nbsp;&nbsp;"ListPayment": null,
+                                    "ListPayment": null,
                                     <br />   
                                     "ReturnMessageInfo": {
                                     <br />

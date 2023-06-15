@@ -75,6 +75,7 @@ namespace api_rate.Helpers
                                 objFireAppDetails.OwnerName = dtRow["OwnerName"].ToString().Trim();
                                 objFireAppDetails.CurrentFirePlan = dtRow["CurrentFirePlan"].ToString().Trim();
                                 objFireAppDetails.Status = dtRow["Status"].ToString().Trim();
+                                objFireAppDetails.Email = dtRow["Email"].ToString().Trim();
                                 var appDate = (DateTime)dtRow["DateApplied"];
                                 objFireAppDetails.DateApplied = appDate.ToString("yyyy-MM-dd");
 
