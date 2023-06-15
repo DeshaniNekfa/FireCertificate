@@ -14,9 +14,6 @@ namespace api_rate.Helpers
         // Get Application by Certificate Id
         FireCertificateApplication GetApplicationByCertId(FireSupervisorApplication objApplication, ref ReturnMsgInfo returnMsg);
 
-        // Get List of fire applications by its status(pending/approved/paid/rejected)
-        List<FireCertificateApplication> GetApplicationByStatus(FireCertificateApplication objApplication, ref ReturnMsgInfo returnMsg);
-
         // Get user details from user ID
         string GetUserDetailsById(FireCertificateApplication objFireApp, ref ReturnMsgInfo objReturnMsg);
 
