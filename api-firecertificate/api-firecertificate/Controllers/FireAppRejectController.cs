@@ -28,28 +28,22 @@ namespace api_rate.Controllers
         }
 
         // POST /api/FireAppReject
-        public ReturnMsgInfo Post([FromBody]FireSupervisorApplication objSuperApplication)
+        public ReturnMsgInfo Post([FromBody]FireCertificateApplication objFireApp)
         {
             ReturnMsgInfo objReturnMsg = new ReturnMsgInfo();
-            FireCertificateApplication objFireApp = new FireCertificateApplication();
 
             try
             {
-                if (objSuperApplication.ClientID == null || objSuperApplication.ClientID == "")
+                if (objFireApp.ClientID == null || objFireApp.ClientID == "")
                 {
                     throw new Exception("Invalid Client ID.");
                 }
-                else if (objSuperApplication.CertificateId == null || objSuperApplication.CertificateId == "")
+                else if (objFireApp.Id == null)
                 {
                     throw new Exception("Application id is required");
                 }
                 else
                 {
-                    //get application by cert Id
-                    objFireApp = _getData.GetApplicationByCertId(objSuperApplication, ref objReturnMsg);
-
-                    objFireApp.ClientID = objSuperApplication.ClientID;
-
                     // Rejecting Application
                     _appSubmit.SetStatusReject(objFireApp, ref objReturnMsg);
 

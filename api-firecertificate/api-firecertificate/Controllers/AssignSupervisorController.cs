@@ -38,7 +38,7 @@ namespace api_rate.Controllers
                 {
                     throw new Exception("Invalid Client ID.");
                 }
-                else if (objFireApp.CertificateId == null || objFireApp.CertificateId == "")
+                else if (objFireApp.Id == null)
                 {
                     throw new Exception("Application Id");
                 }

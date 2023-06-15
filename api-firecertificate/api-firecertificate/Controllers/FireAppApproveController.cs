@@ -27,28 +27,22 @@ namespace api_rate.Controllers
             _sms = ISMS;
         }
         // POST /api/FireAppApprove
-        public ReturnMsgInfo Post([FromBody]FireSupervisorApplication objSuperApplication) 
+        public ReturnMsgInfo Post([FromBody]FireCertificateApplication objFireApp) 
         {
             ReturnMsgInfo objReturnMsg = new ReturnMsgInfo();
-            FireCertificateApplication objFireApp = new FireCertificateApplication();
 
             try
             {
-                if (objSuperApplication.ClientID == null || objSuperApplication.ClientID == "")
+                if (objFireApp.ClientID == null || objFireApp.ClientID == "")
                 {
                     throw new Exception("Invalid Client ID.");
                 }
-                else if (objSuperApplication.CertificateId == null || objSuperApplication.CertificateId == "")
+                else if (objFireApp.Id == null)
                 {
                     throw new Exception("Application id is required");
                 }
                 else
                 {
-                    // Get application by given cert Id
-                    objFireApp = _getData.GetApplicationByCertId(objSuperApplication, ref objReturnMsg);
-
-                    objFireApp.ClientID = objSuperApplication.ClientID;
-
                     // Approving Application
                     _appSubmit.SetStatusApprove(objFireApp, ref objReturnMsg);
                                             

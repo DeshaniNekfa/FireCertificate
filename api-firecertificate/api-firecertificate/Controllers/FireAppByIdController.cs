@@ -61,6 +61,36 @@ namespace api_rate.Controllers
                     // get second application
                     objSuperApp = _getData.GetSupervisorApplicationByFireAppID(objSuperApp, ref objReturnMsg);
 
+                    objFireApp.ClientID = objSuperApp.ClientID;
+                    objFireApp.CertificateId = objSuperApp.CertificateId;
+                    objFireApp.ApplicantName = objSuperApp.ApplicantName;
+                    objFireApp.BOwnerName = objSuperApp.BOwnerName;
+                    objFireApp.LesseeName = objSuperApp.LesseeName;
+                    objFireApp.EmergencyContact = objSuperApp.EmergencyContact;
+                    objFireApp.BAddress = objSuperApp.BAddress;
+                    objFireApp.OtherAddresses = objSuperApp.OtherAddresses;
+                    objFireApp.DistRoadSigns = objSuperApp.DistRoadSigns;
+                    objFireApp.ShortestRoad = objSuperApp.ShortestRoad;
+                    objFireApp.BTelephone = objSuperApp.BTelephone;
+                    objFireApp.Mobile = objSuperApp.Mobile;
+                    objFireApp.LandArea = objSuperApp.LandArea;
+                    objFireApp.Capacity = objSuperApp.Capacity;
+                    objFireApp.Stories = objSuperApp.Stories;
+                    objFireApp.Construction = objSuperApp.Construction;
+                    objFireApp.BuildType = objSuperApp.BuildType;
+                    objFireApp.UnapprovedBuildings = objSuperApp.UnapprovedBuildings;
+                    objFireApp.PlanAvailability = objSuperApp.PlanAvailability;
+                    objFireApp.Exitways = objSuperApp.Exitways;
+                    objFireApp.EmergencyExits = objSuperApp.EmergencyExits;
+                    objFireApp.DayManpower = objSuperApp.DayManpower;
+                    objFireApp.NightManpower = objSuperApp.NightManpower;
+                    objFireApp.TankCapacity = objSuperApp.TankCapacity;
+                    objFireApp.CommonTank = objSuperApp.CommonTank;
+                    objFireApp.FirehoseLocation = objSuperApp.FirehoseLocation;
+                    objFireApp.ElecPhase = objSuperApp.ElecPhase;
+                    objFireApp.Generator = objSuperApp.Generator;
+                    objFireApp.CurrentCircuit = objSuperApp.CurrentCircuit;
+
                     if (objReturnMsg.ReturnValue != "OK")
                     {
                         throw new Exception("Error occurred when retrieve application details. " + objReturnMsg.ReturnMessage.ToString().Trim());
@@ -75,7 +105,6 @@ namespace api_rate.Controllers
 
             objFireAppByIdOutput.FireApplication = objFireApp;
             objFireAppByIdOutput.PaymentDetails = objPayment;
-            objFireAppByIdOutput.SuperApplication = objSuperApp;
             objFireAppByIdOutput.ReturnMessageInfo = objReturnMsg;
 
             return objFireAppByIdOutput;

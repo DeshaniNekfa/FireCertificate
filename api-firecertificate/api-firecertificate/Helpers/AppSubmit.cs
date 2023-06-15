@@ -138,6 +138,184 @@ namespace api_rate.Helpers
                 }
             }
 
+            // Applicant Name
+            if (objFireAppDetails.ApplicantName == null || objFireAppDetails.ApplicantName == "")
+            {
+                returnMsg.ReturnValue = "Error";
+                returnMsg.ReturnMessage = "Invalid Applicant Name.";
+                IsSuccess = false;
+            }
+
+            // Owner Name
+            if (objFireAppDetails.BOwnerName == null || objFireAppDetails.BOwnerName == "")
+            {
+                returnMsg.ReturnValue = "Error";
+                returnMsg.ReturnMessage = "Invalid Owner Name.";
+                IsSuccess = false;
+            }
+
+            // Emergency Number
+            if (objFireAppDetails.EmergencyContact == null || objFireAppDetails.EmergencyContact == "")
+            {
+                returnMsg.ReturnValue = "Error";
+                returnMsg.ReturnMessage = "Invalid Emergency Contact person.";
+                IsSuccess = false;
+            }
+
+            // Buildning Address
+            if (objFireAppDetails.BAddress == null || objFireAppDetails.BAddress == "")
+            {
+                returnMsg.ReturnValue = "Error";
+                returnMsg.ReturnMessage = "Invalid telephone number.";
+                IsSuccess = false;
+            }
+
+            // Building Telephone
+            if (objFireAppDetails.BTelephone == null || objFireAppDetails.BTelephone == "")
+            {
+                returnMsg.ReturnValue = "Error";
+                returnMsg.ReturnMessage = "Invalid telephone number.";
+                IsSuccess = false;
+            }
+            else
+            {
+                if (objFireAppDetails.BTelephone.ToString().Trim().Length != 10)
+                {
+                    returnMsg.ReturnValue = "Error";
+                    returnMsg.ReturnMessage = "Applicant's Telephoone Number length should be 10.";
+                    IsSuccess = false;
+                }
+                else if (objFireAppDetails.BTelephone.ToString().Trim().StartsWith("0") == false)
+                {
+                    returnMsg.ReturnValue = "Error";
+                    returnMsg.ReturnMessage = "Invalid format in Applicant's Telephone Number. (0XXXXXXXXX)";
+                    IsSuccess = false;
+                }
+                else if (objCmnFunctions.ValidatePhoneNoDigits(objFireAppDetails.BTelephone.ToString().Trim()) == false)
+                {
+                    returnMsg.ReturnValue = "Error";
+                    returnMsg.ReturnMessage = "Applicant's Telephone Number should contain only digits.";
+                    IsSuccess = false;
+                }
+            }
+
+            // Mobile
+            if (objFireAppDetails.Mobile == null || objFireAppDetails.Mobile == "")
+            {
+                returnMsg.ReturnValue = "Error";
+                returnMsg.ReturnMessage = "Invalid mobile number.";
+                IsSuccess = false;
+            }
+            else
+            {
+                if (objFireAppDetails.Mobile.ToString().Trim().Length != 10)
+                {
+                    returnMsg.ReturnValue = "Error";
+                    returnMsg.ReturnMessage = "Applicant's Mobile Number length should be 10.";
+                    IsSuccess = false;
+                }
+                else if (objFireAppDetails.Mobile.ToString().Trim().StartsWith("0") == false)
+                {
+                    returnMsg.ReturnValue = "Error";
+                    returnMsg.ReturnMessage = "Invalid format in Applicant's Mobile Number. (0XXXXXXXXX)";
+                    IsSuccess = false;
+                }
+                else if (objCmnFunctions.ValidatePhoneNoDigits(objFireAppDetails.Mobile.ToString().Trim()) == false)
+                {
+                    returnMsg.ReturnValue = "Error";
+                    returnMsg.ReturnMessage = "Applicant's Mobile Number should contain only digits.";
+                    IsSuccess = false;
+                }
+            }
+
+            // Land Area number 
+            if (objFireAppDetails.LandArea <= 0)
+            {
+                returnMsg.ReturnValue = "Error";
+                returnMsg.ReturnMessage = "Invalid Land Area.";
+                IsSuccess = false;
+            }
+
+            // Capacity Number
+            if (objFireAppDetails.Capacity <= 0)
+            {
+                returnMsg.ReturnValue = "Error";
+                returnMsg.ReturnMessage = "Invalid Capacity.";
+                IsSuccess = false;
+            }
+
+            // Stories Number
+            if (objFireAppDetails.Stories < 1)
+            {
+                returnMsg.ReturnValue = "Error";
+                returnMsg.ReturnMessage = "Invalid Number of stories.";
+                IsSuccess = false;
+            }
+
+            // Plan Availability text
+            if (objFireAppDetails.PlanAvailability == null || objFireAppDetails.PlanAvailability == "")
+            {
+                returnMsg.ReturnValue = "Error";
+                returnMsg.ReturnMessage = "Invalid Plan information.";
+                IsSuccess = false;
+            }
+
+            // Exitways text
+            if (objFireAppDetails.Exitways == null || objFireAppDetails.Exitways == "")
+            {
+                returnMsg.ReturnValue = "Error";
+                returnMsg.ReturnMessage = "Invalid Exitway information.";
+                IsSuccess = false;
+            }
+
+            // Emergency Exits in text
+            if (objFireAppDetails.EmergencyExits == null || objFireAppDetails.EmergencyExits == "")
+            {
+                returnMsg.ReturnValue = "Error";
+                returnMsg.ReturnMessage = "Invalid Emergency Exit Information.";
+                IsSuccess = false;
+            }
+
+            // Day Manpower number
+            if (objFireAppDetails.DayManpower < 0)
+            {
+                returnMsg.ReturnValue = "Error";
+                returnMsg.ReturnMessage = "Invalid Capacity.";
+                IsSuccess = false;
+            }
+
+            // Night manpower number
+            if (objFireAppDetails.NightManpower < 0)
+            {
+                returnMsg.ReturnValue = "Error";
+                returnMsg.ReturnMessage = "Invalid Capacity.";
+                IsSuccess = false;
+            }
+
+            // Tank Capacity number
+            if (objFireAppDetails.TankCapacity <= 0)
+            {
+                returnMsg.ReturnValue = "Error";
+                returnMsg.ReturnMessage = "Invalid Capacity.";
+                IsSuccess = false;
+            }
+
+            // Fire hose location in text
+            if (objFireAppDetails.FirehoseLocation == null || objFireAppDetails.FirehoseLocation == "")
+            {
+                returnMsg.ReturnValue = "Error";
+                returnMsg.ReturnMessage = "Invalid Fire hose location Information.";
+                IsSuccess = false;
+            }
+
+            // Electricity phase (three or one)
+            if (objFireAppDetails.ElecPhase == null || objFireAppDetails.ElecPhase == "")
+            {
+                returnMsg.ReturnValue = "Error";
+                returnMsg.ReturnMessage = "Invalid Electricity phase Information.";
+                IsSuccess = false;
+            }
+
             return IsSuccess;
         }
 
@@ -145,11 +323,12 @@ namespace api_rate.Helpers
         public bool SaveApplication(FireCertificateApplication objFireAppDetails, ref ReturnMsgInfo returnMsg)
         {
             bool isSaved = false;
-            //Index objIndex = new Index();
+            Index objIndex = new Index();
             this.objConMain = new Connection_Main();
 
-            //objIndex = GetIndexes(objFireAppDetails, ref returnMsg);
-            //var certId = objIndex.Code.ToString().Trim() + objIndex.NextId.ToString().Trim();
+            objIndex = GetIndexes(objFireAppDetails, ref returnMsg);
+            var certId = objIndex.Code.ToString().Trim() + objIndex.NextId.ToString().Trim();
+            objFireAppDetails.CertificateId = certId;
 
             try
             {
@@ -525,7 +704,7 @@ namespace api_rate.Helpers
 
                     if (this.mySqlCon != null)
                     {
-                        strSql = "UPDATE tbl_firecertificate_application SET Status = 'Approved' WHERE CertificateId = '"+objFireApp.CertificateId+"';";
+                        strSql = "UPDATE tbl_firecertificate_application SET Status = 'Approved' WHERE Id = '"+objFireApp.Id+"';";
                         cmd = new MySqlCommand(strSql, this.mySqlCon, this.mySqlTrans);
                         cmd.ExecuteNonQuery();
                         isApporoved = true;
@@ -584,7 +763,7 @@ namespace api_rate.Helpers
 
                     if (this.mySqlCon != null)
                     {
-                        strSql = "UPDATE tbl_firecertificate_application SET Status = 'Rejected' WHERE CertificateId = '" + objFireApp.CertificateId + "';";
+                        strSql = "UPDATE tbl_firecertificate_application SET Status = 'Rejected', RejectReason = '"+objFireApp.RejectReason+"' WHERE Id = '" + objFireApp.Id + "';";
                         cmd = new MySqlCommand(strSql, this.mySqlCon, this.mySqlTrans);
                         cmd.ExecuteNonQuery();
                         isRejected = true;
@@ -674,7 +853,7 @@ namespace api_rate.Helpers
                             //DateTime dt = DateTime.Parse(objFireApp.DateReviewed);
                             //objFireApp.DateReviewed = dt.ToString("dd/MM/yyyy HH:mm");
 
-                            string strSql = "UPDATE tbl_firecertificate_application SET Supervisor = '" + objFireApp.Supervisor + "', Status ='" + gblStatus + "', DateReviewed ='" + objFireApp.DateReviewed + "' WHERE CertificateId = '" + objFireApp.CertificateId + "';";
+                            string strSql = "UPDATE tbl_firecertificate_application SET Supervisor = '" + objFireApp.Supervisor + "', Status ='" + gblStatus + "', DateReviewed ='" + objFireApp.DateReviewed + "' WHERE Id = '" + objFireApp.Id + "';";
                             cmd = new MySqlCommand(strSql, this.mySqlCon, this.mySqlTrans);
                             cmd.ExecuteNonQuery();
                             isAssigned = true;
@@ -1070,6 +1249,45 @@ namespace api_rate.Helpers
                 }
             }
             return isSaved;
+        }
+    
+        // SET Super application
+        public FireSupervisorApplication SetFireSuperApp(FireCertificateApplication objFireApp, ref ReturnMsgInfo returnMsg)
+        {
+            FireSupervisorApplication objSuperApp = new FireSupervisorApplication();
+
+            objSuperApp.ClientID = objFireApp.ClientID;
+            objSuperApp.CertificateId = objFireApp.CertificateId;
+            objSuperApp.ApplicantName = objFireApp.ApplicantName;
+            objSuperApp.BOwnerName = objFireApp.BOwnerName;
+            objSuperApp.LesseeName = objFireApp.LesseeName;
+            objSuperApp.EmergencyContact = objFireApp.EmergencyContact;
+            objSuperApp.BAddress = objFireApp.BAddress;
+            objSuperApp.OtherAddresses = objFireApp.OtherAddresses;
+            objSuperApp.DistRoadSigns = objFireApp.DistRoadSigns;
+            objSuperApp.ShortestRoad = objFireApp.ShortestRoad;
+            objSuperApp.BTelephone = objFireApp.BTelephone;
+            objSuperApp.Mobile = objFireApp.Mobile;
+            objSuperApp.LandArea = objFireApp.LandArea;
+            objSuperApp.Capacity = objFireApp.Capacity;
+            objSuperApp.Stories = objFireApp.Stories;
+            objSuperApp.Construction = objFireApp.Construction;
+            objSuperApp.BuildType = objFireApp.BuildType;
+            objSuperApp.UnapprovedBuildings = objFireApp.UnapprovedBuildings;
+            objSuperApp.PlanAvailability = objFireApp.PlanAvailability;
+            objSuperApp.Exitways = objFireApp.Exitways;
+            objSuperApp.EmergencyExits = objFireApp.EmergencyExits;
+            objSuperApp.DayManpower = objFireApp.DayManpower;
+            objSuperApp.NightManpower = objFireApp.NightManpower;
+            objSuperApp.TankCapacity = objFireApp.TankCapacity;
+            objSuperApp.CommonTank = objFireApp.CommonTank;
+            objSuperApp.FirehoseLocation = objFireApp.FirehoseLocation;
+            objSuperApp.ElecPhase = objFireApp.ElecPhase;
+            objSuperApp.Generator = objFireApp.Generator;
+            objSuperApp.CurrentCircuit = objFireApp.CurrentCircuit;
+
+            return objSuperApp;
+
         }
     }
 }

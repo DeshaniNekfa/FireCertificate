@@ -44,5 +44,7 @@ namespace api_rate.Helpers
 
         // Update Fire department App
         bool UpdateSuperApplication(FireSupervisorApplication objFireSuperApp, ref ReturnMsgInfo returnMsg);
+
+        FireSupervisorApplication SetFireSuperApp(FireCertificateApplication objFireApp, ref ReturnMsgInfo returnMsg);
     }
 }

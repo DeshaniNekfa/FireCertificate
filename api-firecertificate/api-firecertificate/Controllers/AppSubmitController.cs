@@ -28,42 +28,46 @@ namespace api_rate.Controllers
         }
 
         // POST /api/AppSubmit
-        public ReturnMsgInfo Post([FromBody]CompleteApp objCompleteDetails)
+        public ReturnMsgInfo Post([FromBody]FireCertificateApplication objCompleteDetails)
         {
             ReturnMsgInfo objReturnMsg = new ReturnMsgInfo();
+            FireSupervisorApplication objSuperApp = new FireSupervisorApplication();
+
             try
             {
                 //validation
-                var valFireApp = _appsubmit.ValidateApplication(objCompleteDetails.fireCertificateApp, ref objReturnMsg);
-                var valSuperApp = _appsubmit.ValidateSupervisorApplication(objCompleteDetails.fireSuperApp, ref objReturnMsg);
+                var valFireApp = _appsubmit.ValidateApplication(objCompleteDetails, ref objReturnMsg);
 
-                if (valFireApp && valSuperApp)
+                if (valFireApp)
                 {
                     //App Save if CertID not available
-                    if (objCompleteDetails.fireCertificateApp.CertificateId == null || objCompleteDetails.fireCertificateApp.CertificateId == "")
+                    if (objCompleteDetails.CertificateId == null || objCompleteDetails.CertificateId == "")
                     {
                         //application submit
-                        _appsubmit.SubmitApplication(objCompleteDetails, ref objReturnMsg);
+                        _appsubmit.SaveApplication(objCompleteDetails, ref objReturnMsg);
+                        objSuperApp = _appsubmit.SetFireSuperApp(objCompleteDetails, ref objReturnMsg);
+                        _appsubmit.SaveSupervisorApplication(objSuperApp, ref objReturnMsg);
+
                         if (objReturnMsg.ReturnValue == "OK")
                         {
                             objReturnMsg.ReturnValue = "OK";
                             objReturnMsg.ReturnMessage = "Application Successfully submitted.";
 
                             //// Sending Email 
-                            if (string.IsNullOrEmpty(objCompleteDetails.fireCertificateApp.Email) == false)
+                            if (string.IsNullOrEmpty(objCompleteDetails.Email) == false)
                             {
                                 string strMsg = _email.GetEmailMsgBody(Globals.PENDING.ToString().Trim());
                                 string strErMsg = string.Empty;
-                                _email.SendEmail(strMsg, objCompleteDetails.fireCertificateApp.Email.ToString().Trim(), ref strErMsg);
+                                _email.SendEmail(strMsg, objCompleteDetails.Email.ToString().Trim(), ref strErMsg);
                             }
 
                             //// Sending SMS 
                             string strSMSSending = ConfigurationManager.AppSettings["SMSSending"].ToString().Trim();
-                            if (string.IsNullOrEmpty(objCompleteDetails.fireCertificateApp.CertificateId) == false && string.IsNullOrEmpty(objCompleteDetails.fireCertificateApp.Telephone) == false && strSMSSending.ToString().Trim() == "1")
+                            if (string.IsNullOrEmpty(objCompleteDetails.CertificateId) == false && string.IsNullOrEmpty(objCompleteDetails.Telephone) == false && strSMSSending.ToString().Trim() == "1")
                             {
-                                string strMsg = "Dear Customer, \n Your fire cerificate application request successfully submitted. \n Reference No : " + objCompleteDetails.fireCertificateApp.CertificateId.Trim() + " \n Thank You.";
+                                string strMsg = "Dear Customer, \n Your fire cerificate application request successfully submitted. \n Reference No : " + objCompleteDetails.CertificateId.Trim() + " \n Thank You.";
                                 string strErMsg = string.Empty;
-                                _sms.SendSMS(strMsg, objCompleteDetails.fireCertificateApp.Telephone.ToString().Trim(), ref strErMsg);
+                                _sms.SendSMS(strMsg, objCompleteDetails.Telephone.ToString().Trim(), ref strErMsg);
                             } 
                         }
                         else
@@ -73,14 +77,13 @@ namespace api_rate.Controllers
                     }
                     else
                     {
-                        // If certId available share between two applications
-                        objCompleteDetails.fireSuperApp.CertificateId = objCompleteDetails.fireCertificateApp.CertificateId;
+                        objSuperApp = _appsubmit.SetFireSuperApp(objCompleteDetails, ref objReturnMsg);
 
                         // update first application
-                        bool updateFireApp = _appsubmit.UpdateFireCertificate(objCompleteDetails.fireCertificateApp, ref objReturnMsg);
+                        bool updateFireApp = _appsubmit.UpdateFireCertificate(objCompleteDetails, ref objReturnMsg);
                         
                         // update second application
-                        bool updateSuperApp = _appsubmit.UpdateSuperApplication(objCompleteDetails.fireSuperApp, ref objReturnMsg);
+                        bool updateSuperApp = _appsubmit.UpdateSuperApplication(objSuperApp, ref objReturnMsg);
 
                         // if both update
                         if (updateFireApp && updateSuperApp)
