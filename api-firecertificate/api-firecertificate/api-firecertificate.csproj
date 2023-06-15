@@ -226,7 +226,6 @@
     <Compile Include="Helpers\Utility.cs" />
     <Compile Include="Models\BankAPIInfo.cs" />
     <Compile Include="Models\Charges.cs" />
-    <Compile Include="Models\ChargesOutput.cs" />
     <Compile Include="Models\CompleteApp.cs" />
     <Compile Include="Models\EmailInfo.cs" />
     <Compile Include="Models\ConnectionInfo.cs" />
@@ -241,7 +240,6 @@
     <Compile Include="Models\ReturnMsgInfo.cs" />
     <Compile Include="Models\SignupInfo.cs" />
     <Compile Include="Models\SMSInfo.cs" />
-    <Compile Include="Models\SuperAppByIdOutput.cs" />
     <Compile Include="Models\SuperAppDetailsOutput.cs" />
     <Compile Include="Models\UserInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
