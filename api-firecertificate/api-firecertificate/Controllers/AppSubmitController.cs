@@ -27,7 +27,7 @@ namespace api_rate.Controllers
             _email = IEmail;
         }
 
-        // POST api/AppSubmit
+        // POST /api/AppSubmit
         public ReturnMsgInfo Post([FromBody]CompleteApp objCompleteDetails)
         {
             ReturnMsgInfo objReturnMsg = new ReturnMsgInfo();

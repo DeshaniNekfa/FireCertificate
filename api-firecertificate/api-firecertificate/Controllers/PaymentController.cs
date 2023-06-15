@@ -29,7 +29,7 @@ namespace api_rate.Controllers
             _email = IEmail;
         }
 
-        // POST api/Payment
+        // POST /api/Payment
         public ReturnMsgInfo Post([FromBody]PaymentDetails objPayment)
         {
             ReturnMsgInfo objReturnMsg = new ReturnMsgInfo();

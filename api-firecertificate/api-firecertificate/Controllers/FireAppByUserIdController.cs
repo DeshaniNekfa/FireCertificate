@@ -20,7 +20,7 @@ namespace api_rate.Controllers
             _getData = IGetData;
         }
 
-        //POST api/FireAppByUserId
+        //POST /api/FireAppByUserId
         public FireAppDetailsOutput Post([FromBody]FireCertificateApplication objFireApp)
         {
             FireAppDetailsOutput objFireAppDetaitsOutput = new FireAppDetailsOutput();

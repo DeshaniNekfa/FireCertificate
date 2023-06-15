@@ -189,7 +189,6 @@
     <Compile Include="Controllers\FireAppApprovedByDateController.cs" />
     <Compile Include="Controllers\FireAppAssignedByDateController.cs" />
     <Compile Include="Controllers\FireAppByIdController.cs" />
-    <Compile Include="Controllers\FireAppByStatusController.cs" />
     <Compile Include="Controllers\FireAppByUserIdController.cs" />
     <Compile Include="Controllers\FireAppHoldByDateController.cs" />
     <Compile Include="Controllers\FireAppPaidByDateController.cs" />
@@ -198,8 +197,6 @@
     <Compile Include="Controllers\FireAppRejectedByDateController.cs" />
     <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="Controllers\SuperAppAllController.cs" />
-    <Compile Include="Controllers\SuperAppByFireIdController.cs" />
-    <Compile Include="Controllers\SuperAppSubmitController.cs" />
     <Compile Include="Filters\JwtCustomAuth.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

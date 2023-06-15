@@ -20,7 +20,7 @@ namespace api_rate.Controllers
             _getData = IGetData;
         }
 
-        // POST api/Charges
+        // POST /api/Charges
         public Charges Post([FromBody]Charges objCharge)
         {
             Charges objCharges = new Charges();            

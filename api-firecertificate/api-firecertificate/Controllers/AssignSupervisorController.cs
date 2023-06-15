@@ -27,6 +27,7 @@ namespace api_rate.Controllers
             _sms = ISMS;
         }
 
+        // POST /api/AssignSupervisor
         public ReturnMsgInfo Post([FromBody]FireCertificateApplication objFireApp)
         {
             ReturnMsgInfo objReturnMsg = new ReturnMsgInfo();

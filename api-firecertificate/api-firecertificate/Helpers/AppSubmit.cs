@@ -34,13 +34,7 @@ namespace api_rate.Helpers
                 IsSuccess = false;
             }
 
-            //if (objFireAppDetails.CertificateId == null || objFireAppDetails.CertificateId == "")
-            //{
-            //    returnMsg.ReturnValue = "Error";
-            //    returnMsg.ReturnMessage = "Invalid Certificate ID.";
-            //    IsSuccess = false;
-            //}
-
+            // Company name 
             if (objFireAppDetails.CompanyName == null || objFireAppDetails.CompanyName == "")
             {
                 returnMsg.ReturnValue = "Error";
@@ -48,7 +42,7 @@ namespace api_rate.Helpers
                 IsSuccess = false;
             }
 
-
+            // Address
             if (objFireAppDetails.Address == null || objFireAppDetails.Address == "")
             {
                 returnMsg.ReturnValue = "Error";
@@ -56,6 +50,7 @@ namespace api_rate.Helpers
                 IsSuccess = false;
             }
 
+            // Telephone not null and validity
             if (objFireAppDetails.Telephone == null || objFireAppDetails.Telephone == "")
             {
                 returnMsg.ReturnValue = "Error";
@@ -84,6 +79,7 @@ namespace api_rate.Helpers
                 }
             }
 
+            //Distance from council number input
             if (objFireAppDetails.DistanceFromCouncil == null || objFireAppDetails.DistanceFromCouncil < 0)
             {
                 returnMsg.ReturnValue = "Error";
@@ -91,6 +87,7 @@ namespace api_rate.Helpers
                 IsSuccess = false;
             }
 
+            //nature of business
             if (objFireAppDetails.NatureOfBusiness == null || objFireAppDetails.NatureOfBusiness == "")
             {
                 returnMsg.ReturnValue = "Error";
@@ -98,6 +95,7 @@ namespace api_rate.Helpers
                 IsSuccess = false;
             }
 
+            // Building plan attachment name 
             if (objFireAppDetails.BuildingPlan == null || objFireAppDetails.BuildingPlan == "")
             {
                 returnMsg.ReturnValue = "Error";
@@ -105,6 +103,7 @@ namespace api_rate.Helpers
                 IsSuccess = false;
             }
 
+            // Total Land area
             if (objFireAppDetails.TotalLand == null || objFireAppDetails.TotalLand < 0)
             {
                 returnMsg.ReturnValue = "Error";
@@ -112,6 +111,7 @@ namespace api_rate.Helpers
                 IsSuccess = false;
             }
 
+            // Road from council text
             if (objFireAppDetails.RoadFromCouncil == null || objFireAppDetails.RoadFromCouncil == "")
             {
                 returnMsg.ReturnValue = "Error";
@@ -119,6 +119,7 @@ namespace api_rate.Helpers
                 IsSuccess = false;
             }
 
+            //Owner name text
             if (objFireAppDetails.OwnerName == null || objFireAppDetails.OwnerName == "")
             {
                 returnMsg.ReturnValue = "Error";
@@ -126,12 +127,6 @@ namespace api_rate.Helpers
                 IsSuccess = false;
             }
 
-            //if (objFireAppDetails.Status == null || objFireAppDetails.Status == "")
-            //{
-            //    returnMsg.ReturnValue = "Error";
-            //    returnMsg.ReturnMessage = "Status missing.";
-            //    IsSuccess = false;
-            //}
             // Email Validation
             if (objFireAppDetails.Email != null && objFireAppDetails.Email != "" && objFireAppDetails.Email.Length > 0)
             {
@@ -142,41 +137,6 @@ namespace api_rate.Helpers
                     IsSuccess = false;
                 }
             }
-
-            //if (objFireAppDetails.DateApplied == null)
-            //{
-            //    returnMsg.ReturnValue = "Error";
-            //    returnMsg.ReturnMessage = "Date Applied Date is required.";
-            //    IsSuccess = false;
-            //}
-            //else if (objFireAppDetails.DateApplied.ToString().Trim() == "")
-            //{
-            //    returnMsg.ReturnValue = "Error";
-            //    returnMsg.ReturnMessage = "Date Applied Date is required.";
-            //    IsSuccess = false;
-            //}
-            //else if (objCmnFunctions.IsValidDate(objFireAppDetails.DateApplied.ToString().Trim()) == false)
-            //{
-            //    returnMsg.ReturnValue = "Error";
-            //    returnMsg.ReturnMessage = "Invalid Applied Date.";
-            //    IsSuccess = false;
-            //}
-
-            //if (objFireAppDetails.DateReviewed != null)
-            //{
-            //    if (objFireAppDetails.DateReviewed.ToString().Trim() == "")
-            //    {
-            //        returnMsg.ReturnValue = "Error";
-            //        returnMsg.ReturnMessage = "Date Applied Date is required.";
-            //        IsSuccess = false;
-            //    }
-            //    else if (objCmnFunctions.IsValidDate(objFireAppDetails.DateReviewed.ToString().Trim()) == false)
-            //    {
-            //        returnMsg.ReturnValue = "Error";
-            //        returnMsg.ReturnMessage = "Invalid Reviewed Date.";
-            //        IsSuccess = false;
-            //    }
-            //}
 
             return IsSuccess;
         }
@@ -267,22 +227,6 @@ namespace api_rate.Helpers
             bool IsSuccess = true;
             objCmnFunctions = new CommonFunctions();
 
-            // ClientID
-            //if (objFireSuperApp.ClientID == null || objFireSuperApp.ClientID == "")
-            //{
-            //    returnMsg.ReturnValue = "Error";
-            //    returnMsg.ReturnMessage = "Invalid Client ID.";
-            //    IsSuccess = false;
-            //}
-
-            // CertificateId
-            //if (objFireSuperApp.CertificateId == null || objFireSuperApp.CertificateId == "")
-            //{
-            //    returnMsg.ReturnValue = "Error";
-            //    returnMsg.ReturnMessage = "Invalid Certificate ID.";
-            //    IsSuccess = false;
-            //}
-
             // Applicant Name
             if (objFireSuperApp.ApplicantName == null || objFireSuperApp.ApplicantName == "")
             {
@@ -307,7 +251,7 @@ namespace api_rate.Helpers
                 IsSuccess = false;
             }         
 
-            // Address
+            // Buildning Address
             if (objFireSuperApp.BAddress == null || objFireSuperApp.BAddress == "")
             {
                 returnMsg.ReturnValue = "Error";
@@ -315,7 +259,7 @@ namespace api_rate.Helpers
                 IsSuccess = false;
             }
 
-            // Telephone
+            // Building Telephone
             if (objFireSuperApp.BTelephone == null || objFireSuperApp.BTelephone == "")
             {
                 returnMsg.ReturnValue = "Error";
@@ -373,7 +317,7 @@ namespace api_rate.Helpers
                 }
             }
 
-            // Land Area
+            // Land Area number 
             if (objFireSuperApp.LandArea <= 0)
             {
                 returnMsg.ReturnValue = "Error";
@@ -381,7 +325,7 @@ namespace api_rate.Helpers
                 IsSuccess = false;
             }
 
-            // Capacity
+            // Capacity Number
             if (objFireSuperApp.Capacity <= 0)
             {
                 returnMsg.ReturnValue = "Error";
@@ -389,7 +333,7 @@ namespace api_rate.Helpers
                 IsSuccess = false;
             }
 
-            // Stories
+            // Stories Number
             if (objFireSuperApp.Stories < 1)
             {
                 returnMsg.ReturnValue = "Error";
@@ -397,7 +341,7 @@ namespace api_rate.Helpers
                 IsSuccess = false;
             }
 
-            // Plan Availability
+            // Plan Availability text
             if (objFireSuperApp.PlanAvailability == null || objFireSuperApp.PlanAvailability == "")
             {
                 returnMsg.ReturnValue = "Error";
@@ -405,7 +349,7 @@ namespace api_rate.Helpers
                 IsSuccess = false;
             }
 
-            // Exitways
+            // Exitways text
             if (objFireSuperApp.Exitways == null || objFireSuperApp.Exitways == "")
             {
                 returnMsg.ReturnValue = "Error";
@@ -413,7 +357,7 @@ namespace api_rate.Helpers
                 IsSuccess = false;
             }
              
-            // Emergency Exits
+            // Emergency Exits in text
             if (objFireSuperApp.EmergencyExits == null || objFireSuperApp.EmergencyExits == "")
             {
                 returnMsg.ReturnValue = "Error";
@@ -421,7 +365,7 @@ namespace api_rate.Helpers
                 IsSuccess = false;
             }
 
-            // Day Manpower
+            // Day Manpower number
             if (objFireSuperApp.DayManpower < 0)
             {
                 returnMsg.ReturnValue = "Error";
@@ -429,7 +373,7 @@ namespace api_rate.Helpers
                 IsSuccess = false;
             }
 
-            // Night manpower
+            // Night manpower number
             if (objFireSuperApp.NightManpower < 0)
             {
                 returnMsg.ReturnValue = "Error";
@@ -437,7 +381,7 @@ namespace api_rate.Helpers
                 IsSuccess = false;
             }
 
-            // Tank Capacity
+            // Tank Capacity number
             if (objFireSuperApp.TankCapacity <= 0)
             {
                 returnMsg.ReturnValue = "Error";
@@ -445,7 +389,7 @@ namespace api_rate.Helpers
                 IsSuccess = false;
             }
 
-            // Fire hose location
+            // Fire hose location in text
             if (objFireSuperApp.FirehoseLocation == null || objFireSuperApp.FirehoseLocation == "")
             {
                 returnMsg.ReturnValue = "Error";
@@ -453,7 +397,7 @@ namespace api_rate.Helpers
                 IsSuccess = false;
             }
 
-            // Electricity phase
+            // Electricity phase (three or one)
             if (objFireSuperApp.ElecPhase == null || objFireSuperApp.ElecPhase == "")
             {
                 returnMsg.ReturnValue = "Error";

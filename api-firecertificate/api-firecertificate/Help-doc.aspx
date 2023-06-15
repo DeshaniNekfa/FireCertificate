@@ -38,37 +38,28 @@
     <form id="form1" runat="server">
         <div class="row">
             <div class="col-md-2 left-div" > <!--style="height: 7000px; overflow-y: scroll; overflow-x: hidden;"-->
-
-
-                <%--<div><a href="#intro">Introduction</a></div>--%>
-                <%--<div><a href="#apiParameter">List of Boutique</a></div>--%>
-                <%--<div><a href="#apiExecute">Boutique Info</a></div>--%>
-
                 <div><asp:Label ID="lblGetData" runat="server" Text="To Get Data" Font-Bold="true" Font-Size="Larger"></asp:Label></div>
-
                 <div><a href="#apiFireApp" style="color:orange!important; font-size:small">01. Get Municipal Applications List</a></div>
                 <div><a href="#apiFireAppById" style="color:orange!important; font-size:small">02. Get Applications By Id</a></div>
-                <div><a href="#apiFireAppUId" style="color:orange!important; font-size:small" >04. Get Applications By User</a></div>
-                <div><a href="#apiSuperApp" style="color:orange!important; font-size:small" >05. Get All Fire Department Applications</a></div>
+                <div><a href="#apiFireAppUId" style="color:orange!important; font-size:small" >03. Get Applications By User</a></div>
+                <div><a href="#apiSuperApp" style="color:orange!important; font-size:small" >04. Get All Fire Department Applications</a></div>
                 <br />
-                <div><a href="#apiFireAppSubmit" style=" font-size:small">07. Submit Application</a></div>                
-                <div><a href="#apiFireAppUpdate" style=" font-size:small">08. Update Application</a></div>
+                <div><a href="#apiFireAppSubmit" style=" font-size:small">05. Submit Application</a></div>                
+                <div><a href="#apiFireAppUpdate" style=" font-size:small">06. Update Application</a></div>
                 <br />
-                <div><a href="#apiAppApprove" style="color:red!important; font-size:small" >09. Approve Application</a></div>
-                <div><a href="#apiAppReject" style="color:red!important; font-size:small" >10. Reject Application</a></div>
-                <div><a href="#apiAssignSupervisor" style="color:red!important; font-size:small" >11. Assign Supervisor</a></div>
+                <div><a href="#apiAppApprove" style="color:red!important; font-size:small" >07. Approve Application</a></div>
+                <div><a href="#apiAppReject" style="color:red!important; font-size:small" >08. Reject Application</a></div>
+                <div><a href="#apiAssignSupervisor" style="color:red!important; font-size:small" >09. Assign Supervisor</a></div>
                 <br />
-                <div><a href="#apiChargebyId" style=" font-size:small">12. Charges</a></div>
-                <div><a href="#apiPaymentSubmit" style=" font-size:small">13. Submit Payment</a></div>
+                <div><a href="#apiChargebyId" style=" font-size:small">10. Charges</a></div>
+                <div><a href="#apiPaymentSubmit" style=" font-size:small">11. Submit Payment</a></div>
                 <br />
-                <div><a href="#apiPendingbyDate" style="color:orange!important; font-size:small" >14. Pending Municipal applications by date</a></div>
-                <div><a href="#apiApprovedbyDate" style="color:orange!important; font-size:small" >15. Approved Municipal applications by date</a></div>
-                <div><a href="#apiRejectedbyDate" style="color:orange!important; font-size:small" >16. Rejected Municipal applications by date</a></div>
-                <div><a href="#apiHoldbyDate" style="color:orange!important; font-size:small" >17. Hold Municipal applications by date</a></div>           
-                <div><a href="#apiAssignedbyDate" style="color:orange!important; font-size:small" >18. Assigned Municipal applications by date</a></div>           
-                <div><a href="#apiPaidbyDate" style="color:orange!important; font-size:small" >19. Paid Municipal applications by date</a></div>           
-                <%--<div><a href="#copyright">Copyrights</a></div>--%>
-
+                <div><a href="#apiPendingbyDate" style="color:orange!important; font-size:small" >12. Pending Municipal applications by date</a></div>
+                <div><a href="#apiApprovedbyDate" style="color:orange!important; font-size:small" >13. Approved Municipal applications by date</a></div>
+                <div><a href="#apiRejectedbyDate" style="color:orange!important; font-size:small" >14. Rejected Municipal applications by date</a></div>
+                <div><a href="#apiHoldbyDate" style="color:orange!important; font-size:small" >15. Hold Municipal applications by date</a></div>           
+                <div><a href="#apiAssignedbyDate" style="color:orange!important; font-size:small" >16. Assigned Municipal applications by date</a></div>           
+                <div><a href="#apiPaidbyDate" style="color:orange!important; font-size:small" >17. Paid Municipal applications by date</a></div>           
             </div>
             <div class="col-md-8 right-div">
                 <h3>API Help Document</h3>

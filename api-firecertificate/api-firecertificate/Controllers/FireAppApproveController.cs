@@ -26,7 +26,7 @@ namespace api_rate.Controllers
             _email = IEmail;
             _sms = ISMS;
         }
-        // POST api/FireAppApprove
+        // POST /api/FireAppApprove
         public ReturnMsgInfo Post([FromBody]FireSupervisorApplication objSuperApplication) 
         {
             ReturnMsgInfo objReturnMsg = new ReturnMsgInfo();
