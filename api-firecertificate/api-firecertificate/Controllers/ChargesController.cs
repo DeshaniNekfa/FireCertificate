@@ -34,6 +34,7 @@ namespace api_rate.Controllers
                 }
                 else
                 {
+                    // get a charge by Id
                     objCharges = _getData.GetChargeById(objCharge, ref objReturnMsg);
                     if (objReturnMsg.ReturnValue != "OK") if (objReturnMsg.ReturnValue != "OK")
                     {

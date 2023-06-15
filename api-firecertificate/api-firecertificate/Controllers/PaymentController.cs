@@ -38,7 +38,8 @@ namespace api_rate.Controllers
             try
             {
                 // Validation
-                if(_appsubmit.ValidatePayment(objPayment, ref objReturnMsg)){
+                if(_appsubmit.ValidatePayment(objPayment, ref objReturnMsg))
+                {     
                     // Payment submit
                     _appsubmit.AddPayment(objPayment, ref objReturnMsg);
 
@@ -46,7 +47,10 @@ namespace api_rate.Controllers
                     {
                         objFireApp.CertificateId = objPayment.CertificateId;
                         objFireApp.ClientID = objPayment.ClientID;
+                        
+                        // Get User Email and mobile
                         FireCertificateApplication objFireAppDetails = _getData.GetApplicationById(objFireApp, ref objReturnMsg);
+                        
                         // Sending Email 
                         if (string.IsNullOrEmpty(objFireAppDetails.Email) == false)
                         {

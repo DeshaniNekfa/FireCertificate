@@ -44,13 +44,22 @@ namespace api_rate.Controllers
                 }
                 else
                 {
+                    // get first application
                     objFireApp = _getData.GetApplicationById(objFireApplication, ref objReturnMsg);
 
+                    // assign certId for payment
                     objFireApplication.CertificateId = objFireApp.CertificateId;
+
+                    //get payment details
                     objPayment = _getData.GetPaymentDetails(objFireApplication, ref objPayReturnMsg);
 
+                    // assign cert Id for second application
                     objSuperApp.CertificateId = objFireApplication.CertificateId;
+
+                    //assign client id for second application 
                     objSuperApp.ClientID = objFireApplication.ClientID;
+
+                    // get second application
                     objSuperApp = _getData.GetSupervisorApplicationByFireAppID(objSuperApp, ref objReturnMsg);
 
                     if (objReturnMsg.ReturnValue != "OK")

@@ -46,8 +46,10 @@ namespace api_rate.Controllers
                 }
                 else
                 {
+                    // set application status to hold
                     objFireApplication.Status = Globals.HOLD.ToString().Trim();
 
+                    // Get applications list
                     lstFireApplication = _getData.GetAppDetailsByDate(objFireApplication, ref objReturnMsg);
 
                     // get payment list

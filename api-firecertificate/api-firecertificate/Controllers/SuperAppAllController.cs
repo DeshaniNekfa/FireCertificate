@@ -34,6 +34,7 @@ namespace api_rate.Controllers
                 }
                 else
                 {
+                    // get second application list
                     lstSuperApplication = _getData.GetAllSuperAppDetails(objSuperApp, ref objReturnMsg);
                     if (objReturnMsg.ReturnValue != "OK")
                     {

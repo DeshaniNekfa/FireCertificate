@@ -45,6 +45,7 @@ namespace api_rate.Controllers
                 }
                 else
                 {
+                    //get application by cert Id
                     objFireApp = _getData.GetApplicationByCertId(objSuperApplication, ref objReturnMsg);
 
                     objFireApp.ClientID = objSuperApplication.ClientID;

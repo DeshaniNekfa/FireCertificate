@@ -46,8 +46,10 @@ namespace api_rate.Controllers
                 }
                 else
                 {
+                    // Set status to assigned
                     objFireApplication.Status = Globals.ASSIGNED.ToString().Trim();
 
+                    //get assigned applications list
                     lstFireApplication = _getData.GetAppDetailsByDate(objFireApplication, ref objReturnMsg);
 
                     // get payment list

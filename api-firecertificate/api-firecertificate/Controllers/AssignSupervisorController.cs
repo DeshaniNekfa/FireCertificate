@@ -44,6 +44,7 @@ namespace api_rate.Controllers
                 }
                 else
                 {
+                    // Assign supervisor by update first application
                     _appSubmit.AssignSupervisor(objFireApp, ref objReturnMsg);
 
                     if (objReturnMsg.ReturnValue == "OK")

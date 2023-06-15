@@ -45,8 +45,10 @@ namespace api_rate.Controllers
                 }
                 else
                 {
+                    // set application status to reject
                     objFireApplication.Status = Globals.REJECTED.ToString().Trim();
 
+                    // get application list 
                     lstFireApplication = _getData.GetAppDetailsByDate(objFireApplication, ref objReturnMsg);
 
                     // get payment list

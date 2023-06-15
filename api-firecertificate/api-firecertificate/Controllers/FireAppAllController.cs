@@ -35,6 +35,7 @@ namespace api_rate.Controllers
                 }
                 else
                 {
+                    //Get all applications list
                     lstFireApplication = _getData.GetAllFireAppDetails(objFireApp, ref objReturnMsg);
                     if (objReturnMsg.ReturnValue != "OK")                                                                                                                              if (objReturnMsg.ReturnValue != "OK")
                     {

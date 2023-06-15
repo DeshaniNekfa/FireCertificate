@@ -45,8 +45,10 @@ namespace api_rate.Controllers
                 }
                 else
                 {
+                    // set status to pending 
                     objFireApplication.Status = Globals.PENDING.ToString().Trim();
 
+                    // get applications list
                     lstFireApplication = _getData.GetAppDetailsByDate(objFireApplication, ref objReturnMsg);
 
                     // get payment list
