@@ -14,9 +14,6 @@ namespace api_rate.Helpers
         // Get Application by Certificate Id
         FireCertificateApplication GetApplicationByCertId(FireSupervisorApplication objApplication, ref ReturnMsgInfo returnMsg);
 
-        // Get user details from user ID
-        string GetUserDetailsById(FireCertificateApplication objFireApp, ref ReturnMsgInfo objReturnMsg);
-
         // Get List of fire applications by username
         List<FireCertificateApplication> GetAppDetailsByUsr(FireCertificateApplication objFireApp, ref ReturnMsgInfo objReturnMsg);
 
