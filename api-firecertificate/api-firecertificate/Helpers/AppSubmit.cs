@@ -1289,5 +1289,63 @@ namespace api_rate.Helpers
             return objSuperApp;
 
         }
+
+        public bool SetStatusHold(FireCertificateApplication objFireApp, ref ReturnMsgInfo objReturnMsg)
+        {
+            bool ishold = false;
+            this.objConMain = new Connection_Main();
+
+            try
+            {
+                string conString = this.objConMain.Get_Main_Connection(objFireApp.ClientID);
+                if (conString == null || conString == "")
+                {
+                    objReturnMsg.ReturnValue = "Error";
+                    objReturnMsg.ReturnMessage = "Connection not found.";
+                }
+                else
+                {
+                    this.mySqlCon = new MySqlConnection(conString);
+
+                    if (this.mySqlCon.State.ToString() != "Open")
+                    {
+                        this.mySqlCon.Open();
+                    }
+                    else
+                    {
+                        objReturnMsg.ReturnValue = "Error";
+                        objReturnMsg.ReturnMessage = "Connection was already opened.";
+                    }
+
+                    if (this.mySqlCon != null)
+                    {
+                        strSql = "UPDATE tbl_firecertificate_application SET Status = 'Hold' WHERE Id = '" + objFireApp.Id + "';";
+                        cmd = new MySqlCommand(strSql, this.mySqlCon, this.mySqlTrans);
+                        cmd.ExecuteNonQuery();
+                        ishold = true;
+
+                        objReturnMsg.ReturnValue = "OK";
+                        objReturnMsg.ReturnMessage = "Submitted successfully";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                objReturnMsg.ReturnValue = "Error";
+                objReturnMsg.ReturnMessage = ex.Message;
+            }
+            finally
+            {
+                if (this.mySqlCon != null)
+                {
+                    if (this.mySqlCon.State.ToString() == "Open")
+                    {
+                        this.mySqlCon.Close();
+                    }
+                }
+            }
+
+            return ishold;
+        }
     }
 }

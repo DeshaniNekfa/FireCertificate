@@ -46,5 +46,8 @@ namespace api_rate.Helpers
         bool UpdateSuperApplication(FireSupervisorApplication objFireSuperApp, ref ReturnMsgInfo returnMsg);
 
         FireSupervisorApplication SetFireSuperApp(FireCertificateApplication objFireApp, ref ReturnMsgInfo returnMsg);
+
+        // Set status Hold
+        bool SetStatusHold(FireCertificateApplication objFireApp, ref ReturnMsgInfo objReturnMsg);
     }
 }

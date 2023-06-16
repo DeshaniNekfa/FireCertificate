@@ -1,33 +1,34 @@
 ﻿using api_rate.Filters;
-using api_rate.Models;
 using api_rate.Helpers;
+using api_rate.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using System.Configuration;
 
 namespace api_rate.Controllers
 {
     [JwtCustomAuth]
-    public class FireAppApproveController : ApiController
+    public class FireAppHoldController : ApiController
     {
         private IAppSubmit _appSubmit = null;
         private IGetData _getData = null;
         private IEmail _email = null;
         private ISMS _sms = null;
-        
-        public FireAppApproveController(IAppSubmit IAppSubmit, IGetData IGetData, IEmail IEmail, ISMS ISMS)
+
+        public FireAppHoldController(IAppSubmit IAppSubmit, IGetData IGetData, IEmail IEmail, ISMS ISMS)
         {
             _appSubmit = IAppSubmit;
             _getData = IGetData;
             _email = IEmail;
             _sms = ISMS;
         }
-        // POST /api/FireAppApprove
-        public ReturnMsgInfo Post([FromBody]FireCertificateApplication objFireApp) 
+
+        // POST /api/FireAppHold
+        public ReturnMsgInfo Post([FromBody]FireCertificateApplication objFireApp)
         {
             ReturnMsgInfo objReturnMsg = new ReturnMsgInfo();
             FireCertificateApplication objFireCert = new FireCertificateApplication();
@@ -45,12 +46,12 @@ namespace api_rate.Controllers
                 else
                 {
                     // Approving Application
-                    _appSubmit.SetStatusApprove(objFireApp, ref objReturnMsg);
-                                            
+                    _appSubmit.SetStatusHold(objFireApp, ref objReturnMsg);
+
                     if (objReturnMsg.ReturnValue == "OK")
                     {
                         objReturnMsg.ReturnValue = "OK";
-                        objReturnMsg.ReturnMessage = "Application Successfully approved.";
+                        objReturnMsg.ReturnMessage = "Application Set to Hold.";
 
                         objFireCert = _getData.GetApplicationById(objFireApp, ref objReturnMsg);
                         // Sending Email 
@@ -69,13 +70,13 @@ namespace api_rate.Controllers
                             string strErMsg = string.Empty;
                             _sms.SendSMS(strMsg, objFireCert.Telephone.ToString().Trim(), ref strErMsg);
                         }
-          
+
                     }
                     else
                     {
                         throw new Exception("Error occured approve application");
                     }
-                    
+
                 }
             }
             catch (Exception ex)
@@ -84,7 +85,7 @@ namespace api_rate.Controllers
                 objReturnMsg.ReturnMessage = ex.Message.ToString().Trim();
             }
 
-            return objReturnMsg; 
+            return objReturnMsg;
         }
     }
 }

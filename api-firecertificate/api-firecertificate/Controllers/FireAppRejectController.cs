@@ -31,6 +31,7 @@ namespace api_rate.Controllers
         public ReturnMsgInfo Post([FromBody]FireCertificateApplication objFireApp)
         {
             ReturnMsgInfo objReturnMsg = new ReturnMsgInfo();
+            FireCertificateApplication objFireCert = new FireCertificateApplication();
 
             try
             {
@@ -52,21 +53,22 @@ namespace api_rate.Controllers
                         objReturnMsg.ReturnValue = "OK";
                         objReturnMsg.ReturnMessage = "Application Successfully rejected.";
 
+                        objFireCert = _getData.GetApplicationById(objFireApp, ref objReturnMsg);
                         // Sending Email 
-                        if (string.IsNullOrEmpty(objFireApp.Email) == false)
+                        if (string.IsNullOrEmpty(objFireCert.Email) == false)
                         {
                             string strMsg = _email.GetEmailMsgBody(Globals.APPROVED.ToString().Trim());
                             string strErMsg = string.Empty;
-                            _email.SendEmail(strMsg, objFireApp.Email.ToString().Trim(), ref strErMsg);
+                            _email.SendEmail(strMsg, objFireCert.Email.ToString().Trim(), ref strErMsg);
                         }
 
                         // Sending SMS 
                         string strSMSSending = ConfigurationManager.AppSettings["SMSSending"].ToString().Trim();
-                        if (string.IsNullOrEmpty(objFireApp.CertificateId) == false && string.IsNullOrEmpty(objFireApp.Telephone) == false && strSMSSending.ToString().Trim() == "1")
+                        if (string.IsNullOrEmpty(objFireCert.CertificateId) == false && string.IsNullOrEmpty(objFireCert.Telephone) == false && strSMSSending.ToString().Trim() == "1")
                         {
-                            string strMsg = "Dear Customer, \n Your fire cerificate application request rejected. \n Reference No : " + objFireApp.CertificateId.Trim() + " \n Thank You.";
+                            string strMsg = "Dear Customer, \n Your fire cerificate application request successfully approved. \n Reference No : " + objFireCert.CertificateId.Trim() + " \n Thank You.";
                             string strErMsg = string.Empty;
-                            _sms.SendSMS(strMsg, objFireApp.Telephone.ToString().Trim(), ref strErMsg);
+                            _sms.SendSMS(strMsg, objFireCert.Telephone.ToString().Trim(), ref strErMsg);
                         }
 
                     }
