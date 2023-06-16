@@ -50,9 +50,6 @@ namespace api_rate.Controllers
 
                     if (objReturnMsg.ReturnValue == "OK")
                     {
-                        objReturnMsg.ReturnValue = "OK";
-                        objReturnMsg.ReturnMessage = "Application Set to Hold.";
-
                         objFireCert = _getData.GetApplicationById(objFireApp, ref objReturnMsg);
                         // Sending Email 
                         if (string.IsNullOrEmpty(objFireCert.Email) == false)
@@ -70,6 +67,9 @@ namespace api_rate.Controllers
                             string strErMsg = string.Empty;
                             _sms.SendSMS(strMsg, objFireCert.Telephone.ToString().Trim(), ref strErMsg);
                         }
+
+                        objReturnMsg.ReturnValue = "OK";
+                        objReturnMsg.ReturnMessage = "Application Set to Hold.";
 
                     }
                     else
