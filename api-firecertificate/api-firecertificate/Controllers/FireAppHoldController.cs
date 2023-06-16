@@ -54,7 +54,7 @@ namespace api_rate.Controllers
                         // Sending Email 
                         if (string.IsNullOrEmpty(objFireCert.Email) == false)
                         {
-                            string strMsg = _email.GetEmailMsgBody(Globals.APPROVED.ToString().Trim());
+                            string strMsg = _email.GetEmailMsgBody(Globals.HOLD.ToString().Trim());
                             string strErMsg = string.Empty;
                             _email.SendEmail(strMsg, objFireCert.Email.ToString().Trim(), ref strErMsg);
                         }
@@ -63,7 +63,7 @@ namespace api_rate.Controllers
                         string strSMSSending = ConfigurationManager.AppSettings["SMSSending"].ToString().Trim();
                         if (string.IsNullOrEmpty(objFireCert.CertificateId) == false && string.IsNullOrEmpty(objFireCert.Telephone) == false && strSMSSending.ToString().Trim() == "1")
                         {
-                            string strMsg = "Dear Customer, \n Your fire cerificate application request successfully approved. \n Reference No : " + objFireCert.CertificateId.Trim() + " \n Thank You.";
+                            string strMsg = "Dear Customer, \n Your fire cerificate application request is set to hold. \n Reference No : " + objFireCert.CertificateId.Trim() + " \n Thank You.";
                             string strErMsg = string.Empty;
                             _sms.SendSMS(strMsg, objFireCert.Telephone.ToString().Trim(), ref strErMsg);
                         }

@@ -54,7 +54,7 @@ namespace api_rate.Controllers
                         // Sending Email 
                         if (string.IsNullOrEmpty(objFireCert.Email) == false)
                         {
-                            string strMsg = _email.GetEmailMsgBody(Globals.APPROVED.ToString().Trim());
+                            string strMsg = _email.GetEmailMsgBody(Globals.REJECTED.ToString().Trim());
                             string strErMsg = string.Empty;
                             _email.SendEmail(strMsg, objFireCert.Email.ToString().Trim(), ref strErMsg);
                         }

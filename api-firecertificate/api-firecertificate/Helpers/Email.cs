@@ -180,6 +180,10 @@ namespace api_rate.Helpers
             {
                 strMsgBody = "Your Payment is received";
             }
+            else if (strStatus.Trim() == Globals.HOLD.ToString().Trim())
+            {
+                strMsgBody = "Your Application is on hold";
+            }
             else if(strStatus == "Supervisor")
             {
                 strMsgBody = "<html>" +
