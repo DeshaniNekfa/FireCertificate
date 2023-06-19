@@ -68,7 +68,7 @@ namespace api_rate.Helpers
                                 objFireAppDetails.Telephone = dtRow["Telephone"].ToString().Trim();
                                 objFireAppDetails.DistanceFromCouncil = (int)dtRow["DistanceFromCouncil"];
                                 objFireAppDetails.NatureOfBusiness = dtRow["NatureOfBusiness"].ToString().Trim();
-                                objApplication.BuildingDescription = dtRow["BuildingDescription"].ToString().Trim();
+                                objFireAppDetails.BuildingDescription = dtRow["BuildingDescription"].ToString().Trim();
                                 objFireAppDetails.BuildingPlan = dtRow["BuildingPlan"].ToString().Trim();
                                 objFireAppDetails.TotalLand = (int)dtRow["TotalLand"];
                                 objFireAppDetails.RoadFromCouncil = dtRow["RoadFromCouncil"].ToString().Trim();
