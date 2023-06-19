@@ -49,5 +49,7 @@ namespace api_rate.Helpers
 
         // Set status Hold
         bool SetStatusHold(FireCertificateApplication objFireApp, ref ReturnMsgInfo objReturnMsg);
+        // Validate bank return message
+        bool validateBankReturn(BankReturnMessage objPaidDetails, ref ReturnMsgInfo objReturnMsg);
     }
 }

@@ -940,11 +940,11 @@ namespace api_rate.Helpers
                     {
                         if (objPayment.PaidDescription == Globals.INSPECTION.ToString().Trim())
                         {
-                            strSql = "INSERT INTO tbl_firecertificate_payment_details( CertificateId ,Note ,TotAmt ,User ,Date ,PaymentType ,PaidDescription ,PaymentID ,BillNo)VALUES( @CertificateId ,@Note ,@TotAmt ,@User ,@Date ,@PaymentType ,@PaidDescription ,@PaymentID ,@BillNo); UPDATE tbl_firecertificate_application SET Status = '" + Globals.PAID.ToString().Trim() + "' WHERE CertificateId = @CertificateId;";
+                            strSql = "INSERT INTO tbl_firecertificate_payment_details( CertificateId ,Note ,TotAmt ,User ,Date ,PaymentType ,PaidDescription ,PaymentID ,BillNo, BankCharges, ConsultantFee, InspectionFees)VALUES( @CertificateId ,@Note ,@TotAmt ,@User ,@Date ,@PaymentType ,@PaidDescription ,@PaymentID ,@BillNo, @BankCharges, @ConsultantFee, @InspectionFees ); UPDATE tbl_firecertificate_application SET Status = '" + Globals.PAID.ToString().Trim() + "' WHERE CertificateId = @CertificateId;";
                         }
                         else if (objPayment.PaidDescription == Globals.ANNUAL.ToString().Trim())
                         {
-                            strSql = "INSERT INTO tbl_firecertificate_payment_details( CertificateId ,Note ,TotAmt ,User ,Date ,PaymentType ,PaidDescription ,PaymentID ,BillNo)VALUES( @CertificateId ,@Note ,@TotAmt ,@User ,@Date ,@PaymentType ,@PaidDescription ,@PaymentID ,@BillNo); UPDATE tbl_firecertificate_application SET Status = '" + Globals.ISSUED.ToString().Trim() + "' WHERE CertificateId = @CertificateId;";
+                            strSql = "INSERT INTO tbl_firecertificate_payment_details( CertificateId ,Note ,TotAmt ,User ,Date ,PaymentType ,PaidDescription ,PaymentID ,BillNo, BankCharges, AnnualCertificate)VALUES( @CertificateId ,@Note ,@TotAmt ,@User ,@Date ,@PaymentType ,@PaidDescription ,@PaymentID ,@BillNo, @BankCharges, @AnnualCertificate); UPDATE tbl_firecertificate_application SET Status = '" + Globals.ISSUED.ToString().Trim() + "' WHERE CertificateId = @CertificateId;";
                         }
                         else
                         {
@@ -962,6 +962,10 @@ namespace api_rate.Helpers
                         cmd.Parameters.AddWithValue("@PaidDescription", objPayment.PaidDescription);
                         cmd.Parameters.AddWithValue("@PaymentID", objPayment.PaymentID);
                         cmd.Parameters.AddWithValue("@BillNo", objPayment.BillNo);
+                        cmd.Parameters.AddWithValue("@BankCharges", objPayment.BankCharges);
+                        cmd.Parameters.AddWithValue("@ConsultantFee", objPayment.ConsultantFee);
+                        cmd.Parameters.AddWithValue("@InspectionFees", objPayment.InspectionFees);
+                        cmd.Parameters.AddWithValue("@AnnualCertificate", objPayment.AnnualCertificate);
                         cmd.ExecuteNonQuery();
                         isSaved = true;
 
@@ -1296,6 +1300,47 @@ namespace api_rate.Helpers
             }
 
             return ishold;
+        }
+        
+        // Validate bank return message
+        public bool validateBankReturn(BankReturnMessage objPaidDetails, ref ReturnMsgInfo objReturnMsg)
+        {
+            bool isBankValid = true;
+
+            // ClientID
+            if (objPaidDetails.ClientID == null || objPaidDetails.ClientID == "")
+            {
+                objReturnMsg.ReturnValue = "Error";
+                objReturnMsg.ReturnMessage = "Invalid Client ID.";
+                isBankValid = false;
+            }
+
+            // response code
+            if (objPaidDetails.ResponseCode == null)
+            {
+                objReturnMsg.ReturnValue = "Error";
+                objReturnMsg.ReturnMessage = "Invalid Response Code.";
+                isBankValid = false;
+            }
+
+            // reason code
+            if (objPaidDetails.ReasonCode == null)
+            {
+                objReturnMsg.ReturnValue = "Error";
+                objReturnMsg.ReturnMessage = "Invalid Reason Code.";
+                isBankValid = false;
+            }
+
+            // reason code desc
+            if (objPaidDetails.ReasonCodeDesc == null || objPaidDetails.ReasonCodeDesc == "" )
+            {
+                objReturnMsg.ReturnValue = "Error";
+                objReturnMsg.ReturnMessage = "Invalid Reason Code description";
+                isBankValid = false;
+            }
+
+            //
+            return isBankValid;
         }
     }
 }

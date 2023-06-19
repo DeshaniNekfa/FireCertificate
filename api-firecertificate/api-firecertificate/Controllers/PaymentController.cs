@@ -40,6 +40,11 @@ namespace api_rate.Controllers
 
             try
             {
+                if (objPayment.ClientID == null || objPayment.ClientID == "")
+                {
+                    throw new Exception("Invalid Client ID.");
+                }
+
                 // Validation
                 if(_appsubmit.ValidatePayment(objPayment, ref objReturnMsg))
                 {
@@ -73,14 +78,17 @@ namespace api_rate.Controllers
                             //Set return info
                             if (objCharge.ChargeName == Globals.Bank.ToString().Trim())
                             {
+                                objPayment.BankCharges = objCharge.Amount;
                                 objPaymentInfo.BankCharges = objCharge.Amount;
                             }
                             if (objCharge.ChargeName == Globals.Counseling.ToString().Trim())
                             {
+                                objPayment.ConsultantFee = objCharge.Amount;
                                 objPaymentInfo.ConsultantFee = objCharge.Amount;
                             }
                             if (objCharge.ChargeName == Globals.INSPECTION.ToString().Trim())
                             {
+                                objPayment.InspectionFees = objCharge.Amount;
                                 objPaymentInfo.InspectionFees = objCharge.Amount;
                             }
                         }
@@ -101,10 +109,12 @@ namespace api_rate.Controllers
                             }
                             if (objCharge.ChargeName == Globals.ANNUAL.ToString().Trim())
                             {
+                                objPayment.AnnualCertificate = objCharge.Amount;
                                 objPaymentInfo.AnnualCertificate = objCharge.Amount;
                             }
                             if (objCharge.ChargeName == Globals.Bank.ToString().Trim())
                             {
+                                objPayment.BankCharges = objCharge.Amount;
                                 objPaymentInfo.BankCharges = objCharge.Amount;
                             }
                         }

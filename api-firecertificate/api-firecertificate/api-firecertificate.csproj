@@ -197,6 +197,7 @@
     <Compile Include="Controllers\FireAppRejectController.cs" />
     <Compile Include="Controllers\FireAppRejectedByDateController.cs" />
     <Compile Include="Controllers\PaymentController.cs" />
+    <Compile Include="Controllers\SaveBankMsgController.cs" />
     <Compile Include="Controllers\SuperAppAllController.cs" />
     <Compile Include="Filters\JwtCustomAuth.cs" />
     <Compile Include="Global.asax.cs">
@@ -226,6 +227,7 @@
     <Compile Include="Helpers\SMS.cs" />
     <Compile Include="Helpers\Utility.cs" />
     <Compile Include="Models\BankAPIInfo.cs" />
+    <Compile Include="Models\BankReturnMessage.cs" />
     <Compile Include="Models\Charges.cs" />
     <Compile Include="Models\CompleteApp.cs" />
     <Compile Include="Models\EmailInfo.cs" />
@@ -237,6 +239,8 @@
     <Compile Include="Models\FireSupervisorApplication.cs" />
     <Compile Include="Models\Globals.cs" />
     <Compile Include="Models\Index.cs" />
+    <Compile Include="Models\PaidDetails.cs" />
+    <Compile Include="Models\PaidDetailsOutput.cs" />
     <Compile Include="Models\PaymentDetails.cs" />
     <Compile Include="Models\PaymentInfo.cs" />
     <Compile Include="Models\ReturnMsgInfo.cs" />

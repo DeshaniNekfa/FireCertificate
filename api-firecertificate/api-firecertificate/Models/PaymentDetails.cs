@@ -17,5 +17,9 @@ namespace api_rate.Models
         public string PaymentID { get; set; }
         public string BillNo { get; set; }
         public string ClientID { get; set; }
+        public decimal BankCharges { get; set; }
+        public decimal ConsultantFee { get; set; }
+        public decimal InspectionFees { get; set; }
+        public decimal AnnualCertificate { get; set; }
     }
 }
