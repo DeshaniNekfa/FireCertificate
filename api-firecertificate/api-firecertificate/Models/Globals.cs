@@ -20,5 +20,6 @@ namespace api_rate.Models
         public static string INSPECTION = "Inspection";
         public static string ANNUAL = "Certificate";
         public static string Counseling = "Counseling";
+        public static string Bank = "Bank";
     }
 }

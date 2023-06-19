@@ -905,56 +905,6 @@ namespace api_rate.Helpers
                 isValid = false;
             }
 
-            // Total Amount 
-            if (objPayment.TotAmt == null || objPayment.TotAmt <= 0)
-            {
-                objReturnMsg.ReturnValue = "Error";
-                objReturnMsg.ReturnMessage = "Invalid Amount.";
-                isValid = false;
-            }
-
-            // Date
-            if (objPayment.Date == null || objPayment.Date == "")
-            {
-                objReturnMsg.ReturnValue = "Error";
-                objReturnMsg.ReturnMessage = "Invalid Date";
-                isValid = false;
-            }
-            else if (objPayment.Date.ToString().Trim() == "")
-            {
-                objReturnMsg.ReturnValue = "Error";
-                objReturnMsg.ReturnMessage = "Date is required.";
-                isValid = false;
-            }
-            else if (objCmnFunctions.IsValidDate(objPayment.Date.ToString().Trim()) == false)
-            {
-                objReturnMsg.ReturnValue = "Error";
-                objReturnMsg.ReturnMessage = "Invalid Date.";
-                isValid = false;
-            }
-
-            // payment type
-            if (objPayment.PaymentType == null || objPayment.PaymentType == "")
-            {
-                objReturnMsg.ReturnValue = "Error";
-                objReturnMsg.ReturnMessage = "Invalid payment type.";
-                isValid = false;
-            }
-
-            // Payment Description
-            if (objPayment.BillNo == null || objPayment.BillNo == "")
-            {
-                objReturnMsg.ReturnValue = "Error";
-                objReturnMsg.ReturnMessage = "Invalid Payment description.";
-                isValid = false;
-            }
-            else if (objPayment.PaidDescription != Globals.INSPECTION.ToString().Trim() && objPayment.PaidDescription != Globals.ANNUAL.ToString().Trim())
-            {
-                objReturnMsg.ReturnValue = "Error";
-                objReturnMsg.ReturnMessage = "Invalid Payment description.";
-                isValid = false;
-            }
-
             return isValid;
         }
 

@@ -30,16 +30,97 @@ namespace api_rate.Controllers
         }
 
         // POST /api/Payment
-        public ReturnMsgInfo Post([FromBody]PaymentDetails objPayment)
+        public ReturnMsgPayment Post([FromBody]PaymentDetails objPayment)
         {
+            ReturnMsgPayment objReturnPayment = new ReturnMsgPayment();
+            PaymentInfo objPaymentInfo = new PaymentInfo();
             ReturnMsgInfo objReturnMsg = new ReturnMsgInfo();
             FireCertificateApplication objFireApp = new FireCertificateApplication();
+            List<Charges> lstCharges = new List<Charges>();
 
             try
             {
                 // Validation
                 if(_appsubmit.ValidatePayment(objPayment, ref objReturnMsg))
-                {     
+                {
+                    objFireApp.CertificateId = objPayment.CertificateId;
+                    objFireApp.ClientID = objPayment.ClientID;
+
+                    // Get all charges
+                    lstCharges = _getData.GetAllCharges(objFireApp, ref objReturnMsg);
+
+                    // Get application by certId
+                    objFireApp = _getData.GetApplicationByCertId(objFireApp, ref objReturnMsg);
+
+                    objPayment.BillNo = "";
+                    objPayment.PaymentID = "";
+                    objPayment.Note = "";
+                    objPayment.Date = DateTime.Today.ToString("yyyy/MM/dd HH:mm");
+
+                    if (objFireApp.Status == Globals.PENDING.ToString().Trim())
+                    {
+                        // add paid description
+                        objPayment.PaidDescription = Globals.INSPECTION.ToString().Trim();
+
+                        //Add amount
+                        foreach (Charges objCharge in lstCharges)
+                        {
+                            if (objCharge.ChargeName != Globals.ANNUAL.ToString().Trim())
+                            {
+                                objPayment.TotAmt = objPayment.TotAmt + objCharge.Amount;
+                            }
+
+                            //Set return info
+                            if (objCharge.ChargeName == Globals.Bank.ToString().Trim())
+                            {
+                                objPaymentInfo.BankCharges = objCharge.Amount;
+                            }
+                            if (objCharge.ChargeName == Globals.Counseling.ToString().Trim())
+                            {
+                                objPaymentInfo.ConsultantFee = objCharge.Amount;
+                            }
+                            if (objCharge.ChargeName == Globals.INSPECTION.ToString().Trim())
+                            {
+                                objPaymentInfo.InspectionFees = objCharge.Amount;
+                            }
+                        }
+
+                    }
+                    else if (objFireApp.Status == Globals.ASSIGNED.ToString().Trim())
+                    {
+                        // add paid description
+                        objPayment.PaidDescription = Globals.ANNUAL.ToString().Trim();
+
+                        //Add amount
+                        foreach (Charges objCharge in lstCharges)
+                        {
+                            if (objCharge.ChargeName == Globals.ANNUAL.ToString().Trim() || objCharge.ChargeName == Globals.Bank.ToString().Trim())
+                            {
+                                objPayment.TotAmt = objPayment.TotAmt + objCharge.Amount;
+
+                            }
+                            if (objCharge.ChargeName == Globals.ANNUAL.ToString().Trim())
+                            {
+                                objPaymentInfo.AnnualCertificate = objCharge.Amount;
+                            }
+                            if (objCharge.ChargeName == Globals.Bank.ToString().Trim())
+                            {
+                                objPaymentInfo.BankCharges = objCharge.Amount;
+                            }
+                        }
+
+                    }
+                    else
+                    {
+                        objReturnMsg.ReturnValue = "Error";
+                        objReturnMsg.ReturnMessage = "Invalid Payment";
+                    }
+
+                    // return values setting
+                    objPaymentInfo.TotalPayment = objPayment.TotAmt;
+                    objPaymentInfo.ClientID = objPayment.ClientID;
+                    objPaymentInfo.CertificateID = objPayment.CertificateId;
+
                     // Payment submit
                     _appsubmit.AddPayment(objPayment, ref objReturnMsg);
 
@@ -48,28 +129,28 @@ namespace api_rate.Controllers
                         objFireApp.CertificateId = objPayment.CertificateId;
                         objFireApp.ClientID = objPayment.ClientID;
                         
-                        // Get User Email and mobile
-                        FireCertificateApplication objFireAppDetails = _getData.GetApplicationById(objFireApp, ref objReturnMsg);
-                        
                         // Sending Email 
-                        if (string.IsNullOrEmpty(objFireAppDetails.Email) == false)
+                        if (string.IsNullOrEmpty(objFireApp.Email) == false)
                         {
                             string strMsg = _email.GetEmailMsgBody(Globals.PENDING.ToString().Trim());
                             string strErMsg = string.Empty;
-                            _email.SendEmail(strMsg, objFireAppDetails.Email.ToString().Trim(), ref strErMsg);
+                            _email.SendEmail(strMsg, objFireApp.Email.ToString().Trim(), ref strErMsg);
                         }
 
                         // Sending SMS 
                         string strSMSSending = ConfigurationManager.AppSettings["SMSSending"].ToString().Trim();
-                        if (string.IsNullOrEmpty(objFireAppDetails.CertificateId) == false && string.IsNullOrEmpty(objFireAppDetails.Telephone) == false && strSMSSending.ToString().Trim() == "1")
+                        if (string.IsNullOrEmpty(objFireApp.CertificateId) == false && string.IsNullOrEmpty(objFireApp.Telephone) == false && strSMSSending.ToString().Trim() == "1")
                         {
-                            string strMsg = "Dear Customer, \n Your fire cerificate application request successfully submitted. \n Reference No : " + objFireAppDetails.CertificateId.Trim() + " \n Thank You.";
+                            string strMsg = "Dear Customer, \n Your fire cerificate application request successfully submitted. \n Reference No : " + objFireApp.CertificateId.Trim() + " \n Thank You.";
                             string strErMsg = string.Empty;
-                            _sms.SendSMS(strMsg, objFireAppDetails.Telephone.ToString().Trim(), ref strErMsg);
+                            _sms.SendSMS(strMsg, objFireApp.Telephone.ToString().Trim(), ref strErMsg);
                         }
 
                         objReturnMsg.ReturnValue = "OK";
                         objReturnMsg.ReturnMessage = "Payment Successfully submitted.";
+
+                        objReturnPayment.ReturnMessageInfo = objReturnMsg;
+                        objReturnPayment.PaymentDetails = objPaymentInfo;
 
                     }
                     else
@@ -80,7 +161,7 @@ namespace api_rate.Controllers
                 else
                 {
                     objReturnMsg.ReturnValue = "Error";
-                    objReturnMsg.ReturnMessage = "Invalid Application";
+                    objReturnMsg.ReturnMessage = "Invalid Payment";
                 }
 
             }
@@ -90,7 +171,7 @@ namespace api_rate.Controllers
                 objReturnMsg.ReturnMessage = ex.Message.ToString().Trim();
             }
 
-            return objReturnMsg;
+            return objReturnPayment;
 
         }
 

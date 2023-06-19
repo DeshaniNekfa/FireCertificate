@@ -4381,7 +4381,7 @@
                         </div>
                     </div>
 
-                    <div style="height: 400px; overflow-y: scroll; overflow-x: hidden;">
+                    <div style="overflow-y: hidden; overflow-x: hidden;">
                         <div>
                             <div>List of parameters</div>
                         </div>
@@ -4412,202 +4412,6 @@
                                     }
                                 </div>
 
-                            </div>
-                            <br />
-
-                            <div class="row">
-                                <div class="col-sm-2 ">Note</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    Note 
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">No</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">string</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "Note": "Note"
-                                    }
-                                </div>
-                            </div>
-                            <br />
-
-                            <div class="row">
-                                <div class="col-sm-2 ">TotAmt</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    Total Amount
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">int</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "TotAmt": 1500.0
-                                    }
-                                </div>
-                            </div>
-                            <br />
-
-                            <div class="row">
-                            <div class="col-sm-2 ">Date</div>
-                            <div class="col-sm-2 ">Description</div>
-                            <div class="col-sm-8 ">
-                                Transaction Date
-                            </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">string</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "Date": "2023/06/02 13:00"
-                                    }
-                                </div>
-                            </div>
-                            <br />
-
-                            <div class="row">
-                            <div class="col-sm-2 ">PaymentType</div>
-                            <div class="col-sm-2 ">Description</div>
-                            <div class="col-sm-8 ">
-                                Payment Type
-                            </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">string</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "PaymentType": "Bank"
-                                    }
-                                </div>
-                            </div>
-                            <br />
-
-                            <div class="row">
-                            <div class="col-sm-2 ">PaidDescription</div>
-                            <div class="col-sm-2 ">Description</div>
-                            <div class="col-sm-8 ">
-                                Paid Description
-                            </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "PaidDescription": "Paid Description"
-                                    }
-                                </div>
-                            </div>
-                            <br />
-
-                            <div class="row">
-                            <div class="col-sm-2 ">PaymentID</div>
-                            <div class="col-sm-2 ">Description</div>
-                            <div class="col-sm-8 ">
-                                Payment ID
-                            </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "PaymentID": "123"
-                                    }
-                                </div>
-                            </div>
-                            <br />
-
-                            <div class="row">
-                            <div class="col-sm-2 ">BillNo</div>
-                            <div class="col-sm-2 ">Description</div>
-                            <div class="col-sm-8 ">
-                                Bill Number
-                            </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">Int</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "BillNo": "465"
-                                    }
-                                </div>
                             </div>
                             <br />
 
@@ -4659,9 +4463,35 @@
                                 <div class="col-sm-9">
                                     { 
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "ReturnValue": "OK",
+                                    &nbsp;&nbsp;"paymentInfo": [
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "ReturnMessage": "Payment Successfully submitted.",
+                                    &nbsp;&nbsp;&nbsp;&nbsp; {
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"BankCharges": 200.00,
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"ConsultantFee": 0.0,
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"InspectionFees": 0.0,
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"TotalPayment": 20200.00,
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"AnnualCertificate": 20000.00,
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"ClientID": "TestId",
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"CertificateID": "FC19",
+                                    <br /> 
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; }
+                                    <br />
+                                     ],
+                                    <br />
+                                    "ReturnMessageInfo": {
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; "ReturnValue": "OK",
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; "ReturnMessage": "Data found"
+                                    <br />
+                                     }
                                     <br />
                                     }
                                 </div>

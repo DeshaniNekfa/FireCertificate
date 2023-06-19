@@ -238,7 +238,9 @@
     <Compile Include="Models\Globals.cs" />
     <Compile Include="Models\Index.cs" />
     <Compile Include="Models\PaymentDetails.cs" />
+    <Compile Include="Models\PaymentInfo.cs" />
     <Compile Include="Models\ReturnMsgInfo.cs" />
+    <Compile Include="Models\ReturnMsgPayment.cs" />
     <Compile Include="Models\SignupInfo.cs" />
     <Compile Include="Models\SMSInfo.cs" />
     <Compile Include="Models\SuperAppDetailsOutput.cs" />

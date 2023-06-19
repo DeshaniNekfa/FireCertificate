@@ -12,7 +12,7 @@ namespace api_rate.Helpers
         FireCertificateApplication GetApplicationById(FireCertificateApplication objApplication, ref ReturnMsgInfo returnMsg);
 
         // Get Application by Certificate Id
-        FireCertificateApplication GetApplicationByCertId(FireSupervisorApplication objApplication, ref ReturnMsgInfo returnMsg);
+        FireCertificateApplication GetApplicationByCertId(FireCertificateApplication objApplication, ref ReturnMsgInfo returnMsg);
 
         // Get List of fire applications by username
         List<FireCertificateApplication> GetAppDetailsByUsr(FireCertificateApplication objFireApp, ref ReturnMsgInfo objReturnMsg);
