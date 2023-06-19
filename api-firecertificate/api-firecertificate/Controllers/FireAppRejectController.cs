@@ -70,13 +70,11 @@ namespace api_rate.Controllers
 
                         objReturnMsg.ReturnValue = "OK";
                         objReturnMsg.ReturnMessage = "Application Successfully rejected.";
-
                     }
                     else
                     {
                         throw new Exception("Error occured rejecting application");
-                    }
-                    
+                    }                    
                 }
             }
             catch (Exception ex)
