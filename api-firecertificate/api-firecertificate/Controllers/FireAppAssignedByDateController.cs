@@ -46,7 +46,7 @@ namespace api_rate.Controllers
                 }
                 else
                 {
-                    // Set status to assigned
+                    // Set status attribute to assigned
                     objFireApplication.Status = Globals.ASSIGNED.ToString().Trim();
 
                     //get assigned applications list

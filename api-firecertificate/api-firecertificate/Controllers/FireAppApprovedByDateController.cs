@@ -45,7 +45,7 @@ namespace api_rate.Controllers
                 }
                 else
                 {
-                    // Set status as approved
+                    // Set status attribute as approved
                     objFireApplication.Status = Globals.APPROVED.ToString().Trim();
 
                     // get application list

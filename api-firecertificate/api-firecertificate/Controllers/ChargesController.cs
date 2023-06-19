@@ -20,7 +20,8 @@ namespace api_rate.Controllers
             _getData = IGetData;
         }
 
-        // POST /api/Charges
+        // POST /api/Charges 
+        // Returns a single row from charges table. 
         public Charges Post([FromBody]Charges objCharge)
         {
             Charges objCharges = new Charges();            

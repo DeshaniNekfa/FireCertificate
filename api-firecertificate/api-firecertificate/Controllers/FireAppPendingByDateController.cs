@@ -45,7 +45,7 @@ namespace api_rate.Controllers
                 }
                 else
                 {
-                    // set status to pending 
+                    // set status attribute to pending 
                     objFireApplication.Status = Globals.PENDING.ToString().Trim();
 
                     // get applications list

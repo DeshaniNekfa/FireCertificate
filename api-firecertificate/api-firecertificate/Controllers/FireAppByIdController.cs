@@ -43,7 +43,7 @@ namespace api_rate.Controllers
                 }
                 else
                 {
-                    // get first application
+                    // get fire certificate application
                     objFireApp = _getData.GetApplicationById(objFireApplication, ref objReturnMsg);
 
                     // assign certId for payment
@@ -58,9 +58,10 @@ namespace api_rate.Controllers
                     // assign client id for second application 
                     objSuperApp.ClientID = objFireApplication.ClientID;
 
-                    // get second application
+                    // get Supervisor application
                     objSuperApp = _getData.GetSupervisorApplicationByFireAppID(objSuperApp, ref objReturnMsg);
 
+                    // assign attributes to fire application object
                     objFireApp.ClientID = objSuperApp.ClientID;
                     objFireApp.CertificateId = objSuperApp.CertificateId;
                     objFireApp.ApplicantName = objSuperApp.ApplicantName;

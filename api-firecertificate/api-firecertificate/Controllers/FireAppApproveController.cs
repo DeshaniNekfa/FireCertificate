@@ -26,6 +26,7 @@ namespace api_rate.Controllers
             _email = IEmail;
             _sms = ISMS;
         }
+
         // POST /api/FireAppApprove
         public ReturnMsgInfo Post([FromBody]FireCertificateApplication objFireApp) 
         {
@@ -49,7 +50,9 @@ namespace api_rate.Controllers
                                             
                     if (objReturnMsg.ReturnValue == "OK")
                     {
+                        // Get application data email and mobile number
                         objFireCert = _getData.GetApplicationById(objFireApp, ref objReturnMsg);
+
                         // Sending Email 
                         if (string.IsNullOrEmpty(objFireCert.Email) == false)
                         {

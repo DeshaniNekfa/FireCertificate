@@ -50,7 +50,9 @@ namespace api_rate.Controllers
 
                     if (objReturnMsg.ReturnValue == "OK")
                     {
+                        // Get application data for email and mobile 
                         objFireCert = _getData.GetApplicationById(objFireApp, ref objReturnMsg);
+
                         // Sending Email 
                         if (string.IsNullOrEmpty(objFireCert.Email) == false)
                         {

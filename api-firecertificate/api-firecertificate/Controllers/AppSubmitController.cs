@@ -35,15 +35,15 @@ namespace api_rate.Controllers
 
             try
             {
-                //validation
+                // validation
                 var valFireApp = _appsubmit.ValidateApplication(objCompleteDetails, ref objReturnMsg);
 
                 if (valFireApp)
                 {
-                    //App Save if CertID not available
+                    // App Save if CertID not available
                     if (objCompleteDetails.CertificateId == null || objCompleteDetails.CertificateId == "")
                     {
-                        //application submit
+                        // application submit
                         _appsubmit.SaveApplication(objCompleteDetails, ref objReturnMsg);
                         objSuperApp = _appsubmit.SetFireSuperApp(objCompleteDetails, ref objReturnMsg);
                         _appsubmit.SaveSupervisorApplication(objSuperApp, ref objReturnMsg);

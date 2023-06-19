@@ -45,7 +45,7 @@ namespace api_rate.Controllers
                 }
                 else
                 {
-                    // Approving Application
+                    // Holding Application
                     _appSubmit.SetStatusHold(objFireApp, ref objReturnMsg);
 
                     if (objReturnMsg.ReturnValue == "OK")
