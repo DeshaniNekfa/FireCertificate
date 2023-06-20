@@ -9,6 +9,7 @@ namespace api_rate.Models
     {
         public string Code { get; set; }
         public int NextId { get; set; }
+        public int NextPayment { get; set; }
         public string ClientID { get; set; }
     }
 }

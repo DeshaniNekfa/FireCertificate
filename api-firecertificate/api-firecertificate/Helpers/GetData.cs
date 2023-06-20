@@ -896,5 +896,77 @@ namespace api_rate.Helpers
             }
             return lstFireApplication;
         }
+
+        // get payment by PaymentID
+        public PaymentDetails GetPaymentByPaymentId(BankReturnMessage objPaidDetails, ref ReturnMsgInfo objReturnMsg)
+        {
+            PaymentDetails objPaymentDetails = new PaymentDetails();
+            this.objConMain = new Connection_Main();
+
+            string connString = this.objConMain.Get_Main_Connection(objPaidDetails.ClientID);
+
+            if (connString == null || connString == "")
+            {
+                objReturnMsg.ReturnValue = "Error";
+                objReturnMsg.ReturnMessage = "Connection not found";
+            }
+            else
+            {
+                try
+                {
+                    this.mySqlCon = new MySqlConnection(connString);
+                    if (this.mySqlCon.State.ToString() != "Open")
+                    {
+                        this.mySqlCon.Open();
+                    }
+                    else
+                    {
+                        objReturnMsg.ReturnValue = "Error";
+                        objReturnMsg.ReturnValue = "Connectoin was already opened.";
+                    }
+                    if (this.mySqlCon != null)
+                    {
+                        string strSql = "SELECT * FROM tbl_firecertificate_payment_details WHERE PaymentID = '" + objPaidDetails.OrderID + "';";
+                        da = new MySqlDataAdapter(strSql, this.mySqlCon);
+                        ds = new DataSet();
+                        da.Fill(ds, "FireApplication");
+                        dt = ds.Tables["FireApplication"];
+                        if (dt.Rows.Count > 0)
+                        {
+                            foreach (DataRow dtRow in dt.Rows)
+                            {
+                                PaymentDetails objPayment = new Models.PaymentDetails();
+                                objPayment.Id = (int)dtRow["Id"];
+                                objPayment.CertificateId = dtRow["CertificateId"].ToString().Trim();
+                                objPayment.Note = dtRow["Note"].ToString().Trim();
+                                objPayment.TotAmt = Convert.ToDecimal(dtRow["TotAmt"]);
+                                objPayment.ClientID = dtRow["User"].ToString().Trim();
+                                objPayment.Date = dtRow["Date"].ToString().Trim();
+                                objPayment.PaymentType = dtRow["PaymentType"].ToString().Trim();
+                                objPayment.PaidDescription = dtRow["PaidDescription"].ToString().Trim();
+                                objPayment.PaymentID = dtRow["PaymentID"].ToString().Trim();
+                                objPayment.BillNo = dtRow["BillNo"].ToString().Trim();
+
+                                objPaymentDetails = objPayment;
+                            }
+                            objReturnMsg.ReturnValue = "OK";
+                            objReturnMsg.ReturnMessage = "Data Found";
+                        }
+                        else
+                        {
+                            objReturnMsg.ReturnValue = "Error";
+                            objReturnMsg.ReturnMessage = "No data found";
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    objReturnMsg.ReturnValue = "Error";
+                    objReturnMsg.ReturnMessage = ex.Message;
+                }
+            }
+            return objPaymentDetails;
+        }
+
     }
 }

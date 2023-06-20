@@ -37,5 +37,8 @@ namespace api_rate.Helpers
 
         // Get applications to date
         List<FireCertificateApplication> GetAppDetailsByDate(FireCertificateApplication objFireApp, ref ReturnMsgInfo returnMsg);
+    
+        // Get payment data by PaymentId
+        PaymentDetails GetPaymentByPaymentId(BankReturnMessage objPaidDetails, ref ReturnMsgInfo objReturnMsg);
     }
 }

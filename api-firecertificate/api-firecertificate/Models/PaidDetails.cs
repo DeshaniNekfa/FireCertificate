@@ -13,7 +13,7 @@ namespace api_rate.Models
         public string ApplicantName { get; set; }
         public string ApplicantAddress {get; set;}
         public string ApplicantMobile { get; set; }
-        public string ApplicantNIC { get; set; }
+        //public string ApplicantNIC { get; set; }
         public decimal BankCharges { get; set; }
         public decimal ConsultantFee { get; set; }
         public decimal InspectionFees { get; set; }

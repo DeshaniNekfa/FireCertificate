@@ -48,15 +48,16 @@ namespace api_rate.Controllers
                 // Validation
                 if(_appsubmit.ValidatePayment(objPayment, ref objReturnMsg))
                 {
-                    objFireApp.CertificateId = objPayment.CertificateId;
+                    objFireApp.Id = objPayment.Id;
                     objFireApp.ClientID = objPayment.ClientID;
 
                     // Get all charges
                     lstCharges = _getData.GetAllCharges(objFireApp, ref objReturnMsg);
 
-                    // Get application by certId
-                    objFireApp = _getData.GetApplicationByCertId(objFireApp, ref objReturnMsg);
+                    // Get application by Id
+                    objFireApp = _getData.GetApplicationById(objFireApp, ref objReturnMsg);
 
+                    objPayment.CertificateId = objFireApp.CertificateId;
                     objPayment.BillNo = "";
                     objPayment.PaymentID = "";
                     objPayment.Note = "";
@@ -92,6 +93,13 @@ namespace api_rate.Controllers
                                 objPaymentInfo.InspectionFees = objCharge.Amount;
                             }
                         }
+                        // return values setting
+                        objPaymentInfo.TotalPayment = objPayment.TotAmt;
+                        objPaymentInfo.ClientID = objPayment.ClientID;
+                        objPaymentInfo.CertificateID = objPayment.CertificateId;
+
+                        // Payment submit
+                        _appsubmit.AddPayment(objPayment, ref objReturnMsg);
 
                     }
                     else if (objFireApp.Status == Globals.ASSIGNED.ToString().Trim())
@@ -118,6 +126,13 @@ namespace api_rate.Controllers
                                 objPaymentInfo.BankCharges = objCharge.Amount;
                             }
                         }
+                        // return values setting
+                        objPaymentInfo.TotalPayment = objPayment.TotAmt;
+                        objPaymentInfo.ClientID = objPayment.ClientID;
+                        objPaymentInfo.CertificateID = objPayment.CertificateId;
+
+                        // Payment submit
+                        _appsubmit.AddPayment(objPayment, ref objReturnMsg);
 
                     }
                     else
@@ -125,14 +140,6 @@ namespace api_rate.Controllers
                         objReturnMsg.ReturnValue = "Error";
                         objReturnMsg.ReturnMessage = "Invalid Payment";
                     }
-
-                    // return values setting
-                    objPaymentInfo.TotalPayment = objPayment.TotAmt;
-                    objPaymentInfo.ClientID = objPayment.ClientID;
-                    objPaymentInfo.CertificateID = objPayment.CertificateId;
-
-                    // Payment submit
-                    _appsubmit.AddPayment(objPayment, ref objReturnMsg);
 
                     if (objReturnMsg.ReturnValue == "OK")
                     {
@@ -157,7 +164,7 @@ namespace api_rate.Controllers
                         }
 
                         objReturnMsg.ReturnValue = "OK";
-                        objReturnMsg.ReturnMessage = "Payment Successfully submitted.";
+                        objReturnMsg.ReturnMessage = "Success.";
 
                         objReturnPayment.ReturnMessageInfo = objReturnMsg;
                         objReturnPayment.PaymentDetails = objPaymentInfo;

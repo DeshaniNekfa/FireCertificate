@@ -96,12 +96,15 @@ namespace api_rate.Helpers
             }
 
             // Building plan attachment name 
-            if (objFireAppDetails.BuildingPlan == null || objFireAppDetails.BuildingPlan == "")
+            if (objFireAppDetails.CertificateId == null || objFireAppDetails.CertificateId == "")
             {
-                returnMsg.ReturnValue = "Error";
-                returnMsg.ReturnMessage = "Building Plan is required.";
-                IsSuccess = false;
-            }
+                if (objFireAppDetails.BuildingPlan == null || objFireAppDetails.BuildingPlan == "")
+                {
+                    returnMsg.ReturnValue = "Error";
+                    returnMsg.ReturnMessage = "Building Plan is required.";
+                    IsSuccess = false;
+                }
+            }          
 
             // Total Land area
             if (objFireAppDetails.TotalLand == null || objFireAppDetails.TotalLand < 0)
@@ -898,7 +901,7 @@ namespace api_rate.Helpers
             }
 
             // CertificateId
-            if (objPayment.CertificateId == null || objPayment.CertificateId == "")
+            if (objPayment.Id == null)
             {
                 objReturnMsg.ReturnValue = "Error";
                 objReturnMsg.ReturnMessage = "Invalid Certificate ID.";
@@ -912,6 +915,14 @@ namespace api_rate.Helpers
         public bool AddPayment(PaymentDetails objPayment, ref ReturnMsgInfo objReturnMsg)
         {
             bool isSaved = false;
+            Index objIndex = new Index();
+            FireCertificateApplication objFireApp = new FireCertificateApplication();
+            string paymentIndex = "";
+
+            objFireApp.ClientID = objPayment.ClientID;
+            objIndex = GetIndexes(objFireApp, ref objReturnMsg);
+
+            paymentIndex = objIndex.Code + objIndex.NextPayment;
 
             this.objConMain = new Connection_Main();
             try
@@ -940,11 +951,11 @@ namespace api_rate.Helpers
                     {
                         if (objPayment.PaidDescription == Globals.INSPECTION.ToString().Trim())
                         {
-                            strSql = "INSERT INTO tbl_firecertificate_payment_details( CertificateId ,Note ,TotAmt ,User ,Date ,PaymentType ,PaidDescription ,PaymentID ,BillNo, BankCharges, ConsultantFee, InspectionFees)VALUES( @CertificateId ,@Note ,@TotAmt ,@User ,@Date ,@PaymentType ,@PaidDescription ,@PaymentID ,@BillNo, @BankCharges, @ConsultantFee, @InspectionFees ); UPDATE tbl_firecertificate_application SET Status = '" + Globals.PAID.ToString().Trim() + "' WHERE CertificateId = @CertificateId;";
+                            strSql = "INSERT INTO tbl_firecertificate_payment_details( CertificateId ,Note ,TotAmt ,User ,Date ,PaymentType ,PaidDescription ,PaymentID ,BillNo, BankCharges, ConsultantFee, InspectionFees)VALUES( @CertificateId ,@Note ,@TotAmt ,@User ,@Date ,@PaymentType ,@PaidDescription ,@PaymentID ,@BillNo, @BankCharges, @ConsultantFee, @InspectionFees ); UPDATE tbl_firecertificate_index SET NextPaymentId=(NextPaymentId + 1);";
                         }
                         else if (objPayment.PaidDescription == Globals.ANNUAL.ToString().Trim())
                         {
-                            strSql = "INSERT INTO tbl_firecertificate_payment_details( CertificateId ,Note ,TotAmt ,User ,Date ,PaymentType ,PaidDescription ,PaymentID ,BillNo, BankCharges, AnnualCertificate)VALUES( @CertificateId ,@Note ,@TotAmt ,@User ,@Date ,@PaymentType ,@PaidDescription ,@PaymentID ,@BillNo, @BankCharges, @AnnualCertificate); UPDATE tbl_firecertificate_application SET Status = '" + Globals.ISSUED.ToString().Trim() + "' WHERE CertificateId = @CertificateId;";
+                            strSql = "INSERT INTO tbl_firecertificate_payment_details( CertificateId ,Note ,TotAmt ,User ,Date ,PaymentType ,PaidDescription ,PaymentID ,BillNo, BankCharges, AnnualCertificate)VALUES( @CertificateId ,@Note ,@TotAmt ,@User ,@Date ,@PaymentType ,@PaidDescription ,@PaymentID ,@BillNo, @BankCharges, @AnnualCertificate); UPDATE tbl_firecertificate_index SET NextPaymentId=(NextPaymentId + 1);";
                         }
                         else
                         {
@@ -960,7 +971,7 @@ namespace api_rate.Helpers
                         cmd.Parameters.AddWithValue("@Date", objPayment.Date);
                         cmd.Parameters.AddWithValue("@PaymentType", objPayment.PaymentType);
                         cmd.Parameters.AddWithValue("@PaidDescription", objPayment.PaidDescription);
-                        cmd.Parameters.AddWithValue("@PaymentID", objPayment.PaymentID);
+                        cmd.Parameters.AddWithValue("@PaymentID", paymentIndex);
                         cmd.Parameters.AddWithValue("@BillNo", objPayment.BillNo);
                         cmd.Parameters.AddWithValue("@BankCharges", objPayment.BankCharges);
                         cmd.Parameters.AddWithValue("@ConsultantFee", objPayment.ConsultantFee);
@@ -1034,6 +1045,7 @@ namespace api_rate.Helpers
                                 Index objIndex = new Index();
                                 objIndex.Code = dtRow["Code"].ToString().Trim();
                                 objIndex.NextId = (int)dtRow["NextApplicationId"];
+                                objIndex.NextPayment = (int)dtRow["NextPaymentId"];
 
                                 objIndexes = objIndex;
                             }
@@ -1303,12 +1315,20 @@ namespace api_rate.Helpers
         }
         
         // Validate bank return message
-        public bool validateBankReturn(BankReturnMessage objPaidDetails, ref ReturnMsgInfo objReturnMsg)
+        public bool ValidateBankReturn(BankReturnMessage objPaidDetails, ref ReturnMsgInfo objReturnMsg)
         {
             bool isBankValid = true;
 
             // ClientID
             if (objPaidDetails.ClientID == null || objPaidDetails.ClientID == "")
+            {
+                objReturnMsg.ReturnValue = "Error";
+                objReturnMsg.ReturnMessage = "Invalid Client ID.";
+                isBankValid = false;
+            }
+
+            //order id
+            if (objPaidDetails.OrderID == null || objPaidDetails.OrderID == "")
             {
                 objReturnMsg.ReturnValue = "Error";
                 objReturnMsg.ReturnMessage = "Invalid Client ID.";
@@ -1339,8 +1359,102 @@ namespace api_rate.Helpers
                 isBankValid = false;
             }
 
-            //
+            // reference number
+            if (objPaidDetails.ReferenceNo == null || objPaidDetails.ReferenceNo == "")
+            {
+                objReturnMsg.ReturnValue = "Error";
+                objReturnMsg.ReturnMessage = "Invalid refeerence number";
+                isBankValid = false;
+            }
+
+            // padded card number
+            if (objPaidDetails.PaddedCardNo == null || objPaidDetails.PaddedCardNo == "")
+            {
+                objReturnMsg.ReturnValue = "Error";
+                objReturnMsg.ReturnMessage = "Invalid padded card number";
+                isBankValid = false;
+            }
+
+            // Authcode
+            if (objPaidDetails.AuthCode == null || objPaidDetails.AuthCode == "")
+            {
+                objReturnMsg.ReturnValue = "Error";
+                objReturnMsg.ReturnMessage = "Invalid Authorization code";
+                isBankValid = false;
+            }
+
             return isBankValid;
         }
+    
+        // submit bank return 
+        public BankReturnMessage SubmitBankReturn(BankReturnMessage objPaidDetails, ref ReturnMsgInfo objReturnMsg)
+        {
+            this.objConMain = new Connection_Main();
+            try
+            {
+                string conString = this.objConMain.Get_Main_Connection(objPaidDetails.ClientID);
+                if (conString == null || conString == "")
+                {
+                    objReturnMsg.ReturnValue = "Error";
+                    objReturnMsg.ReturnMessage = "Connection not found.";
+                }
+                else
+                {
+                    this.mySqlCon = new MySqlConnection(conString);
+
+                    if (this.mySqlCon.State.ToString() != "Open")
+                    {
+                        this.mySqlCon.Open();
+                    }
+                    else
+                    {
+                        objReturnMsg.ReturnValue = "Error";
+                        objReturnMsg.ReturnMessage = "Connection was already opened.";
+                    }
+
+                    if (this.mySqlCon != null)
+                    {
+                        strSql = "INSERT INTO tbl_online_payment_result(OrderID ,ResponseCode,ReasonCode ,ReasonCodeDesc ,ReferenceNo ,PaddedCardNo ,AuthCode ,BillToToFirstName ,BillToMiddleName,BillToLastName ,Signature ,SignatureMethod,ResultTime)VALUES(@OrderID , @ResponseCode, @ReasonCode, @ReasonCodeDesc , @ReferenceNo, @PaddedCardNo, @AuthCode , @BillToToFirstName , @BillToMiddleName, @BillToLastName , @Signature, @SignatureMethod, @ResultTime);";                
+                        cmd = new MySqlCommand(strSql, this.mySqlCon, this.mySqlTrans);
+                        cmd.Parameters.AddWithValue("@OrderID", objPaidDetails.OrderID);
+                        cmd.Parameters.AddWithValue("@ResponseCode", objPaidDetails.ResponseCode);
+                        cmd.Parameters.AddWithValue("@ReasonCode", objPaidDetails.ReasonCode);
+                        cmd.Parameters.AddWithValue("@ReasonCodeDesc", objPaidDetails.ReasonCodeDesc);
+                        cmd.Parameters.AddWithValue("@ReferenceNo", objPaidDetails.ReferenceNo);
+                        cmd.Parameters.AddWithValue("@PaddedCardNo", objPaidDetails.PaddedCardNo);
+                        cmd.Parameters.AddWithValue("@AuthCode", objPaidDetails.AuthCode);
+                        cmd.Parameters.AddWithValue("@BillToToFirstName", objPaidDetails.BillToFirstName);
+                        cmd.Parameters.AddWithValue("@BillToMiddleName", objPaidDetails.BillToMiddleName);
+                        cmd.Parameters.AddWithValue("@BillToLastName", objPaidDetails.BillToLastName);
+                        cmd.Parameters.AddWithValue("@Signature", objPaidDetails.Signature);
+                        cmd.Parameters.AddWithValue("@SignatureMethod", objPaidDetails.SignatureMethod);
+                        cmd.Parameters.AddWithValue("@ResultTime", DateTime.Now.ToString("yyyy/MM/dd HH:mm"));
+
+
+                        cmd.ExecuteNonQuery();
+
+                        objReturnMsg.ReturnValue = "OK";
+                        objReturnMsg.ReturnMessage = "Submitted successfully";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                objReturnMsg.ReturnValue = "Error";
+                objReturnMsg.ReturnMessage = ex.Message;
+            }
+            finally
+            {
+                if (this.mySqlCon != null)
+                {
+                    if (this.mySqlCon.State.ToString() == "Open")
+                    {
+                        this.mySqlCon.Close();
+                    }
+                }
+            }
+            return objPaidDetails;
+        }
+
     }
 }

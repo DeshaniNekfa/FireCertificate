@@ -4387,7 +4387,7 @@
                         </div>
                         <div class="pre">
                             <div class="row">
-                                <div class="col-sm-2 ">CertificateId</div>
+                                <div class="col-sm-2 ">Id</div>
                                 <div class="col-sm-2 ">Description</div>
                                 <div class="col-sm-8 ">
                                     Application id.
@@ -4401,14 +4401,14 @@
                             <div class="row">
                                 <div class="col-sm-2 "></div>
                                 <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
+                                <div class="col-sm-8 ">int</div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-2 "></div>
                                 <div class="col-sm-2 ">Example</div>
                                 <div class="col-sm-8 ">
                                     {
-                                      "CertificateId": "FC001"
+                                      "Id": 210
                                     }
                                 </div>
 
