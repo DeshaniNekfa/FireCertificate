@@ -951,11 +951,11 @@ namespace api_rate.Helpers
                     {
                         if (objPayment.PaidDescription == Globals.INSPECTION.ToString().Trim())
                         {
-                            strSql = "INSERT INTO tbl_firecertificate_payment_details( CertificateId ,Note ,TotAmt ,User ,Date ,PaymentType ,PaidDescription ,PaymentID ,BillNo, BankCharges, ConsultantFee, InspectionFees)VALUES( @CertificateId ,@Note ,@TotAmt ,@User ,@Date ,@PaymentType ,@PaidDescription ,@PaymentID ,@BillNo, @BankCharges, @ConsultantFee, @InspectionFees ); UPDATE tbl_firecertificate_index SET NextPaymentId=(NextPaymentId + 1);";
+                            strSql = "INSERT INTO tbl_firecertificate_payment_details( CertificateId ,Note ,TotAmt ,User ,Date ,PaymentType ,PaidDescription ,PaymentID ,BillNo, BankCharges, ConsultantFee, InspectionFees, AnnualCertificate)VALUES( @CertificateId ,@Note ,@TotAmt ,@User ,@Date ,@PaymentType ,@PaidDescription ,@PaymentID ,@BillNo, @BankCharges, @ConsultantFee, @InspectionFees, '0' ); UPDATE tbl_firecertificate_index SET NextPaymentId=(NextPaymentId + 1);";
                         }
                         else if (objPayment.PaidDescription == Globals.ANNUAL.ToString().Trim())
                         {
-                            strSql = "INSERT INTO tbl_firecertificate_payment_details( CertificateId ,Note ,TotAmt ,User ,Date ,PaymentType ,PaidDescription ,PaymentID ,BillNo, BankCharges, AnnualCertificate)VALUES( @CertificateId ,@Note ,@TotAmt ,@User ,@Date ,@PaymentType ,@PaidDescription ,@PaymentID ,@BillNo, @BankCharges, @AnnualCertificate); UPDATE tbl_firecertificate_index SET NextPaymentId=(NextPaymentId + 1);";
+                            strSql = "INSERT INTO tbl_firecertificate_payment_details( CertificateId ,Note ,TotAmt ,User ,Date ,PaymentType ,PaidDescription ,PaymentID ,BillNo, BankCharges, AnnualCertificate, ConsultantFee, InspectionFees)VALUES( @CertificateId ,@Note ,@TotAmt ,@User ,@Date ,@PaymentType ,@PaidDescription ,@PaymentID ,@BillNo, @BankCharges, @AnnualCertificate, '0', '0'); UPDATE tbl_firecertificate_index SET NextPaymentId=(NextPaymentId + 1);";
                         }
                         else
                         {
