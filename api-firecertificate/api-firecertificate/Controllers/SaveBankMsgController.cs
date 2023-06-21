@@ -57,7 +57,17 @@ namespace api_rate.Controllers
                             objPayment = _getData.GetPaymentByPaymentId(objBankReturn, ref objReturnMsg);
                             objFireApp.CertificateId = objPayment.CertificateId;
                             objFireApp.ClientID = objBankReturn.ClientID;
-                            
+
+                            //Set Status paid or issued
+                            if (objPayment.AnnualCertificate > 0)
+                            {
+                                _appsubmit.SetStatusPaid(objFireApp, ref objReturnMsg);
+                            }
+                            else
+                            {
+                                _appsubmit.SetStatusIssued(objFireApp, ref objReturnMsg);
+                            }
+
                             // get application data
                             objFireApp = _getData.GetApplicationByCertId(objFireApp, ref objReturnMsg);
 

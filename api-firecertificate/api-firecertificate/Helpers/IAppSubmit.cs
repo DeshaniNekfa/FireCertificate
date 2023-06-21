@@ -54,5 +54,11 @@ namespace api_rate.Helpers
 
         // submit bank return
         BankReturnMessage SubmitBankReturn(BankReturnMessage objPaidDetails, ref ReturnMsgInfo objReturnMsg);
+
+        // Set status paid 
+        bool SetStatusPaid(FireCertificateApplication objFireApp, ref ReturnMsgInfo objReturnMsg);
+
+        //Set Status issued
+        bool SetStatusIssued(FireCertificateApplication objFireApp, ref ReturnMsgInfo objReturnMsg);
     }
 }
