@@ -912,9 +912,9 @@ namespace api_rate.Helpers
         }
 
         // Add payment
-        public bool AddPayment(PaymentDetails objPayment, ref ReturnMsgInfo objReturnMsg)
+        public PaymentDetails AddPayment(PaymentDetails objPayment, ref ReturnMsgInfo objReturnMsg)
         {
-            bool isSaved = false;
+            //bool isSaved = false;
             Index objIndex = new Index();
             FireCertificateApplication objFireApp = new FireCertificateApplication();
             string strCouncilID = ConnectionInfo.DBInfo.ID.ToString().Trim();
@@ -924,6 +924,7 @@ namespace api_rate.Helpers
             objIndex = GetIndexes(objFireApp, ref objReturnMsg);
 
             paymentIndex = strCouncilID + objIndex.Code + objIndex.NextPayment;
+            objPayment.PaymentID = paymentIndex;
 
             this.objConMain = new Connection_Main();
             try
@@ -972,14 +973,14 @@ namespace api_rate.Helpers
                         cmd.Parameters.AddWithValue("@Date", objPayment.Date);
                         cmd.Parameters.AddWithValue("@PaymentType", objPayment.PaymentType);
                         cmd.Parameters.AddWithValue("@PaidDescription", objPayment.PaidDescription);
-                        cmd.Parameters.AddWithValue("@PaymentID", paymentIndex);
+                        cmd.Parameters.AddWithValue("@PaymentID", objPayment.PaymentID);
                         cmd.Parameters.AddWithValue("@BillNo", objPayment.BillNo);
                         cmd.Parameters.AddWithValue("@BankCharges", objPayment.BankCharges);
                         cmd.Parameters.AddWithValue("@ConsultantFee", objPayment.ConsultantFee);
                         cmd.Parameters.AddWithValue("@InspectionFees", objPayment.InspectionFees);
                         cmd.Parameters.AddWithValue("@AnnualCertificate", objPayment.AnnualCertificate);
                         cmd.ExecuteNonQuery();
-                        isSaved = true;
+                        //isSaved = true;
 
                         objReturnMsg.ReturnValue = "OK";
                         objReturnMsg.ReturnMessage = "Submitted successfully";
@@ -1003,7 +1004,7 @@ namespace api_rate.Helpers
                 }
             }
 
-            return isSaved;
+            return objPayment;
         }
 
         // Get data from Indexes table

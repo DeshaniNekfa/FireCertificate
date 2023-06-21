@@ -93,13 +93,14 @@ namespace api_rate.Controllers
                                 objPaymentInfo.InspectionFees = objCharge.Amount;
                             }
                         }
+
+                        // Payment submit
+                        objPayment = _appsubmit.AddPayment(objPayment, ref objReturnMsg);
+
                         // return values setting
                         objPaymentInfo.TotalPayment = objPayment.TotAmt;
                         objPaymentInfo.ClientID = objPayment.ClientID;
-                        objPaymentInfo.CertificateID = objPayment.CertificateId;
-
-                        // Payment submit
-                        _appsubmit.AddPayment(objPayment, ref objReturnMsg);
+                        objPaymentInfo.PaymentID = objPayment.PaymentID;
 
                     }
                     else if (objFireApp.Status == Globals.ASSIGNED.ToString().Trim())
@@ -126,13 +127,14 @@ namespace api_rate.Controllers
                                 objPaymentInfo.BankCharges = objCharge.Amount;
                             }
                         }
+
+                        // Payment submit
+                        objPayment = _appsubmit.AddPayment(objPayment, ref objReturnMsg);
+
                         // return values setting
                         objPaymentInfo.TotalPayment = objPayment.TotAmt;
                         objPaymentInfo.ClientID = objPayment.ClientID;
-                        objPaymentInfo.CertificateID = objPayment.CertificateId;
-
-                        // Payment submit
-                        _appsubmit.AddPayment(objPayment, ref objReturnMsg);
+                        objPaymentInfo.PaymentID = objPayment.PaymentID;
 
                     }
                     else

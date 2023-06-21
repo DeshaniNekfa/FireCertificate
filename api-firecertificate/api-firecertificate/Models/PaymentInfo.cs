@@ -13,6 +13,6 @@ namespace api_rate.Models
         public decimal TotalPayment { get; set; }
         public decimal AnnualCertificate { get; set; }
         public string ClientID { get; set; }
-        public string CertificateID { get; set; }
+        public string PaymentID { get; set; }
     }
 }

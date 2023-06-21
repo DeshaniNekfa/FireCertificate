@@ -34,7 +34,7 @@ namespace api_rate.Helpers
         bool ValidatePayment(PaymentDetails objPayment, ref ReturnMsgInfo objReturnMsg);
 
         // Add payment
-        bool AddPayment(PaymentDetails objPayment, ref ReturnMsgInfo objReturnMsg);
+        PaymentDetails AddPayment(PaymentDetails objPayment, ref ReturnMsgInfo objReturnMsg);
 
         // Update Municipal Application
         bool UpdateFireCertificate(FireCertificateApplication objFireApp, ref ReturnMsgInfo objReturnMsg);
