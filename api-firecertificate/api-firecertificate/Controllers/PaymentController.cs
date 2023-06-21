@@ -171,7 +171,7 @@ namespace api_rate.Controllers
                     }
                     else
                     {
-                        throw new Exception("Error occured saving application");
+                        throw new Exception("Error occured");
                     }
                 }
                 else

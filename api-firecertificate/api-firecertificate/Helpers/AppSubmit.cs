@@ -707,7 +707,7 @@ namespace api_rate.Helpers
 
                     if (this.mySqlCon != null)
                     {
-                        strSql = "UPDATE tbl_firecertificate_application SET Status = 'Approved' WHERE Id = '"+objFireApp.Id+"';";
+                        strSql = "UPDATE tbl_firecertificate_application SET Status = 'Approved', DateReviewed = '" + DateTime.Now.ToString("yyyy/MM/dd HH:mm") + "' WHERE Id = '" + objFireApp.Id + "';";
                         cmd = new MySqlCommand(strSql, this.mySqlCon, this.mySqlTrans);
                         cmd.ExecuteNonQuery();
                         isApporoved = true;
@@ -766,7 +766,7 @@ namespace api_rate.Helpers
 
                     if (this.mySqlCon != null)
                     {
-                        strSql = "UPDATE tbl_firecertificate_application SET Status = 'Rejected', RejectReason = '"+objFireApp.RejectReason+"' WHERE Id = '" + objFireApp.Id + "';";
+                        strSql = "UPDATE tbl_firecertificate_application SET Status = 'Rejected', RejectReason = '" + objFireApp.RejectReason + "', DateReviewed = '" + DateTime.Now.ToString("yyyy/MM/dd HH:mm") + "' WHERE Id = '" + objFireApp.Id + "';";
                         cmd = new MySqlCommand(strSql, this.mySqlCon, this.mySqlTrans);
                         cmd.ExecuteNonQuery();
                         isRejected = true;
@@ -1258,6 +1258,7 @@ namespace api_rate.Helpers
 
         }
 
+        // SET status Hold
         public bool SetStatusHold(FireCertificateApplication objFireApp, ref ReturnMsgInfo objReturnMsg)
         {
             bool ishold = false;
@@ -1287,7 +1288,7 @@ namespace api_rate.Helpers
 
                     if (this.mySqlCon != null)
                     {
-                        strSql = "UPDATE tbl_firecertificate_application SET Status = 'Hold' WHERE Id = '" + objFireApp.Id + "';";
+                        strSql = "UPDATE tbl_firecertificate_application SET Status = 'Hold', RejectReason = '" + objFireApp.RejectReason + "', DateReviewed = '"+DateTime.Now.ToString("yyyy/MM/dd HH:mm")+"' WHERE Id = '" + objFireApp.Id + "';";
                         cmd = new MySqlCommand(strSql, this.mySqlCon, this.mySqlTrans);
                         cmd.ExecuteNonQuery();
                         ishold = true;
@@ -1488,7 +1489,7 @@ namespace api_rate.Helpers
 
                     if (this.mySqlCon != null)
                     {
-                        strSql = "UPDATE tbl_firecertificate_application SET Status = 'Paid' WHERE CertificateId = '" + objFireApp.CertificateId + "';";
+                        strSql = "UPDATE tbl_firecertificate_application SET Status = 'Paid', DateReviewed = '" + DateTime.Now.ToString("yyyy/MM/dd HH:mm") + "' WHERE CertificateId = '" + objFireApp.CertificateId + "';";
                         cmd = new MySqlCommand(strSql, this.mySqlCon, this.mySqlTrans);
                         cmd.ExecuteNonQuery();
                         isApporoved = true;
@@ -1547,7 +1548,7 @@ namespace api_rate.Helpers
 
                     if (this.mySqlCon != null)
                     {
-                        strSql = "UPDATE tbl_firecertificate_application SET Status = 'Issued' WHERE CertificateId = '" + objFireApp.CertificateId + "';";
+                        strSql = "UPDATE tbl_firecertificate_application SET Status = 'Issued', DateReviewed = '" + DateTime.Now.ToString("yyyy/MM/dd HH:mm") + "' WHERE CertificateId = '" + objFireApp.CertificateId + "';";
                         cmd = new MySqlCommand(strSql, this.mySqlCon, this.mySqlTrans);
                         cmd.ExecuteNonQuery();
                         isApporoved = true;
