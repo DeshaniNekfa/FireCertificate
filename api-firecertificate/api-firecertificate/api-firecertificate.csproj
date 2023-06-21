@@ -192,6 +192,7 @@
     <Compile Include="Controllers\FireAppByUserIdController.cs" />
     <Compile Include="Controllers\FireAppHoldByDateController.cs" />
     <Compile Include="Controllers\FireAppHoldController.cs" />
+    <Compile Include="Controllers\FireAppIssuedByDateController.cs" />
     <Compile Include="Controllers\FireAppPaidByDateController.cs" />
     <Compile Include="Controllers\FireAppPendingByDateController.cs" />
     <Compile Include="Controllers\FireAppRejectController.cs" />

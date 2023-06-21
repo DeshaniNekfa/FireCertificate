@@ -780,6 +780,10 @@ namespace api_rate.Helpers
                                 objPayment.PaidDescription = dtRow["PaidDescription"].ToString().Trim();
                                 objPayment.PaymentID = dtRow["PaymentID"].ToString().Trim();
                                 objPayment.BillNo = dtRow["BillNo"].ToString().Trim();
+                                objPayment.BankCharges = Convert.ToDecimal(dtRow["BankCharges"]);
+                                objPayment.ConsultantFee = Convert.ToDecimal(dtRow["ConsultantFee"]);
+                                objPayment.InspectionFees = Convert.ToDecimal(dtRow["InspectionFees"]);
+                                objPayment.AnnualCertificate = Convert.ToDecimal(dtRow["AnnualCertificate"]);
 
                                 objPaymentDetails = objPayment;
                             }

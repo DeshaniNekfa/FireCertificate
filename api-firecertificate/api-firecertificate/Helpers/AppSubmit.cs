@@ -1488,7 +1488,7 @@ namespace api_rate.Helpers
 
                     if (this.mySqlCon != null)
                     {
-                        strSql = "UPDATE tbl_firecertificate_application SET Status = 'Paid' WHERE Id = '" + objFireApp.Id + "';";
+                        strSql = "UPDATE tbl_firecertificate_application SET Status = 'Paid' WHERE CertificateId = '" + objFireApp.CertificateId + "';";
                         cmd = new MySqlCommand(strSql, this.mySqlCon, this.mySqlTrans);
                         cmd.ExecuteNonQuery();
                         isApporoved = true;
@@ -1547,7 +1547,7 @@ namespace api_rate.Helpers
 
                     if (this.mySqlCon != null)
                     {
-                        strSql = "UPDATE tbl_firecertificate_application SET Status = 'Issued' WHERE Id = '" + objFireApp.Id + "';";
+                        strSql = "UPDATE tbl_firecertificate_application SET Status = 'Issued' WHERE CertificateId = '" + objFireApp.CertificateId + "';";
                         cmd = new MySqlCommand(strSql, this.mySqlCon, this.mySqlTrans);
                         cmd.ExecuteNonQuery();
                         isApporoved = true;

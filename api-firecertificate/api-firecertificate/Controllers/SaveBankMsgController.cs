@@ -61,11 +61,12 @@ namespace api_rate.Controllers
                             //Set Status paid or issued
                             if (objPayment.AnnualCertificate > 0)
                             {
-                                _appsubmit.SetStatusPaid(objFireApp, ref objReturnMsg);
+                                _appsubmit.SetStatusIssued(objFireApp, ref objReturnMsg);
+
                             }
                             else
                             {
-                                _appsubmit.SetStatusIssued(objFireApp, ref objReturnMsg);
+                                _appsubmit.SetStatusPaid(objFireApp, ref objReturnMsg);
                             }
 
                             // get application data
