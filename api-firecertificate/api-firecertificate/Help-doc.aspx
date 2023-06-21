@@ -7047,7 +7047,7 @@
                             <div>Base URL</div>
                         </div>
                         <div class="pre row">
-                            <div class="col-sm-12 ">https://firecertificate-api.nekfa.com/api/FireAppPaidByDate</div>
+                            <div class="col-sm-12 ">https://firecertificate-api.nekfa.com/api/FireAppIssuedByDate</div>
                         </div>
                     </div>
                     <div>
