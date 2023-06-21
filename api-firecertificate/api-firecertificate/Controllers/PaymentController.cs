@@ -103,7 +103,7 @@ namespace api_rate.Controllers
                         objPaymentInfo.PaymentID = objPayment.PaymentID;
 
                     }
-                    else if (objFireApp.Status == Globals.ASSIGNED.ToString().Trim())
+                    else if (objFireApp.Status == Globals.APPROVED.ToString().Trim())
                     {
                         // add paid description
                         objPayment.PaidDescription = Globals.ANNUAL.ToString().Trim();
@@ -168,9 +168,6 @@ namespace api_rate.Controllers
                         objReturnMsg.ReturnValue = "OK";
                         objReturnMsg.ReturnMessage = "Success.";
 
-                        objReturnPayment.ReturnMessageInfo = objReturnMsg;
-                        objReturnPayment.PaymentDetails = objPaymentInfo;
-
                     }
                     else
                     {
@@ -189,6 +186,9 @@ namespace api_rate.Controllers
                 objReturnMsg.ReturnValue = "Error";
                 objReturnMsg.ReturnMessage = ex.Message.ToString().Trim();
             }
+
+            objReturnPayment.ReturnMessageInfo = objReturnMsg;
+            objReturnPayment.PaymentDetails = objPaymentInfo;
 
             return objReturnPayment;
 
