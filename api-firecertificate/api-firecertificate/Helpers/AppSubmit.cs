@@ -917,12 +917,13 @@ namespace api_rate.Helpers
             bool isSaved = false;
             Index objIndex = new Index();
             FireCertificateApplication objFireApp = new FireCertificateApplication();
+            string strCouncilID = ConnectionInfo.DBInfo.ID.ToString().Trim();
             string paymentIndex = "";
 
             objFireApp.ClientID = objPayment.ClientID;
             objIndex = GetIndexes(objFireApp, ref objReturnMsg);
 
-            paymentIndex = objIndex.Code + objIndex.NextPayment;
+            paymentIndex = strCouncilID + objIndex.Code + objIndex.NextPayment;
 
             this.objConMain = new Connection_Main();
             try
