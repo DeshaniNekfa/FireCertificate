@@ -1,4 +1,4 @@
-﻿
+﻿-
 <%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Help-doc.aspx.cs" Inherits="api_rate.Help_doc" %>
 
 <!DOCTYPE html>
@@ -4670,7 +4670,7 @@
                                         </div>
 
                                     </div>
-                                    <br>
+                                    <br />
 
                                     <div class="row">
                                         <div class="col-sm-2 ">ReasonCode</div>
@@ -4699,7 +4699,7 @@
                                         </div>
 
                                     </div>
-                                    <br>
+                                    <br />
                                     <div class="row">
                                         <div class="col-sm-2 ">ReasonCodeDesc</div>
                                         <div class="col-sm-2 ">Description</div>
@@ -4727,7 +4727,7 @@
                                         </div>
 
                                     </div>
-                                    <br>
+                                    <br />
 
                                     <div class="row">
                                         <div class="col-sm-2 ">ReferenceNo</div>
@@ -4756,7 +4756,7 @@
                                         </div>
 
                                     </div>
-                                    <br>
+                                    <br />
 
                                     <div class="row">
                                         <div class="col-sm-2 ">PaddedCardNo</div>
@@ -4785,7 +4785,7 @@
                                         </div>
 
                                     </div>
-                                    <br>
+                                    <br />
 
                                     <div class="row">
                                         <div class="col-sm-2 ">AuthCode</div>
@@ -4814,7 +4814,7 @@
                                         </div>
 
                                     </div>
-                                    <br>
+                                    <br />
 
                                     <div class="row">
                                         <div class="col-sm-2 ">BillToFirstName</div>
@@ -4843,7 +4843,7 @@
                                         </div>
 
                                     </div>
-                                    <br>
+                                    <br />
 
                                     <div class="row">
                                         <div class="col-sm-2 ">BillToMiddleName</div>
@@ -4872,7 +4872,7 @@
                                         </div>
 
                                     </div>
-                                    <br>
+                                    <br />
 
                                     <div class="row">
                                         <div class="col-sm-2 ">BillToLastName</div>
@@ -4901,7 +4901,7 @@
                                         </div>
 
                                     </div>
-                                    <br>
+                                    <br />
 
                                     <div class="row">
                                         <div class="col-sm-2 ">Signature</div>
@@ -4930,7 +4930,7 @@
                                         </div>
 
                                     </div>
-                                    <br>
+                                    <br />
 
                                     <div class="row">
                                         <div class="col-sm-2 ">SignatureMethod</div>
@@ -4959,7 +4959,7 @@
                                         </div>
 
                                     </div>
-                                    <br>
+                                    <br />
 
                                     
                                 </div>
@@ -5025,7 +5025,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <br>
+                            <br />
                             <div>
                                 
                                 <div class="pre">
@@ -5034,20 +5034,20 @@
                                             "ReturnMessageInfo" is 2nd arry of the response and it has two objects "ReturnValue" and "ReturnMessage".
                                         </div>
                                     </div>
-                                    <br>
-                                    <br>
+                                    <br />
+                                    <br />
                                     <div class="row">
                                         <div class="col-sm-5 ">Description</div>
                                         <div class="col-sm-2 ">ReturnValue</div>
                                         <div class="col-sm-5">ReturnMessage</div>
                                     </div>
-                                    <br>
+                                    <br />
                                     <div class="row">
                                         <div class="col-sm-5 ">If process successfully complete</div>
                                         <div class="col-sm-2 ">"OK"</div>
                                         <div class="col-sm-5">"Application details successfully submitted etc..."</div>
                                     </div>
-                                    <br>
+                                    <br />
                                     <div class="row">
                                         <div class="col-sm-5 ">If any error occured</div>
                                         <div class="col-sm-2 ">"Error"</div>
