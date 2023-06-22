@@ -20,5 +20,16 @@ namespace api_rate.Models
         public decimal TotalPayment { get; set; }
         public decimal AnnualCertificate { get; set; }
         public string ClientID { get; set; }
+        public int ApplicantionId { get; set; }
+        public string Email { get; set; }
+        public int ResponseCode { get; set; }
+        public int ReasonCode { get; set; }
+        public string ReferenceNo { get; set; }
+        public string BillToFirstName { get; set; }
+        public string BillToMiddleName { get; set; }
+        public string BillToLastName { get; set; }
+        public string PaddedCardNo { get; set; }
+        public string ResultTime { get; set; }
+
     }
 }

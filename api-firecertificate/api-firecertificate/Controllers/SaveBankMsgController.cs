@@ -84,6 +84,17 @@ namespace api_rate.Controllers
                             objPaidDetails.InspectionFees = objPayment.InspectionFees;
                             objPaidDetails.TotalPayment = objPayment.TotAmt;
                             objPaidDetails.AnnualCertificate = objPayment.AnnualCertificate;
+                            objPaidDetails.ClientID = objPayment.ClientID;
+                            objPaidDetails.ApplicantionId = objFireApp.Id;
+                            objPaidDetails.Email = objFireApp.Email;
+                            objPaidDetails.ResponseCode = objBankReturn.ResponseCode;
+                            objPaidDetails.ReasonCode = objBankReturn.ReasonCode;
+                            objPaidDetails.ReferenceNo = objBankReturn.ReferenceNo;
+                            objPaidDetails.BillToFirstName = objBankReturn.BillToFirstName;
+                            objPaidDetails.BillToMiddleName = objBankReturn.BillToMiddleName;
+                            objPaidDetails.BillToLastName = objBankReturn.BillToLastName;
+                            objPaidDetails.PaddedCardNo = objBankReturn.PaddedCardNo;
+                            objPaidDetails.ResultTime = DateTime.Now.ToString("yyyy/MM/dd HH:mm");
 
                             objReturnMsg.ReturnValue = "OK";
                             objReturnMsg.ReturnMessage = "Payment Success.";
