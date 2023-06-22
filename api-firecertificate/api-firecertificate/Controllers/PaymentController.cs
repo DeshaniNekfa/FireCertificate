@@ -100,7 +100,7 @@ namespace api_rate.Controllers
                         // return values setting
                         objPaymentInfo.TotalPayment = objPayment.TotAmt;
                         objPaymentInfo.ClientID = objPayment.ClientID;
-                        objPaymentInfo.PaymentID = objPayment.PaymentID;
+                        objPaymentInfo.OrderID = objPayment.PaymentID;
 
                     }
                     else if (objFireApp.Status == Globals.APPROVED.ToString().Trim())
@@ -134,7 +134,7 @@ namespace api_rate.Controllers
                         // return values setting
                         objPaymentInfo.TotalPayment = objPayment.TotAmt;
                         objPaymentInfo.ClientID = objPayment.ClientID;
-                        objPaymentInfo.PaymentID = objPayment.PaymentID;
+                        objPaymentInfo.OrderID = objPayment.PaymentID;
 
                     }
                     else
