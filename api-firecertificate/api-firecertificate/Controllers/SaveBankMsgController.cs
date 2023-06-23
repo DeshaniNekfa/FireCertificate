@@ -3,6 +3,7 @@ using api_rate.Helpers;
 using api_rate.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -101,6 +102,24 @@ namespace api_rate.Controllers
 
                             objPaidOutput.PaidDetails = objPaidDetails;
                             objPaidOutput.ReturnMsg = objReturnMsg;
+
+                            // Sending Email 
+                            if (string.IsNullOrEmpty(objFireApp.Email) == false)
+                            {
+                                string strMsg = _email.GetEmailMsgBody(Globals.PENDING.ToString().Trim());
+                                string strErMsg = string.Empty;
+                                _email.SendEmail(strMsg, objFireApp.Email.ToString().Trim(), ref strErMsg);
+                            }
+
+                            // Sending SMS 
+                            string strSMSSending = ConfigurationManager.AppSettings["SMSSending"].ToString().Trim();
+                            if (string.IsNullOrEmpty(objFireApp.CertificateId) == false && string.IsNullOrEmpty(objFireApp.Telephone) == false && strSMSSending.ToString().Trim() == "1")
+                            {
+                                string strMsg = "Dear Customer, \n Your payment successfully submitted. \n Reference No : " + objFireApp.CertificateId.Trim() + " \n Thank You.";
+                                string strErMsg = string.Empty;
+                                _sms.SendSMS(strMsg, objFireApp.Telephone.ToString().Trim(), ref strErMsg);
+                            }
+
                         }
                     }
                     else
