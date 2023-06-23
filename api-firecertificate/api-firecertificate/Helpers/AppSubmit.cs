@@ -357,7 +357,7 @@ namespace api_rate.Helpers
 
                     if (this.mySqlCon != null)
                     {
-                        strSql = "INSERT INTO tbl_firecertificate_application(CertificateId, CompanyName, Address, Telephone, DistanceFromCouncil, NatureOfBusiness, BuildingDescription ,BuildingPlan, TotalLand, RoadFromCouncil, OwnerName, CurrentFirePlan, Status, Email, Supervisor, DateApplied, DateReviewed, user, DateIssued, DateAppRej) VALUES (@CertificateId, @CompanyName, @Address, @Telephone, @DistanceFromCouncil, @NatureOfBusiness, @BuildingDescription,@BuildingPlan, @TotalLand, @RoadFromCouncil, @OwnerName, @CurrentFirePlan, @Status, @Email, @Supervisor, @DateApplied, @DateReviewed, @user, @DateIssued, @DateAppRej); UPDATE tbl_firecertificate_index SET NextApplicationId=(NextApplicationId + 1);";
+                        strSql = "INSERT INTO tbl_firecertificate_application(CertificateId, CompanyName, Address, Telephone, DistanceFromCouncil, NatureOfBusiness, BuildingDescription ,BuildingPlan, TotalLand, RoadFromCouncil, OwnerName, CurrentFirePlan, Status, Email, Supervisor, DateApplied, DateReviewed, user, DateIssued, DateAppRej, superVisit) VALUES (@CertificateId, @CompanyName, @Address, @Telephone, @DistanceFromCouncil, @NatureOfBusiness, @BuildingDescription,@BuildingPlan, @TotalLand, @RoadFromCouncil, @OwnerName, @CurrentFirePlan, @Status, @Email, @Supervisor, @DateApplied, @DateReviewed, @user, @DateIssued, @DateAppRej, @superVisit); UPDATE tbl_firecertificate_index SET NextApplicationId=(NextApplicationId + 1);";
                         cmd = new MySqlCommand(strSql, this.mySqlCon, this.mySqlTrans);
                         cmd.Parameters.AddWithValue("@CertificateId", objFireAppDetails.CertificateId.ToString().Trim());
                         cmd.Parameters.AddWithValue("@CompanyName", objFireAppDetails.CompanyName);
@@ -379,6 +379,7 @@ namespace api_rate.Helpers
                         cmd.Parameters.AddWithValue("@DateIssued", "");
                         cmd.Parameters.AddWithValue("@DateAppRej", "");
                         cmd.Parameters.AddWithValue("@user", objFireAppDetails.ClientID);
+                        cmd.Parameters.AddWithValue("@superVisit", "0");
                         cmd.ExecuteNonQuery();
                         isSaved = true;
 
@@ -1577,6 +1578,64 @@ namespace api_rate.Helpers
             }
 
             return isApporoved;
+        }
+
+        public bool SetSupervisorVisited(FireCertificateApplication objFireApp, ref ReturnMsgInfo objReturnMsg)
+        {
+            bool supervisorVisited = false;
+            this.objConMain = new Connection_Main();
+
+            try
+            {
+                string conString = this.objConMain.Get_Main_Connection(objFireApp.ClientID);
+                if (conString == null || conString == "")
+                {
+                    objReturnMsg.ReturnValue = "Error";
+                    objReturnMsg.ReturnMessage = "Connection not found.";
+                }
+                else
+                {
+                    this.mySqlCon = new MySqlConnection(conString);
+
+                    if (this.mySqlCon.State.ToString() != "Open")
+                    {
+                        this.mySqlCon.Open();
+                    }
+                    else
+                    {
+                        objReturnMsg.ReturnValue = "Error";
+                        objReturnMsg.ReturnMessage = "Connection was already opened.";
+                    }
+
+                    if (this.mySqlCon != null)
+                    {
+                        strSql = "UPDATE tbl_firecertificate_application SET superVisit = '1' WHERE Id = '" + objFireApp.Id + "';";
+                        cmd = new MySqlCommand(strSql, this.mySqlCon, this.mySqlTrans);
+                        cmd.ExecuteNonQuery();
+                        supervisorVisited = true;
+
+                        objReturnMsg.ReturnValue = "OK";
+                        objReturnMsg.ReturnMessage = "Submitted successfully";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                objReturnMsg.ReturnValue = "Error";
+                objReturnMsg.ReturnMessage = ex.Message;
+            }
+            finally
+            {
+                if (this.mySqlCon != null)
+                {
+                    if (this.mySqlCon.State.ToString() == "Open")
+                    {
+                        this.mySqlCon.Close();
+                    }
+                }
+            }
+
+            return supervisorVisited;
         }
     }
 }

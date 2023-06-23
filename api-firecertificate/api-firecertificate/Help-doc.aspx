@@ -51,18 +51,19 @@
                 <div><a href="#apiAppReject" style="color:red!important; font-size:small" >08. Reject Application</a></div>
                 <div><a href="#apiAppHold" style="color:red!important; font-size:small" >09. Hold Application</a></div>
                 <div><a href="#apiAssignSupervisor" style="color:red!important; font-size:small" >10. Assign Supervisor</a></div>
+                <div><a href="#apiSupervisorVisited" style="color:red!important; font-size:small" >11. Supervisor Status Update</a></div>
                 <br />
-                <div><a href="#apiChargebyId" style=" font-size:small">11. Charges</a></div>
-                <div><a href="#apiPaymentSubmit" style=" font-size:small">12. Submit Payment</a></div>
-                <div><a href="#apiBankReturn" style="font-size:small" >13. Bank Return Message Saving</a></div>                       
+                <div><a href="#apiChargebyId" style=" font-size:small">12. Charges</a></div>
+                <div><a href="#apiPaymentSubmit" style=" font-size:small">13. Submit Payment</a></div>
+                <div><a href="#apiBankReturn" style="font-size:small" >14. Bank Return Message Saving</a></div>                       
                 <br />
-                <div><a href="#apiPendingbyDate" style="color:orange!important; font-size:small" >14. Pending Municipal applications by date</a></div>
-                <div><a href="#apiApprovedbyDate" style="color:orange!important; font-size:small" >15. Approved Municipal applications by date</a></div>
-                <div><a href="#apiRejectedbyDate" style="color:orange!important; font-size:small" >16. Rejected Municipal applications by date</a></div>
-                <div><a href="#apiHoldbyDate" style="color:orange!important; font-size:small" >17. Hold Municipal applications by date</a></div>           
-                <div><a href="#apiAssignedbyDate" style="color:orange!important; font-size:small" >18. Assigned Municipal applications by date</a></div>           
-                <div><a href="#apiPaidbyDate" style="color:orange!important; font-size:small" >19. Paid Municipal applications by date</a></div>           
-                <div><a href="#apiIssuedbyDate" style="color:orange!important; font-size:small" >20. Issued Municipal applications by date</a></div>           
+                <div><a href="#apiPendingbyDate" style="color:orange!important; font-size:small" >15. Pending Municipal applications by date</a></div>
+                <div><a href="#apiApprovedbyDate" style="color:orange!important; font-size:small" >16. Approved Municipal applications by date</a></div>
+                <div><a href="#apiRejectedbyDate" style="color:orange!important; font-size:small" >17. Rejected Municipal applications by date</a></div>
+                <div><a href="#apiHoldbyDate" style="color:orange!important; font-size:small" >18. Hold Municipal applications by date</a></div>           
+                <div><a href="#apiAssignedbyDate" style="color:orange!important; font-size:small" >19. Assigned Municipal applications by date</a></div>           
+                <div><a href="#apiPaidbyDate" style="color:orange!important; font-size:small" >20. Paid Municipal applications by date</a></div>           
+                <div><a href="#apiIssuedbyDate" style="color:orange!important; font-size:small" >21. Issued Municipal applications by date</a></div>           
             </div>
             <div class="col-md-8 right-div">
                 <h3>API Help Document</h3>
@@ -258,6 +259,8 @@
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Generator": null,
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "CurrentCircuit": null,
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "SupervisorVisited": "1",
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; }
                                     <br />
@@ -530,6 +533,8 @@
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Generator": "available",
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "CurrentCircuit": "",
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "SupervisorVisited": "1",
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; }
                                     <br />
@@ -1040,6 +1045,8 @@
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Generator": "available",
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "CurrentCircuit": "",
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "SupervisorVisited": "1",
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "ClientID": null,
                                     <br />
@@ -4377,7 +4384,168 @@
                         </div>
                     </div>
                 </div>                
-                <%--=================================== 11. Charges =============================================================================--%>
+                <%--=================================== 11. Supervisor Status Update ============================================================--%>
+                <div id="apiSupervisorVisited">
+                    <h3 class="heading">Supervisor Status Update</h3>
+                    <div>
+                        <div>
+                            <div>Introduction</div>
+                        </div>
+                        <div class="pre row">
+                            <div class="col-sm-12 ">This API helps to Set inspection status</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <div>Base URL</div>
+                        </div>
+                        <div class="pre row">
+                            <div class="col-sm-12 ">https://firecertificate-api.nekfa.com/api/SupervisorVisited</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <div>Request type</div>
+                        </div>
+                        <div class="pre">
+                            <div class="row">
+                                <div class="col-sm-3 ">Method</div>
+                                <div class="col-sm-9">POST</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3 ">Content type</div>
+                                <div class="col-sm-9">application/json</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div>
+                            <div>List of parameters</div>
+                        </div>
+                        <div class="pre">
+                            <div class="row">
+                                <div class="col-sm-2 ">Id</div>
+                                <div class="col-sm-2 ">Description</div>
+                                <div class="col-sm-8 ">
+                                    Application id.
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Required</div>
+                                <div class="col-sm-8 ">Yes</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Data type</div>
+                                <div class="col-sm-8 ">Int</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Example</div>
+                                <div class="col-sm-8 ">
+                                    {
+                                      "Id": 201
+                                    }
+                                </div>
+
+                            </div>
+                            <br />
+                                                        
+                            <div class="row">
+                                <div class="col-sm-2 ">ClientID</div>
+                                <div class="col-sm-2 ">Description</div>
+                                <div class="col-sm-8 ">
+                                    To identify user.
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Required</div>
+                                <div class="col-sm-8 ">Yes</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Data type</div>
+                                <div class="col-sm-8 ">String</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Example</div>
+                                <div class="col-sm-8 ">
+                                    {
+                                      "ClientID":"TestId"
+                                    }
+                                </div>
+                            </div>
+                            <br />
+
+
+                        </div>
+                    </div>
+                    <div style="overflow-y: hidden; overflow-x: hidden;">
+                        <div>
+                            <div>Response</div>
+                        </div>
+                        <div class="pre">
+                            <div class="row">
+                                <div class="col-sm-3 ">Response type</div>
+                                <div class="col-sm-9">JSON</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3 ">Response Status</div>
+                                <div class="col-sm-9">200 - OK</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3 ">Response values</div>
+                                <div class="col-sm-9">
+                                    { 
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"ReturnValue": "OK",
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"ReturnMessage": "Status set to inspected.",
+                                    <br />
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <div>ReturnMessageInfo List</div>
+                            <br />
+                        </div>
+                        <div class="pre">
+                            <div class="row">
+                                <div class="col-sm-12 ">
+                                    "ReturnMessageInfo" is 2nd arry of the response and it has two objects "ReturnValue" and "ReturnMessage".
+                                </div>
+                            </div>
+                            <br />
+                            <br />
+                            <div class="row">
+                                <div class="col-sm-5 ">Description</div>
+                                <div class="col-sm-2 ">ReturnValue</div>
+                                <div class="col-sm-5">ReturnMessage</div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-sm-5 ">If process successfully complete</div>
+                                <div class="col-sm-2 ">"OK"</div>
+                                <div class="col-sm-5">"Data found etc..."</div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-sm-5 ">If any error occured</div>
+                                <div class="col-sm-2 ">"Error"</div>
+                                <div class="col-sm-5">"Invalid Client ID, Connection not found etc..."</div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <%--=================================== 12. Charges =============================================================================--%>
                 <div id="apiChargebyId">
                     <h3 class="heading">Charges</h3>
                     <div>
@@ -4558,7 +4726,7 @@
                         </div>
                     </div>
                 </div>
-                <%--=================================== 12. Submit Payment ======================================================================--%>
+                <%--=================================== 13. Submit Payment ======================================================================--%>
                 <div id="apiPaymentSubmit">
                     <h3 class="heading">Submit Payment</h3>
                     <div>
@@ -4744,7 +4912,7 @@
                         </div>
                     </div>
                 </div>
-                <%--=================================== 13. Bank Return Message Saving ==========================================================--%>
+                <%--=================================== 14. Bank Return Message Saving ==========================================================--%>
                 <div id="apiBankReturn">
                             <h3 class="heading">Bank Return Message Saving</h3>
                             <div>
@@ -5277,7 +5445,7 @@
                                 </div>
                             </div>
                         </div>
-                <%--=================================== 14. Pending Municipal applications by date ==============================================--%>
+                <%--=================================== 15. Pending Municipal applications by date ==============================================--%>
                 <div id="apiPendingbyDate">
                     <h3 class="heading">Get Pending Municipal Applications Between given dates</h3>
                     <div>
@@ -5529,6 +5697,8 @@
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "CurrentCircuit": null,
                                     <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "SupervisorVisited": "1",
+                                    <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; }
                                     <br />
                                      ],
@@ -5582,7 +5752,7 @@
                         </div>
                     </div>
                 </div>
-                <%--=================================== 15. Approved Municipal applications by date =============================================--%>
+                <%--=================================== 16. Approved Municipal applications by date =============================================--%>
                 <div id="apiApprovedbyDate">
                     <h3 class="heading">Get Approved Municipal Applications Between given dates</h3>
                     <div>
@@ -5921,7 +6091,7 @@
                         </div>
                     </div>
                 </div>
-                <%--=================================== 16. Rejected Municipal applications by date =============================================--%>
+                <%--=================================== 17. Rejected Municipal applications by date =============================================--%>
                 <div id="apiRejectedbyDate">
                     <h3 class="heading">Get Rejected Municipal Applications Between given dates</h3>
                     <div>
@@ -6171,6 +6341,8 @@
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "CurrentCircuit": null,
                                     <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "SupervisorVisited": "1",
+                                    <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; }
                                     <br />
                                      ],
@@ -6258,7 +6430,7 @@
                         </div>
                     </div>
                 </div>
-                <%--=================================== 17. Hold Municipal applications by date =================================================--%>
+                <%--=================================== 18. Hold Municipal applications by date =================================================--%>
                 <div id="apiHoldbyDate">
                     <h3 class="heading">Get Hold Municipal Applications Between given dates</h3>
                     <div>
@@ -6510,6 +6682,8 @@
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "CurrentCircuit": null,                                    
                                     <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "SupervisorVisited": "1",
+                                    <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; }
                                     <br />
                                      ],
@@ -6597,7 +6771,7 @@
                         </div>
                     </div>
                 </div>
-                <%--=================================== 18. Assigned Municipal applications by date =============================================--%>
+                <%--=================================== 19. Assigned Municipal applications by date =============================================--%>
                 <div id="apiAssignedbyDate">
                     <h3 class="heading">Get Assigned Municipal Applications Between given dates</h3>
                     <div>
@@ -6849,6 +7023,8 @@
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "CurrentCircuit": null,                                    
                                     <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "SupervisorVisited": "1",
+                                    <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; }
                                     <br />
                                      ],
@@ -6936,7 +7112,7 @@
                         </div>
                     </div>
                 </div>
-                <%--=================================== 19. Paid Municipal applications by date =================================================--%>
+                <%--=================================== 20. Paid Municipal applications by date =================================================--%>
                 <div id="apiPaidbyDate">
                     <h3 class="heading">Get Paid Municipal Applications Between given dates</h3>
                     <div>
@@ -7188,6 +7364,8 @@
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "CurrentCircuit": null,
                                     <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "SupervisorVisited": "1",
+                                    <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; }
                                     <br />
                                      ],
@@ -7275,7 +7453,7 @@
                         </div>
                     </div>
                 </div>
-                <%--=================================== 20. Issued Municipal applications by date ===============================================--%>
+                <%--=================================== 21. Issued Municipal applications by date ===============================================--%>
                 <div id="apiIssuedbyDate">
                     <h3 class="heading">Get Paid Municipal Applications Between given dates</h3>
                     <div>
@@ -7526,6 +7704,8 @@
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Generator": null,
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "CurrentCircuit": null,
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "SupervisorVisited": "1",
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; }
                                     <br />

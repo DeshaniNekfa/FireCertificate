@@ -76,5 +76,6 @@ namespace api_rate.Models
         public string ElecPhase { get; set; }
         public string Generator { get; set; }
         public string CurrentCircuit { get; set; }
+        public string SupervisorVisited { get; set; }
     }
 }

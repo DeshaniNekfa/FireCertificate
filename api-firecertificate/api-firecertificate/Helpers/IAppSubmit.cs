@@ -60,5 +60,7 @@ namespace api_rate.Helpers
 
         //Set Status issued
         bool SetStatusIssued(FireCertificateApplication objFireApp, ref ReturnMsgInfo objReturnMsg);
+
+        bool SetSupervisorVisited(FireCertificateApplication objFireApp, ref ReturnMsgInfo objReturnMsg);
     }
 }

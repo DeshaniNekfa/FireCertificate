@@ -200,6 +200,7 @@
     <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="Controllers\SaveBankMsgController.cs" />
     <Compile Include="Controllers\SuperAppAllController.cs" />
+    <Compile Include="Controllers\SupervisorVisitedController.cs" />
     <Compile Include="Filters\JwtCustomAuth.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
