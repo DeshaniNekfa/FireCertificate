@@ -24,6 +24,8 @@ namespace api_rate.Models
         public string Email { get; set; }
         public string DateApplied { get; set; }
         public string DateReviewed { get; set; }
+        public string DateIssued { get; set; }
+        public string DateAppRej { get; set; }        
         public string ClientID { get; set; }
         public string Supervisor { get; set; }
         public string StartDate { get; set; }

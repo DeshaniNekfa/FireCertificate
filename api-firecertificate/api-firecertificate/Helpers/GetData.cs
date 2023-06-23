@@ -89,6 +89,26 @@ namespace api_rate.Helpers
                                     objFireAppDetails.DateReviewed = revDate.ToString("yyyy-MM-dd");
                                 }
 
+                                var issDate = (DateTime)dtRow["DateIssued"];
+                                if (issDate == DateTime.MinValue)
+                                {
+                                    objFireAppDetails.DateIssued = "";
+                                }
+                                else
+                                {
+                                    objFireAppDetails.DateIssued = issDate.ToString("yyyy-MM-dd");
+                                }
+
+                                var appRejDate = (DateTime)dtRow["DateAppRej"];
+                                if (appRejDate == DateTime.MinValue)
+                                {
+                                    objFireAppDetails.DateAppRej = "";
+                                }
+                                else
+                                {
+                                    objFireAppDetails.DateAppRej = appRejDate.ToString("yyyy-MM-dd");
+                                }
+
                                 objFireAppDetails.Supervisor = dtRow["Supervisor"].ToString().Trim();
                                 objFireAppDetails.RejectReason = dtRow["RejectReason"].ToString().Trim();
                                 objFireApplication = objFireAppDetails;
@@ -183,6 +203,27 @@ namespace api_rate.Helpers
                                     objFireAppDetails.DateReviewed = revDate.ToString("yyyy-MM-dd");
 
                                 }
+
+                                var issDate = (DateTime)dtRow["DateIssued"];
+                                if (issDate == DateTime.MinValue)
+                                {
+                                    objFireAppDetails.DateIssued = "";
+                                }
+                                else
+                                {
+                                    objFireAppDetails.DateIssued = issDate.ToString("yyyy-MM-dd");
+                                }
+
+                                var appRejDate = (DateTime)dtRow["DateAppRej"];
+                                if (appRejDate == DateTime.MinValue)
+                                {
+                                    objFireAppDetails.DateAppRej = "";
+                                }
+                                else
+                                {
+                                    objFireAppDetails.DateAppRej = appRejDate.ToString("yyyy-MM-dd");
+                                }
+
                                 objFireAppDetails.Supervisor = dtRow["Supervisor"].ToString().Trim();
                                 objFireAppDetails.RejectReason = dtRow["RejectReason"].ToString().Trim();
 
@@ -277,6 +318,25 @@ namespace api_rate.Helpers
                                 {
                                     objFireAppDetails.DateReviewed = revDate.ToString("yyyy-MM-dd");
 
+                                }
+                                var issDate = (DateTime)dtRow["DateIssued"];
+                                if (issDate == DateTime.MinValue)
+                                {
+                                    objFireAppDetails.DateIssued = "";
+                                }
+                                else
+                                {
+                                    objFireAppDetails.DateIssued = issDate.ToString("yyyy-MM-dd");
+                                }
+
+                                var appRejDate = (DateTime)dtRow["DateAppRej"];
+                                if (appRejDate == DateTime.MinValue)
+                                {
+                                    objFireAppDetails.DateAppRej = "";
+                                }
+                                else
+                                {
+                                    objFireAppDetails.DateAppRej = appRejDate.ToString("yyyy-MM-dd");
                                 }
                                 objFireAppDetails.Supervisor = dtRow["Supervisor"].ToString().Trim();
 
@@ -373,6 +433,25 @@ namespace api_rate.Helpers
                                 {
                                     objFireAppDetails.DateReviewed = revDate.ToString("yyyy-MM-dd");
 
+                                }
+                                var issDate = (DateTime)dtRow["DateIssued"];
+                                if (issDate == DateTime.MinValue)
+                                {
+                                    objFireAppDetails.DateIssued = "";
+                                }
+                                else
+                                {
+                                    objFireAppDetails.DateIssued = issDate.ToString("yyyy-MM-dd");
+                                }
+
+                                var appRejDate = (DateTime)dtRow["DateAppRej"];
+                                if (appRejDate == DateTime.MinValue)
+                                {
+                                    objFireAppDetails.DateAppRej = "";
+                                }
+                                else
+                                {
+                                    objFireAppDetails.DateAppRej = appRejDate.ToString("yyyy-MM-dd");
                                 }
                                 objFireAppDetails.Supervisor = dtRow["Supervisor"].ToString().Trim();
                                 objFireAppDetails.RejectReason = dtRow["RejectReason"].ToString().Trim();
@@ -869,6 +948,26 @@ namespace api_rate.Helpers
                                 else
                                 {
                                     objFireAppDetails.DateReviewed = revDate.ToString("yyyy-MM-dd");
+                                }
+
+                                var issDate = (DateTime)dtRow["DateIssued"];
+                                if (issDate == DateTime.MinValue)
+                                {
+                                    objFireAppDetails.DateIssued = "";
+                                }
+                                else
+                                {
+                                    objFireAppDetails.DateIssued = issDate.ToString("yyyy-MM-dd");
+                                }
+
+                                var appRejDate = (DateTime)dtRow["DateAppRej"];
+                                if (appRejDate == DateTime.MinValue)
+                                {
+                                    objFireAppDetails.DateAppRej = "";
+                                }
+                                else
+                                {
+                                    objFireAppDetails.DateAppRej = appRejDate.ToString("yyyy-MM-dd");
                                 }
                                 objFireAppDetails.Supervisor = dtRow["Supervisor"].ToString().Trim();
                                 objFireAppDetails.RejectReason = dtRow["RejectReason"].ToString().Trim();
