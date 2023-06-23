@@ -162,7 +162,8 @@ namespace api_rate.Helpers
                               "Hello, <br/>" +
 
                               "We are sorry to inform that your fire certificate application is rejected. Please contact the Administrator for more details. <br/>" +
-
+                              "<br />"+
+                              "Reason for rejection: "+ objApp.RejectReason +
 
                               "Thank You. <br/>" +
                               "" + strCouncil + "" +
