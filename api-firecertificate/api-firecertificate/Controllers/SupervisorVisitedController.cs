@@ -38,6 +38,7 @@ namespace api_rate.Controllers
                 }
                 else
                 {
+                    // Set supervisor status to 1 (default value 0 for uninspected applications)
                     _appSubmit.SetSupervisorVisited(objFireApp, ref objReturnMsg);
 
                     if (objReturnMsg.ReturnValue == "OK")
