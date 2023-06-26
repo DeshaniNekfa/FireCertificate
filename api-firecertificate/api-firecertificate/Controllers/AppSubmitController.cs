@@ -16,15 +16,18 @@ namespace api_rate.Controllers
     {
         private IAppSubmit _appsubmit = null;
         private IGetDate _getDate = null;
+        private IGetData _getData = null;
         private ISMS _sms = null;
         private IEmail _email = null;
 
-        public AppSubmitController(IAppSubmit IAppSubmit, IGetDate IGetDate, ISMS ISMS, IEmail IEmail)
+
+        public AppSubmitController(IAppSubmit IAppSubmit, IGetDate IGetDate, ISMS ISMS, IEmail IEmail, IGetData IGetData)
         {
             _appsubmit = IAppSubmit;
             _getDate = IGetDate;
             _sms = ISMS;
             _email = IEmail;
+            _getData = IGetData;
         }
 
         // POST /api/AppSubmit
@@ -32,6 +35,7 @@ namespace api_rate.Controllers
         {
             ReturnMsgInfo objReturnMsg = new ReturnMsgInfo();
             FireSupervisorApplication objSuperApp = new FireSupervisorApplication();
+            FireCertificateApplication objFireApp = new FireCertificateApplication();
 
             try
             {
@@ -47,6 +51,11 @@ namespace api_rate.Controllers
                         _appsubmit.SaveApplication(objCompleteDetails, ref objReturnMsg);
                         objSuperApp = _appsubmit.SetFireSuperApp(objCompleteDetails, ref objReturnMsg);
                         _appsubmit.SaveSupervisorApplication(objSuperApp, ref objReturnMsg);
+                        
+                        // Get Id for return
+                        objFireApp.CertificateId = objCompleteDetails.CertificateId;
+                        objFireApp.ClientID = objCompleteDetails.ClientID;
+                        objFireApp = _getData.GetApplicationByCertId(objFireApp, ref objReturnMsg);
 
                         if (objReturnMsg.ReturnValue == "OK")
                         {
@@ -73,7 +82,8 @@ namespace api_rate.Controllers
                         else
                         {
                             throw new Exception("Error occured saving application");
-                        }                       
+                        } 
+                      
                     }
                     else
                     {
@@ -111,6 +121,7 @@ namespace api_rate.Controllers
                 objReturnMsg.ReturnMessage = ex.Message.ToString().Trim();
             }
 
+            objReturnMsg.AppId = objFireApp.Id;
             return objReturnMsg;
         }
     }

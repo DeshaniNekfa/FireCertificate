@@ -77,7 +77,7 @@ namespace api_rate.Controllers
                             objPaidDetails.OrderID = objBankReturn.OrderID;
                             objPaidDetails.CertificateId = objFireApp.CertificateId;
                             objPaidDetails.ServiceName = "Fire Certificate";
-                            objPaidDetails.ApplicantName = bankReturn.BillToFirstName + bankReturn.BillToLastName;
+                            objPaidDetails.ApplicantName = objFireApp.OwnerName;
                             objPaidDetails.ApplicantAddress = objFireApp.Address;
                             objPaidDetails.ApplicantMobile = objFireApp.Telephone;
                             objPaidDetails.BankCharges = objPayment.BankCharges;

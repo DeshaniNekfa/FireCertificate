@@ -9,5 +9,6 @@ namespace api_rate.Models
     {
         public string ReturnValue { get; set; }
         public string ReturnMessage { get; set; }
+        public int AppId { get; set; }
     }
 }
