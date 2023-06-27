@@ -138,6 +138,7 @@ namespace api_rate.Controllers
                                 }
 
                                 // Set status collect method
+                                objFireApp.CollectMethod = objPayment.CollectMethod;
                                 _appsubmit.SetCollectMethod(objFireApp, ref objReturnMsg);
                             }
                             else if(objPayment.CollectMethod == "0")
@@ -163,6 +164,7 @@ namespace api_rate.Controllers
                                 }
 
                                 // Set status collect method
+                                objFireApp.CollectMethod = objPayment.CollectMethod;
                                 _appsubmit.SetCollectMethod(objFireApp, ref objReturnMsg);
                             }
 
