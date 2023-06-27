@@ -956,11 +956,11 @@ namespace api_rate.Helpers
                     {
                         if (objPayment.PaidDescription == Globals.INSPECTION.ToString().Trim())
                         {
-                            strSql = "INSERT INTO tbl_firecertificate_payment_details( CertificateId ,Note ,TotAmt ,User ,Date ,PaymentType ,PaidDescription ,PaymentID ,BillNo, BankCharges, ConsultantFee, InspectionFees, AnnualCertificate)VALUES( @CertificateId ,@Note ,@TotAmt ,@User ,@Date ,@PaymentType ,@PaidDescription ,@PaymentID ,@BillNo, @BankCharges, @ConsultantFee, @InspectionFees, @AnnualCertificate ); UPDATE tbl_firecertificate_index SET NextPaymentId=(NextPaymentId + 1);";
+                            strSql = "INSERT INTO tbl_firecertificate_payment_details( CertificateId ,Note ,TotAmt ,User ,Date ,PaymentType ,PaidDescription ,PaymentID ,BillNo, BankCharges, ConsultantFee, InspectionFees, AnnualCertificate, Postal)VALUES( @CertificateId ,@Note ,@TotAmt ,@User ,@Date ,@PaymentType ,@PaidDescription ,@PaymentID ,@BillNo, @BankCharges, @ConsultantFee, @InspectionFees, @AnnualCertificate, @Postal ); UPDATE tbl_firecertificate_index SET NextPaymentId=(NextPaymentId + 1);";
                         }
                         else if (objPayment.PaidDescription == Globals.ANNUAL.ToString().Trim())
                         {
-                            strSql = "INSERT INTO tbl_firecertificate_payment_details( CertificateId ,Note ,TotAmt ,User ,Date ,PaymentType ,PaidDescription ,PaymentID ,BillNo, BankCharges, AnnualCertificate, ConsultantFee, InspectionFees)VALUES( @CertificateId ,@Note ,@TotAmt ,@User ,@Date ,@PaymentType ,@PaidDescription ,@PaymentID ,@BillNo, @BankCharges, @AnnualCertificate, @ConsultantFee, @InspectionFees); UPDATE tbl_firecertificate_index SET NextPaymentId=(NextPaymentId + 1);";
+                            strSql = "INSERT INTO tbl_firecertificate_payment_details( CertificateId ,Note ,TotAmt ,User ,Date ,PaymentType ,PaidDescription ,PaymentID ,BillNo, BankCharges, AnnualCertificate, ConsultantFee, InspectionFees, Postal)VALUES( @CertificateId ,@Note ,@TotAmt ,@User ,@Date ,@PaymentType ,@PaidDescription ,@PaymentID ,@BillNo, @BankCharges, @AnnualCertificate, @ConsultantFee, @InspectionFees, @Postal ); UPDATE tbl_firecertificate_index SET NextPaymentId=(NextPaymentId + 1);";
                         }
                         else
                         {
@@ -982,6 +982,7 @@ namespace api_rate.Helpers
                         cmd.Parameters.AddWithValue("@ConsultantFee", objPayment.ConsultantFee);
                         cmd.Parameters.AddWithValue("@InspectionFees", objPayment.InspectionFees);
                         cmd.Parameters.AddWithValue("@AnnualCertificate", objPayment.AnnualCertificate);
+                        cmd.Parameters.AddWithValue("@Postal", objPayment.Postal);
                         cmd.ExecuteNonQuery();
                         //isSaved = true;
 
@@ -1392,7 +1393,7 @@ namespace api_rate.Helpers
             return isBankValid;
         }
     
-        // submit bank return 
+        // Submit bank return 
         public BankReturnMessage SubmitBankReturn(BankReturnMessage objPaidDetails, ref ReturnMsgInfo objReturnMsg)
         {
             this.objConMain = new Connection_Main();

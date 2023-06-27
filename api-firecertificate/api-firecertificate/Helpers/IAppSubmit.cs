@@ -44,15 +44,17 @@ namespace api_rate.Helpers
 
         // Update Fire department App
         bool UpdateSuperApplication(FireSupervisorApplication objFireSuperApp, ref ReturnMsgInfo returnMsg);
-
+        
+        // SET Super application
         FireSupervisorApplication SetFireSuperApp(FireCertificateApplication objFireApp, ref ReturnMsgInfo returnMsg);
 
         // Set status Hold
         bool SetStatusHold(FireCertificateApplication objFireApp, ref ReturnMsgInfo objReturnMsg);
+        
         // Validate bank return message
         bool ValidateBankReturn(BankReturnMessage objPaidDetails, ref ReturnMsgInfo objReturnMsg);
 
-        // submit bank return
+        // Submit bank return
         BankReturnMessage SubmitBankReturn(BankReturnMessage objPaidDetails, ref ReturnMsgInfo objReturnMsg);
 
         // Set status paid 

@@ -12,6 +12,7 @@ namespace api_rate.Models
         public decimal InspectionFees { get; set; }
         public decimal TotalPayment { get; set; }
         public decimal AnnualCertificate { get; set; }
+        public decimal Postal { get; set; }
         public string ClientID { get; set; }
         public string OrderID { get; set; }
     }

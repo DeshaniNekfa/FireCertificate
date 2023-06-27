@@ -63,6 +63,7 @@ namespace api_rate.Helpers
                                 FireCertificateApplication objFireAppDetails = new Models.FireCertificateApplication();
                                 objFireAppDetails.Id = (int)dtRow["Id"];
                                 objFireAppDetails.CertificateId = dtRow["CertificateId"].ToString().Trim();
+                                objFireAppDetails.ClientID = dtRow["user"].ToString().Trim();
                                 objFireAppDetails.CompanyName = dtRow["CompanyName"].ToString().Trim();
                                 objFireAppDetails.Address = dtRow["Address"].ToString().Trim();
                                 objFireAppDetails.Telephone = dtRow["Telephone"].ToString().Trim();
@@ -1064,6 +1065,7 @@ namespace api_rate.Helpers
                                 objPayment.ConsultantFee = Convert.ToDecimal(dtRow["ConsultantFee"]);
                                 objPayment.InspectionFees = Convert.ToDecimal(dtRow["InspectionFees"]);
                                 objPayment.AnnualCertificate = Convert.ToDecimal(dtRow["AnnualCertificate"]);
+                                objPayment.Postal = Convert.ToDecimal(dtRow["Postal"]);
 
                                 objPaymentDetails = objPayment;
                             }

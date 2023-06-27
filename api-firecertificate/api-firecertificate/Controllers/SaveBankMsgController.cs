@@ -85,6 +85,7 @@ namespace api_rate.Controllers
                             objPaidDetails.InspectionFees = objPayment.InspectionFees;
                             objPaidDetails.TotalPayment = objPayment.TotAmt;
                             objPaidDetails.AnnualCertificate = objPayment.AnnualCertificate;
+                            objPaidDetails.Postal = objPayment.Postal;
                             objPaidDetails.ClientID = objPayment.ClientID;
                             objPaidDetails.ApplicantionId = objFireApp.Id;
                             objPaidDetails.Email = objFireApp.Email;

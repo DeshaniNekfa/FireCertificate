@@ -22,5 +22,6 @@ namespace api_rate.Models
         public static string ANNUAL = "Certificate";
         public static string Counseling = "Counseling";
         public static string Bank = "Bank";
+        public static string Postal = "Postal";
     }
 }

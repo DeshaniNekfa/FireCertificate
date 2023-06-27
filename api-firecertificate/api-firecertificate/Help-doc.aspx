@@ -573,7 +573,9 @@
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"InspectionFees": 5000.00,
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"AnnualCertificate": 0.00,
-                                    <br />   
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Postal": 1.44,
+                                    <br /> 
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; }
                                     <br />
                                      ],                                    
@@ -4411,7 +4413,7 @@
                             <br />
 
                             <div class="row">
-                                <div class="col-sm-2 ">ClientID</div>
+                                <div class="col-sm-2 ">CollectMethod</div>
                                 <div class="col-sm-2 ">Description</div>
                                 <div class="col-sm-8 ">
                                     To identify user.
@@ -5156,7 +5158,36 @@
                                 </div>
 
                             </div>
-                            <br />                           
+                            <br />    
+                            
+                            <div class="row">
+                                <div class="col-sm-2 ">CollectMethod</div>
+                                <div class="col-sm-2 ">Description</div>
+                                <div class="col-sm-8 ">
+                                    To identify user.
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Required</div>
+                                <div class="col-sm-8 ">No</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Data type</div>
+                                <div class="col-sm-8 ">String</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Example</div>
+                                <div class="col-sm-8 ">
+                                    {
+                                      "CollectMethod":"1"
+                                    }
+                                </div>
+
+                            </div>
+                            <br />                       
                         </div>
                     </div>
                     <div style="overflow-y: hidden; overflow-x: hidden;">
@@ -5190,6 +5221,8 @@
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"TotalPayment": 20200.00,
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"AnnualCertificate": 20000.00,
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Postal": 1.44,
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"ClientID": "TestId",
                                     <br />
@@ -5709,6 +5742,8 @@
                                             &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "InspectionFees": "1500.00,
                                             <br />
                                             &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "AnnualCertificate": 0.00,
+                                            <br />
+                                            &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Postal": 1.44,
                                             <br />
                                             &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "TotalPayment": 4600.00,
                                             <br />                                                                                     
@@ -6383,6 +6418,8 @@
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"InspectionFees": 5000.00,
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"AnnualCertificate": 0.00,
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Postal": 1.44,
                                     <br />                                                                                                                                                   
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; }
                                     <br />
@@ -6724,6 +6761,8 @@
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"InspectionFees": 5000.00,
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"AnnualCertificate": 0.00,
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Postal": 1.44,
                                     <br />                                                                                                                                                   
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; }
                                     <br />
@@ -7067,6 +7106,8 @@
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"InspectionFees": 5000.00,
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"AnnualCertificate": 0.00,
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Postal": 1.44,
                                     <br />                                                                                                                                                   
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; }
                                     <br />
@@ -7410,6 +7451,8 @@
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"InspectionFees": 5000.00,
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"AnnualCertificate": 0.00,
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Postal": 1.44,
                                     <br />                                                                                                                                                   
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; }
                                     <br />
@@ -7753,6 +7796,8 @@
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"InspectionFees": 5000.00,
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"AnnualCertificate": 0.00,
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Postal": 1.44,
                                     <br />     
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; }
                                     <br />
@@ -8096,6 +8141,8 @@
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"InspectionFees": 5000.00,
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"AnnualCertificate": 0.00,
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Postal": 1.44,
                                     <br />                                                                                                                                                   
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; }
                                     <br />
@@ -8439,6 +8486,8 @@
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"InspectionFees": 5000.00,
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"AnnualCertificate": 0.00,
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Postal": 1.44,
                                     <br />                                                                                                                                                   
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; }
                                     <br />
