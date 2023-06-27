@@ -1551,7 +1551,7 @@ namespace api_rate.Helpers
 
                     if (this.mySqlCon != null)
                     {
-                        strSql = "UPDATE tbl_firecertificate_application SET Status = 'Issued', DateIssued = '" + DateTime.Now.ToString("yyyy/MM/dd HH:mm") + "' WHERE CertificateId = '" + objFireApp.CertificateId + "';";
+                        strSql = "UPDATE tbl_firecertificate_application SET Status = 'Issued', DateIssued = '" + DateTime.Now.ToString("yyyy/MM/dd HH:mm") + "' WHERE Id = '" + objFireApp.Id + "';";
                         cmd = new MySqlCommand(strSql, this.mySqlCon, this.mySqlTrans);
                         cmd.ExecuteNonQuery();
                         isApporoved = true;
