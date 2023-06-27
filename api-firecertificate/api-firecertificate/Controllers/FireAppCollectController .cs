@@ -12,14 +12,14 @@ using System.Configuration;
 namespace api_rate.Controllers
 {
     [JwtCustomAuth]
-    public class FireAppIssueController : ApiController
+    public class FireAppCollectController  : ApiController
     {
         private IAppSubmit _appSubmit = null;
         private IGetData _getData = null;
         private IEmail _email = null;
         private ISMS _sms = null;
 
-        public FireAppIssueController(IAppSubmit IAppSubmit, IGetData IGetData, IEmail IEmail, ISMS ISMS)
+        public FireAppCollectController(IAppSubmit IAppSubmit, IGetData IGetData, IEmail IEmail, ISMS ISMS)
         {
             _appSubmit = IAppSubmit;
             _getData = IGetData;
@@ -27,7 +27,7 @@ namespace api_rate.Controllers
             _sms = ISMS;
         }
 
-        // POST /api/FireAppIssue
+        // POST /api/FireAppCollect
         public ReturnMsgInfo Post([FromBody]FireCertificateApplication objFireApp) 
         {
             ReturnMsgInfo objReturnMsg = new ReturnMsgInfo();
@@ -43,40 +43,24 @@ namespace api_rate.Controllers
                 {
                     throw new Exception("Application id is required");
                 }
+                else if (objFireApp.CollectMethod == null || objFireApp.CollectMethod == "")
+                {
+                    throw new Exception("Collect Method is required");
+                }
                 else
                 {
                     // Approving Application
-                    _appSubmit.SetStatusIssued(objFireApp, ref objReturnMsg);
+                    _appSubmit.SetCollectMethod(objFireApp, ref objReturnMsg);
                                             
                     if (objReturnMsg.ReturnValue == "OK")
                     {
-                        // Get application data email and mobile number
-                        objFireCert = _getData.GetApplicationById(objFireApp, ref objReturnMsg);
-
-                        // Sending Email 
-                        if (string.IsNullOrEmpty(objFireCert.Email) == false)
-                        {
-                            string strMsg = _email.GetEmailMsgBody(Globals.ISSUED.ToString().Trim());
-                            string strErMsg = string.Empty;
-                            _email.SendEmail(strMsg, objFireCert.Email.ToString().Trim(), ref strErMsg);
-                        }
-
-                        // Sending SMS 
-                        string strSMSSending = ConfigurationManager.AppSettings["SMSSending"].ToString().Trim();
-                        if (string.IsNullOrEmpty(objFireCert.CertificateId) == false && string.IsNullOrEmpty(objFireCert.Telephone) == false && strSMSSending.ToString().Trim() == "1")
-                        {
-                            string strMsg = "Dear Customer, \n Your fire cerificate application request successfully approved. \n Reference No : " + objFireCert.CertificateId.Trim() + " \n Thank You.";
-                            string strErMsg = string.Empty;
-                            _sms.SendSMS(strMsg, objFireCert.Telephone.ToString().Trim(), ref strErMsg);
-                        }
-
                         objReturnMsg.ReturnValue = "OK";
-                        objReturnMsg.ReturnMessage = "Application Successfully Issued.";
+                        objReturnMsg.ReturnMessage = "Application Collection method set.";
           
                     }
                     else
                     {
-                        throw new Exception("Error occured Issuing application");
+                        throw new Exception("Error occured");
                     }
                     
                 }

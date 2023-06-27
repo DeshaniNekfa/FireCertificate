@@ -66,5 +66,8 @@ namespace api_rate.Helpers
         
         // Set status paid for certificate
         bool SetStatusPaidForCert(FireCertificateApplication objFireApp, ref ReturnMsgInfo objReturnMsg);
+
+        // Set Collect method
+        bool SetCollectMethod(FireCertificateApplication objFireApp, ref ReturnMsgInfo objReturnMsg);
     }
 }

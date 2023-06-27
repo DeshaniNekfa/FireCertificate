@@ -31,7 +31,7 @@ namespace api_rate.Models
         public string StartDate { get; set; }
         public string EndDate { get; set; }
         public string RejectReason { get; set; }
-
+        public string CollectMethod { get; set; }
         //Second application
 
         // Building Ownership
