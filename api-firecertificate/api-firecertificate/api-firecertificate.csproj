@@ -185,6 +185,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ChargesController.cs" />
     <Compile Include="Controllers\FireAppAllController.cs" />
+    <Compile Include="Controllers\FireAppIssueController.cs" />
     <Compile Include="Controllers\FireAppApproveController.cs" />
     <Compile Include="Controllers\FireAppApprovedByDateController.cs" />
     <Compile Include="Controllers\FireAppAssignedByDateController.cs" />

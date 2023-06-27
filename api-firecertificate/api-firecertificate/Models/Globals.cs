@@ -15,6 +15,7 @@ namespace api_rate.Models
         public static string APPROVED = "Approved";
         public static string REJECTED = "Rejected";
         public static string ISSUED = "Issued";
+        public static string PAIDFORCERT = "PaidForCert";
 
         // Payment Description
         public static string INSPECTION = "Inspection";
