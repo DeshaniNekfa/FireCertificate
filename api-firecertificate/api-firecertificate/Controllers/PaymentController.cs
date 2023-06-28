@@ -59,6 +59,7 @@ namespace api_rate.Controllers
                         // Get application by Id
                         objFireApp = _getData.GetApplicationById(objFireApp, ref objReturnMsg);
 
+                        // Set null feilds with values
                         objPayment.CertificateId = objFireApp.CertificateId;
                         objPayment.BillNo = "";
                         objPayment.PaymentID = "";
@@ -70,7 +71,7 @@ namespace api_rate.Controllers
                             // add paid description
                             objPayment.PaidDescription = Globals.INSPECTION.ToString().Trim();
 
-                            //Add amount
+                            //Add total amount and set fees 
                             foreach (Charges objCharge in lstCharges)
                             {
                                 if (objCharge.ChargeName != Globals.ANNUAL.ToString().Trim())
@@ -118,7 +119,6 @@ namespace api_rate.Controllers
                                     if (objCharge.ChargeName == Globals.ANNUAL.ToString().Trim() || objCharge.ChargeName == Globals.Bank.ToString().Trim() || objCharge.ChargeName == Globals.Postal.ToString().Trim())
                                     {
                                         objPayment.TotAmt = objPayment.TotAmt + objCharge.Amount;
-
                                     }
                                     if (objCharge.ChargeName == Globals.ANNUAL.ToString().Trim())
                                     {
