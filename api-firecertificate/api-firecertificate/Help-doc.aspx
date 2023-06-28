@@ -698,6 +698,36 @@
                             </div>
 
                             <br />
+
+                            <div class="row">
+                                <div class="col-sm-2 ">User</div>
+                                <div class="col-sm-2 ">Description</div>
+                                <div class="col-sm-8 ">
+                                    To identify user.
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Required</div>
+                                <div class="col-sm-8 ">Yes</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Data type</div>
+                                <div class="col-sm-8 ">String</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Example</div>
+                                <div class="col-sm-8 ">
+                                    {
+                                      "User":"166"
+                                    }
+                                </div>
+
+                            </div>
+
+                            <br />
                         </div>
                     </div>
                     <div style="height: 400px; overflow-y: scroll; overflow-x: hidden;">
@@ -1120,6 +1150,36 @@
                             <div>List of parameters</div>
                         </div>
                         <div class="pre">
+                            <div class="row">
+                                <div class="col-sm-2 ">User</div>
+                                <div class="col-sm-2 ">Description</div>
+                                <div class="col-sm-8 ">
+                                    To identify user.
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Required</div>
+                                <div class="col-sm-8 ">Yes</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Data type</div>
+                                <div class="col-sm-8 ">String</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Example</div>
+                                <div class="col-sm-8 ">
+                                    {
+                                      "User":"166"
+                                    }
+                                </div>
+
+                            </div>
+
+                            <br />
+
                             <div class="row">
                                 <div class="col-sm-2 ">CompanyName</div>
                                 <div class="col-sm-2 ">Description</div>

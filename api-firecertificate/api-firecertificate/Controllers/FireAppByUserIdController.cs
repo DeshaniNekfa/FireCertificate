@@ -35,6 +35,10 @@ namespace api_rate.Controllers
                 {
                     throw new Exception("Invalid Client ID.");
                 }
+                else if (objFireApp.user == null || objFireApp.user == "")
+                {
+                    throw new Exception("Invalid User.");
+                }
                 else
                 {
                     // get fire applications list

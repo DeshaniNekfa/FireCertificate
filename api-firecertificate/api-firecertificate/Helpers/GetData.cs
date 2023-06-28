@@ -63,7 +63,7 @@ namespace api_rate.Helpers
                                 FireCertificateApplication objFireAppDetails = new Models.FireCertificateApplication();
                                 objFireAppDetails.Id = (int)dtRow["Id"];
                                 objFireAppDetails.CertificateId = dtRow["CertificateId"].ToString().Trim();
-                                objFireAppDetails.ClientID = dtRow["user"].ToString().Trim();
+                                objFireAppDetails.user = dtRow["user"].ToString().Trim();
                                 objFireAppDetails.CompanyName = dtRow["CompanyName"].ToString().Trim();
                                 objFireAppDetails.Address = dtRow["Address"].ToString().Trim();
                                 objFireAppDetails.Telephone = dtRow["Telephone"].ToString().Trim();
@@ -286,7 +286,7 @@ namespace api_rate.Helpers
                     }
                     if (this.mySqlCon != null)
                     {
-                        strSql = "SELECT * FROM tbl_firecertificate_application WHERE User = '" + objFireApplication.ClientID+"';";
+                        strSql = "SELECT * FROM tbl_firecertificate_application WHERE User = '" + objFireApplication.user+"';";
                         da = new MySqlDataAdapter(strSql, this.mySqlCon);
                         ds = new DataSet();
                         da.Fill(ds, "Application");
@@ -430,7 +430,7 @@ namespace api_rate.Helpers
                                 objFireAppDetails.CollectMethod = dtRow["CollectMethod"].ToString().Trim();
                                 objFireAppDetails.Email = dtRow["Email"].ToString().Trim();
                                 objFireAppDetails.SupervisorVisited = dtRow["superVisit"].ToString().Trim();
-                                objFireAppDetails.Supervisor = dtRow["User"].ToString().Trim();
+                                objFireAppDetails.Supervisor = dtRow["Supervisor"].ToString().Trim();
                                 var appDate = (DateTime)dtRow["DateApplied"];
                                 objFireAppDetails.DateApplied = appDate.ToString("yyyy-MM-dd");
                                 var revDate = (DateTime)dtRow["DateReviewed"];

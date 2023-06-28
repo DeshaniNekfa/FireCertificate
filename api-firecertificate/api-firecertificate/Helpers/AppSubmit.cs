@@ -34,6 +34,14 @@ namespace api_rate.Helpers
                 IsSuccess = false;
             }
 
+            // User
+            if (objFireAppDetails.user == null || objFireAppDetails.user == "")
+            {
+                returnMsg.ReturnValue = "Error";
+                returnMsg.ReturnMessage = "Invalid User.";
+                IsSuccess = false;
+            }
+
             // Company name 
             if (objFireAppDetails.CompanyName == null || objFireAppDetails.CompanyName == "")
             {
@@ -378,7 +386,7 @@ namespace api_rate.Helpers
                         cmd.Parameters.AddWithValue("@DateReviewed", "");
                         cmd.Parameters.AddWithValue("@DateIssued", "");
                         cmd.Parameters.AddWithValue("@DateAppRej", "");
-                        cmd.Parameters.AddWithValue("@user", objFireAppDetails.ClientID);
+                        cmd.Parameters.AddWithValue("@user", objFireAppDetails.user);
                         cmd.Parameters.AddWithValue("@superVisit", "0");
                         cmd.ExecuteNonQuery();
                         isSaved = true;

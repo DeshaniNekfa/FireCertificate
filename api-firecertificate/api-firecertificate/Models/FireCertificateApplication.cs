@@ -77,5 +77,6 @@ namespace api_rate.Models
         public string Generator { get; set; }
         public string CurrentCircuit { get; set; }
         public string SupervisorVisited { get; set; }
+        public string user { get; set; }
     }
 }
