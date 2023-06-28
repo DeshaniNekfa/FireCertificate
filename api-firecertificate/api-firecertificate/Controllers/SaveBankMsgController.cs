@@ -118,7 +118,7 @@ namespace api_rate.Controllers
                                 string strSMSSending = ConfigurationManager.AppSettings["SMSSending"].ToString().Trim();
                                 if (string.IsNullOrEmpty(objFireApp.CertificateId) == false && string.IsNullOrEmpty(objFireApp.Telephone) == false && strSMSSending.ToString().Trim() == "1")
                                 {
-                                    string strMsg = "Dear Customer, \n Your payment successfully submitted. \n Reference No : " + objFireApp.CertificateId.Trim() + " \n Thank You.";
+                                    string strMsg = "Dear Customer,\n Your payment successfully submitted.\n Reference No : " + objFireApp.CertificateId.Trim() + "\n Order Id : " + objPaidDetails.OrderID + "\n Thank You.";
                                     string strErMsg = string.Empty;
                                     _sms.SendSMS(strMsg, objFireApp.Telephone.ToString().Trim(), ref strErMsg);
                                 }

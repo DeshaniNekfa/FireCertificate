@@ -74,7 +74,7 @@ namespace api_rate.Controllers
                             string strSMSSending = ConfigurationManager.AppSettings["SMSSending"].ToString().Trim();
                             if (string.IsNullOrEmpty(objCompleteDetails.CertificateId) == false && string.IsNullOrEmpty(objCompleteDetails.Telephone) == false && strSMSSending.ToString().Trim() == "1")
                             {
-                                string strMsg = "Dear Customer, \n Your fire cerificate application request successfully submitted. \n Reference No : " + objCompleteDetails.CertificateId.Trim() + " \n Thank You.";
+                                string strMsg = "Dear Customer, \n Your fire cerificate application successfully submitted. \n Reference No : " + objCompleteDetails.CertificateId.Trim() + " \n Thank You.";
                                 string strErMsg = string.Empty;
                                 _sms.SendSMS(strMsg, objCompleteDetails.Telephone.ToString().Trim(), ref strErMsg);
                             } 

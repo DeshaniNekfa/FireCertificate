@@ -49,8 +49,8 @@ namespace api_rate.Controllers
 
                     if (objReturnMsg.ReturnValue == "OK")
                     {
-                        objReturnMsg.ReturnValue = "OK";
-                        objReturnMsg.ReturnMessage = "Supervisor Successfully Assigned.";
+                        // Get application by Id
+                        objFireApp = _getData.GetApplicationById(objFireApp, ref objReturnMsg);
 
                         // Sending Email 
                         if (string.IsNullOrEmpty(objFireApp.Email) == false)
@@ -64,10 +64,13 @@ namespace api_rate.Controllers
                         string strSMSSending = ConfigurationManager.AppSettings["SMSSending"].ToString().Trim();
                         if (string.IsNullOrEmpty(objFireApp.CertificateId) == false && string.IsNullOrEmpty(objFireApp.Telephone) == false && strSMSSending.ToString().Trim() == "1")
                         {
-                            string strMsg = "Dear Customer, \n a supervisor was assigned to inspect your company. \n Reference No : " + objFireApp.CertificateId.Trim() + " \n Thank You.";
+                            string strMsg = "Dear Customer,\n A supervisor was assigned to inspect your premises.\n Reference No : " + objFireApp.CertificateId.Trim() + "\n Supervisor name : "+objFireApp.Supervisor+"\n Visiting date : "+objFireApp.DateReviewed+"\n Thank You.";
                             string strErMsg = string.Empty;
                             _sms.SendSMS(strMsg, objFireApp.Telephone.ToString().Trim(), ref strErMsg);
                         }
+
+                        objReturnMsg.ReturnValue = "OK";
+                        objReturnMsg.ReturnMessage = "Supervisor Successfully Assigned.";
 
                     }
                     else
