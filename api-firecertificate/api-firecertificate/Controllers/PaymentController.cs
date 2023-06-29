@@ -64,6 +64,7 @@ namespace api_rate.Controllers
                         objPayment.BillNo = "";
                         objPayment.PaymentID = "";
                         objPayment.Note = "";
+                        objPayment.user = objFireApp.user;
                         objPayment.Date = _getDate.GetFormattedDate(DateTime.Now).ToString("yyyy/MM/dd HH:mm").Trim();
 
                         if (objFireApp.Status == Globals.PENDING.ToString().Trim())
@@ -74,26 +75,24 @@ namespace api_rate.Controllers
                             //Add total amount and set fees 
                             foreach (Charges objCharge in lstCharges)
                             {
-                                if (objCharge.ChargeName != Globals.ANNUAL.ToString().Trim())
-                                {
-                                    objPayment.TotAmt = objPayment.TotAmt + objCharge.Amount;
-                                }
-
                                 //Set return info
                                 if (objCharge.ChargeName == Globals.Bank.ToString().Trim())
                                 {
                                     objPayment.BankCharges = objCharge.Amount;
                                     objPaymentInfo.BankCharges = objCharge.Amount;
+                                    objPayment.TotAmt = objPayment.TotAmt + objCharge.Amount;
                                 }
                                 if (objCharge.ChargeName == Globals.Counseling.ToString().Trim())
                                 {
                                     objPayment.ConsultantFee = objCharge.Amount;
                                     objPaymentInfo.ConsultantFee = objCharge.Amount;
+                                    objPayment.TotAmt = objPayment.TotAmt + objCharge.Amount;
                                 }
                                 if (objCharge.ChargeName == Globals.INSPECTION.ToString().Trim())
                                 {
                                     objPayment.InspectionFees = objCharge.Amount;
                                     objPaymentInfo.InspectionFees = objCharge.Amount;
+                                    objPayment.TotAmt = objPayment.TotAmt + objCharge.Amount;
                                 }
                             }
 
@@ -116,24 +115,23 @@ namespace api_rate.Controllers
                                 //Add amount with postal
                                 foreach (Charges objCharge in lstCharges)
                                 {
-                                    if (objCharge.ChargeName == Globals.ANNUAL.ToString().Trim() || objCharge.ChargeName == Globals.Bank.ToString().Trim() || objCharge.ChargeName == Globals.Postal.ToString().Trim())
-                                    {
-                                        objPayment.TotAmt = objPayment.TotAmt + objCharge.Amount;
-                                    }
                                     if (objCharge.ChargeName == Globals.ANNUAL.ToString().Trim())
                                     {
                                         objPayment.AnnualCertificate = objCharge.Amount;
                                         objPaymentInfo.AnnualCertificate = objCharge.Amount;
+                                        objPayment.TotAmt = objPayment.TotAmt + objCharge.Amount;
                                     }
                                     if (objCharge.ChargeName == Globals.Bank.ToString().Trim())
                                     {
                                         objPayment.BankCharges = objCharge.Amount;
                                         objPaymentInfo.BankCharges = objCharge.Amount;
+                                        objPayment.TotAmt = objPayment.TotAmt + objCharge.Amount;
                                     }
                                     if (objCharge.ChargeName == Globals.Postal.ToString().Trim())
                                     {
                                         objPayment.Postal = objCharge.Amount;
                                         objPaymentInfo.Postal = objCharge.Amount;
+                                        objPayment.TotAmt = objPayment.TotAmt + objCharge.Amount;
                                     }
                                 }
 
@@ -147,20 +145,18 @@ namespace api_rate.Controllers
                                 //Add amount without postal
                                 foreach (Charges objCharge in lstCharges)
                                 {
-                                    if (objCharge.ChargeName == Globals.ANNUAL.ToString().Trim() || objCharge.ChargeName == Globals.Bank.ToString().Trim())
-                                    {
-                                        objPayment.TotAmt = objPayment.TotAmt + objCharge.Amount;
-
-                                    }
                                     if (objCharge.ChargeName == Globals.ANNUAL.ToString().Trim())
                                     {
                                         objPayment.AnnualCertificate = objCharge.Amount;
                                         objPaymentInfo.AnnualCertificate = objCharge.Amount;
+                                        objPayment.TotAmt = objPayment.TotAmt + objCharge.Amount;
+
                                     }
                                     if (objCharge.ChargeName == Globals.Bank.ToString().Trim())
                                     {
                                         objPayment.BankCharges = objCharge.Amount;
                                         objPaymentInfo.BankCharges = objCharge.Amount;
+                                        objPayment.TotAmt = objPayment.TotAmt + objCharge.Amount;
                                     }
                                 }
 

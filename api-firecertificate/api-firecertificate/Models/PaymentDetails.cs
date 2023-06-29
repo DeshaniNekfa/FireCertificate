@@ -23,5 +23,6 @@ namespace api_rate.Models
         public decimal AnnualCertificate { get; set; }
         public decimal Postal { get; set; }
         public string CollectMethod { get; set; }
+        public string user { get; set; }
     }
 }

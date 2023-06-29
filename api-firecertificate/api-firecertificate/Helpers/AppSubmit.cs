@@ -980,7 +980,7 @@ namespace api_rate.Helpers
                         cmd.Parameters.AddWithValue("@CertificateId", objPayment.CertificateId);
                         cmd.Parameters.AddWithValue("@Note", objPayment.Note);
                         cmd.Parameters.AddWithValue("@TotAmt", objPayment.TotAmt);
-                        cmd.Parameters.AddWithValue("@User", objPayment.ClientID);
+                        cmd.Parameters.AddWithValue("@User", objPayment.user);
                         // cmd.Parameters.AddWithValue("@Date", objPayment.Date);
                         cmd.Parameters.AddWithValue("@PaymentType", objPayment.PaymentType);
                         cmd.Parameters.AddWithValue("@PaidDescription", objPayment.PaidDescription);
