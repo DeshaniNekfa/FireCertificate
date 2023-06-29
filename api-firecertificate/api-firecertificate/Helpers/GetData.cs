@@ -300,6 +300,7 @@ namespace api_rate.Helpers
                                 objFireAppDetails.CertificateId = dtRow["CertificateId"].ToString().Trim();
                                 objFireAppDetails.CompanyName = dtRow["CompanyName"].ToString().Trim();
                                 objFireAppDetails.Address = dtRow["Address"].ToString().Trim();
+                                objFireAppDetails.user = dtRow["user"].ToString().Trim();
                                 objFireAppDetails.Telephone = dtRow["Telephone"].ToString().Trim();
                                 objFireAppDetails.DistanceFromCouncil = (int)dtRow["DistanceFromCouncil"];
                                 objFireAppDetails.NatureOfBusiness = dtRow["NatureOfBusiness"].ToString().Trim();
