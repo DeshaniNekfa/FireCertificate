@@ -1121,7 +1121,7 @@ namespace api_rate.Helpers
 
                     if (this.mySqlCon != null)
                     {
-                        strSql = "UPDATE tbl_firecertificate_application SET CompanyName='" + objFireApp.CompanyName + "',Address='" + objFireApp.Address + "',Telephone='" + objFireApp.Telephone + "',DistanceFromCouncil='" + objFireApp.DistanceFromCouncil + "',NatureOfBusiness='" + objFireApp.NatureOfBusiness + "', BuildingDescription = '"+objFireApp.BuildingDescription+"' , TotalLand='" + objFireApp.TotalLand + "' ,RoadFromCouncil='" + objFireApp.RoadFromCouncil + "',OwnerName='" + objFireApp.OwnerName + "' ,CurrentFirePlan='" + objFireApp.CurrentFirePlan + "',Email='" + objFireApp.Email + "' ,Supervisor='' ,DateReviewed='' ,user = '" + objFireApp.ClientID + "' WHERE CertificateId = '" + objFireApp.CertificateId + "';";
+                        strSql = "UPDATE tbl_firecertificate_application SET CompanyName='" + objFireApp.CompanyName + "',Address='" + objFireApp.Address + "',Telephone='" + objFireApp.Telephone + "',DistanceFromCouncil='" + objFireApp.DistanceFromCouncil + "',NatureOfBusiness='" + objFireApp.NatureOfBusiness + "', BuildingDescription = '"+objFireApp.BuildingDescription+"' , TotalLand='" + objFireApp.TotalLand + "' ,RoadFromCouncil='" + objFireApp.RoadFromCouncil + "',OwnerName='" + objFireApp.OwnerName + "' ,CurrentFirePlan='" + objFireApp.CurrentFirePlan + "',Email='" + objFireApp.Email + "' ,Supervisor='' ,DateReviewed='' WHERE CertificateId = '" + objFireApp.CertificateId + "';";
                         cmd = new MySqlCommand(strSql, this.mySqlCon, this.mySqlTrans);
                         cmd.ExecuteNonQuery();
                         isUpdated = true;
