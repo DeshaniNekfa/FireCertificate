@@ -50,6 +50,9 @@ namespace api_rate.Controllers
                     // validate request
                     if (_appsubmit.ValidateBankReturn(objBankReturn, ref objReturnMsg))
                     {
+                        //Set result date
+                        objBankReturn.ResultTime = _getDate.GetFormattedDate(DateTime.Now).ToString("yyyy/MM/dd HH:mm").Trim();
+
                         bankReturn = _appsubmit.SubmitBankReturn(objBankReturn, ref objReturnMsg);
 
                         if (objReturnMsg.ReturnValue == "OK")
@@ -96,7 +99,7 @@ namespace api_rate.Controllers
                             objPaidDetails.BillToMiddleName = objBankReturn.BillToMiddleName;
                             objPaidDetails.BillToLastName = objBankReturn.BillToLastName;
                             objPaidDetails.PaddedCardNo = objBankReturn.PaddedCardNo;
-                            objPaidDetails.ResultTime = DateTime.Now.ToString("yyyy/MM/dd HH:mm");
+                            objPaidDetails.ResultTime = objBankReturn.ResultTime;
 
                             objReturnMsg.ReturnValue = "OK";
                             objReturnMsg.ReturnMessage = "Payment Success.";
@@ -137,8 +140,6 @@ namespace api_rate.Controllers
                 objReturnMsg.ReturnValue = "Error";
                 objReturnMsg.ReturnMessage = ex.Message.ToString().Trim();
             }
-
-
 
             return objPaidOutput;
         }

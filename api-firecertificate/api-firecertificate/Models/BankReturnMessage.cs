@@ -20,6 +20,6 @@ namespace api_rate.Models
         public string BillToLastName { get; set; }
         public string Signature { get; set; }
         public string SignatureMethod { get; set; }
-
+        public string ResultTime { get; set; }
     }
 }

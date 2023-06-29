@@ -382,7 +382,7 @@ namespace api_rate.Helpers
                         cmd.Parameters.AddWithValue("@Status", Globals.PENDING.ToString().Trim());
                         cmd.Parameters.AddWithValue("@Email", objFireAppDetails.Email);
                         cmd.Parameters.AddWithValue("@Supervisor", "");
-                        cmd.Parameters.AddWithValue("@DateApplied", DateTime.Now.ToString("yyyy/MM/dd HH:mm").Trim());
+                        cmd.Parameters.AddWithValue("@DateApplied", objFireAppDetails.DateApplied);
                         cmd.Parameters.AddWithValue("@DateReviewed", "");
                         cmd.Parameters.AddWithValue("@DateIssued", "");
                         cmd.Parameters.AddWithValue("@DateAppRej", "");
@@ -964,11 +964,11 @@ namespace api_rate.Helpers
                     {
                         if (objPayment.PaidDescription == Globals.INSPECTION.ToString().Trim())
                         {
-                            strSql = "INSERT INTO tbl_firecertificate_payment_details( CertificateId ,Note ,TotAmt ,User ,Date ,PaymentType ,PaidDescription ,PaymentID ,BillNo, BankCharges, ConsultantFee, InspectionFees, AnnualCertificate, Postal)VALUES( @CertificateId ,@Note ,@TotAmt ,@User ,@Date ,@PaymentType ,@PaidDescription ,@PaymentID ,@BillNo, @BankCharges, @ConsultantFee, @InspectionFees, @AnnualCertificate, @Postal ); UPDATE tbl_firecertificate_index SET NextPaymentId=(NextPaymentId + 1);";
+                            strSql = "INSERT INTO tbl_firecertificate_payment_details( CertificateId ,Note ,TotAmt ,User ,Date ,PaymentType ,PaidDescription ,PaymentID ,BillNo, BankCharges, ConsultantFee, InspectionFees, AnnualCertificate, Postal)VALUES( @CertificateId ,@Note ,@TotAmt ,@User ,'" + objPayment.Date + "' ,@PaymentType ,@PaidDescription ,@PaymentID ,@BillNo, @BankCharges, @ConsultantFee, @InspectionFees, @AnnualCertificate, @Postal ); UPDATE tbl_firecertificate_index SET NextPaymentId=(NextPaymentId + 1);";
                         }
                         else if (objPayment.PaidDescription == Globals.ANNUAL.ToString().Trim())
                         {
-                            strSql = "INSERT INTO tbl_firecertificate_payment_details( CertificateId ,Note ,TotAmt ,User ,Date ,PaymentType ,PaidDescription ,PaymentID ,BillNo, BankCharges, AnnualCertificate, ConsultantFee, InspectionFees, Postal)VALUES( @CertificateId ,@Note ,@TotAmt ,@User ,@Date ,@PaymentType ,@PaidDescription ,@PaymentID ,@BillNo, @BankCharges, @AnnualCertificate, @ConsultantFee, @InspectionFees, @Postal ); UPDATE tbl_firecertificate_index SET NextPaymentId=(NextPaymentId + 1);";
+                            strSql = "INSERT INTO tbl_firecertificate_payment_details( CertificateId ,Note ,TotAmt ,User ,Date ,PaymentType ,PaidDescription ,PaymentID ,BillNo, BankCharges, AnnualCertificate, ConsultantFee, InspectionFees, Postal)VALUES( @CertificateId ,@Note ,@TotAmt ,@User ,'" + objPayment.Date + "' ,@PaymentType ,@PaidDescription ,@PaymentID ,@BillNo, @BankCharges, @AnnualCertificate, @ConsultantFee, @InspectionFees, @Postal ); UPDATE tbl_firecertificate_index SET NextPaymentId=(NextPaymentId + 1);";
                         }
                         else
                         {
@@ -981,7 +981,7 @@ namespace api_rate.Helpers
                         cmd.Parameters.AddWithValue("@Note", objPayment.Note);
                         cmd.Parameters.AddWithValue("@TotAmt", objPayment.TotAmt);
                         cmd.Parameters.AddWithValue("@User", objPayment.ClientID);
-                        cmd.Parameters.AddWithValue("@Date", objPayment.Date);
+                        // cmd.Parameters.AddWithValue("@Date", objPayment.Date);
                         cmd.Parameters.AddWithValue("@PaymentType", objPayment.PaymentType);
                         cmd.Parameters.AddWithValue("@PaidDescription", objPayment.PaidDescription);
                         cmd.Parameters.AddWithValue("@PaymentID", objPayment.PaymentID);
@@ -1121,7 +1121,7 @@ namespace api_rate.Helpers
 
                     if (this.mySqlCon != null)
                     {
-                        strSql = "UPDATE tbl_firecertificate_application SET CompanyName='" + objFireApp.CompanyName + "',Address='" + objFireApp.Address + "',Telephone='" + objFireApp.Telephone + "',DistanceFromCouncil='" + objFireApp.DistanceFromCouncil + "',NatureOfBusiness='" + objFireApp.NatureOfBusiness + "', BuildingDescription = '"+objFireApp.BuildingDescription+"' , TotalLand='" + objFireApp.TotalLand + "' ,RoadFromCouncil='" + objFireApp.RoadFromCouncil + "',OwnerName='" + objFireApp.OwnerName + "' ,CurrentFirePlan='" + objFireApp.CurrentFirePlan + "',Email='" + objFireApp.Email + "' ,Supervisor='' ,DateApplied='" + DateTime.Now.ToString("yyyy-MM-dd").Trim() + "',DateReviewed='' ,user = '" + objFireApp.ClientID + "' WHERE CertificateId = '" + objFireApp.CertificateId + "';";
+                        strSql = "UPDATE tbl_firecertificate_application SET CompanyName='" + objFireApp.CompanyName + "',Address='" + objFireApp.Address + "',Telephone='" + objFireApp.Telephone + "',DistanceFromCouncil='" + objFireApp.DistanceFromCouncil + "',NatureOfBusiness='" + objFireApp.NatureOfBusiness + "', BuildingDescription = '"+objFireApp.BuildingDescription+"' , TotalLand='" + objFireApp.TotalLand + "' ,RoadFromCouncil='" + objFireApp.RoadFromCouncil + "',OwnerName='" + objFireApp.OwnerName + "' ,CurrentFirePlan='" + objFireApp.CurrentFirePlan + "',Email='" + objFireApp.Email + "' ,Supervisor='' ,DateReviewed='' ,user = '" + objFireApp.ClientID + "' WHERE CertificateId = '" + objFireApp.CertificateId + "';";
                         cmd = new MySqlCommand(strSql, this.mySqlCon, this.mySqlTrans);
                         cmd.ExecuteNonQuery();
                         isUpdated = true;
@@ -1443,7 +1443,7 @@ namespace api_rate.Helpers
                         cmd.Parameters.AddWithValue("@BillToLastName", objPaidDetails.BillToLastName);
                         cmd.Parameters.AddWithValue("@Signature", objPaidDetails.Signature);
                         cmd.Parameters.AddWithValue("@SignatureMethod", objPaidDetails.SignatureMethod);
-                        cmd.Parameters.AddWithValue("@ResultTime", DateTime.Now.ToString("yyyy/MM/dd HH:mm"));
+                        cmd.Parameters.AddWithValue("@ResultTime", objPaidDetails.ResultTime);
 
 
                         cmd.ExecuteNonQuery();

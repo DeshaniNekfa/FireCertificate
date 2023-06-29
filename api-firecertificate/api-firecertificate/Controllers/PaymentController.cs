@@ -64,7 +64,7 @@ namespace api_rate.Controllers
                         objPayment.BillNo = "";
                         objPayment.PaymentID = "";
                         objPayment.Note = "";
-                        objPayment.Date = DateTime.Now.ToString("yyyy/MM/dd HH:mm");
+                        objPayment.Date = _getDate.GetFormattedDate(DateTime.Now).ToString("yyyy/MM/dd HH:mm").Trim();
 
                         if (objFireApp.Status == Globals.PENDING.ToString().Trim())
                         {

@@ -47,6 +47,9 @@ namespace api_rate.Controllers
                     // App Save if CertID not available
                     if (objCompleteDetails.CertificateId == null || objCompleteDetails.CertificateId == "")
                     {
+                        //Set applied date
+                        objCompleteDetails.DateApplied = _getDate.GetFormattedDate(DateTime.Now).ToString("yyyy/MM/dd HH:mm").Trim();
+
                         // application submit
                         _appsubmit.SaveApplication(objCompleteDetails, ref objReturnMsg);
                         objSuperApp = _appsubmit.SetFireSuperApp(objCompleteDetails, ref objReturnMsg);
